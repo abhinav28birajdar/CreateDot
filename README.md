@@ -1,102 +1,58 @@
-# Design.ly: The AI-Powered Creative Engine
+# CreatorFlow
 
-![Design.ly Logo](https://via.placeholder.com/800x200/9929EA/FFFFFF?text=Design.ly+-+The+AI-Powered+Creative+Engine)
+CreatorFlow is a comprehensive platform for designers and creators, combining features from Dribbble, Behance, and project management tools.
 
-## 🎨 Overview
+## Features
 
-**Design.ly** is a revolutionary, full-stack generative AI design platform meticulously engineered for boundless creativity. Through its sleek, intuitive UI accented by a vibrant **#9929EA purple**, Design.ly seamlessly integrates cutting-edge **Google Gemini AI** for multi-modal content generation and a powerful **Supabase backend** for secure data persistence and blazing-fast asset storage.
+- **Portfolio Showcase**: Upload and display your work.
+- **Project Management**: Create projects, manage tasks (Kanban), and collaborate.
+- **Inspiration**: Explore trending designs with advanced filtering.
+- **Social**: Follow creators, like and comment on shots.
+- **Authentication**: Secure login with Supabase Auth.
+- **Database**: PostgreSQL with Supabase.
 
-### ✨ Your Vision. Our AI. Unbounded Creativity.
+## Tech Stack
 
-Beyond simple automation, Design.ly provides:
-- 🧠 **Deep creative control** with intelligent AI assistance
-- 📊 **Intelligent trend insights** and adaptive learning
-- 🎯 **Brand-consistent visuals** across all design disciplines
-- 🚀 **Real-time collaboration** and instant generation
-- 🎨 **Comprehensive design modes** from branding to motion graphics
+- **Framework**: Next.js 14 (App Router)
+- **Styling**: Tailwind CSS, ShadCN UI
+- **Backend**: Supabase (Auth, Database, Storage, Realtime)
+- **Forms**: React Hook Form, Zod
+- **State**: Zustand, React Query
 
-## 🌟 Key Features
-
-### 🤖 AI-Powered Design Generation
-- **Google Gemini Integration**: Advanced text-to-image and multimodal AI
-- **Intelligent Prompting**: AI-enhanced prompt suggestions and refinement
-- **Style Transfer**: Apply sophisticated design styles with AI precision
-- **Brand Intelligence**: Maintain perfect brand consistency automatically
-
-### 🎨 Comprehensive Design Modes
-1. **Design Assets** - Social media, posters, advertisements
-2. **Branding & Identity** - Logos, brand guidelines, business kits
-3. **UI/UX Concepts** - App interfaces, web designs, component libraries
-4. **Product & Packaging** - 3D mockups, labels, product visualization
-5. **Editorial & Publication** - Layouts, blog graphics, newsletters
-6. **Data Storytelling** - Infographics, charts, data visualization
-
-### 🛠️ Professional Tools
-- **Interactive Canvas Editor** with drag-and-drop functionality
-- **Real-time Collaboration** with team workspace features
-- **Version Control** with comprehensive design history
-- **Export Formats**: PNG, PDF, SVG, and more
-- **Brand Management** with guideline enforcement
-
-## 🚀 Quick Start
-
-### Prerequisites
-- Node.js 18+ 
-- npm or yarn
-- Supabase account
-- Google Cloud account (for Gemini API)
-
-### Installation
+## Getting Started
 
 1. **Clone the repository**
-   ```bash
-   git clone https://github.com/abhinav28birajdar/DesignDot.git
-   cd DesignDot
-   ```
 
 2. **Install dependencies**
    ```bash
    npm install
    ```
 
-3. **Environment Setup**
-   Create a `.env.local` file:
-   ```env
-   # Supabase Configuration
+3. **Set up Environment Variables**
+   Copy `.env.local.example` to `.env.local` and add your Supabase credentials.
+   ```
    NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
    NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-   SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
-   
-   # Google Gemini AI
-   GOOGLE_AI_API_KEY=your_gemini_api_key
-   
-   # Application
-   NEXTAUTH_SECRET=your_nextauth_secret
-   NEXTAUTH_URL=http://localhost:3000
    ```
 
-4. **Database Setup**
-   ```bash
-   # Run the schema SQL file in your Supabase SQL editor
-   # Located at: database/schema.sql
-   ```
+4. **Run Database Migrations**
+   Execute the SQL in `supabase/migrations/001_initial_schema.sql` in your Supabase SQL Editor.
 
 5. **Run the development server**
    ```bash
    npm run dev
    ```
 
-6. **Open your browser**
-   Navigate to [http://localhost:3000](http://localhost:3000)
+6. **Open [http://localhost:3000](http://localhost:3000)**
 
-## 🎨 Design System
+## Project Structure
 
-### Color Palette
-- **Primary**: `#9929EA` (Design.ly Purple) - Magic, creativity, innovation
-- **Secondary**: `#34D399` (Design.ly Emerald) - Growth, success, harmony
-- **Dark UI**: `#1A1A1A` (Near Black) - Sophisticated, modern background
-- **Panels**: `#2C2C2C` (Dark Grey) - Content separation and elevation
+- `app/`: Next.js App Router pages and API routes.
+- `components/`: React components organized by feature.
+- `lib/`: Utilities, helpers, hooks, and configuration.
+- `types/`: TypeScript type definitions.
+- `supabase/`: Database migrations.
 
-### Typography
-- **Headlines**: Plus Jakarta Sans - Strong, geometric impact
-- **Body Text**: Inter - Highly legible, versatile readability
+## License
+
+MIT

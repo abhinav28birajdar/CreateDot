@@ -1,16 +1,11 @@
-import type React from "react"
-import { AuthGuard } from "@/components/layout/AuthGuard"
+import React from 'react'
 
-export default function AuthLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
-    <AuthGuard requireAuth={false}>
-      <div className="min-h-screen bg-gradient-to-br from-designly-purple-500/10 to-designly-emerald-400/10 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-background py-12 px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-md space-y-8">
         {children}
       </div>
-    </AuthGuard>
+    </div>
   )
 }
