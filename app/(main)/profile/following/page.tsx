@@ -133,7 +133,7 @@ export default function FollowingPage() {
                       <div className="flex items-center space-x-2">
                         <Link
                           href={`/profile/${person.username}`}
-                          className="font-semibold text-gray-900 hover:text-blue-600"
+                          className="font-semibold text-gray-900 hover:text-[#8B5DFF]"
                         >
                           {person.fullName}
                         </Link>

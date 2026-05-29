@@ -41,7 +41,7 @@ export function UploadDropzone({ onFileSelect, previewUrl, setPreviewUrl }: Uplo
                 <Image src={previewUrl} alt="Preview" fill className="object-cover" />
                 <button
                     onClick={removeFile}
-                    className="absolute top-2 right-2 p-1.5 bg-black/50 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                    className="absolute top-2 right-2 p-1.5 bg-[#0B0B0C]/50 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
                 >
                     <X className="h-4 w-4" />
                 </button>

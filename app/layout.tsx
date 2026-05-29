@@ -20,11 +20,15 @@ const montserrat = Montserrat({
 })
 
 export const metadata: Metadata = {
-  title: "Design.ly - The AI-Powered Creative Engine",
-  description: "Innovate. Automate. Elevate. Every Design, Masterfully Crafted. Transform your ideas into professional designs with advanced AI technology.",
-  keywords: ["AI design", "design tools", "artificial intelligence", "creative", "branding", "UI/UX", "Design.ly"],
-  authors: [{ name: "Design.ly Team" }],
-  viewport: "width=device-width, initial-scale=1",
+  title: "CerateDOT",
+  description: "A modern creative platform for designers and creators.",
+  keywords: ["CerateDOT", "design", "creative platform", "portfolio", "supabase"],
+  authors: [{ name: "CerateDOT Team" }],
+}
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
 }
 
 export default function RootLayout({

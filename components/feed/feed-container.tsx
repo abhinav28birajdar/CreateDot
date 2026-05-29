@@ -24,7 +24,6 @@ export function FeedContainer() {
                 .limit(20)
 
             if (data) {
-                // @ts-ignore - Supabase type inference for joins can be tricky without precise setup
                 setShots(data)
             }
             setLoading(false)

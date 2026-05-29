@@ -154,14 +154,14 @@ const mockActivities: ActivityItem[] = [
 function ActivityIcon({ type }: { type: ActivityType }) {
   const iconConfig: Record<ActivityType, { icon: React.ReactNode; color: string; bg: string }> = {
     like: { icon: <Heart className="w-4 h-4" />, color: "text-rose-500", bg: "bg-rose-100 dark:bg-rose-900/30" },
-    comment: { icon: <MessageCircle className="w-4 h-4" />, color: "text-blue-500", bg: "bg-blue-100 dark:bg-blue-900/30" },
+    comment: { icon: <MessageCircle className="w-4 h-4" />, color: "text-[#8B5DFF]", bg: "bg-blue-100 dark:bg-blue-900/30" },
     follow: { icon: <UserPlus className="w-4 h-4" />, color: "text-violet-500", bg: "bg-violet-100 dark:bg-violet-900/30" },
     bookmark: { icon: <Bookmark className="w-4 h-4" />, color: "text-amber-500", bg: "bg-amber-100 dark:bg-amber-900/30" },
-    share: { icon: <Share2 className="w-4 h-4" />, color: "text-green-500", bg: "bg-green-100 dark:bg-green-900/30" },
+    share: { icon: <Share2 className="w-4 h-4" />, color: "text-[#8B5DFF]", bg: "bg-green-100 dark:bg-green-900/30" },
     mention: { icon: <Star className="w-4 h-4" />, color: "text-orange-500", bg: "bg-orange-100 dark:bg-orange-900/30" },
     upload: { icon: <Upload className="w-4 h-4" />, color: "text-cyan-500", bg: "bg-cyan-100 dark:bg-cyan-900/30" },
     award: { icon: <Trophy className="w-4 h-4" />, color: "text-yellow-500", bg: "bg-yellow-100 dark:bg-yellow-900/30" },
-    hire: { icon: <Briefcase className="w-4 h-4" />, color: "text-emerald-500", bg: "bg-emerald-100 dark:bg-emerald-900/30" },
+    hire: { icon: <Briefcase className="w-4 h-4" />, color: "text-[#8B5DFF]", bg: "bg-emerald-100 dark:bg-emerald-900/30" },
     collection_add: { icon: <Image className="w-4 h-4" />, color: "text-pink-500", bg: "bg-pink-100 dark:bg-pink-900/30" },
   };
 
@@ -267,7 +267,7 @@ function ActivityItemCard({ activity }: { activity: ActivityItem }) {
       className={`flex items-start gap-4 p-4 rounded-xl transition-colors ${
         !activity.isRead
           ? "bg-violet-50 dark:bg-violet-900/10 border border-violet-200 dark:border-violet-800"
-          : "hover:bg-slate-50 dark:hover:bg-slate-900"
+          : "hover:bg-slate-50 dark:hover:bg-[#111111]"
       }`}
     >
       <ActivityIcon type={activity.type} />
@@ -287,7 +287,7 @@ function ActivityItemCard({ activity }: { activity: ActivityItem }) {
         </div>
 
         {activity.content && (
-          <p className="mt-2 text-sm text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 rounded-lg p-3">
+          <p className="mt-2 text-sm text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-[#111111] rounded-lg p-3">
             {activity.content}
           </p>
         )}
@@ -356,11 +356,11 @@ export default function ActivityPage() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
       {/* Header */}
-      <section className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+      <section className="bg-white dark:bg-[#111111] border-b border-slate-200 dark:border-[#1F1F1F]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 bg-gradient-to-br from-violet-500 to-fuchsia-500 rounded-2xl flex items-center justify-center">
+              <div className="w-14 h-14 bg-[#8B5DFF] from-violet-500 to-fuchsia-500 rounded-2xl flex items-center justify-center">
                 <Activity className="w-7 h-7 text-white" />
               </div>
               <div>
@@ -421,7 +421,7 @@ export default function ActivityPage() {
           {Object.entries(groupedActivities).map(([date, activities]) => (
             <div key={date}>
               <h2 className="text-sm font-medium text-slate-500 mb-4">{date}</h2>
-              <div className="space-y-2 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800">
+              <div className="space-y-2 bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#1F1F1F]">
                 {activities.map((activity) => (
                   <ActivityItemCard key={activity.id} activity={activity} />
                 ))}
@@ -463,7 +463,7 @@ export default function ActivityPage() {
             ].map((stat) => (
               <div
                 key={stat.label}
-                className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-4"
+                className="bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#1F1F1F] p-4"
               >
                 <div className="flex items-center justify-between mb-2">
                   <div className="w-10 h-10 rounded-full bg-violet-100 dark:bg-violet-900/30 text-violet-600 flex items-center justify-center">

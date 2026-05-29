@@ -1,6 +1,6 @@
 export default function SimpleHome() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-white">
+    <div className="min-h-screen bg-[#8B5DFF] from-purple-50 to-white">
       {/* Hero Section */}
       <section className="pt-32 pb-16 px-6">
         <div className="max-w-4xl mx-auto text-center">
@@ -88,7 +88,7 @@ export default function SimpleHome() {
               }
             ].map((feature, index) => (
               <div key={index} className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-                <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-purple-700 rounded-xl flex items-center justify-center mb-4">
+                <div className="w-16 h-16 bg-[#8B5DFF] to-purple-700 rounded-xl flex items-center justify-center mb-4">
                   <div className="w-8 h-8 bg-white rounded"></div>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{feature.title}</h3>

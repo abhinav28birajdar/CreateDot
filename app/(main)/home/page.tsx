@@ -238,7 +238,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
     >
       <Link href={`/project/${project.id}`}>
         <div
-          className="relative bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
+          className="relative bg-white dark:bg-[#111111] rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
@@ -255,7 +255,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             {/* Video Play Button */}
             {project.isVideo && (
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-14 h-14 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center">
+                <div className="w-14 h-14 bg-[#0B0B0C]/50 backdrop-blur-sm rounded-full flex items-center justify-center">
                   <Play className="w-6 h-6 text-white fill-white" />
                 </div>
               </div>
@@ -268,7 +268,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"
+                  className="absolute inset-0 bg-[#8B5DFF] from-black/80 via-black/20 to-transparent"
                 >
                   {/* Top Actions */}
                   <div className="absolute top-3 right-3 flex gap-2">
@@ -371,7 +371,7 @@ function StoriesBar() {
   ];
 
   return (
-    <div className="bg-white dark:bg-slate-800 rounded-xl p-4 mb-6 overflow-x-auto">
+    <div className="bg-white dark:bg-[#111111] rounded-xl p-4 mb-6 overflow-x-auto">
       <div className="flex gap-4">
         {stories.map((story) => (
           <button
@@ -381,13 +381,13 @@ function StoriesBar() {
             <div
               className={`relative w-16 h-16 rounded-full ${
                 story.hasNew
-                  ? "p-0.5 bg-gradient-to-br from-violet-500 to-fuchsia-500"
+                  ? "p-0.5 bg-[#8B5DFF] from-violet-500 to-fuchsia-500"
                   : story.isAdd
                   ? ""
                   : "p-0.5 bg-slate-200 dark:bg-slate-700"
               }`}
             >
-              <div className="w-full h-full rounded-full bg-white dark:bg-slate-800 flex items-center justify-center overflow-hidden">
+              <div className="w-full h-full rounded-full bg-white dark:bg-[#111111] flex items-center justify-center overflow-hidden">
                 {story.isAdd ? (
                   <div className="w-full h-full border-2 border-dashed border-slate-300 dark:border-slate-600 rounded-full flex items-center justify-center">
                     <Plus className="w-6 h-6 text-slate-400" />
@@ -437,7 +437,7 @@ function FilterTabs({
           className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all ${
             activeTab === tab.id
               ? "bg-violet-500 text-white"
-              : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700"
+              : "bg-slate-100 dark:bg-[#111111] text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700"
           }`}
         >
           {tab.icon}
@@ -477,8 +477,8 @@ function CategoryFilters({
           onClick={() => setSelectedCategory(cat)}
           className={`px-3 py-1.5 rounded-full text-sm whitespace-nowrap transition-all ${
             selectedCategory === cat
-              ? "bg-slate-900 dark:bg-white text-white dark:text-slate-900"
-              : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700"
+              ? "bg-[#111111] dark:bg-white text-white dark:text-slate-900"
+              : "bg-slate-100 dark:bg-[#111111] text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700"
           }`}
         >
           {cat}
@@ -561,7 +561,7 @@ export default function HomeFeedPage() {
       : projects.filter((p) => p.category === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#111111]">
       <div className="max-w-7xl mx-auto px-4 py-6">
         {/* Stories Bar */}
         <StoriesBar />
@@ -579,7 +579,7 @@ export default function HomeFeedPage() {
 
           <div className="flex items-center gap-4">
             {/* View Mode Toggle */}
-            <div className="hidden md:flex items-center gap-1 bg-slate-100 dark:bg-slate-800 rounded-lg p-1">
+            <div className="hidden md:flex items-center gap-1 bg-slate-100 dark:bg-[#111111] rounded-lg p-1">
               <button
                 onClick={() => setViewMode("grid")}
                 className={`p-2 rounded ${

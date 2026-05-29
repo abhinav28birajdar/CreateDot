@@ -7,7 +7,7 @@ import {
   X
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useAuth } from "@/contexts/AuthContext";
+import { useAuth } from "@/contexts/auth-context";
 import { BrandProfileEditor } from "@/components/specific-features/BrandProfileEditor";
 
 export default function CreateBrandPage() {
@@ -30,7 +30,7 @@ export default function CreateBrandPage() {
             Cancel
           </Button>
           <Button 
-            className="bg-designly-purple-500 hover:bg-designly-purple-600 text-white"
+            className="bg-[#8B5DFF] hover:bg-[#7B4DE5] text-white"
             onClick={() => {
               setIsLoading(true);
               // Simulate saving

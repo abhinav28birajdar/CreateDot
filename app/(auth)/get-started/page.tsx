@@ -28,9 +28,9 @@ import { Button } from "@/components/ui/button";
 // Social login providers
 const socialProviders = [
   { id: "google", name: "Google", icon: "/icons/google.svg", color: "bg-white border border-slate-200 hover:bg-slate-50 text-slate-700" },
-  { id: "github", name: "GitHub", icon: "/icons/github.svg", color: "bg-slate-900 hover:bg-slate-800 text-white" },
+  { id: "github", name: "GitHub", icon: "/icons/github.svg", color: "bg-[#111111] hover:bg-[#111111] text-white" },
   { id: "linkedin", name: "LinkedIn", icon: "/icons/linkedin.svg", color: "bg-[#0077B5] hover:bg-[#006097] text-white" },
-  { id: "apple", name: "Apple", icon: "/icons/apple.svg", color: "bg-black hover:bg-slate-900 text-white" },
+  { id: "apple", name: "Apple", icon: "/icons/apple.svg", color: "bg-[#0B0B0C] hover:bg-[#111111] text-white" },
 ];
 
 const importProviders = [
@@ -164,7 +164,7 @@ export default function EnhancedSignupPage() {
     if (strength === 1) return { label: "Weak", color: "bg-red-500" };
     if (strength === 2) return { label: "Fair", color: "bg-orange-500" };
     if (strength === 3) return { label: "Good", color: "bg-yellow-500" };
-    return { label: "Excellent", color: "bg-green-500" };
+    return { label: "Excellent", color: "bg-[#8B5DFF]" };
   };
 
   const handleSocialSignup = (provider: string) => {
@@ -223,7 +223,7 @@ export default function EnhancedSignupPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-violet-50 dark:from-slate-900 dark:to-slate-800 flex">
+    <div className="min-h-screen bg-[#8B5DFF] from-slate-50 to-violet-50 dark:from-slate-900 dark:to-slate-800 flex">
       {/* Left Side - Form */}
       <div className="flex-1 flex items-center justify-center p-4 md:p-8">
         <motion.div
@@ -233,7 +233,7 @@ export default function EnhancedSignupPage() {
         >
           {/* Logo */}
           <Link href="/" className="inline-flex items-center gap-2 mb-8">
-            <div className="w-10 h-10 bg-gradient-to-br from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center">
+            <div className="w-10 h-10 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center">
               <Sparkles className="w-6 h-6 text-white" />
             </div>
             <span className="text-xl font-bold text-slate-900 dark:text-white">DesignDot</span>
@@ -380,7 +380,7 @@ export default function EnhancedSignupPage() {
                         <Loader2 className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 animate-spin" />
                       )}
                       {usernameStatus === "available" && (
-                        <Check className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-green-500" />
+                        <Check className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#8B5DFF]" />
                       )}
                       {usernameStatus === "taken" && (
                         <X className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-red-500" />
@@ -444,7 +444,7 @@ export default function EnhancedSignupPage() {
                             />
                           ))}
                         </div>
-                        <p className={`text-xs ${getPasswordStrength() >= 3 ? "text-green-500" : "text-orange-500"}`}>
+                        <p className={`text-xs ${getPasswordStrength() >= 3 ? "text-[#8B5DFF]" : "text-orange-500"}`}>
                           {getPasswordStrengthLabel().label}
                         </p>
                         <div className="grid grid-cols-2 gap-1 mt-2">
@@ -452,7 +452,7 @@ export default function EnhancedSignupPage() {
                             <div
                               key={req.id}
                               className={`flex items-center gap-1 text-xs ${
-                                req.test(password) ? "text-green-500" : "text-slate-400"
+                                req.test(password) ? "text-[#8B5DFF]" : "text-slate-400"
                               }`}
                             >
                               {req.test(password) ? (
@@ -541,7 +541,7 @@ export default function EnhancedSignupPage() {
                           className={`p-4 rounded-xl border-2 text-left transition-all ${
                             accountType === type.id
                               ? "border-violet-600 bg-violet-50 dark:bg-violet-900/30"
-                              : "border-slate-200 dark:border-slate-700 hover:border-slate-300"
+                              : "border-slate-200 dark:border-[#2A2A2A] hover:border-slate-300"
                           }`}
                         >
                           <type.icon
@@ -585,7 +585,7 @@ export default function EnhancedSignupPage() {
                     <select
                       value={howHeard}
                       onChange={(e) => setHowHeard(e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-[#2A2A2A] bg-white dark:bg-[#111111] text-slate-900 dark:text-white"
                     >
                       <option value="">Select an option</option>
                       {howDidYouHear.map((option) => (
@@ -659,7 +659,7 @@ export default function EnhancedSignupPage() {
                   {/* Security Notice */}
                   <div className="flex items-start gap-3 p-4 bg-green-50 dark:bg-green-900/20 rounded-xl">
                     <Shield className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                    <div className="text-sm text-green-700 dark:text-green-400">
+                    <div className="text-sm text-green-700 dark:text-[#8B5DFF]">
                       <strong>Your data is secure.</strong> We use industry-standard encryption to protect your information.
                     </div>
                   </div>
@@ -697,7 +697,7 @@ export default function EnhancedSignupPage() {
       </div>
 
       {/* Right Side - Visual */}
-      <div className="hidden lg:flex flex-1 bg-gradient-to-br from-violet-600 to-fuchsia-600 items-center justify-center p-8">
+      <div className="hidden lg:flex flex-1 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 items-center justify-center p-8">
         <div className="max-w-md text-center text-white">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

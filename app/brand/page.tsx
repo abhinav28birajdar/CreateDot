@@ -105,12 +105,12 @@ export default function BrandPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-900">
+    <div className="min-h-screen bg-white dark:bg-[#111111]">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 h-16 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 z-50">
+      <header className="fixed top-0 left-0 right-0 h-16 bg-white/80 dark:bg-[#111111]/80 backdrop-blur-xl border-b border-slate-200 dark:border-[#1F1F1F] z-50">
         <div className="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-9 h-9 bg-gradient-to-br from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center">
+            <div className="w-9 h-9 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center">
               <Sparkles className="w-5 h-5 text-white" />
             </div>
             <span className="font-bold text-lg text-slate-900 dark:text-white">DesignDot</span>
@@ -130,7 +130,7 @@ export default function BrandPage() {
       </header>
 
       {/* Hero */}
-      <section className="pt-32 pb-16 bg-gradient-to-b from-slate-50 to-white dark:from-slate-800 dark:to-slate-900">
+      <section className="pt-32 pb-16 bg-[#8B5DFF] from-slate-50 to-white dark:from-slate-800 dark:to-slate-900">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -178,18 +178,18 @@ export default function BrandPage() {
             {logoAssets.map((asset) => (
               <div
                 key={asset.name}
-                className={`rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden ${
+                className={`rounded-xl border border-slate-200 dark:border-[#2A2A2A] overflow-hidden ${
                   asset.preview.includes("light") || asset.preview.includes("white")
-                    ? "bg-slate-900"
-                    : "bg-white dark:bg-slate-800"
+                    ? "bg-[#111111]"
+                    : "bg-white dark:bg-[#111111]"
                 }`}
               >
                 <div className="p-8 flex items-center justify-center min-h-[160px]">
                   <div className="flex items-center gap-3">
                     <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
                       asset.preview.includes("light") || asset.preview.includes("white")
-                        ? "bg-gradient-to-br from-violet-400 to-fuchsia-400"
-                        : "bg-gradient-to-br from-violet-600 to-fuchsia-600"
+                        ? "bg-[#8B5DFF] from-violet-400 to-fuchsia-400"
+                        : "bg-[#8B5DFF] from-violet-600 to-fuchsia-600"
                     }`}>
                       <Sparkles className={`w-6 h-6 ${
                         asset.preview.includes("light") || asset.preview.includes("white")
@@ -208,7 +208,7 @@ export default function BrandPage() {
                     )}
                   </div>
                 </div>
-                <div className="border-t border-slate-200 dark:border-slate-700 p-4 bg-slate-50 dark:bg-slate-800/50">
+                <div className="border-t border-slate-200 dark:border-[#2A2A2A] p-4 bg-slate-50 dark:bg-[#111111]/50">
                   <div className="flex items-center justify-between">
                     <div>
                       <h3 className="font-medium text-slate-900 dark:text-white">{asset.name}</h3>
@@ -233,7 +233,7 @@ export default function BrandPage() {
               </h3>
               <ul className="space-y-3">
                 {guidelines.dos.map((item) => (
-                  <li key={item} className="flex items-start gap-2 text-sm text-green-700 dark:text-green-400">
+                  <li key={item} className="flex items-start gap-2 text-sm text-green-700 dark:text-[#8B5DFF]">
                     <Check className="w-4 h-4 mt-0.5 flex-shrink-0" />
                     {item}
                   </li>
@@ -272,7 +272,7 @@ export default function BrandPage() {
             {brandColors.map((color) => (
               <div
                 key={color.name}
-                className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden"
+                className="bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#2A2A2A] overflow-hidden"
               >
                 <div
                   className="h-24"
@@ -286,7 +286,7 @@ export default function BrandPage() {
                       className="flex items-center gap-2 text-slate-500 hover:text-slate-900 dark:hover:text-white w-full"
                     >
                       {copiedColor === `hex-${color.hex}` ? (
-                        <Check className="w-4 h-4 text-green-500" />
+                        <Check className="w-4 h-4 text-[#8B5DFF]" />
                       ) : (
                         <Copy className="w-4 h-4" />
                       )}
@@ -297,7 +297,7 @@ export default function BrandPage() {
                       className="flex items-center gap-2 text-slate-500 hover:text-slate-900 dark:hover:text-white w-full"
                     >
                       {copiedColor === `rgb-${color.hex}` ? (
-                        <Check className="w-4 h-4 text-green-500" />
+                        <Check className="w-4 h-4 text-[#8B5DFF]" />
                       ) : (
                         <Copy className="w-4 h-4" />
                       )}
@@ -317,7 +317,7 @@ export default function BrandPage() {
               <button
                 key={color.name}
                 onClick={() => copyToClipboard(color.hex, color.name)}
-                className="flex items-center gap-3 p-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:shadow-md transition-shadow"
+                className="flex items-center gap-3 p-3 bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#2A2A2A] hover:shadow-md transition-shadow"
               >
                 <div
                   className="w-10 h-10 rounded-lg flex-shrink-0"
@@ -328,7 +328,7 @@ export default function BrandPage() {
                   <div className="text-xs text-slate-500 flex items-center gap-1">
                     {copiedColor === color.name ? (
                       <>
-                        <Check className="w-3 h-3 text-green-500" />
+                        <Check className="w-3 h-3 text-[#8B5DFF]" />
                         Copied!
                       </>
                     ) : (
@@ -341,22 +341,22 @@ export default function BrandPage() {
           </div>
 
           {/* Gradient */}
-          <div className="mt-8 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6">
+          <div className="mt-8 bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#2A2A2A] p-6">
             <h3 className="font-semibold text-slate-900 dark:text-white mb-4">Brand Gradient</h3>
-            <div className="h-24 rounded-xl bg-gradient-to-r from-violet-600 to-fuchsia-600 mb-4" />
+            <div className="h-24 rounded-xl bg-[#8B5DFF] from-violet-600 to-fuchsia-600 mb-4" />
             <div className="flex flex-wrap gap-4">
               <button
                 onClick={() => copyToClipboard("linear-gradient(to right, #7C3AED, #D946EF)", "gradient-css")}
                 className="px-4 py-2 bg-slate-100 dark:bg-slate-700 rounded-lg text-sm text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600 flex items-center gap-2"
               >
-                {copiedColor === "gradient-css" ? <Check className="w-4 h-4 text-green-500" /> : <Copy className="w-4 h-4" />}
+                {copiedColor === "gradient-css" ? <Check className="w-4 h-4 text-[#8B5DFF]" /> : <Copy className="w-4 h-4" />}
                 Copy CSS
               </button>
               <button
                 onClick={() => copyToClipboard("from-violet-600 to-fuchsia-600", "gradient-tailwind")}
                 className="px-4 py-2 bg-slate-100 dark:bg-slate-700 rounded-lg text-sm text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600 flex items-center gap-2"
               >
-                {copiedColor === "gradient-tailwind" ? <Check className="w-4 h-4 text-green-500" /> : <Copy className="w-4 h-4" />}
+                {copiedColor === "gradient-tailwind" ? <Check className="w-4 h-4 text-[#8B5DFF]" /> : <Copy className="w-4 h-4" />}
                 Copy Tailwind
               </button>
             </div>
@@ -376,7 +376,7 @@ export default function BrandPage() {
             {typography.map((font) => (
               <div
                 key={font.name}
-                className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6"
+                className="bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#2A2A2A] p-6"
               >
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
                   <div>
@@ -406,7 +406,7 @@ export default function BrandPage() {
         </section>
 
         {/* Download Section */}
-        <section className="bg-gradient-to-br from-violet-600 to-fuchsia-600 rounded-2xl p-8 text-white text-center">
+        <section className="bg-[#8B5DFF] from-violet-600 to-fuchsia-600 rounded-2xl p-8 text-white text-center">
           <h2 className="text-2xl font-bold mb-4">Download Complete Brand Kit</h2>
           <p className="text-white/80 mb-6 max-w-lg mx-auto">
             Get all logos, colors, typography, and guidelines in one convenient package.

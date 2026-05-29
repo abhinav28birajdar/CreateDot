@@ -3,13 +3,13 @@ import { Palette, Heart, Mail, MapPin, Phone } from "lucide-react"
 
 export function Footer() {
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-[#111111] text-white">
       <div className="container-fluid max-w-7xl py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Logo and Description */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-purple-600 to-emerald-500 rounded-xl flex items-center justify-center shadow-lg">
+              <div className="w-12 h-12 bg-[#8B5DFF] rounded-xl flex items-center justify-center shadow-lg">
                 <Palette className="h-7 w-7 text-white" />
               </div>
               <div>
@@ -106,7 +106,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+        <div className="border-t border-[#1F1F1F] mt-8 pt-8 text-center text-gray-400">
           <p>&copy; 2024 Design.ly. All rights reserved.</p>
         </div>
       </div>

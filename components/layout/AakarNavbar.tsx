@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/enhanced-button";
-import { useAuth } from "@/contexts/AuthContext";
+import { useAuth } from "@/contexts/auth-context";
 import {
   User,
   Settings,
@@ -59,7 +59,7 @@ export function Navbar() {
               whileTap={{ scale: 0.95 }}
               className="flex items-center space-x-2"
             >
-              <div className="w-8 h-8 bg-gradient-to-br from-aakar-green-600 to-aakar-green-700 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-[#8B5DFF] from-aakar-green-600 to-aakar-green-700 rounded-lg flex items-center justify-center">
                 <Palette className="w-5 h-5 text-white" />
               </div>
               <span className="text-2xl font-heading font-bold aakar-text-gradient">

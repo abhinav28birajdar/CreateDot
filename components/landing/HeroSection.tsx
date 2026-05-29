@@ -126,7 +126,7 @@ export default function HeroSection() {
       {/* Animated Gradient Background */}
       <motion.div
         style={{ y }}
-        className="absolute inset-0 bg-gradient-to-br from-violet-600 via-purple-600 to-fuchsia-600"
+        className="absolute inset-0 bg-[#8B5DFF] from-violet-600 to-fuchsia-600"
       >
         {/* Animated Orbs */}
         <div className="absolute inset-0 overflow-hidden">
@@ -146,7 +146,7 @@ export default function HeroSection() {
               scale: [1, 0.8, 1],
             }}
             transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-            className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl"
+            className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#8B5DFF]/30 rounded-full blur-3xl"
           />
           <motion.div
             animate={{
@@ -160,7 +160,7 @@ export default function HeroSection() {
       </motion.div>
 
       {/* Video Background Overlay */}
-      <div className="absolute inset-0 bg-black/40" />
+      <div className="absolute inset-0 bg-[#0B0B0C]/40" />
 
       {/* Video Background */}
       <video
@@ -213,7 +213,7 @@ export default function HeroSection() {
         >
           Where Creativity
           <br />
-          <span className="bg-gradient-to-r from-yellow-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
+          <span className="bg-[#8B5DFF] from-yellow-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
             Meets Opportunity
           </span>
         </motion.h1>
@@ -343,7 +343,7 @@ function CursorTrail() {
           initial={{ opacity: 0.5, scale: 1 }}
           animate={{ opacity: 0, scale: 0 }}
           transition={{ duration: 0.5 }}
-          className="absolute w-4 h-4 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full"
+          className="absolute w-4 h-4 bg-[#8B5DFF] from-violet-500 to-fuchsia-500 rounded-full"
           style={{
             left: point.x - 8,
             top: point.y - 8,

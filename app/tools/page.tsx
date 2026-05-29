@@ -198,9 +198,9 @@ function ToolCard({ tool, view }: { tool: DesignTool; view: "grid" | "list" }) {
   const getPricingBadge = () => {
     switch (tool.pricing) {
       case "free":
-        return <Badge className="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">Free</Badge>;
+        return <Badge className="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-[#8B5DFF]">Free</Badge>;
       case "freemium":
-        return <Badge className="bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">Freemium</Badge>;
+        return <Badge className="bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-[#8B5DFF]">Freemium</Badge>;
       case "paid":
         return <Badge className="bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">Paid</Badge>;
     }
@@ -211,7 +211,7 @@ function ToolCard({ tool, view }: { tool: DesignTool; view: "grid" | "list" }) {
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="flex items-center gap-6 p-6 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 hover:shadow-lg hover:border-violet-300 dark:hover:border-violet-700 transition-all"
+        className="flex items-center gap-6 p-6 bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#1F1F1F] hover:shadow-lg hover:border-violet-300 dark:hover:border-violet-700 transition-all"
       >
         <img src={tool.logo} alt={tool.name} className="w-16 h-16 rounded-xl object-contain" />
         
@@ -270,7 +270,7 @@ function ToolCard({ tool, view }: { tool: DesignTool; view: "grid" | "list" }) {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="group bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:shadow-xl hover:border-violet-300 dark:hover:border-violet-700 transition-all"
+      className="group bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#1F1F1F] overflow-hidden hover:shadow-xl hover:border-violet-300 dark:hover:border-violet-700 transition-all"
     >
       <div className="p-6">
         <div className="flex items-start justify-between mb-4">
@@ -313,27 +313,27 @@ function ToolCard({ tool, view }: { tool: DesignTool; view: "grid" | "list" }) {
           {getPricingBadge()}
         </div>
 
-        <div className="flex items-center gap-2 pt-4 border-t border-slate-100 dark:border-slate-800">
+        <div className="flex items-center gap-2 pt-4 border-t border-slate-100 dark:border-[#1F1F1F]">
           <div className="flex gap-1">
             {tool.platforms.includes("web") && (
-              <div className="w-6 h-6 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center" title="Web">
+              <div className="w-6 h-6 rounded bg-slate-100 dark:bg-[#111111] flex items-center justify-center" title="Web">
                 <Monitor className="w-3 h-3" />
               </div>
             )}
             {tool.platforms.includes("mac") && (
-              <div className="w-6 h-6 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center" title="macOS">
+              <div className="w-6 h-6 rounded bg-slate-100 dark:bg-[#111111] flex items-center justify-center" title="macOS">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
                 </svg>
               </div>
             )}
             {tool.platforms.includes("windows") && (
-              <div className="w-6 h-6 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center" title="Windows">
+              <div className="w-6 h-6 rounded bg-slate-100 dark:bg-[#111111] flex items-center justify-center" title="Windows">
                 <Grid3X3 className="w-3 h-3" />
               </div>
             )}
             {tool.platforms.includes("ios") && (
-              <div className="w-6 h-6 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center" title="iOS">
+              <div className="w-6 h-6 rounded bg-slate-100 dark:bg-[#111111] flex items-center justify-center" title="iOS">
                 <Smartphone className="w-3 h-3" />
               </div>
             )}
@@ -371,7 +371,7 @@ export default function ToolsPage() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
       {/* Header */}
-      <section className="bg-gradient-to-br from-violet-600 via-purple-600 to-fuchsia-600 text-white">
+      <section className="bg-[#8B5DFF] from-violet-600 to-fuchsia-600 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center max-w-3xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
@@ -399,7 +399,7 @@ export default function ToolsPage() {
 
       {/* Featured Tools */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8">
-        <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6">
+        <div className="bg-white dark:bg-[#111111] rounded-2xl border border-slate-200 dark:border-[#1F1F1F] p-6">
           <div className="flex items-center gap-2 mb-4">
             <Sparkles className="w-5 h-5 text-violet-500" />
             <h2 className="font-semibold text-slate-900 dark:text-white">Featured Tools</h2>
@@ -408,7 +408,7 @@ export default function ToolsPage() {
             {featuredTools.map((tool) => (
               <div
                 key={tool.id}
-                className="flex items-center gap-4 p-4 rounded-xl bg-gradient-to-r from-violet-50 to-fuchsia-50 dark:from-violet-900/20 dark:to-fuchsia-900/20 border border-violet-100 dark:border-violet-800"
+                className="flex items-center gap-4 p-4 rounded-xl bg-[#8B5DFF] from-violet-50 to-fuchsia-50 dark:from-violet-900/20 dark:to-fuchsia-900/20 border border-violet-100 dark:border-violet-800"
               >
                 <img src={tool.logo} alt={tool.name} className="w-12 h-12 rounded-lg object-contain" />
                 <div className="flex-1 min-w-0">
@@ -429,7 +429,7 @@ export default function ToolsPage() {
         <div className="flex gap-8">
           {/* Sidebar */}
           <aside className="w-64 flex-shrink-0 hidden lg:block">
-            <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-4 sticky top-24">
+            <div className="bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#1F1F1F] p-4 sticky top-24">
               <h2 className="font-semibold text-slate-900 dark:text-white mb-4">Categories</h2>
               <div className="space-y-1">
                 {categories.map((category) => (
@@ -439,7 +439,7 @@ export default function ToolsPage() {
                     className={`w-full flex items-center gap-3 p-3 rounded-lg transition-colors ${
                       selectedCategory === category.id
                         ? "bg-violet-50 dark:bg-violet-900/20 text-violet-600"
-                        : "hover:bg-slate-50 dark:hover:bg-slate-800"
+                        : "hover:bg-slate-50 dark:hover:bg-[#111111]"
                     }`}
                   >
                     {category.icon}
@@ -448,7 +448,7 @@ export default function ToolsPage() {
                 ))}
               </div>
 
-              <div className="mt-6 pt-6 border-t border-slate-200 dark:border-slate-800">
+              <div className="mt-6 pt-6 border-t border-slate-200 dark:border-[#1F1F1F]">
                 <h3 className="font-semibold text-slate-900 dark:text-white mb-3">Pricing</h3>
                 <div className="space-y-2">
                   {(["all", "free", "freemium", "paid"] as const).map((pricing) => (
@@ -458,11 +458,11 @@ export default function ToolsPage() {
                       className={`w-full flex items-center gap-2 p-2 rounded-lg text-sm transition-colors ${
                         pricingFilter === pricing
                           ? "bg-violet-50 dark:bg-violet-900/20 text-violet-600"
-                          : "hover:bg-slate-50 dark:hover:bg-slate-800"
+                          : "hover:bg-slate-50 dark:hover:bg-[#111111]"
                       }`}
                     >
-                      {pricing === "free" && <CheckCircle className="w-4 h-4 text-green-500" />}
-                      {pricing === "freemium" && <Zap className="w-4 h-4 text-blue-500" />}
+                      {pricing === "free" && <CheckCircle className="w-4 h-4 text-[#8B5DFF]" />}
+                      {pricing === "freemium" && <Zap className="w-4 h-4 text-[#8B5DFF]" />}
                       {pricing === "paid" && <DollarSign className="w-4 h-4 text-amber-500" />}
                       {pricing === "all" && <Filter className="w-4 h-4" />}
                       <span className="capitalize">{pricing === "all" ? "All Pricing" : pricing}</span>
@@ -482,13 +482,13 @@ export default function ToolsPage() {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setView("grid")}
-                  className={`p-2 rounded-lg ${view === "grid" ? "bg-slate-100 dark:bg-slate-800" : ""}`}
+                  className={`p-2 rounded-lg ${view === "grid" ? "bg-slate-100 dark:bg-[#111111]" : ""}`}
                 >
                   <Grid3X3 className="w-5 h-5" />
                 </button>
                 <button
                   onClick={() => setView("list")}
-                  className={`p-2 rounded-lg ${view === "list" ? "bg-slate-100 dark:bg-slate-800" : ""}`}
+                  className={`p-2 rounded-lg ${view === "list" ? "bg-slate-100 dark:bg-[#111111]" : ""}`}
                 >
                   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <line x1="3" y1="6" x2="21" y2="6" />
@@ -529,7 +529,7 @@ export default function ToolsPage() {
       </section>
 
       {/* Submit Tool CTA */}
-      <section className="bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white">
+      <section className="bg-[#8B5DFF] from-violet-600 to-fuchsia-600 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div>

@@ -260,6 +260,23 @@ CREATE TABLE usage_analytics (
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
+-- Premium access requests
+CREATE TABLE premium_requests (
+    id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+    user_id UUID REFERENCES auth.users ON DELETE CASCADE NOT NULL,
+    requested_tier TEXT NOT NULL CHECK (requested_tier IN ('pro', 'team')),
+    message TEXT,
+    status TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'approved', 'rejected')),
+    reviewed_by UUID REFERENCES auth.users ON DELETE SET NULL,
+    reviewed_at TIMESTAMP WITH TIME ZONE,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+ALTER TABLE premium_requests ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Users can view own premium requests" ON premium_requests FOR SELECT USING (auth.uid() = user_id);
+CREATE POLICY "Users can create own premium requests" ON premium_requests FOR INSERT WITH CHECK (auth.uid() = user_id);
+
 -- Indexes for performance
 CREATE INDEX idx_projects_user_id ON projects(user_id);
 CREATE INDEX idx_projects_status ON projects(status);
@@ -272,6 +289,8 @@ CREATE INDEX idx_ai_generation_jobs_user_id ON ai_generation_jobs(user_id);
 CREATE INDEX idx_brands_user_id ON brands(user_id);
 CREATE INDEX idx_usage_analytics_user_id ON usage_analytics(user_id);
 CREATE INDEX idx_usage_analytics_event_type ON usage_analytics(event_type);
+CREATE INDEX idx_premium_requests_user_id ON premium_requests(user_id);
+CREATE INDEX idx_premium_requests_status ON premium_requests(status);
 
 -- Functions for updating timestamps
 CREATE OR REPLACE FUNCTION update_updated_at_column()
@@ -290,6 +309,8 @@ CREATE TRIGGER update_brands_updated_at BEFORE UPDATE ON brands
 CREATE TRIGGER update_projects_updated_at BEFORE UPDATE ON projects 
     FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
 CREATE TRIGGER update_ai_generation_jobs_updated_at BEFORE UPDATE ON ai_generation_jobs 
+    FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+CREATE TRIGGER update_premium_requests_updated_at BEFORE UPDATE ON premium_requests 
     FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
 
 -- Storage bucket policies (to be applied in Supabase Dashboard)

@@ -113,19 +113,19 @@ export function DesignFeed({
         <div className="flex space-x-2">
           <Button
             variant={filter === 'trending' ? 'default' : 'outline'} 
-            className={filter === 'trending' ? 'bg-designly-purple-500' : ''}
+            className={filter === 'trending' ? 'bg-[#8B5DFF]' : ''}
           >
             Trending
           </Button>
           <Button
             variant={filter === 'newest' ? 'default' : 'outline'}
-            className={filter === 'newest' ? 'bg-designly-purple-500' : ''}
+            className={filter === 'newest' ? 'bg-[#8B5DFF]' : ''}
           >
             Newest
           </Button>
           <Button
             variant={filter === 'following' ? 'default' : 'outline'}
-            className={filter === 'following' ? 'bg-designly-purple-500' : ''}
+            className={filter === 'following' ? 'bg-[#8B5DFF]' : ''}
           >
             Following
           </Button>
@@ -149,7 +149,7 @@ export function DesignFeed({
                 </div>
               </Link>
               
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+              <div className="absolute inset-0 bg-[#8B5DFF] from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
                 <div className="space-y-1 text-white">
                   <h3 className="text-lg font-bold">{design.title}</h3>
                   <div className="flex space-x-2">
@@ -185,7 +185,7 @@ export function DesignFeed({
             <CardFooter className="p-4 pt-2">
               <div className="flex items-center justify-between w-full">
                 <div className="flex items-center space-x-4">
-                  <Button variant="ghost" size="sm" className="h-8 px-2 text-gray-600 hover:text-designly-purple-500">
+                  <Button variant="ghost" size="sm" className="h-8 px-2 text-gray-600 hover:text-[#8B5DFF]">
                     <Heart className="h-4 w-4 mr-1" />
                     {design.likes}
                   </Button>
@@ -215,7 +215,7 @@ export function DesignFeed({
         <Button 
           onClick={fetchMoreDesigns} 
           disabled={loading}
-          className="bg-designly-purple-500 hover:bg-designly-purple-600 text-white"
+          className="bg-[#8B5DFF] hover:bg-[#7B4DE5] text-white"
         >
           {loading ? 'Loading...' : 'Load More Designs'}
         </Button>

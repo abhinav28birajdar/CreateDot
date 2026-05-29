@@ -143,7 +143,7 @@ export default function TestimonialsSection() {
   };
 
   return (
-    <section className="py-20 bg-white dark:bg-slate-900 overflow-hidden">
+    <section className="py-20 bg-white dark:bg-[#111111] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -152,7 +152,7 @@ export default function TestimonialsSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-full text-sm font-medium mb-4">
+          <span className="inline-flex items-center gap-2 px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-[#8B5DFF] rounded-full text-sm font-medium mb-4">
             <TrendingUp className="w-4 h-4" />
             Success Stories
           </span>
@@ -169,13 +169,13 @@ export default function TestimonialsSection() {
           {/* Navigation Arrows */}
           <button
             onClick={goToPrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-3 bg-white dark:bg-slate-800 rounded-full shadow-xl hover:scale-110 transition-transform -translate-x-1/2"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-3 bg-white dark:bg-[#111111] rounded-full shadow-xl hover:scale-110 transition-transform -translate-x-1/2"
           >
             <ChevronLeft className="w-6 h-6 text-slate-600 dark:text-slate-400" />
           </button>
           <button
             onClick={goToNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-3 bg-white dark:bg-slate-800 rounded-full shadow-xl hover:scale-110 transition-transform translate-x-1/2"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-3 bg-white dark:bg-[#111111] rounded-full shadow-xl hover:scale-110 transition-transform translate-x-1/2"
           >
             <ChevronRight className="w-6 h-6 text-slate-600 dark:text-slate-400" />
           </button>
@@ -189,7 +189,7 @@ export default function TestimonialsSection() {
               animate="center"
               exit="exit"
               transition={{ duration: 0.5 }}
-              className="bg-gradient-to-br from-slate-50 to-white dark:from-slate-800 dark:to-slate-900 rounded-3xl p-8 lg:p-12 shadow-xl border border-slate-100 dark:border-slate-700"
+              className="bg-[#8B5DFF] from-slate-50 to-white dark:from-slate-800 dark:to-slate-900 rounded-3xl p-8 lg:p-12 shadow-xl border border-slate-100 dark:border-[#2A2A2A]"
             >
               {/* Quote Icon */}
               <div className="absolute top-8 right-8 opacity-10">
@@ -201,7 +201,7 @@ export default function TestimonialsSection() {
                 className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-6 ${
                   current.type === "creator"
                     ? "bg-violet-100 dark:bg-violet-900/30 text-violet-600 dark:text-violet-400"
-                    : "bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400"
+                    : "bg-blue-100 dark:bg-blue-900/30 text-[#8B5DFF] dark:text-[#8B5DFF]"
                 }`}
               >
                 {current.type === "creator" ? "Creator Story" : "Client Testimonial"}
@@ -214,7 +214,7 @@ export default function TestimonialsSection() {
 
               {/* Stats (if available) */}
               {current.stats && (
-                <div className="flex items-center gap-8 mb-8 p-4 bg-gradient-to-r from-violet-500/10 to-fuchsia-500/10 rounded-xl border border-violet-200 dark:border-violet-800">
+                <div className="flex items-center gap-8 mb-8 p-4 bg-[#8B5DFF] from-violet-500/10 to-fuchsia-500/10 rounded-xl border border-violet-200 dark:border-violet-800">
                   <div className="text-sm text-slate-600 dark:text-slate-400">
                     {current.stats.label}
                   </div>
@@ -225,7 +225,7 @@ export default function TestimonialsSection() {
                     <span className="text-2xl font-bold text-violet-600 dark:text-violet-400">
                       →
                     </span>
-                    <span className="text-2xl font-bold text-green-600 dark:text-green-400">
+                    <span className="text-2xl font-bold text-green-600 dark:text-[#8B5DFF]">
                       {current.stats.after}
                     </span>
                   </div>

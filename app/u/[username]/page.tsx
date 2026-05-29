@@ -84,23 +84,23 @@ export default function UserProfilePage() {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#111111]">
       {/* Cover Image */}
       <div className="h-48 md:h-64 relative">
         <Image src={user.coverImage} alt="" fill className="object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-        <button onClick={() => router.back()} className="absolute top-4 left-4 flex items-center gap-2 text-white hover:text-white/80 bg-black/20 backdrop-blur-sm px-3 py-2 rounded-lg">
+        <div className="absolute inset-0 bg-[#8B5DFF] from-black/50 to-transparent" />
+        <button onClick={() => router.back()} className="absolute top-4 left-4 flex items-center gap-2 text-white hover:text-white/80 bg-[#0B0B0C]/20 backdrop-blur-sm px-3 py-2 rounded-lg">
           <ArrowLeft className="w-4 h-4" /> Back
         </button>
       </div>
 
       <div className="max-w-6xl mx-auto px-4">
         {/* Profile Header */}
-        <div className="bg-white dark:bg-slate-800 rounded-xl -mt-16 relative z-10 p-6 mb-8">
+        <div className="bg-white dark:bg-[#111111] rounded-xl -mt-16 relative z-10 p-6 mb-8">
           <div className="flex flex-col md:flex-row gap-6">
             {/* Avatar */}
             <div className="shrink-0 -mt-20">
-              <div className="w-32 h-32 rounded-2xl overflow-hidden border-4 border-white dark:border-slate-800 shadow-lg">
+              <div className="w-32 h-32 rounded-2xl overflow-hidden border-4 border-white dark:border-[#1F1F1F] shadow-lg">
                 <Image src={user.avatar} alt={user.name} width={128} height={128} className="object-cover" />
               </div>
             </div>
@@ -111,8 +111,8 @@ export default function UserProfilePage() {
                 <div>
                   <div className="flex items-center gap-3">
                     <h1 className="text-2xl font-bold text-slate-900 dark:text-white">{user.name}</h1>
-                    {user.isVerified && <CheckCircle className="w-5 h-5 text-blue-500" />}
-                    {user.isPro && <Badge className="bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white">PRO</Badge>}
+                    {user.isVerified && <CheckCircle className="w-5 h-5 text-[#8B5DFF]" />}
+                    {user.isPro && <Badge className="bg-[#8B5DFF] from-violet-500 to-fuchsia-500 text-white">PRO</Badge>}
                     {user.isAvailable && <Badge className="bg-green-100 text-green-700">Available for hire</Badge>}
                   </div>
                   <p className="text-slate-500">@{user.username}</p>
@@ -139,7 +139,7 @@ export default function UserProfilePage() {
               <p className="text-slate-600 dark:text-slate-400 mt-4">{user.bio}</p>
 
               {/* Stats */}
-              <div className="flex gap-6 mt-6 pt-6 border-t border-slate-200 dark:border-slate-700">
+              <div className="flex gap-6 mt-6 pt-6 border-t border-slate-200 dark:border-[#2A2A2A]">
                 <Link href={`/u/${user.username}/followers`} className="text-center hover:text-violet-600">
                   <p className="text-xl font-bold text-slate-900 dark:text-white">{user.stats.followers.toLocaleString()}</p>
                   <p className="text-sm text-slate-500">Followers</p>
@@ -170,9 +170,9 @@ export default function UserProfilePage() {
               <TabsTrigger value="likes">Likes</TabsTrigger>
               <TabsTrigger value="about">About</TabsTrigger>
             </TabsList>
-            <div className="flex border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden">
-              <button onClick={() => setViewMode("grid")} className={`p-2 ${viewMode === "grid" ? "bg-violet-500 text-white" : "bg-white dark:bg-slate-800"}`}><Grid3X3 className="w-4 h-4" /></button>
-              <button onClick={() => setViewMode("list")} className={`p-2 ${viewMode === "list" ? "bg-violet-500 text-white" : "bg-white dark:bg-slate-800"}`}><List className="w-4 h-4" /></button>
+            <div className="flex border border-slate-200 dark:border-[#2A2A2A] rounded-lg overflow-hidden">
+              <button onClick={() => setViewMode("grid")} className={`p-2 ${viewMode === "grid" ? "bg-violet-500 text-white" : "bg-white dark:bg-[#111111]"}`}><Grid3X3 className="w-4 h-4" /></button>
+              <button onClick={() => setViewMode("list")} className={`p-2 ${viewMode === "list" ? "bg-violet-500 text-white" : "bg-white dark:bg-[#111111]"}`}><List className="w-4 h-4" /></button>
             </div>
           </div>
 
@@ -180,10 +180,10 @@ export default function UserProfilePage() {
             <div className={viewMode === "grid" ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" : "space-y-4"}>
               {projects.map((project) => (
                 <Link key={project.id} href={`/project/${project.id}`}>
-                  <motion.div whileHover={{ scale: 1.02 }} className="bg-white dark:bg-slate-800 rounded-xl overflow-hidden group">
+                  <motion.div whileHover={{ scale: 1.02 }} className="bg-white dark:bg-[#111111] rounded-xl overflow-hidden group">
                     <div className="aspect-[4/3] relative">
                       <Image src={project.image} alt={project.title} fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                      <div className="absolute inset-0 bg-[#8B5DFF] from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
                         <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
                           <p className="text-white font-semibold">{project.title}</p>
                           <div className="flex items-center gap-3 text-white/80 text-sm">
@@ -203,7 +203,7 @@ export default function UserProfilePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {collections.map((collection) => (
                 <Link key={collection.id} href={`/collections/${collection.id}`}>
-                  <motion.div whileHover={{ scale: 1.02 }} className="bg-white dark:bg-slate-800 rounded-xl overflow-hidden p-4">
+                  <motion.div whileHover={{ scale: 1.02 }} className="bg-white dark:bg-[#111111] rounded-xl overflow-hidden p-4">
                     <div className="grid grid-cols-2 gap-2 mb-4">
                       {collection.images.map((img, i) => (
                         <div key={i} className="aspect-square rounded-lg overflow-hidden bg-slate-100">
@@ -223,7 +223,7 @@ export default function UserProfilePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {projects.slice(0, 4).map((project) => (
                 <Link key={project.id} href={`/project/${project.id}`}>
-                  <motion.div whileHover={{ scale: 1.02 }} className="bg-white dark:bg-slate-800 rounded-xl overflow-hidden">
+                  <motion.div whileHover={{ scale: 1.02 }} className="bg-white dark:bg-[#111111] rounded-xl overflow-hidden">
                     <div className="aspect-[4/3] relative">
                       <Image src={project.image} alt={project.title} fill className="object-cover" />
                     </div>
@@ -235,19 +235,19 @@ export default function UserProfilePage() {
 
           <TabsContent value="about">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <div className="bg-white dark:bg-slate-800 rounded-xl p-6">
+              <div className="bg-white dark:bg-[#111111] rounded-xl p-6">
                 <h3 className="font-semibold text-slate-900 dark:text-white mb-4">Bio</h3>
                 <p className="text-slate-600 dark:text-slate-400">{user.bio}</p>
               </div>
 
-              <div className="bg-white dark:bg-slate-800 rounded-xl p-6">
+              <div className="bg-white dark:bg-[#111111] rounded-xl p-6">
                 <h3 className="font-semibold text-slate-900 dark:text-white mb-4">Skills</h3>
                 <div className="flex flex-wrap gap-2">
                   {user.skills.map((skill) => (<Badge key={skill} variant="secondary">{skill}</Badge>))}
                 </div>
               </div>
 
-              <div className="bg-white dark:bg-slate-800 rounded-xl p-6">
+              <div className="bg-white dark:bg-[#111111] rounded-xl p-6">
                 <h3 className="font-semibold text-slate-900 dark:text-white mb-4">Connect</h3>
                 <div className="space-y-3">
                   {user.socialLinks.twitter && <a href={user.socialLinks.twitter} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-slate-600 dark:text-slate-400 hover:text-violet-600"><Twitter className="w-5 h-5" />Twitter</a>}
@@ -257,7 +257,7 @@ export default function UserProfilePage() {
                 </div>
               </div>
 
-              <div className="bg-white dark:bg-slate-800 rounded-xl p-6">
+              <div className="bg-white dark:bg-[#111111] rounded-xl p-6">
                 <h3 className="font-semibold text-slate-900 dark:text-white mb-4">Contact</h3>
                 <a href={`mailto:${user.email}`} className="flex items-center gap-3 text-slate-600 dark:text-slate-400 hover:text-violet-600"><Mail className="w-5 h-5" />{user.email}</a>
               </div>

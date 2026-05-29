@@ -265,11 +265,11 @@ function DesignerCard({ designer, viewMode }: { designer: Designer; viewMode: "g
   const getAvailabilityColor = () => {
     switch (designer.availability) {
       case "available":
-        return "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400";
+        return "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-[#8B5DFF]";
       case "busy":
         return "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400";
       case "unavailable":
-        return "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-400";
+        return "bg-slate-100 text-slate-700 dark:bg-[#111111] dark:text-slate-400";
     }
   };
 
@@ -278,7 +278,7 @@ function DesignerCard({ designer, viewMode }: { designer: Designer; viewMode: "g
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6 hover:shadow-lg hover:border-violet-300 dark:hover:border-violet-700 transition-all"
+        className="bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#1F1F1F] p-6 hover:shadow-lg hover:border-violet-300 dark:hover:border-violet-700 transition-all"
       >
         <div className="flex gap-6">
           {/* Avatar */}
@@ -289,7 +289,7 @@ function DesignerCard({ designer, viewMode }: { designer: Designer; viewMode: "g
               className="w-20 h-20 rounded-full object-cover"
             />
             {designer.isVerified && (
-              <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
+              <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-[#8B5DFF] rounded-full flex items-center justify-center">
                 <CheckCircle className="w-4 h-4 text-white" />
               </div>
             )}
@@ -304,7 +304,7 @@ function DesignerCard({ designer, viewMode }: { designer: Designer; viewMode: "g
                     {designer.name}
                   </h3>
                   {designer.isPro && (
-                    <Badge className="bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white text-xs">
+                    <Badge className="bg-[#8B5DFF] from-violet-600 to-fuchsia-600 text-white text-xs">
                       PRO
                     </Badge>
                   )}
@@ -355,7 +355,7 @@ function DesignerCard({ designer, viewMode }: { designer: Designer; viewMode: "g
               )}
             </div>
 
-            <div className="flex items-center justify-between mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+            <div className="flex items-center justify-between mt-4 pt-4 border-t border-slate-100 dark:border-[#1F1F1F]">
               <div className="flex items-center gap-6 text-sm text-slate-500">
                 <span className="flex items-center gap-1">
                   <Users className="w-4 h-4" />
@@ -394,7 +394,7 @@ function DesignerCard({ designer, viewMode }: { designer: Designer; viewMode: "g
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="group bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:shadow-xl hover:border-violet-300 dark:hover:border-violet-700 transition-all"
+      className="group bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#1F1F1F] overflow-hidden hover:shadow-xl hover:border-violet-300 dark:hover:border-violet-700 transition-all"
     >
       {/* Cover Image */}
       <div className="relative h-24 overflow-hidden">
@@ -403,17 +403,17 @@ function DesignerCard({ designer, viewMode }: { designer: Designer; viewMode: "g
           alt=""
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+        <div className="absolute inset-0 bg-[#8B5DFF] from-black/40 to-transparent" />
         
         {/* Badges */}
         <div className="absolute top-3 right-3 flex gap-2">
           {designer.isPro && (
-            <Badge className="bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white text-xs">
+            <Badge className="bg-[#8B5DFF] from-violet-600 to-fuchsia-600 text-white text-xs">
               PRO
             </Badge>
           )}
           {designer.isHiring && (
-            <Badge className="bg-green-500 text-white text-xs">
+            <Badge className="bg-[#8B5DFF] text-white text-xs">
               Hiring
             </Badge>
           )}
@@ -429,7 +429,7 @@ function DesignerCard({ designer, viewMode }: { designer: Designer; viewMode: "g
             className="w-20 h-20 rounded-full border-4 border-white dark:border-slate-900 object-cover"
           />
           {designer.isVerified && (
-            <div className="absolute bottom-0 right-0 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center border-2 border-white dark:border-slate-900">
+            <div className="absolute bottom-0 right-0 w-6 h-6 bg-[#8B5DFF] rounded-full flex items-center justify-center border-2 border-white dark:border-slate-900">
               <CheckCircle className="w-3 h-3 text-white" />
             </div>
           )}
@@ -504,7 +504,7 @@ function DesignerCard({ designer, viewMode }: { designer: Designer; viewMode: "g
         </div>
 
         {/* Rate & Actions */}
-        <div className="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
+        <div className="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-[#1F1F1F]">
           {designer.hourlyRate ? (
             <span className="font-semibold text-slate-900 dark:text-white">
               ${designer.hourlyRate.min}-${designer.hourlyRate.max}/hr
@@ -541,7 +541,7 @@ function FilterSidebar({
   onReset: () => void;
 }) {
   return (
-    <div className="w-64 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-4 sticky top-24 h-fit">
+    <div className="w-64 bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#1F1F1F] p-4 sticky top-24 h-fit">
       <div className="flex items-center justify-between mb-4">
         <h3 className="font-semibold text-slate-900 dark:text-white flex items-center gap-2">
           <SlidersHorizontal className="w-4 h-4" />
@@ -704,10 +704,10 @@ export default function DesignersPage() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
       {/* Header */}
-      <section className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+      <section className="bg-white dark:bg-[#111111] border-b border-slate-200 dark:border-[#1F1F1F]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="flex items-center gap-4 mb-6">
-            <div className="w-14 h-14 bg-gradient-to-br from-violet-500 to-fuchsia-500 rounded-2xl flex items-center justify-center">
+            <div className="w-14 h-14 bg-[#8B5DFF] from-violet-500 to-fuchsia-500 rounded-2xl flex items-center justify-center">
               <Users className="w-7 h-7 text-white" />
             </div>
             <div>
@@ -752,7 +752,7 @@ export default function DesignersPage() {
       </section>
 
       {/* Controls */}
-      <div className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-16 z-20">
+      <div className="bg-white dark:bg-[#111111] border-b border-slate-200 dark:border-[#1F1F1F] sticky top-16 z-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -774,7 +774,7 @@ export default function DesignersPage() {
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="px-3 py-2 text-sm border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-900"
+                className="px-3 py-2 text-sm border border-slate-200 dark:border-[#2A2A2A] rounded-lg bg-white dark:bg-[#111111]"
               >
                 <option value="relevance">Most Relevant</option>
                 <option value="followers">Most Followers</option>
@@ -782,16 +782,16 @@ export default function DesignersPage() {
                 <option value="recent">Recently Active</option>
               </select>
 
-              <div className="flex items-center border border-slate-200 dark:border-slate-700 rounded-lg">
+              <div className="flex items-center border border-slate-200 dark:border-[#2A2A2A] rounded-lg">
                 <button
                   onClick={() => setViewMode("grid")}
-                  className={`p-2 ${viewMode === "grid" ? "bg-slate-100 dark:bg-slate-800" : ""}`}
+                  className={`p-2 ${viewMode === "grid" ? "bg-slate-100 dark:bg-[#111111]" : ""}`}
                 >
                   <Grid3X3 className="w-4 h-4" />
                 </button>
                 <button
                   onClick={() => setViewMode("list")}
-                  className={`p-2 ${viewMode === "list" ? "bg-slate-100 dark:bg-slate-800" : ""}`}
+                  className={`p-2 ${viewMode === "list" ? "bg-slate-100 dark:bg-[#111111]" : ""}`}
                 >
                   <List className="w-4 h-4" />
                 </button>

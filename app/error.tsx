@@ -19,7 +19,7 @@ export default function ErrorPage({
   }, [error]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-50 via-white to-orange-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-[#8B5DFF] from-red-50 via-white to-orange-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800 flex items-center justify-center px-4">
       <div className="text-center max-w-2xl">
         {/* Error Icon */}
         <motion.div
@@ -28,7 +28,7 @@ export default function ErrorPage({
           transition={{ duration: 0.5 }}
           className="mb-8"
         >
-          <div className="w-32 h-32 mx-auto bg-gradient-to-br from-red-500 to-orange-500 rounded-full flex items-center justify-center">
+          <div className="w-32 h-32 mx-auto bg-[#8B5DFF] from-red-500 to-orange-500 rounded-full flex items-center justify-center">
             <AlertTriangle className="w-16 h-16 text-white" />
           </div>
         </motion.div>
@@ -59,7 +59,7 @@ export default function ErrorPage({
             transition={{ delay: 0.35 }}
             className="text-sm text-slate-400 mb-8"
           >
-            Error ID: <code className="bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">{error.digest}</code>
+            Error ID: <code className="bg-slate-100 dark:bg-[#111111] px-2 py-1 rounded">{error.digest}</code>
           </motion.p>
         )}
 
@@ -72,7 +72,7 @@ export default function ErrorPage({
           <Button
             size="lg"
             onClick={reset}
-            className="bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 px-8"
+            className="bg-[#8B5DFF] from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 px-8"
           >
             <RefreshCw className="w-4 h-4 mr-2" />
             Try Again
@@ -90,7 +90,7 @@ export default function ErrorPage({
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.5 }}
-          className="mt-12 pt-8 border-t border-slate-200 dark:border-slate-700"
+          className="mt-12 pt-8 border-t border-slate-200 dark:border-[#2A2A2A]"
         >
           <p className="text-sm text-slate-500 mb-4">If the problem persists, please contact support:</p>
           <a

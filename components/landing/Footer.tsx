@@ -71,12 +71,12 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { name: "Twitter", icon: Twitter, href: "https://twitter.com/designdot", color: "hover:text-blue-400" },
+  { name: "Twitter", icon: Twitter, href: "https://twitter.com/designdot", color: "hover:text-[#8B5DFF]" },
   { name: "Instagram", icon: Instagram, href: "https://instagram.com/designdot", color: "hover:text-pink-500" },
-  { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com/company/designdot", color: "hover:text-blue-600" },
+  { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com/company/designdot", color: "hover:text-[#8B5DFF]" },
   { name: "YouTube", icon: Youtube, href: "https://youtube.com/designdot", color: "hover:text-red-500" },
   { name: "GitHub", icon: Github, href: "https://github.com/designdot", color: "hover:text-slate-300" },
-  { name: "Facebook", icon: Facebook, href: "https://facebook.com/designdot", color: "hover:text-blue-500" },
+  { name: "Facebook", icon: Facebook, href: "https://facebook.com/designdot", color: "hover:text-[#8B5DFF]" },
 ];
 
 const languages = [
@@ -122,14 +122,14 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-slate-900 text-white">
+    <footer className="bg-[#111111] text-white">
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-12">
           {/* Brand Column */}
           <div className="col-span-2 md:col-span-3 lg:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 bg-gradient-to-br from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center">
+              <div className="w-10 h-10 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center">
                 <Sparkles className="w-6 h-6 text-white" />
               </div>
               <span className="text-xl font-bold">DesignDot</span>
@@ -146,7 +146,7 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`p-2 bg-slate-800 rounded-lg text-slate-400 transition-all hover:scale-110 ${social.color}`}
+                  className={`p-2 bg-[#111111] rounded-lg text-slate-400 transition-all hover:scale-110 ${social.color}`}
                   aria-label={social.name}
                 >
                   <social.icon className="w-5 h-5" />
@@ -245,7 +245,7 @@ export default function Footer() {
                   >
                     {link.name}
                     {link.badge && (
-                      <span className="px-2 py-0.5 bg-green-500 text-white text-xs font-semibold rounded-full">
+                      <span className="px-2 py-0.5 bg-[#8B5DFF] text-white text-xs font-semibold rounded-full">
                         {link.badge}
                       </span>
                     )}
@@ -258,7 +258,7 @@ export default function Footer() {
       </div>
 
       {/* Secondary Footer */}
-      <div className="border-t border-slate-800">
+      <div className="border-t border-[#1F1F1F]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
             {/* Left Side */}
@@ -268,7 +268,7 @@ export default function Footer() {
                 <select
                   value={selectedLanguage}
                   onChange={(e) => setSelectedLanguage(e.target.value)}
-                  className="appearance-none bg-slate-800 text-slate-300 text-sm rounded-lg px-4 py-2 pr-10 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-violet-500"
+                  className="appearance-none bg-[#111111] text-slate-300 text-sm rounded-lg px-4 py-2 pr-10 border border-[#2A2A2A] focus:outline-none focus:ring-2 focus:ring-violet-500"
                 >
                   {languages.map((lang) => (
                     <option key={lang.code} value={lang.code}>
@@ -282,7 +282,7 @@ export default function Footer() {
               {/* Theme Toggle */}
               <button
                 onClick={toggleDarkMode}
-                className="flex items-center gap-2 px-4 py-2 bg-slate-800 text-slate-300 rounded-lg border border-slate-700 hover:bg-slate-700 transition-colors"
+                className="flex items-center gap-2 px-4 py-2 bg-[#111111] text-slate-300 rounded-lg border border-[#2A2A2A] hover:bg-slate-700 transition-colors"
               >
                 {isDarkMode ? (
                   <>
@@ -301,14 +301,14 @@ export default function Footer() {
               <div className="flex gap-2">
                 <a
                   href="#"
-                  className="flex items-center gap-2 px-4 py-2 bg-slate-800 text-slate-300 rounded-lg border border-slate-700 hover:bg-slate-700 transition-colors"
+                  className="flex items-center gap-2 px-4 py-2 bg-[#111111] text-slate-300 rounded-lg border border-[#2A2A2A] hover:bg-slate-700 transition-colors"
                 >
                   <Apple className="w-4 h-4" />
                   <span className="text-sm">iOS</span>
                 </a>
                 <a
                   href="#"
-                  className="flex items-center gap-2 px-4 py-2 bg-slate-800 text-slate-300 rounded-lg border border-slate-700 hover:bg-slate-700 transition-colors"
+                  className="flex items-center gap-2 px-4 py-2 bg-[#111111] text-slate-300 rounded-lg border border-[#2A2A2A] hover:bg-slate-700 transition-colors"
                 >
                   <Smartphone className="w-4 h-4" />
                   <span className="text-sm">Android</span>
@@ -319,15 +319,15 @@ export default function Footer() {
             {/* Right Side - Trust Badges */}
             <div className="flex flex-wrap items-center justify-center gap-4">
               <div className="flex items-center gap-2 text-slate-400 text-sm">
-                <Shield className="w-4 h-4 text-green-500" />
+                <Shield className="w-4 h-4 text-[#8B5DFF]" />
                 <span>GDPR Compliant</span>
               </div>
               <div className="flex items-center gap-2 text-slate-400 text-sm">
-                <Lock className="w-4 h-4 text-green-500" />
+                <Lock className="w-4 h-4 text-[#8B5DFF]" />
                 <span>SSL Secured</span>
               </div>
               <div className="flex items-center gap-2 text-slate-400 text-sm">
-                <CreditCard className="w-4 h-4 text-green-500" />
+                <CreditCard className="w-4 h-4 text-[#8B5DFF]" />
                 <span>Secure Payments</span>
               </div>
             </div>
@@ -336,7 +336,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-slate-800">
+      <div className="border-t border-[#1F1F1F]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             {/* Copyright */}

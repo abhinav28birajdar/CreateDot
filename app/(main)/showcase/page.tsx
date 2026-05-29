@@ -111,7 +111,7 @@ function ProjectCard({ project, onRemove }: { project: PortfolioProject; onRemov
     <Reorder.Item
       value={project}
       id={project.id}
-      className="group relative bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden"
+      className="group relative bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#2A2A2A] overflow-hidden"
     >
       <div className="absolute top-2 left-2 z-10 cursor-grab opacity-0 group-hover:opacity-100 transition-opacity">
         <Grip className="w-5 h-5 text-white drop-shadow-lg" />
@@ -123,7 +123,7 @@ function ProjectCard({ project, onRemove }: { project: PortfolioProject; onRemov
           alt={project.title}
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+        <div className="absolute inset-0 bg-[#0B0B0C]/0 group-hover:bg-[#0B0B0C]/40 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
           <div className="flex gap-2">
             <button className="p-2 bg-white rounded-full hover:bg-slate-100">
               <Eye className="w-4 h-4 text-slate-700" />
@@ -174,10 +174,10 @@ function PortfolioCard({ portfolio, onEdit, onDelete }: {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:shadow-lg transition-shadow"
+      className="bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#1F1F1F] overflow-hidden hover:shadow-lg transition-shadow"
     >
       {/* Preview Grid */}
-      <div className="grid grid-cols-2 gap-1 p-1 bg-slate-100 dark:bg-slate-800">
+      <div className="grid grid-cols-2 gap-1 p-1 bg-slate-100 dark:bg-[#111111]">
         {portfolio.projects.slice(0, 4).map((project, i) => (
           <div
             key={project.id}
@@ -209,28 +209,28 @@ function PortfolioCard({ portfolio, onEdit, onDelete }: {
           <div className="relative">
             <button
               onClick={() => setShowMenu(!showMenu)}
-              className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg"
+              className="p-2 hover:bg-slate-100 dark:hover:bg-[#111111] rounded-lg"
             >
               <MoreHorizontal className="w-4 h-4" />
             </button>
             {showMenu && (
-              <div className="absolute right-0 top-full mt-1 w-48 bg-white dark:bg-slate-900 rounded-lg shadow-lg border border-slate-200 dark:border-slate-800 py-2 z-10">
+              <div className="absolute right-0 top-full mt-1 w-48 bg-white dark:bg-[#111111] rounded-lg shadow-lg border border-slate-200 dark:border-[#1F1F1F] py-2 z-10">
                 <button
                   onClick={() => { onEdit(); setShowMenu(false); }}
-                  className="w-full px-4 py-2 text-left text-sm hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center gap-2"
+                  className="w-full px-4 py-2 text-left text-sm hover:bg-slate-50 dark:hover:bg-[#111111] flex items-center gap-2"
                 >
                   <Edit3 className="w-4 h-4" />
                   Edit Portfolio
                 </button>
-                <button className="w-full px-4 py-2 text-left text-sm hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center gap-2">
+                <button className="w-full px-4 py-2 text-left text-sm hover:bg-slate-50 dark:hover:bg-[#111111] flex items-center gap-2">
                   <Copy className="w-4 h-4" />
                   Duplicate
                 </button>
-                <button className="w-full px-4 py-2 text-left text-sm hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center gap-2">
+                <button className="w-full px-4 py-2 text-left text-sm hover:bg-slate-50 dark:hover:bg-[#111111] flex items-center gap-2">
                   <Share2 className="w-4 h-4" />
                   Share
                 </button>
-                <hr className="my-2 border-slate-200 dark:border-slate-700" />
+                <hr className="my-2 border-slate-200 dark:border-[#2A2A2A]" />
                 <button
                   onClick={() => { onDelete(); setShowMenu(false); }}
                   className="w-full px-4 py-2 text-left text-sm text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 flex items-center gap-2"
@@ -306,11 +306,11 @@ export default function ShowcasePage() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
       {/* Header */}
-      <section className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+      <section className="bg-white dark:bg-[#111111] border-b border-slate-200 dark:border-[#1F1F1F]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 bg-gradient-to-br from-violet-500 to-fuchsia-500 rounded-2xl flex items-center justify-center">
+              <div className="w-14 h-14 bg-[#8B5DFF] from-violet-500 to-fuchsia-500 rounded-2xl flex items-center justify-center">
                 <Layout className="w-7 h-7 text-white" />
               </div>
               <div>
@@ -342,7 +342,7 @@ export default function ShowcasePage() {
             ].map((stat) => (
               <div
                 key={stat.label}
-                className="bg-slate-50 dark:bg-slate-800 rounded-xl p-4 flex items-center gap-4"
+                className="bg-slate-50 dark:bg-[#111111] rounded-xl p-4 flex items-center gap-4"
               >
                 <div className="w-10 h-10 rounded-full bg-violet-100 dark:bg-violet-900/30 text-violet-600 flex items-center justify-center">
                   <stat.icon className="w-5 h-5" />
@@ -374,9 +374,9 @@ export default function ShowcasePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             onClick={() => setShowCreateModal(true)}
-            className="min-h-[300px] bg-white dark:bg-slate-900 rounded-xl border-2 border-dashed border-slate-200 dark:border-slate-700 flex flex-col items-center justify-center gap-4 hover:border-violet-300 dark:hover:border-violet-700 hover:bg-violet-50 dark:hover:bg-violet-900/10 transition-all"
+            className="min-h-[300px] bg-white dark:bg-[#111111] rounded-xl border-2 border-dashed border-slate-200 dark:border-[#2A2A2A] flex flex-col items-center justify-center gap-4 hover:border-violet-300 dark:hover:border-violet-700 hover:bg-violet-50 dark:hover:bg-violet-900/10 transition-all"
           >
-            <div className="w-16 h-16 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+            <div className="w-16 h-16 rounded-full bg-slate-100 dark:bg-[#111111] flex items-center justify-center">
               <Plus className="w-8 h-8 text-slate-400" />
             </div>
             <div className="text-center">
@@ -387,7 +387,7 @@ export default function ShowcasePage() {
         </div>
 
         {/* Quick Tips */}
-        <section className="mt-12 bg-gradient-to-r from-violet-600 to-fuchsia-600 rounded-2xl p-8 text-white">
+        <section className="mt-12 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 rounded-2xl p-8 text-white">
           <h2 className="text-xl font-bold mb-4">Pro Tips for Your Portfolio</h2>
           <div className="grid md:grid-cols-3 gap-6">
             {[
@@ -416,7 +416,7 @@ export default function ShowcasePage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+            className="fixed inset-0 bg-[#0B0B0C]/50 flex items-center justify-center z-50 p-4"
             onClick={() => { setShowCreateModal(false); setEditingPortfolio(null); }}
           >
             <motion.div
@@ -424,7 +424,7 @@ export default function ShowcasePage() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-white dark:bg-slate-900 rounded-xl p-6 w-full max-w-lg shadow-xl"
+              className="bg-white dark:bg-[#111111] rounded-xl p-6 w-full max-w-lg shadow-xl"
             >
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-lg font-semibold text-slate-900 dark:text-white">
@@ -432,7 +432,7 @@ export default function ShowcasePage() {
                 </h2>
                 <button
                   onClick={() => { setShowCreateModal(false); setEditingPortfolio(null); }}
-                  className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg"
+                  className="p-2 hover:bg-slate-100 dark:hover:bg-[#111111] rounded-lg"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -468,7 +468,7 @@ export default function ShowcasePage() {
                     Description
                   </label>
                   <textarea
-                    className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
+                    className="w-full px-3 py-2 border border-slate-200 dark:border-[#2A2A2A] rounded-lg bg-white dark:bg-[#111111] text-slate-900 dark:text-white"
                     rows={3}
                     placeholder="Describe your portfolio..."
                     defaultValue={editingPortfolio?.description}
@@ -486,7 +486,7 @@ export default function ShowcasePage() {
                         className={`px-4 py-2 rounded-lg border ${
                           (editingPortfolio?.theme || "minimal") === theme
                             ? "border-violet-500 bg-violet-50 dark:bg-violet-900/20 text-violet-600"
-                            : "border-slate-200 dark:border-slate-700"
+                            : "border-slate-200 dark:border-[#2A2A2A]"
                         }`}
                       >
                         {theme.charAt(0).toUpperCase() + theme.slice(1)}

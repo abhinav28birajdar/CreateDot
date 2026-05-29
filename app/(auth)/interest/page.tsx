@@ -49,7 +49,7 @@ const interestOptions: InterestOption[] = [
       "Direct messaging",
       "Verified talent",
     ],
-    color: "text-blue-600 dark:text-blue-400",
+    color: "text-[#8B5DFF] dark:text-[#8B5DFF]",
     bgColor: "bg-blue-100 dark:bg-blue-900/30 border-blue-200 dark:border-blue-800",
   },
   {
@@ -63,7 +63,7 @@ const interestOptions: InterestOption[] = [
       "Save favorites",
       "Follow creators",
     ],
-    color: "text-green-600 dark:text-green-400",
+    color: "text-green-600 dark:text-[#8B5DFF]",
     bgColor: "bg-green-100 dark:bg-green-900/30 border-green-200 dark:border-green-800",
   },
   {
@@ -100,7 +100,7 @@ export default function PreSignupInterestPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-violet-50 dark:from-slate-900 dark:to-slate-800 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-[#8B5DFF] from-slate-50 to-violet-50 dark:from-slate-900 dark:to-slate-800 flex items-center justify-center p-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -109,7 +109,7 @@ export default function PreSignupInterestPage() {
         {/* Header */}
         <div className="text-center mb-12">
           <Link href="/" className="inline-flex items-center gap-2 mb-8">
-            <div className="w-12 h-12 bg-gradient-to-br from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center">
+            <div className="w-12 h-12 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center">
               <Sparkles className="w-7 h-7 text-white" />
             </div>
             <span className="text-2xl font-bold text-slate-900 dark:text-white">
@@ -151,7 +151,7 @@ export default function PreSignupInterestPage() {
                 className={`w-full text-left p-6 rounded-2xl border-2 transition-all ${
                   selectedOption === option.id
                     ? `${option.bgColor} border-current ${option.color} ring-2 ring-offset-2 ring-violet-500`
-                    : "bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600"
+                    : "bg-white dark:bg-[#111111] border-slate-200 dark:border-[#2A2A2A] hover:border-slate-300 dark:hover:border-slate-600"
                 }`}
               >
                 <div className="flex items-start gap-4">
@@ -208,7 +208,7 @@ export default function PreSignupInterestPage() {
                           key={benefit}
                           className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400"
                         >
-                          <ChevronRight className="w-4 h-4 text-green-500" />
+                          <ChevronRight className="w-4 h-4 text-[#8B5DFF]" />
                           {benefit}
                         </li>
                       ))}

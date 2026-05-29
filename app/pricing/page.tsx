@@ -203,12 +203,12 @@ export default function PricingPage() {
   const [showComparison, setShowComparison] = useState(false);
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#111111]">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 h-16 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 z-50">
+      <header className="fixed top-0 left-0 right-0 h-16 bg-white/80 dark:bg-[#111111]/80 backdrop-blur-xl border-b border-slate-200 dark:border-[#1F1F1F] z-50">
         <div className="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-9 h-9 bg-gradient-to-br from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center">
+            <div className="w-9 h-9 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center">
               <Sparkles className="w-5 h-5 text-white" />
             </div>
             <span className="font-bold text-lg text-slate-900 dark:text-white">DesignDot</span>
@@ -241,7 +241,7 @@ export default function PricingPage() {
             <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
               Choose the perfect plan
               <br />
-              <span className="bg-gradient-to-r from-violet-600 to-fuchsia-600 bg-clip-text text-transparent">
+              <span className="bg-[#8B5DFF] from-violet-600 to-fuchsia-600 bg-clip-text text-transparent">
                 for your creative journey
               </span>
             </h1>
@@ -283,10 +283,10 @@ export default function PricingPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className={`relative bg-white dark:bg-slate-800 rounded-2xl p-6 ${
+                className={`relative bg-white dark:bg-[#111111] rounded-2xl p-6 ${
                   plan.popular
                     ? "ring-2 ring-violet-600 shadow-xl scale-[1.02]"
-                    : "border border-slate-200 dark:border-slate-700"
+                    : "border border-slate-200 dark:border-[#2A2A2A]"
                 }`}
               >
                 {plan.popular && (
@@ -296,7 +296,7 @@ export default function PricingPage() {
                 )}
 
                 {/* Icon & Name */}
-                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${plan.color} flex items-center justify-center mb-4`}>
+                <div className={`w-12 h-12 rounded-xl bg-[#8B5DFF] ${plan.color} flex items-center justify-center mb-4`}>
                   <plan.icon className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-1">
@@ -344,7 +344,7 @@ export default function PricingPage() {
                   {plan.features.map((feature, i) => (
                     <li key={i} className="flex items-start gap-3">
                       {feature.included ? (
-                        <Check className="w-5 h-5 text-green-500 flex-shrink-0" />
+                        <Check className="w-5 h-5 text-[#8B5DFF] flex-shrink-0" />
                       ) : (
                         <X className="w-5 h-5 text-slate-300 dark:text-slate-600 flex-shrink-0" />
                       )}
@@ -361,7 +361,7 @@ export default function PricingPage() {
 
         {/* Stats */}
         <section className="max-w-4xl mx-auto px-4 mb-20">
-          <div className="grid grid-cols-3 gap-8 py-8 border-y border-slate-200 dark:border-slate-800">
+          <div className="grid grid-cols-3 gap-8 py-8 border-y border-slate-200 dark:border-[#1F1F1F]">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
                 <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">
@@ -391,10 +391,10 @@ export default function PricingPage() {
                 exit={{ height: 0, opacity: 0 }}
                 className="overflow-hidden"
               >
-                <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-x-auto mt-4">
+                <div className="bg-white dark:bg-[#111111] rounded-2xl border border-slate-200 dark:border-[#2A2A2A] overflow-x-auto mt-4">
                   <table className="w-full">
                     <thead>
-                      <tr className="border-b border-slate-200 dark:border-slate-700">
+                      <tr className="border-b border-slate-200 dark:border-[#2A2A2A]">
                         <th className="text-left p-4 min-w-[200px]">Feature</th>
                         {["Free", "Pro", "Team", "Enterprise"].map((plan) => (
                           <th key={plan} className="text-center p-4 min-w-[120px]">
@@ -406,13 +406,13 @@ export default function PricingPage() {
                     <tbody>
                       {comparisonCategories.map((category) => (
                         <React.Fragment key={category.name}>
-                          <tr className="bg-slate-50 dark:bg-slate-900">
+                          <tr className="bg-slate-50 dark:bg-[#111111]">
                             <td colSpan={5} className="p-4 font-semibold text-slate-900 dark:text-white">
                               {category.name}
                             </td>
                           </tr>
                           {category.features.map((feature, i) => (
-                            <tr key={i} className="border-b border-slate-100 dark:border-slate-700/50">
+                            <tr key={i} className="border-b border-slate-100 dark:border-[#2A2A2A]/50">
                               <td className="p-4 text-sm text-slate-600 dark:text-slate-400">
                                 {feature.name}
                               </td>
@@ -422,7 +422,7 @@ export default function PricingPage() {
                                   <td key={plan} className="text-center p-4">
                                     {typeof value === "boolean" ? (
                                       value ? (
-                                        <Check className="w-5 h-5 text-green-500 mx-auto" />
+                                        <Check className="w-5 h-5 text-[#8B5DFF] mx-auto" />
                                       ) : (
                                         <X className="w-5 h-5 text-slate-300 mx-auto" />
                                       )
@@ -482,7 +482,7 @@ export default function PricingPage() {
             {faqs.map((faq, index) => (
               <div
                 key={index}
-                className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden"
+                className="bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#2A2A2A] overflow-hidden"
               >
                 <button
                   onClick={() => setExpandedFaq(expandedFaq === index ? null : index)}
@@ -518,7 +518,7 @@ export default function PricingPage() {
       </main>
 
       {/* CTA Footer */}
-      <section className="bg-gradient-to-r from-violet-600 to-fuchsia-600 py-16">
+      <section className="bg-[#8B5DFF] from-violet-600 to-fuchsia-600 py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">
             Ready to showcase your work?

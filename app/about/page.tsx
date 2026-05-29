@@ -48,13 +48,13 @@ const values = [
     title: "Accessible to All",
     description: "Design opportunities shouldn't be limited by geography or background. We're making the creative industry more accessible globally.",
     icon: Globe,
-    color: "from-blue-500 to-cyan-500",
+    color: "to-cyan-500",
   },
   {
     title: "Trust & Safety",
     description: "Your work is valuable. We protect your intellectual property and maintain a safe, respectful environment for all creators.",
     icon: Shield,
-    color: "from-green-500 to-emerald-500",
+    color: "",
   },
 ];
 
@@ -124,12 +124,12 @@ const investors = [
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-900">
+    <div className="min-h-screen bg-white dark:bg-[#111111]">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 h-16 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 z-50">
+      <header className="fixed top-0 left-0 right-0 h-16 bg-white/80 dark:bg-[#111111]/80 backdrop-blur-xl border-b border-slate-200 dark:border-[#1F1F1F] z-50">
         <div className="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-9 h-9 bg-gradient-to-br from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center">
+            <div className="w-9 h-9 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center">
               <Sparkles className="w-5 h-5 text-white" />
             </div>
             <span className="font-bold text-lg text-slate-900 dark:text-white">DesignDot</span>
@@ -150,7 +150,7 @@ export default function AboutPage() {
       </header>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-b from-violet-50 to-white dark:from-slate-800 dark:to-slate-900">
+      <section className="pt-32 pb-20 bg-[#8B5DFF] from-violet-50 to-white dark:from-slate-800 dark:to-slate-900">
         <div className="max-w-5xl mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -163,7 +163,7 @@ export default function AboutPage() {
             <h1 className="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white mb-6 leading-tight">
               Empowering creators to
               <br />
-              <span className="bg-gradient-to-r from-violet-600 to-fuchsia-600 bg-clip-text text-transparent">
+              <span className="bg-[#8B5DFF] from-violet-600 to-fuchsia-600 bg-clip-text text-transparent">
                 share their story
               </span>
             </h1>
@@ -174,7 +174,7 @@ export default function AboutPage() {
 
             {/* Video/Image placeholder */}
             <div className="relative max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl">
-              <div className="aspect-video bg-gradient-to-br from-violet-600 to-fuchsia-600 flex items-center justify-center">
+              <div className="aspect-video bg-[#8B5DFF] from-violet-600 to-fuchsia-600 flex items-center justify-center">
                 <button className="w-20 h-20 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center backdrop-blur-sm transition-colors">
                   <Play className="w-8 h-8 text-white ml-1" fill="white" />
                 </button>
@@ -185,7 +185,7 @@ export default function AboutPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 border-b border-slate-200 dark:border-slate-800">
+      <section className="py-16 border-b border-slate-200 dark:border-[#1F1F1F]">
         <div className="max-w-5xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
@@ -234,12 +234,12 @@ export default function AboutPage() {
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-4">
-                <div className="aspect-[4/5] rounded-2xl bg-gradient-to-br from-violet-200 to-fuchsia-200 dark:from-violet-900 dark:to-fuchsia-900" />
-                <div className="aspect-square rounded-2xl bg-gradient-to-br from-pink-200 to-rose-200 dark:from-pink-900 dark:to-rose-900" />
+                <div className="aspect-[4/5] rounded-2xl bg-[#8B5DFF] from-violet-200 to-fuchsia-200 dark:from-violet-900 dark:to-fuchsia-900" />
+                <div className="aspect-square rounded-2xl bg-[#8B5DFF] from-pink-200 to-rose-200 dark:from-pink-900 dark:to-rose-900" />
               </div>
               <div className="space-y-4 pt-8">
-                <div className="aspect-square rounded-2xl bg-gradient-to-br from-blue-200 to-cyan-200 dark:from-blue-900 dark:to-cyan-900" />
-                <div className="aspect-[4/5] rounded-2xl bg-gradient-to-br from-amber-200 to-orange-200 dark:from-amber-900 dark:to-orange-900" />
+                <div className="aspect-square rounded-2xl bg-[#8B5DFF] to-cyan-200 dark:dark:to-cyan-900" />
+                <div className="aspect-[4/5] rounded-2xl bg-[#8B5DFF] from-amber-200 to-orange-200 dark:from-amber-900 dark:to-orange-900" />
               </div>
             </div>
           </div>
@@ -247,7 +247,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values Section */}
-      <section className="py-20 bg-slate-50 dark:bg-slate-800/50">
+      <section className="py-20 bg-slate-50 dark:bg-[#111111]/50">
         <div className="max-w-5xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
@@ -266,9 +266,9 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700"
+                className="bg-white dark:bg-[#111111] rounded-2xl p-6 border border-slate-200 dark:border-[#2A2A2A]"
               >
-                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${value.color} flex items-center justify-center mb-4`}>
+                <div className={`w-12 h-12 rounded-xl bg-[#8B5DFF] ${value.color} flex items-center justify-center mb-4`}>
                   <value.icon className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">
@@ -297,7 +297,7 @@ export default function AboutPage() {
 
           <div className="relative">
             {/* Timeline line */}
-            <div className="absolute left-[19px] md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-violet-500 to-fuchsia-500 md:-translate-x-1/2" />
+            <div className="absolute left-[19px] md:left-1/2 top-0 bottom-0 w-0.5 bg-[#8B5DFF] from-violet-500 to-fuchsia-500 md:-translate-x-1/2" />
 
             <div className="space-y-8">
               {milestones.map((milestone, index) => (
@@ -338,7 +338,7 @@ export default function AboutPage() {
       </section>
 
       {/* Leadership Section */}
-      <section className="py-20 bg-slate-50 dark:bg-slate-800/50">
+      <section className="py-20 bg-slate-50 dark:bg-[#111111]/50">
         <div className="max-w-5xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
@@ -357,9 +357,9 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 text-center"
+                className="bg-white dark:bg-[#111111] rounded-2xl p-6 border border-slate-200 dark:border-[#2A2A2A] text-center"
               >
-                <div className="w-24 h-24 rounded-full bg-gradient-to-br from-violet-200 to-fuchsia-200 dark:from-violet-900 dark:to-fuchsia-900 mx-auto mb-4 overflow-hidden">
+                <div className="w-24 h-24 rounded-full bg-[#8B5DFF] from-violet-200 to-fuchsia-200 dark:from-violet-900 dark:to-fuchsia-900 mx-auto mb-4 overflow-hidden">
                   <Image
                     src={person.image}
                     alt={person.name}
@@ -410,7 +410,7 @@ export default function AboutPage() {
                 {press.map((item) => (
                   <div
                     key={item.name}
-                    className="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 text-center"
+                    className="bg-slate-100 dark:bg-[#111111] rounded-xl p-4 text-center"
                   >
                     <div className="text-lg font-bold text-slate-400 mb-2">{item.name}</div>
                     <p className="text-xs text-slate-500 italic">"{item.quote}"</p>
@@ -428,7 +428,7 @@ export default function AboutPage() {
                 {investors.map((investor) => (
                   <span
                     key={investor}
-                    className="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm text-slate-600 dark:text-slate-400"
+                    className="px-4 py-2 bg-slate-100 dark:bg-[#111111] rounded-lg text-sm text-slate-600 dark:text-slate-400"
                   >
                     {investor}
                   </span>
@@ -443,7 +443,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-violet-600 to-fuchsia-600">
+      <section className="py-20 bg-[#8B5DFF] from-violet-600 to-fuchsia-600">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">
             Ready to join the community?

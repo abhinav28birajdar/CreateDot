@@ -145,7 +145,7 @@ function StatCardComponent({ stat }: { stat: StatCard }) {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6"
+      className="bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#1F1F1F] p-6"
     >
       <div className="flex items-start justify-between mb-4">
         <div className="w-12 h-12 bg-violet-100 dark:bg-violet-900/30 rounded-xl flex items-center justify-center">
@@ -193,11 +193,11 @@ export default function AnalyticsPage() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
       {/* Header */}
-      <section className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+      <section className="bg-white dark:bg-[#111111] border-b border-slate-200 dark:border-[#1F1F1F]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 bg-gradient-to-br from-violet-500 to-fuchsia-500 rounded-2xl flex items-center justify-center">
+              <div className="w-14 h-14 bg-[#8B5DFF] from-violet-500 to-fuchsia-500 rounded-2xl flex items-center justify-center">
                 <BarChart3 className="w-7 h-7 text-white" />
               </div>
               <div>
@@ -252,7 +252,7 @@ export default function AnalyticsPage() {
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-8">
             {/* Views Chart */}
-            <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6">
+            <div className="bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#1F1F1F] p-6">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-lg font-semibold text-slate-900 dark:text-white">
                   Views Over Time
@@ -268,7 +268,7 @@ export default function AnalyticsPage() {
                 {weeklyData.map((value, index) => (
                   <div key={index} className="flex-1 flex flex-col items-center gap-2">
                     <div
-                      className="w-full bg-gradient-to-t from-violet-600 to-violet-400 rounded-t-lg transition-all hover:from-violet-700 hover:to-violet-500"
+                      className="w-full bg-[#8B5DFF] from-violet-600 to-violet-400 rounded-t-lg transition-all hover:from-violet-700 hover:to-violet-500"
                       style={{ height: `${value}%` }}
                     />
                     <span className="text-xs text-slate-500">{weekDays[index]}</span>
@@ -278,7 +278,7 @@ export default function AnalyticsPage() {
             </div>
 
             {/* Top Projects */}
-            <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6">
+            <div className="bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#1F1F1F] p-6">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-lg font-semibold text-slate-900 dark:text-white">
                   Top Performing Projects
@@ -297,7 +297,7 @@ export default function AnalyticsPage() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.05 }}
-                    className="flex items-center gap-4 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                    className="flex items-center gap-4 p-4 rounded-xl bg-slate-50 dark:bg-[#111111]/50 hover:bg-slate-100 dark:hover:bg-[#111111] transition-colors"
                   >
                     <span className="text-lg font-bold text-slate-400 w-6">
                       {index + 1}
@@ -345,7 +345,7 @@ export default function AnalyticsPage() {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Device Breakdown */}
-            <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6">
+            <div className="bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#1F1F1F] p-6">
               <h3 className="font-semibold text-slate-900 dark:text-white mb-4">
                 Device Breakdown
               </h3>
@@ -363,7 +363,7 @@ export default function AnalyticsPage() {
                         {device.percentage}%
                       </span>
                     </div>
-                    <div className="w-full h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                    <div className="w-full h-2 bg-slate-100 dark:bg-[#111111] rounded-full overflow-hidden">
                       <div
                         className="h-full bg-violet-600 rounded-full"
                         style={{ width: `${device.percentage}%` }}
@@ -375,7 +375,7 @@ export default function AnalyticsPage() {
             </div>
 
             {/* Top Countries */}
-            <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6">
+            <div className="bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#1F1F1F] p-6">
               <h3 className="font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
                 <Globe className="w-5 h-5 text-violet-600" />
                 Top Countries
@@ -384,7 +384,7 @@ export default function AnalyticsPage() {
                 {topCountries.map((country, index) => (
                   <div
                     key={country.country}
-                    className="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/50"
+                    className="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-[#111111]/50"
                   >
                     <div className="flex items-center gap-3">
                       <span className="text-sm font-medium text-slate-400">
@@ -403,7 +403,7 @@ export default function AnalyticsPage() {
             </div>
 
             {/* Traffic Sources */}
-            <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6">
+            <div className="bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#1F1F1F] p-6">
               <h3 className="font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
                 <Link2 className="w-5 h-5 text-violet-600" />
                 Traffic Sources
@@ -419,9 +419,9 @@ export default function AnalyticsPage() {
                         {source.percentage}%
                       </span>
                     </div>
-                    <div className="w-full h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                    <div className="w-full h-2 bg-slate-100 dark:bg-[#111111] rounded-full overflow-hidden">
                       <div
-                        className="h-full bg-gradient-to-r from-violet-600 to-fuchsia-600 rounded-full"
+                        className="h-full bg-[#8B5DFF] from-violet-600 to-fuchsia-600 rounded-full"
                         style={{ width: `${source.percentage}%` }}
                       />
                     </div>
@@ -431,7 +431,7 @@ export default function AnalyticsPage() {
             </div>
 
             {/* Quick Insights */}
-            <div className="bg-gradient-to-br from-violet-600 to-fuchsia-600 rounded-xl p-6 text-white">
+            <div className="bg-[#8B5DFF] from-violet-600 to-fuchsia-600 rounded-xl p-6 text-white">
               <div className="flex items-center gap-2 mb-4">
                 <Sparkles className="w-5 h-5" />
                 <h3 className="font-semibold">Quick Insights</h3>

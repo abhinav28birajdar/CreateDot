@@ -160,10 +160,10 @@ const mockContracts: Contract[] = [
 // ============ STATUS BADGE ============
 function StatusBadge({ status }: { status: ContractStatus }) {
   const config: Record<ContractStatus, { label: string; icon: React.ReactNode; className: string }> = {
-    draft: { label: "Draft", icon: <Edit3 className="w-3 h-3" />, className: "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400" },
+    draft: { label: "Draft", icon: <Edit3 className="w-3 h-3" />, className: "bg-slate-100 text-slate-600 dark:bg-[#111111] dark:text-slate-400" },
     sent: { label: "Awaiting Signature", icon: <Send className="w-3 h-3" />, className: "bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400" },
-    signed: { label: "Signed", icon: <PenTool className="w-3 h-3" />, className: "bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400" },
-    active: { label: "Active", icon: <CheckCircle className="w-3 h-3" />, className: "bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400" },
+    signed: { label: "Signed", icon: <PenTool className="w-3 h-3" />, className: "bg-blue-100 text-[#8B5DFF] dark:bg-blue-900/30 dark:text-[#8B5DFF]" },
+    active: { label: "Active", icon: <CheckCircle className="w-3 h-3" />, className: "bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-[#8B5DFF]" },
     completed: { label: "Completed", icon: <CheckCircle className="w-3 h-3" />, className: "bg-violet-100 text-violet-600 dark:bg-violet-900/30 dark:text-violet-400" },
     cancelled: { label: "Cancelled", icon: <XCircle className="w-3 h-3" />, className: "bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400" },
   };
@@ -208,7 +208,7 @@ function ContractCard({ contract }: { contract: Contract }) {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6 hover:shadow-lg hover:border-violet-300 dark:hover:border-violet-700 transition-all"
+      className="bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#1F1F1F] p-6 hover:shadow-lg hover:border-violet-300 dark:hover:border-violet-700 transition-all"
     >
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center gap-4">
@@ -227,29 +227,29 @@ function ContractCard({ contract }: { contract: Contract }) {
         <div className="relative">
           <button
             onClick={() => setShowMenu(!showMenu)}
-            className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg"
+            className="p-2 hover:bg-slate-100 dark:hover:bg-[#111111] rounded-lg"
           >
             <MoreHorizontal className="w-4 h-4" />
           </button>
           {showMenu && (
-            <div className="absolute right-0 top-full mt-1 w-48 bg-white dark:bg-slate-900 rounded-lg shadow-lg border border-slate-200 dark:border-slate-800 py-2 z-10">
-              <button className="w-full px-4 py-2 text-left text-sm hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center gap-2">
+            <div className="absolute right-0 top-full mt-1 w-48 bg-white dark:bg-[#111111] rounded-lg shadow-lg border border-slate-200 dark:border-[#1F1F1F] py-2 z-10">
+              <button className="w-full px-4 py-2 text-left text-sm hover:bg-slate-50 dark:hover:bg-[#111111] flex items-center gap-2">
                 <Eye className="w-4 h-4" />
                 View Contract
               </button>
-              <button className="w-full px-4 py-2 text-left text-sm hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center gap-2">
+              <button className="w-full px-4 py-2 text-left text-sm hover:bg-slate-50 dark:hover:bg-[#111111] flex items-center gap-2">
                 <Edit3 className="w-4 h-4" />
                 Edit
               </button>
-              <button className="w-full px-4 py-2 text-left text-sm hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center gap-2">
+              <button className="w-full px-4 py-2 text-left text-sm hover:bg-slate-50 dark:hover:bg-[#111111] flex items-center gap-2">
                 <Download className="w-4 h-4" />
                 Download PDF
               </button>
-              <button className="w-full px-4 py-2 text-left text-sm hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center gap-2">
+              <button className="w-full px-4 py-2 text-left text-sm hover:bg-slate-50 dark:hover:bg-[#111111] flex items-center gap-2">
                 <Copy className="w-4 h-4" />
                 Duplicate
               </button>
-              <hr className="my-2 border-slate-200 dark:border-slate-700" />
+              <hr className="my-2 border-slate-200 dark:border-[#2A2A2A]" />
               <button className="w-full px-4 py-2 text-left text-sm text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 flex items-center gap-2">
                 <Trash2 className="w-4 h-4" />
                 Delete
@@ -294,7 +294,7 @@ function ContractCard({ contract }: { contract: Contract }) {
                 key={i}
                 className={`flex-1 h-2 rounded-full ${
                   milestone.status === "paid"
-                    ? "bg-green-500"
+                    ? "bg-[#8B5DFF]"
                     : "bg-slate-200 dark:bg-slate-700"
                 }`}
               />
@@ -303,7 +303,7 @@ function ContractCard({ contract }: { contract: Contract }) {
         </div>
       )}
 
-      <div className="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
+      <div className="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-[#1F1F1F]">
         <StatusBadge status={contract.status} />
         <Link href={`/dashboard/contracts/${contract.id}`}>
           <Button variant="ghost" size="sm">
@@ -341,11 +341,11 @@ export default function ContractsPage() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
       {/* Header */}
-      <section className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+      <section className="bg-white dark:bg-[#111111] border-b border-slate-200 dark:border-[#1F1F1F]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 bg-gradient-to-br from-violet-500 to-fuchsia-500 rounded-2xl flex items-center justify-center">
+              <div className="w-14 h-14 bg-[#8B5DFF] from-violet-500 to-fuchsia-500 rounded-2xl flex items-center justify-center">
                 <FileSignature className="w-7 h-7 text-white" />
               </div>
               <div>
@@ -368,7 +368,7 @@ export default function ContractsPage() {
 
           {/* Stats */}
           <div className="grid grid-cols-4 gap-4 mt-8">
-            <div className="bg-slate-50 dark:bg-slate-800 rounded-xl p-4">
+            <div className="bg-slate-50 dark:bg-[#111111] rounded-xl p-4">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm text-slate-500">Total Contracts</span>
                 <FileSignature className="w-5 h-5 text-slate-400" />
@@ -379,10 +379,10 @@ export default function ContractsPage() {
             </div>
             <div className="bg-green-50 dark:bg-green-900/20 rounded-xl p-4">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm text-green-600 dark:text-green-400">Active</span>
-                <CheckCircle className="w-5 h-5 text-green-500" />
+                <span className="text-sm text-green-600 dark:text-[#8B5DFF]">Active</span>
+                <CheckCircle className="w-5 h-5 text-[#8B5DFF]" />
               </div>
-              <p className="text-2xl font-bold text-green-600 dark:text-green-400">
+              <p className="text-2xl font-bold text-green-600 dark:text-[#8B5DFF]">
                 {activeContracts}
               </p>
             </div>
@@ -464,7 +464,7 @@ export default function ContractsPage() {
         )}
 
         {/* Tips Section */}
-        <section className="mt-12 bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl p-8 text-white">
+        <section className="mt-12 bg-[#8B5DFF] from-slate-900 to-slate-800 rounded-2xl p-8 text-white">
           <div className="flex items-start gap-4">
             <div className="w-12 h-12 rounded-xl bg-violet-500/20 flex items-center justify-center flex-shrink-0">
               <Shield className="w-6 h-6 text-violet-400" />

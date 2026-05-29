@@ -117,7 +117,7 @@ export default function FollowersPage() {
                   onClick={() => setActiveTab(tab.id)}
                   className={`py-4 px-1 border-b-2 font-medium text-sm ${
                     activeTab === tab.id
-                      ? 'border-blue-500 text-blue-600'
+                      ? 'border-[#8B5DFF] text-[#8B5DFF]'
                       : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                   }`}
                 >
@@ -164,7 +164,7 @@ export default function FollowersPage() {
                       <div className="flex items-center space-x-2">
                         <Link
                           href={`/profile/${follower.username}`}
-                          className="font-semibold text-gray-900 hover:text-blue-600"
+                          className="font-semibold text-gray-900 hover:text-[#8B5DFF]"
                         >
                           {follower.fullName}
                         </Link>
@@ -201,7 +201,7 @@ export default function FollowersPage() {
                       className={
                         follower.isFollowing
                           ? 'bg-gray-200 text-gray-800 hover:bg-gray-300'
-                          : 'bg-blue-600 text-white hover:bg-blue-700'
+                          : 'bg-[#8B5DFF] text-white hover:bg-blue-700'
                       }
                     >
                       {follower.isFollowing ? (

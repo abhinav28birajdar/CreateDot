@@ -147,10 +147,10 @@ export default function SignInPage() {
         <div className="w-full max-w-md">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 mb-8">
-            <div className="w-10 h-10 bg-gradient-to-br from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center">
+            <div className="w-10 h-10 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center">
               <Sparkles className="w-6 h-6 text-white" />
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-violet-600 to-fuchsia-600 bg-clip-text text-transparent">
+            <span className="text-xl font-bold bg-[#8B5DFF] from-violet-600 to-fuchsia-600 bg-clip-text text-transparent">
               DesignDot
             </span>
           </Link>
@@ -197,10 +197,10 @@ export default function SignInPage() {
             <OAuthButtons />
             <div className="relative my-6">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-slate-200 dark:border-slate-700" />
+                <div className="w-full border-t border-slate-200 dark:border-[#2A2A2A]" />
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-3 bg-white dark:bg-slate-900 text-slate-500">
+                <span className="px-3 bg-white dark:bg-[#111111] text-slate-500">
                   or continue with email
                 </span>
               </div>
@@ -301,7 +301,7 @@ export default function SignInPage() {
             <Button
               type="submit"
               disabled={isLoading || isLocked}
-              className="w-full h-12 bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700"
+              className="w-full h-12 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700"
             >
               {isLoading ? (
                 <>
@@ -340,7 +340,7 @@ export default function SignInPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
-            className="mt-8 p-4 bg-slate-50 dark:bg-slate-800 rounded-xl"
+            className="mt-8 p-4 bg-slate-50 dark:bg-[#111111] rounded-xl"
           >
             <p className="text-xs text-slate-500 dark:text-slate-400 text-center mb-2">
               Demo credentials for testing:
@@ -355,7 +355,7 @@ export default function SignInPage() {
       </div>
 
       {/* Right Side - Visual */}
-      <div className="hidden lg:flex flex-1 bg-gradient-to-br from-violet-600 to-fuchsia-600 relative overflow-hidden">
+      <div className="hidden lg:flex flex-1 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0">
           <div className="absolute top-20 left-20 w-40 h-40 bg-white/10 rounded-full blur-3xl" />

@@ -17,7 +17,7 @@ export function ShotDetail({ shot }: { shot: Shot }) {
     return (
         <div className="rounded-xl overflow-hidden bg-background">
             <div className="w-full bg-muted/30 py-8 flex justify-center">
-                <div className="relative w-full max-w-5xl aspect-[4/3] rounded-lg shadow-xl overflow-hidden bg-white dark:bg-black border">
+                <div className="relative w-full max-w-5xl aspect-[4/3] rounded-lg shadow-xl overflow-hidden bg-white dark:bg-[#0B0B0C] border">
                     {shot.cover_url ? (
                         <Image src={shot.cover_url} alt={shot.title} fill className="object-cover" priority />
                     ) : (

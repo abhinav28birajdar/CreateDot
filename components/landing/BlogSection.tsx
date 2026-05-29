@@ -73,7 +73,7 @@ export default function BlogSection() {
   };
 
   return (
-    <section className="py-20 bg-slate-50 dark:bg-slate-800">
+    <section className="py-20 bg-slate-50 dark:bg-[#111111]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -83,7 +83,7 @@ export default function BlogSection() {
           className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12"
         >
           <div>
-            <span className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-sm font-medium mb-4">
+            <span className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-[#8B5DFF] dark:text-[#8B5DFF] rounded-full text-sm font-medium mb-4">
               <BookOpen className="w-4 h-4" />
               Latest Articles
             </span>
@@ -116,7 +116,7 @@ export default function BlogSection() {
               onMouseLeave={() => setHoveredPost(null)}
             >
               <Link href={`/blog/${post.id}`}>
-                <div className="group bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all">
+                <div className="group bg-white dark:bg-[#111111] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all">
                   {/* Cover Image */}
                   <div className="relative aspect-[16/10] overflow-hidden">
                     <img
@@ -124,10 +124,10 @@ export default function BlogSection() {
                       alt={post.title}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <div className="absolute inset-0 bg-[#8B5DFF] from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                     
                     {/* Category Badge */}
-                    <span className="absolute top-4 left-4 px-3 py-1 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm text-slate-900 dark:text-white text-xs font-medium rounded-full">
+                    <span className="absolute top-4 left-4 px-3 py-1 bg-white/90 dark:bg-[#111111]/90 backdrop-blur-sm text-slate-900 dark:text-white text-xs font-medium rounded-full">
                       {post.category}
                     </span>
                   </div>

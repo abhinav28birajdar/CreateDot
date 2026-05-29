@@ -131,7 +131,7 @@ export default function FeaturedWorkSection() {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
+    <section className="py-20 bg-[#8B5DFF] from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -163,7 +163,7 @@ export default function FeaturedWorkSection() {
               className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
                 activeCategory === category
                   ? "bg-violet-600 text-white shadow-lg shadow-violet-600/30"
-                  : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700"
+                  : "bg-white dark:bg-[#111111] text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-[#2A2A2A]"
               }`}
             >
               {category}
@@ -177,7 +177,7 @@ export default function FeaturedWorkSection() {
           {canScrollLeft && (
             <button
               onClick={() => scroll("left")}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-3 bg-white dark:bg-slate-800 rounded-full shadow-xl opacity-0 group-hover:opacity-100 transition-opacity hover:scale-110"
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-3 bg-white dark:bg-[#111111] rounded-full shadow-xl opacity-0 group-hover:opacity-100 transition-opacity hover:scale-110"
             >
               <ChevronLeft className="w-6 h-6 text-slate-600 dark:text-slate-400" />
             </button>
@@ -187,7 +187,7 @@ export default function FeaturedWorkSection() {
           {canScrollRight && (
             <button
               onClick={() => scroll("right")}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-3 bg-white dark:bg-slate-800 rounded-full shadow-xl opacity-0 group-hover:opacity-100 transition-opacity hover:scale-110"
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-3 bg-white dark:bg-[#111111] rounded-full shadow-xl opacity-0 group-hover:opacity-100 transition-opacity hover:scale-110"
             >
               <ChevronRight className="w-6 h-6 text-slate-600 dark:text-slate-400" />
             </button>
@@ -211,7 +211,7 @@ export default function FeaturedWorkSection() {
                 onMouseLeave={() => setHoveredProject(null)}
               >
                 <Link href={`/project/${project.id}`}>
-                  <div className="relative rounded-2xl overflow-hidden bg-white dark:bg-slate-800 shadow-lg hover:shadow-2xl transition-all duration-300 group/card">
+                  <div className="relative rounded-2xl overflow-hidden bg-white dark:bg-[#111111] shadow-lg hover:shadow-2xl transition-all duration-300 group/card">
                     {/* Image Container */}
                     <div className="relative aspect-[4/3] overflow-hidden">
                       <img
@@ -222,7 +222,7 @@ export default function FeaturedWorkSection() {
                       
                       {/* Video Indicator */}
                       {project.isVideo && (
-                        <div className="absolute bottom-3 right-3 p-2 bg-black/50 rounded-full backdrop-blur-sm">
+                        <div className="absolute bottom-3 right-3 p-2 bg-[#0B0B0C]/50 rounded-full backdrop-blur-sm">
                           <Play className="w-4 h-4 text-white fill-white" />
                         </div>
                       )}
@@ -239,7 +239,7 @@ export default function FeaturedWorkSection() {
                       <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: hoveredProject === project.id ? 1 : 0 }}
-                        className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-4"
+                        className="absolute inset-0 bg-[#8B5DFF] from-black/80 via-black/40 to-transparent flex flex-col justify-end p-4"
                       >
                         <h3 className="text-lg font-semibold text-white mb-2">
                           {project.title}

@@ -150,11 +150,11 @@ const mockInvoices: Invoice[] = [
 // ============ STATUS BADGE ============
 function StatusBadge({ status }: { status: InvoiceStatus }) {
   const config: Record<InvoiceStatus, { label: string; icon: React.ReactNode; className: string }> = {
-    draft: { label: "Draft", icon: <Edit3 className="w-3 h-3" />, className: "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400" },
-    sent: { label: "Sent", icon: <Send className="w-3 h-3" />, className: "bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400" },
-    paid: { label: "Paid", icon: <CheckCircle className="w-3 h-3" />, className: "bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400" },
+    draft: { label: "Draft", icon: <Edit3 className="w-3 h-3" />, className: "bg-slate-100 text-slate-600 dark:bg-[#111111] dark:text-slate-400" },
+    sent: { label: "Sent", icon: <Send className="w-3 h-3" />, className: "bg-blue-100 text-[#8B5DFF] dark:bg-blue-900/30 dark:text-[#8B5DFF]" },
+    paid: { label: "Paid", icon: <CheckCircle className="w-3 h-3" />, className: "bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-[#8B5DFF]" },
     overdue: { label: "Overdue", icon: <AlertCircle className="w-3 h-3" />, className: "bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400" },
-    cancelled: { label: "Cancelled", icon: <XCircle className="w-3 h-3" />, className: "bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-500" },
+    cancelled: { label: "Cancelled", icon: <XCircle className="w-3 h-3" />, className: "bg-slate-100 text-slate-500 dark:bg-[#111111] dark:text-slate-500" },
   };
 
   const { label, icon, className } = config[status];
@@ -175,7 +175,7 @@ function InvoiceRow({ invoice }: { invoice: Invoice }) {
     <motion.tr
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="border-b border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900/50"
+      className="border-b border-slate-100 dark:border-[#1F1F1F] hover:bg-slate-50 dark:hover:bg-[#111111]/50"
     >
       <td className="py-4 px-4">
         <div className="flex items-center gap-3">
@@ -234,28 +234,28 @@ function InvoiceRow({ invoice }: { invoice: Invoice }) {
             <MoreHorizontal className="w-4 h-4" />
           </Button>
           {showMenu && (
-            <div className="absolute right-0 top-full mt-1 w-48 bg-white dark:bg-slate-900 rounded-lg shadow-lg border border-slate-200 dark:border-slate-800 py-2 z-10">
-              <button className="w-full px-4 py-2 text-left text-sm hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center gap-2">
+            <div className="absolute right-0 top-full mt-1 w-48 bg-white dark:bg-[#111111] rounded-lg shadow-lg border border-slate-200 dark:border-[#1F1F1F] py-2 z-10">
+              <button className="w-full px-4 py-2 text-left text-sm hover:bg-slate-50 dark:hover:bg-[#111111] flex items-center gap-2">
                 <Eye className="w-4 h-4" />
                 View Invoice
               </button>
-              <button className="w-full px-4 py-2 text-left text-sm hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center gap-2">
+              <button className="w-full px-4 py-2 text-left text-sm hover:bg-slate-50 dark:hover:bg-[#111111] flex items-center gap-2">
                 <Edit3 className="w-4 h-4" />
                 Edit
               </button>
-              <button className="w-full px-4 py-2 text-left text-sm hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center gap-2">
+              <button className="w-full px-4 py-2 text-left text-sm hover:bg-slate-50 dark:hover:bg-[#111111] flex items-center gap-2">
                 <Download className="w-4 h-4" />
                 Download PDF
               </button>
-              <button className="w-full px-4 py-2 text-left text-sm hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center gap-2">
+              <button className="w-full px-4 py-2 text-left text-sm hover:bg-slate-50 dark:hover:bg-[#111111] flex items-center gap-2">
                 <Send className="w-4 h-4" />
                 Send Reminder
               </button>
-              <button className="w-full px-4 py-2 text-left text-sm hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center gap-2">
+              <button className="w-full px-4 py-2 text-left text-sm hover:bg-slate-50 dark:hover:bg-[#111111] flex items-center gap-2">
                 <Copy className="w-4 h-4" />
                 Duplicate
               </button>
-              <hr className="my-2 border-slate-200 dark:border-slate-700" />
+              <hr className="my-2 border-slate-200 dark:border-[#2A2A2A]" />
               <button className="w-full px-4 py-2 text-left text-sm text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 flex items-center gap-2">
                 <Trash2 className="w-4 h-4" />
                 Delete
@@ -293,11 +293,11 @@ export default function InvoicesPage() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
       {/* Header */}
-      <section className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+      <section className="bg-white dark:bg-[#111111] border-b border-slate-200 dark:border-[#1F1F1F]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 bg-gradient-to-br from-violet-500 to-fuchsia-500 rounded-2xl flex items-center justify-center">
+              <div className="w-14 h-14 bg-[#8B5DFF] from-violet-500 to-fuchsia-500 rounded-2xl flex items-center justify-center">
                 <FileText className="w-7 h-7 text-white" />
               </div>
               <div>
@@ -320,7 +320,7 @@ export default function InvoicesPage() {
 
           {/* Stats */}
           <div className="grid grid-cols-4 gap-4 mt-8">
-            <div className="bg-slate-50 dark:bg-slate-800 rounded-xl p-4">
+            <div className="bg-slate-50 dark:bg-[#111111] rounded-xl p-4">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm text-slate-500">Total Invoices</span>
                 <FileText className="w-5 h-5 text-slate-400" />
@@ -331,19 +331,19 @@ export default function InvoicesPage() {
             </div>
             <div className="bg-green-50 dark:bg-green-900/20 rounded-xl p-4">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm text-green-600 dark:text-green-400">Paid</span>
-                <ArrowUpRight className="w-5 h-5 text-green-500" />
+                <span className="text-sm text-green-600 dark:text-[#8B5DFF]">Paid</span>
+                <ArrowUpRight className="w-5 h-5 text-[#8B5DFF]" />
               </div>
-              <p className="text-2xl font-bold text-green-600 dark:text-green-400">
+              <p className="text-2xl font-bold text-green-600 dark:text-[#8B5DFF]">
                 ${totalRevenue.toLocaleString()}
               </p>
             </div>
             <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm text-blue-600 dark:text-blue-400">Pending</span>
-                <Clock className="w-5 h-5 text-blue-500" />
+                <span className="text-sm text-[#8B5DFF] dark:text-[#8B5DFF]">Pending</span>
+                <Clock className="w-5 h-5 text-[#8B5DFF]" />
               </div>
-              <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+              <p className="text-2xl font-bold text-[#8B5DFF] dark:text-[#8B5DFF]">
                 ${pendingAmount.toLocaleString()}
               </p>
             </div>
@@ -374,7 +374,7 @@ export default function InvoicesPage() {
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-1 border border-slate-200 dark:border-slate-700 rounded-lg p-1">
+            <div className="flex items-center gap-1 border border-slate-200 dark:border-[#2A2A2A] rounded-lg p-1">
               {(["all", "paid", "sent", "overdue", "draft"] as const).map((status) => (
                 <button
                   key={status}
@@ -398,9 +398,9 @@ export default function InvoicesPage() {
         </div>
 
         {/* Invoices Table */}
-        <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+        <div className="bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#1F1F1F] overflow-hidden">
           <table className="w-full">
-            <thead className="bg-slate-50 dark:bg-slate-800">
+            <thead className="bg-slate-50 dark:bg-[#111111]">
               <tr>
                 <th className="text-left py-3 px-4 text-sm font-medium text-slate-500">Invoice</th>
                 <th className="text-left py-3 px-4 text-sm font-medium text-slate-500">Client</th>

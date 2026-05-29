@@ -178,7 +178,7 @@ export default function BlogArticlePage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#111111]">
       {/* Hero */}
       <div className="relative h-[50vh] md:h-[60vh]">
         <Image
@@ -187,12 +187,12 @@ export default function BlogArticlePage() {
           fill
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
+        <div className="absolute inset-0 bg-[#8B5DFF] from-black/80 via-black/40 to-black/20" />
 
         {/* Back Button */}
         <button
           onClick={() => router.back()}
-          className="absolute top-4 left-4 flex items-center gap-2 text-white hover:text-white/80 bg-black/20 backdrop-blur-sm px-3 py-2 rounded-lg z-10"
+          className="absolute top-4 left-4 flex items-center gap-2 text-white hover:text-white/80 bg-[#0B0B0C]/20 backdrop-blur-sm px-3 py-2 rounded-lg z-10"
         >
           <ArrowLeft className="w-4 h-4" />
           Back
@@ -230,7 +230,7 @@ export default function BlogArticlePage() {
 
       <div className="max-w-4xl mx-auto px-4 py-8">
         {/* Action Bar */}
-        <div className="flex items-center justify-between mb-8 pb-8 border-b border-slate-200 dark:border-slate-700">
+        <div className="flex items-center justify-between mb-8 pb-8 border-b border-slate-200 dark:border-[#2A2A2A]">
           <div className="flex items-center gap-4">
             <Button
               variant="outline"
@@ -259,7 +259,7 @@ export default function BlogArticlePage() {
                 <Share2 className="w-4 h-4" />
               </Button>
               {showShareMenu && (
-                <div className="absolute right-0 top-full mt-2 bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 p-2 z-10">
+                <div className="absolute right-0 top-full mt-2 bg-white dark:bg-[#111111] rounded-xl shadow-lg border border-slate-200 dark:border-[#2A2A2A] p-2 z-10">
                   <button
                     onClick={() => handleShare("twitter")}
                     className="flex items-center gap-3 w-full px-4 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700"
@@ -296,12 +296,12 @@ export default function BlogArticlePage() {
 
         {/* Article Content */}
         <article
-          className="prose prose-lg dark:prose-invert max-w-none prose-headings:font-bold prose-headings:text-slate-900 dark:prose-headings:text-white prose-p:text-slate-600 dark:prose-p:text-slate-400 prose-a:text-violet-600 prose-blockquote:border-violet-500 prose-blockquote:bg-slate-100 dark:prose-blockquote:bg-slate-800 prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:rounded-r-xl"
+          className="prose prose-lg dark:prose-invert max-w-none prose-headings:font-bold prose-headings:text-slate-900 dark:prose-headings:text-white prose-p:text-slate-600 dark:prose-p:text-slate-400 prose-a:text-violet-600 prose-blockquote:border-violet-500 prose-blockquote:bg-slate-100 dark:prose-blockquote:bg-[#111111] prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:rounded-r-xl"
           dangerouslySetInnerHTML={{ __html: article.content }}
         />
 
         {/* Tags */}
-        <div className="flex flex-wrap gap-2 mt-8 pt-8 border-t border-slate-200 dark:border-slate-700">
+        <div className="flex flex-wrap gap-2 mt-8 pt-8 border-t border-slate-200 dark:border-[#2A2A2A]">
           {article.tags.map((tag) => (
             <Badge key={tag} variant="secondary" className="cursor-pointer hover:bg-violet-100">
               #{tag}
@@ -310,7 +310,7 @@ export default function BlogArticlePage() {
         </div>
 
         {/* Author Bio */}
-        <div className="bg-white dark:bg-slate-800 rounded-xl p-6 mt-8">
+        <div className="bg-white dark:bg-[#111111] rounded-xl p-6 mt-8">
           <div className="flex items-start gap-4">
             <Image
               src={article.author.avatar}
@@ -346,7 +346,7 @@ export default function BlogArticlePage() {
           </h2>
 
           {/* Add Comment */}
-          <div className="bg-white dark:bg-slate-800 rounded-xl p-6 mb-6">
+          <div className="bg-white dark:bg-[#111111] rounded-xl p-6 mb-6">
             <Textarea
               value={newComment}
               onChange={(e) => setNewComment(e.target.value)}
@@ -363,7 +363,7 @@ export default function BlogArticlePage() {
           {/* Comment List */}
           <div className="space-y-4">
             {comments.map((comment) => (
-              <div key={comment.id} className="bg-white dark:bg-slate-800 rounded-xl p-6">
+              <div key={comment.id} className="bg-white dark:bg-[#111111] rounded-xl p-6">
                 <div className="flex items-start gap-4">
                   <Image
                     src={comment.author.avatar}
@@ -411,7 +411,7 @@ export default function BlogArticlePage() {
               <Link key={post.id} href={`/blog/${post.id}`}>
                 <motion.div
                   whileHover={{ scale: 1.02 }}
-                  className="bg-white dark:bg-slate-800 rounded-xl overflow-hidden"
+                  className="bg-white dark:bg-[#111111] rounded-xl overflow-hidden"
                 >
                   <div className="aspect-[16/10] relative">
                     <Image src={post.coverImage} alt={post.title} fill className="object-cover" />
@@ -429,7 +429,7 @@ export default function BlogArticlePage() {
         </section>
 
         {/* Navigation */}
-        <div className="flex justify-between mt-12 pt-8 border-t border-slate-200 dark:border-slate-700">
+        <div className="flex justify-between mt-12 pt-8 border-t border-slate-200 dark:border-[#2A2A2A]">
           <button className="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-violet-600">
             <ChevronLeft className="w-5 h-5" />
             <div className="text-left">

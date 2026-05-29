@@ -91,7 +91,7 @@ function StatCard({ stat }: { stat: typeof stats[0] }) {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-white dark:bg-slate-800 rounded-xl p-6"
+      className="bg-white dark:bg-[#111111] rounded-xl p-6"
     >
       <div className="flex items-start justify-between">
         <div>
@@ -104,11 +104,11 @@ function StatCard({ stat }: { stat: typeof stats[0] }) {
       </div>
       <div className="flex items-center gap-1 mt-4">
         {isUp ? (
-          <TrendingUp className="w-4 h-4 text-green-500" />
+          <TrendingUp className="w-4 h-4 text-[#8B5DFF]" />
         ) : (
           <TrendingDown className="w-4 h-4 text-red-500" />
         )}
-        <span className={`text-sm font-medium ${isUp ? "text-green-500" : "text-red-500"}`}>
+        <span className={`text-sm font-medium ${isUp ? "text-[#8B5DFF]" : "text-red-500"}`}>
           {stat.change}
         </span>
         <span className="text-sm text-slate-400 ml-1">vs last month</span>
@@ -122,12 +122,12 @@ export default function AdminDashboard() {
   const [selectedPeriod, setSelectedPeriod] = useState("7d");
 
   return (
-    <div className="min-h-screen bg-slate-100 dark:bg-slate-900 flex">
+    <div className="min-h-screen bg-slate-100 dark:bg-[#111111] flex">
       {/* Sidebar */}
-      <aside className="w-64 bg-white dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700 fixed h-full">
+      <aside className="w-64 bg-white dark:bg-[#111111] border-r border-slate-200 dark:border-[#2A2A2A] fixed h-full">
         <div className="p-6">
           <Link href="/admin" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-violet-500 to-fuchsia-500 rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-[#8B5DFF] from-violet-500 to-fuchsia-500 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold">D</span>
             </div>
             <span className="text-xl font-bold text-slate-900 dark:text-white">Admin</span>
@@ -181,7 +181,7 @@ export default function AdminDashboard() {
             <select
               value={selectedPeriod}
               onChange={(e) => setSelectedPeriod(e.target.value)}
-              className="px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+              className="px-4 py-2 rounded-lg border border-slate-200 dark:border-[#2A2A2A] bg-white dark:bg-[#111111]"
             >
               <option value="24h">Last 24 hours</option>
               <option value="7d">Last 7 days</option>
@@ -204,7 +204,7 @@ export default function AdminDashboard() {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Recent Users */}
-          <div className="bg-white dark:bg-slate-800 rounded-xl p-6">
+          <div className="bg-white dark:bg-[#111111] rounded-xl p-6">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-lg font-semibold text-slate-900 dark:text-white">
                 Recent Users
@@ -246,7 +246,7 @@ export default function AdminDashboard() {
           </div>
 
           {/* Recent Reports */}
-          <div className="bg-white dark:bg-slate-800 rounded-xl p-6">
+          <div className="bg-white dark:bg-[#111111] rounded-xl p-6">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-lg font-semibold text-slate-900 dark:text-white">
                 Recent Reports
@@ -289,7 +289,7 @@ export default function AdminDashboard() {
           </div>
 
           {/* Activity Log */}
-          <div className="bg-white dark:bg-slate-800 rounded-xl p-6">
+          <div className="bg-white dark:bg-[#111111] rounded-xl p-6">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-lg font-semibold text-slate-900 dark:text-white">
                 Activity Log
@@ -318,7 +318,7 @@ export default function AdminDashboard() {
         {/* Charts Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
           {/* User Growth Chart Placeholder */}
-          <div className="bg-white dark:bg-slate-800 rounded-xl p-6">
+          <div className="bg-white dark:bg-[#111111] rounded-xl p-6">
             <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-6">
               User Growth
             </h2>
@@ -331,7 +331,7 @@ export default function AdminDashboard() {
           </div>
 
           {/* Revenue Chart Placeholder */}
-          <div className="bg-white dark:bg-slate-800 rounded-xl p-6">
+          <div className="bg-white dark:bg-[#111111] rounded-xl p-6">
             <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-6">
               Revenue Overview
             </h2>
@@ -345,7 +345,7 @@ export default function AdminDashboard() {
         </div>
 
         {/* Quick Actions */}
-        <div className="mt-6 bg-white dark:bg-slate-800 rounded-xl p-6">
+        <div className="mt-6 bg-white dark:bg-[#111111] rounded-xl p-6">
           <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">
             Quick Actions
           </h2>

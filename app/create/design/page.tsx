@@ -45,7 +45,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useAuth } from "@/contexts/AuthContext";
+import { useAuth } from "@/contexts/auth-context";
 
 // DesignCanvas component created earlier
 import { DesignCanvas } from "@/components/specific-features/DesignCanvas";
@@ -409,7 +409,7 @@ export default function DesignEditor() {
               <Redo size={20} />
             </Button>
             
-            <Button onClick={saveDesign} className="bg-designly-purple-500 hover:bg-designly-purple-600">
+            <Button onClick={saveDesign} className="bg-[#8B5DFF] hover:bg-[#7B4DE5]">
               <Save size={18} className="mr-2" />
               Save
             </Button>
@@ -430,32 +430,32 @@ export default function DesignEditor() {
             <TabsList className="flex flex-col items-center space-y-4 bg-transparent">
               <TabsTrigger 
                 value="elements" 
-                className="data-[state=active]:bg-designly-purple-100 data-[state=active]:text-designly-purple-500 rounded-md p-2"
+                className="data-[state=active]:bg-designly-purple-100 data-[state=active]:text-[#8B5DFF] rounded-md p-2"
               >
                 <Layout size={20} />
               </TabsTrigger>
               <TabsTrigger 
                 value="text" 
-                className="data-[state=active]:bg-designly-purple-100 data-[state=active]:text-designly-purple-500 rounded-md p-2"
+                className="data-[state=active]:bg-designly-purple-100 data-[state=active]:text-[#8B5DFF] rounded-md p-2"
               >
                 <Type size={20} />
               </TabsTrigger>
               <TabsTrigger 
                 value="images" 
-                className="data-[state=active]:bg-designly-purple-100 data-[state=active]:text-designly-purple-500 rounded-md p-2"
+                className="data-[state=active]:bg-designly-purple-100 data-[state=active]:text-[#8B5DFF] rounded-md p-2"
               >
                 <ImageIcon size={20} />
               </TabsTrigger>
               <TabsTrigger 
                 value="ai" 
-                className="data-[state=active]:bg-designly-purple-100 data-[state=active]:text-designly-purple-500 rounded-md p-2"
+                className="data-[state=active]:bg-designly-purple-100 data-[state=active]:text-[#8B5DFF] rounded-md p-2"
                 onClick={() => setShowAIPanel(true)}
               >
                 <Sparkles size={20} />
               </TabsTrigger>
               <TabsTrigger 
                 value="layers" 
-                className="data-[state=active]:bg-designly-purple-100 data-[state=active]:text-designly-purple-500 rounded-md p-2"
+                className="data-[state=active]:bg-designly-purple-100 data-[state=active]:text-[#8B5DFF] rounded-md p-2"
               >
                 <Layers size={20} />
               </TabsTrigger>
@@ -521,7 +521,7 @@ export default function DesignEditor() {
               <div className="p-4">
                 <h3 className="font-medium mb-3">Add Text</h3>
                 <Button 
-                  className="w-full justify-start mb-2 bg-designly-purple-50 text-designly-purple-500 hover:bg-designly-purple-100 border border-designly-purple-200"
+                  className="w-full justify-start mb-2 bg-designly-purple-50 text-[#8B5DFF] hover:bg-designly-purple-100 border border-designly-purple-200"
                   onClick={() => addElement("text")}
                 >
                   <Type size={18} className="mr-2" />
@@ -574,7 +574,7 @@ export default function DesignEditor() {
                     <Card key={i} className="cursor-pointer hover:shadow-md transition-shadow">
                       <CardContent className="p-1">
                         <div className="bg-gray-100 aspect-square rounded-md flex items-center justify-center overflow-hidden">
-                          <div className="w-full h-full bg-gradient-to-br from-designly-purple-100 to-designly-purple-200"></div>
+                          <div className="w-full h-full bg-[#8B5DFF] "></div>
                         </div>
                       </CardContent>
                     </Card>

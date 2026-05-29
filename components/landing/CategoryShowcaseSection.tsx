@@ -42,7 +42,7 @@ const categories: Category[] = [
     projectCount: 245000,
     isTrending: true,
     growthPercent: 23,
-    color: "from-blue-500 to-cyan-500",
+    color: "to-cyan-500",
   },
   {
     id: "2",
@@ -86,7 +86,7 @@ const categories: Category[] = [
     projectCount: 156000,
     isTrending: false,
     growthPercent: 18,
-    color: "from-green-500 to-emerald-500",
+    color: "",
   },
   {
     id: "6",
@@ -97,7 +97,7 @@ const categories: Category[] = [
     projectCount: 134000,
     isTrending: true,
     growthPercent: 28,
-    color: "from-indigo-500 to-blue-500",
+    color: "from-indigo-500 ",
   },
   {
     id: "7",
@@ -108,7 +108,7 @@ const categories: Category[] = [
     projectCount: 78000,
     isTrending: true,
     growthPercent: 52,
-    color: "from-red-500 to-pink-500",
+    color: "from-red-500 ",
   },
   {
     id: "8",
@@ -152,7 +152,7 @@ const categories: Category[] = [
     projectCount: 45000,
     isTrending: false,
     growthPercent: 14,
-    color: "from-lime-500 to-green-500",
+    color: "from-lime-500 ",
   },
   {
     id: "12",
@@ -178,7 +178,7 @@ export default function CategoryShowcaseSection() {
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
 
   return (
-    <section className="py-20 bg-slate-50 dark:bg-slate-800">
+    <section className="py-20 bg-slate-50 dark:bg-[#111111]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -218,7 +218,7 @@ export default function CategoryShowcaseSection() {
 
                   {/* Gradient Overlay */}
                   <div
-                    className={`absolute inset-0 bg-gradient-to-t ${category.color} opacity-70 group-hover:opacity-80 transition-opacity`}
+                    className={`absolute inset-0 bg-[#8B5DFF] ${category.color} opacity-70 group-hover:opacity-80 transition-opacity`}
                   />
 
                   {/* Trending Badge */}

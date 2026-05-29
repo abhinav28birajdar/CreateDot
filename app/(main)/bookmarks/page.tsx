@@ -149,7 +149,7 @@ function SavedItemCard({ item, viewMode, onRemove }: {
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         exit={{ opacity: 0, x: -20 }}
-        className="group flex items-center gap-4 p-4 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 hover:shadow-lg hover:border-violet-300 dark:hover:border-violet-700 transition-all"
+        className="group flex items-center gap-4 p-4 bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#1F1F1F] hover:shadow-lg hover:border-violet-300 dark:hover:border-violet-700 transition-all"
       >
         <img
           src={item.thumbnail}
@@ -200,12 +200,12 @@ function SavedItemCard({ item, viewMode, onRemove }: {
               <MoreHorizontal className="w-4 h-4" />
             </Button>
             {showMenu && (
-              <div className="absolute right-0 top-full mt-1 w-48 bg-white dark:bg-slate-900 rounded-lg shadow-lg border border-slate-200 dark:border-slate-800 py-2 z-10">
-                <button className="w-full px-4 py-2 text-left text-sm hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center gap-2">
+              <div className="absolute right-0 top-full mt-1 w-48 bg-white dark:bg-[#111111] rounded-lg shadow-lg border border-slate-200 dark:border-[#1F1F1F] py-2 z-10">
+                <button className="w-full px-4 py-2 text-left text-sm hover:bg-slate-50 dark:hover:bg-[#111111] flex items-center gap-2">
                   <FolderPlus className="w-4 h-4" />
                   Move to folder
                 </button>
-                <button className="w-full px-4 py-2 text-left text-sm hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center gap-2">
+                <button className="w-full px-4 py-2 text-left text-sm hover:bg-slate-50 dark:hover:bg-[#111111] flex items-center gap-2">
                   <Share2 className="w-4 h-4" />
                   Share
                 </button>
@@ -229,7 +229,7 @@ function SavedItemCard({ item, viewMode, onRemove }: {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 20 }}
-      className="group bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:shadow-xl hover:border-violet-300 dark:hover:border-violet-700 transition-all"
+      className="group bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#1F1F1F] overflow-hidden hover:shadow-xl hover:border-violet-300 dark:hover:border-violet-700 transition-all"
     >
       <div className="relative aspect-[4/3] overflow-hidden">
         <img
@@ -237,13 +237,13 @@ function SavedItemCard({ item, viewMode, onRemove }: {
           alt={item.title}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+        <div className="absolute inset-0 bg-[#8B5DFF] from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
         
         {/* Actions on hover */}
         <div className="absolute top-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
           <button
             onClick={() => onRemove(item.id)}
-            className="w-8 h-8 bg-white/90 dark:bg-slate-900/90 rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-slate-900 transition-colors"
+            className="w-8 h-8 bg-white/90 dark:bg-[#111111]/90 rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-[#111111] transition-colors"
           >
             <Bookmark className="w-4 h-4 text-violet-600 fill-violet-600" />
           </button>
@@ -276,7 +276,7 @@ function SavedItemCard({ item, viewMode, onRemove }: {
           <img src={item.author.avatar} alt="" className="w-6 h-6 rounded-full" />
           <span className="text-sm text-slate-500">{item.author.name}</span>
         </div>
-        <div className="flex items-center justify-between mt-3 pt-3 border-t border-slate-100 dark:border-slate-800">
+        <div className="flex items-center justify-between mt-3 pt-3 border-t border-slate-100 dark:border-[#1F1F1F]">
           <div className="flex flex-wrap gap-1">
             {item.tags.slice(0, 2).map((tag) => (
               <Badge key={tag} variant="secondary" className="text-xs">
@@ -319,11 +319,11 @@ export default function BookmarksPage() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
       {/* Header */}
-      <section className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+      <section className="bg-white dark:bg-[#111111] border-b border-slate-200 dark:border-[#1F1F1F]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 bg-gradient-to-br from-violet-500 to-fuchsia-500 rounded-2xl flex items-center justify-center">
+              <div className="w-14 h-14 bg-[#8B5DFF] from-violet-500 to-fuchsia-500 rounded-2xl flex items-center justify-center">
                 <Bookmark className="w-7 h-7 text-white" />
               </div>
               <div>
@@ -351,7 +351,7 @@ export default function BookmarksPage() {
         <div className="flex gap-8">
           {/* Sidebar - Folders */}
           <aside className="w-64 flex-shrink-0">
-            <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-4 sticky top-24">
+            <div className="bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#1F1F1F] p-4 sticky top-24">
               <h2 className="font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
                 <Folder className="w-5 h-5 text-violet-600" />
                 Folders
@@ -364,7 +364,7 @@ export default function BookmarksPage() {
                     className={`w-full flex items-center justify-between p-3 rounded-lg transition-colors ${
                       selectedFolder === folder.id
                         ? "bg-violet-50 dark:bg-violet-900/20 text-violet-600"
-                        : "hover:bg-slate-50 dark:hover:bg-slate-800"
+                        : "hover:bg-slate-50 dark:hover:bg-[#111111]"
                     }`}
                   >
                     <div className="flex items-center gap-3">
@@ -383,7 +383,7 @@ export default function BookmarksPage() {
 
               <button
                 onClick={() => setShowNewFolderModal(true)}
-                className="w-full mt-4 p-3 rounded-lg border-2 border-dashed border-slate-200 dark:border-slate-700 text-slate-500 hover:border-violet-300 hover:text-violet-600 transition-colors flex items-center justify-center gap-2"
+                className="w-full mt-4 p-3 rounded-lg border-2 border-dashed border-slate-200 dark:border-[#2A2A2A] text-slate-500 hover:border-violet-300 hover:text-violet-600 transition-colors flex items-center justify-center gap-2"
               >
                 <Plus className="w-4 h-4" />
                 New Folder
@@ -409,7 +409,7 @@ export default function BookmarksPage() {
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
-                  className="px-3 py-2 text-sm border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-900"
+                  className="px-3 py-2 text-sm border border-slate-200 dark:border-[#2A2A2A] rounded-lg bg-white dark:bg-[#111111]"
                 >
                   <option value="recent">Recently Saved</option>
                   <option value="oldest">Oldest First</option>
@@ -417,16 +417,16 @@ export default function BookmarksPage() {
                   <option value="name">Name A-Z</option>
                 </select>
 
-                <div className="flex items-center border border-slate-200 dark:border-slate-700 rounded-lg">
+                <div className="flex items-center border border-slate-200 dark:border-[#2A2A2A] rounded-lg">
                   <button
                     onClick={() => setViewMode("grid")}
-                    className={`p-2 ${viewMode === "grid" ? "bg-slate-100 dark:bg-slate-800" : ""}`}
+                    className={`p-2 ${viewMode === "grid" ? "bg-slate-100 dark:bg-[#111111]" : ""}`}
                   >
                     <Grid3X3 className="w-4 h-4" />
                   </button>
                   <button
                     onClick={() => setViewMode("list")}
-                    className={`p-2 ${viewMode === "list" ? "bg-slate-100 dark:bg-slate-800" : ""}`}
+                    className={`p-2 ${viewMode === "list" ? "bg-slate-100 dark:bg-[#111111]" : ""}`}
                   >
                     <List className="w-4 h-4" />
                   </button>
@@ -477,7 +477,7 @@ export default function BookmarksPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
+            className="fixed inset-0 bg-[#0B0B0C]/50 flex items-center justify-center z-50"
             onClick={() => setShowNewFolderModal(false)}
           >
             <motion.div
@@ -485,7 +485,7 @@ export default function BookmarksPage() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-white dark:bg-slate-900 rounded-xl p-6 w-full max-w-md shadow-xl"
+              className="bg-white dark:bg-[#111111] rounded-xl p-6 w-full max-w-md shadow-xl"
             >
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-lg font-semibold text-slate-900 dark:text-white">
@@ -493,7 +493,7 @@ export default function BookmarksPage() {
                 </h2>
                 <button
                   onClick={() => setShowNewFolderModal(false)}
-                  className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg"
+                  className="p-2 hover:bg-slate-100 dark:hover:bg-[#111111] rounded-lg"
                 >
                   <X className="w-5 h-5" />
                 </button>

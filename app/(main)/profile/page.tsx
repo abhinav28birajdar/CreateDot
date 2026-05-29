@@ -234,7 +234,7 @@ function ProjectCard({ project, showAuthor = false }: { project: typeof mockProj
   return (
     <Link href={`/project/${project.id}`}>
       <div
-        className="group bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all"
+        className="group bg-white dark:bg-[#111111] rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
@@ -248,7 +248,7 @@ function ProjectCard({ project, showAuthor = false }: { project: typeof mockProj
 
           {"isVideo" in project && project.isVideo && (
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-12 h-12 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center">
+              <div className="w-12 h-12 bg-[#0B0B0C]/50 backdrop-blur-sm rounded-full flex items-center justify-center">
                 <Play className="w-5 h-5 text-white fill-white" />
               </div>
             </div>
@@ -260,7 +260,7 @@ function ProjectCard({ project, showAuthor = false }: { project: typeof mockProj
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"
+                className="absolute inset-0 bg-[#8B5DFF] from-black/70 via-transparent to-transparent"
               >
                 <div className="absolute bottom-4 left-4 right-4">
                   <h3 className="text-white font-medium mb-2">{project.title}</h3>
@@ -367,14 +367,14 @@ function ShareModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 z-40"
+            className="fixed inset-0 bg-[#0B0B0C]/50 z-40"
             onClick={onClose}
           />
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md bg-white dark:bg-slate-800 rounded-2xl p-6 z-50"
+            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md bg-white dark:bg-[#111111] rounded-2xl p-6 z-50"
           >
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-xl font-semibold text-slate-900 dark:text-white">
@@ -420,9 +420,9 @@ export default function ProfilePage() {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#111111]">
       {/* Cover Image */}
-      <div className="relative h-48 md:h-64 lg:h-80 bg-gradient-to-r from-violet-600 to-fuchsia-600">
+      <div className="relative h-48 md:h-64 lg:h-80 bg-[#8B5DFF] from-violet-600 to-fuchsia-600">
         {mockUser.coverImage && (
           <Image
             src={mockUser.coverImage}
@@ -446,11 +446,11 @@ export default function ProfilePage() {
       {/* Profile Header */}
       <div className="max-w-6xl mx-auto px-4">
         <div className="relative -mt-16 md:-mt-20 lg:-mt-24 mb-8">
-          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl p-6 md:p-8">
+          <div className="bg-white dark:bg-[#111111] rounded-2xl shadow-xl p-6 md:p-8">
             <div className="flex flex-col md:flex-row md:items-start gap-6">
               {/* Avatar */}
               <div className="relative -mt-20 md:-mt-24">
-                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-white dark:border-slate-800 overflow-hidden shadow-lg bg-slate-100">
+                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-white dark:border-[#1F1F1F] overflow-hidden shadow-lg bg-slate-100">
                   <Image
                     src={mockUser.avatar}
                     alt={mockUser.name}
@@ -477,7 +477,7 @@ export default function ProfilePage() {
                         {mockUser.name}
                       </h1>
                       {mockUser.isVerified && (
-                        <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
+                        <div className="w-6 h-6 bg-[#8B5DFF] rounded-full flex items-center justify-center">
                           <Check className="w-4 h-4 text-white" />
                         </div>
                       )}
@@ -574,7 +574,7 @@ export default function ProfilePage() {
                 </div>
 
                 {/* Stats */}
-                <div className="flex items-center gap-6 mt-6 pt-6 border-t border-slate-200 dark:border-slate-700">
+                <div className="flex items-center gap-6 mt-6 pt-6 border-t border-slate-200 dark:border-[#2A2A2A]">
                   <Link href={`/profile/${mockUser.username}/followers`} className="text-center hover:opacity-80">
                     <div className="text-2xl font-bold text-slate-900 dark:text-white">
                       {formatNumber(mockUser.stats.followers)}
@@ -608,7 +608,7 @@ export default function ProfilePage() {
         {/* Content Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
           <div className="flex items-center justify-between">
-            <TabsList className="bg-white dark:bg-slate-800 p-1 rounded-lg">
+            <TabsList className="bg-white dark:bg-[#111111] p-1 rounded-lg">
               <TabsTrigger value="projects" className="gap-2">
                 <Grid3X3 className="w-4 h-4" />
                 Projects
@@ -628,7 +628,7 @@ export default function ProfilePage() {
             </TabsList>
 
             {/* View Toggle */}
-            <div className="hidden md:flex items-center gap-1 bg-white dark:bg-slate-800 rounded-lg p-1">
+            <div className="hidden md:flex items-center gap-1 bg-white dark:bg-[#111111] rounded-lg p-1">
               <button
                 onClick={() => setViewMode("grid")}
                 className={`p-2 rounded ${
@@ -692,7 +692,7 @@ export default function ProfilePage() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               <div className="lg:col-span-2 space-y-6">
                 {/* Bio */}
-                <div className="bg-white dark:bg-slate-800 rounded-xl p-6">
+                <div className="bg-white dark:bg-[#111111] rounded-xl p-6">
                   <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">
                     About
                   </h2>
@@ -702,7 +702,7 @@ export default function ProfilePage() {
                 </div>
 
                 {/* Skills */}
-                <div className="bg-white dark:bg-slate-800 rounded-xl p-6">
+                <div className="bg-white dark:bg-[#111111] rounded-xl p-6">
                   <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
                     <Sparkles className="w-5 h-5 text-violet-500" />
                     Skills
@@ -717,7 +717,7 @@ export default function ProfilePage() {
                 </div>
 
                 {/* Tools */}
-                <div className="bg-white dark:bg-slate-800 rounded-xl p-6">
+                <div className="bg-white dark:bg-[#111111] rounded-xl p-6">
                   <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
                     <Palette className="w-5 h-5 text-fuchsia-500" />
                     Tools
@@ -735,7 +735,7 @@ export default function ProfilePage() {
               {/* Sidebar */}
               <div className="space-y-6">
                 {/* Social Links */}
-                <div className="bg-white dark:bg-slate-800 rounded-xl p-6">
+                <div className="bg-white dark:bg-[#111111] rounded-xl p-6">
                   <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">
                     Connect
                   </h2>
@@ -788,7 +788,7 @@ export default function ProfilePage() {
                 </div>
 
                 {/* Experience */}
-                <div className="bg-white dark:bg-slate-800 rounded-xl p-6">
+                <div className="bg-white dark:bg-[#111111] rounded-xl p-6">
                   <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">
                     Experience
                   </h2>
@@ -798,7 +798,7 @@ export default function ProfilePage() {
                 </div>
 
                 {/* Stats Card */}
-                <div className="bg-gradient-to-br from-violet-500 to-fuchsia-500 rounded-xl p-6 text-white">
+                <div className="bg-[#8B5DFF] from-violet-500 to-fuchsia-500 rounded-xl p-6 text-white">
                   <h2 className="font-semibold mb-4">Profile Stats</h2>
                   <div className="space-y-3">
                     <div className="flex justify-between">

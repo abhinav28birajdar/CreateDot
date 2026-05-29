@@ -5,7 +5,7 @@ import type React from "react"
 import { useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { useAuth } from "@/contexts/AuthContext"
+import { useAuth } from "@/contexts/auth-context"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -55,7 +55,7 @@ export default function SignUpPage() {
     <div className="w-full max-w-md">
       <div className="text-center mb-8">
         <div className="flex justify-center mb-4">
-          <div className="bg-designly-purple-500 p-3 rounded-lg">
+          <div className="bg-[#8B5DFF] p-3 rounded-lg">
             <Palette className="h-8 w-8 text-white" />
           </div>
         </div>
@@ -128,7 +128,7 @@ export default function SignUpPage() {
               />
             </div>
 
-            <Button type="submit" className="w-full bg-designly-purple-500 hover:bg-designly-purple-600" disabled={loading}>
+            <Button type="submit" className="w-full bg-[#8B5DFF] hover:bg-[#7B4DE5]" disabled={loading}>
               {loading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -143,7 +143,7 @@ export default function SignUpPage() {
           <div className="mt-6 text-center">
             <p className="text-sm text-gray-600">
               Already have an account?{" "}
-              <Link href="/sign-in" className="text-designly-purple-500 hover:text-designly-purple-600 font-medium">
+              <Link href="/sign-in" className="text-[#8B5DFF] hover:text-designly-purple-600 font-medium">
                 Sign in here
               </Link>
             </p>

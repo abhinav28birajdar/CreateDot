@@ -35,7 +35,7 @@ export default function NewsletterSection() {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-violet-600 via-purple-600 to-fuchsia-600 relative overflow-hidden">
+    <section className="py-20 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 relative overflow-hidden">
       {/* Background Decorations */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -110,7 +110,7 @@ export default function NewsletterSection() {
                 <Button
                   type="submit"
                   disabled={isSubmitting || !email}
-                  className="bg-slate-900 hover:bg-slate-800 text-white font-semibold px-8 py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 min-w-[140px]"
+                  className="bg-[#111111] hover:bg-[#111111] text-white font-semibold px-8 py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 min-w-[140px]"
                 >
                   {isSubmitting ? (
                     <motion.div
@@ -153,7 +153,7 @@ export default function NewsletterSection() {
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ type: "spring", delay: 0.2 }}
-                className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4"
+                className="w-16 h-16 bg-[#8B5DFF] rounded-full flex items-center justify-center mx-auto mb-4"
               >
                 <Check className="w-8 h-8 text-white" />
               </motion.div>

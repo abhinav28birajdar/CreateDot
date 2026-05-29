@@ -188,13 +188,13 @@ export default function AuthenticatedNavbar({ user }: AuthenticatedNavbarProps) 
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 h-16 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 z-50">
+      <nav className="fixed top-0 left-0 right-0 h-16 bg-white/80 dark:bg-[#111111]/80 backdrop-blur-xl border-b border-slate-200 dark:border-[#1F1F1F] z-50">
         <div className="max-w-7xl mx-auto px-4 h-full flex items-center justify-between gap-4">
           {/* Left Section */}
           <div className="flex items-center gap-6">
             {/* Logo */}
             <Link href="/home" className="flex items-center gap-2">
-              <div className="w-9 h-9 bg-gradient-to-br from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center">
+              <div className="w-9 h-9 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center">
                 <Sparkles className="w-5 h-5 text-white" />
               </div>
               <span className="hidden sm:block text-lg font-bold text-slate-900 dark:text-white">
@@ -211,7 +211,7 @@ export default function AuthenticatedNavbar({ user }: AuthenticatedNavbarProps) 
                   className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${
                     pathname === item.href || pathname.startsWith(item.href + "/")
                       ? "bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300"
-                      : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
+                      : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-[#111111]"
                   }`}
                 >
                   <item.icon className="w-5 h-5" />
@@ -225,7 +225,7 @@ export default function AuthenticatedNavbar({ user }: AuthenticatedNavbarProps) 
           <div className="flex-1 max-w-xl hidden md:block">
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="w-full flex items-center gap-3 px-4 py-2.5 bg-slate-100 dark:bg-slate-800 rounded-xl text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+              className="w-full flex items-center gap-3 px-4 py-2.5 bg-slate-100 dark:bg-[#111111] rounded-xl text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
             >
               <Search className="w-5 h-5" />
               <span className="flex-1 text-left">Search designs, creators, collections...</span>
@@ -240,7 +240,7 @@ export default function AuthenticatedNavbar({ user }: AuthenticatedNavbarProps) 
             {/* Mobile Search */}
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
+              className="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-[#111111]"
             >
               <Search className="w-5 h-5" />
             </button>
@@ -261,7 +261,7 @@ export default function AuthenticatedNavbar({ user }: AuthenticatedNavbarProps) 
                     initial={{ opacity: 0, y: 10, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                    className="absolute right-0 mt-2 w-64 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden"
+                    className="absolute right-0 mt-2 w-64 bg-white dark:bg-[#111111] rounded-xl shadow-xl border border-slate-200 dark:border-[#2A2A2A] overflow-hidden"
                   >
                     {createMenuItems.map((item) => (
                       <Link
@@ -289,7 +289,7 @@ export default function AuthenticatedNavbar({ user }: AuthenticatedNavbarProps) 
             {/* Messages */}
             <Link
               href="/messages"
-              className="relative p-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
+              className="relative p-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-[#111111]"
             >
               <MessageSquare className="w-5 h-5" />
               <span className="absolute top-1 right-1 w-2 h-2 bg-violet-600 rounded-full" />
@@ -299,7 +299,7 @@ export default function AuthenticatedNavbar({ user }: AuthenticatedNavbarProps) 
             <div ref={notificationsRef} className="relative">
               <button
                 onClick={() => setIsNotificationsOpen(!isNotificationsOpen)}
-                className="relative p-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
+                className="relative p-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-[#111111]"
               >
                 <Bell className="w-5 h-5" />
                 {unreadCount > 0 && (
@@ -315,9 +315,9 @@ export default function AuthenticatedNavbar({ user }: AuthenticatedNavbarProps) 
                     initial={{ opacity: 0, y: 10, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                    className="absolute right-0 mt-2 w-80 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden"
+                    className="absolute right-0 mt-2 w-80 bg-white dark:bg-[#111111] rounded-xl shadow-xl border border-slate-200 dark:border-[#2A2A2A] overflow-hidden"
                   >
-                    <div className="flex items-center justify-between px-4 py-3 border-b border-slate-200 dark:border-slate-700">
+                    <div className="flex items-center justify-between px-4 py-3 border-b border-slate-200 dark:border-[#2A2A2A]">
                       <h3 className="font-semibold text-slate-900 dark:text-white">
                         Notifications
                       </h3>
@@ -369,7 +369,7 @@ export default function AuthenticatedNavbar({ user }: AuthenticatedNavbarProps) 
 
                     <Link
                       href="/notifications"
-                      className="block px-4 py-3 text-center text-sm text-violet-600 hover:bg-slate-50 dark:hover:bg-slate-700/50 border-t border-slate-200 dark:border-slate-700"
+                      className="block px-4 py-3 text-center text-sm text-violet-600 hover:bg-slate-50 dark:hover:bg-slate-700/50 border-t border-slate-200 dark:border-[#2A2A2A]"
                     >
                       View all notifications
                     </Link>
@@ -382,7 +382,7 @@ export default function AuthenticatedNavbar({ user }: AuthenticatedNavbarProps) 
             <div ref={userMenuRef} className="relative">
               <button
                 onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-                className="flex items-center gap-2 p-1.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                className="flex items-center gap-2 p-1.5 rounded-xl hover:bg-slate-100 dark:hover:bg-[#111111] transition-colors"
               >
                 <Avatar className="w-8 h-8">
                   <AvatarImage src={currentUser.avatar} />
@@ -399,10 +399,10 @@ export default function AuthenticatedNavbar({ user }: AuthenticatedNavbarProps) 
                     initial={{ opacity: 0, y: 10, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                    className="absolute right-0 mt-2 w-64 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden"
+                    className="absolute right-0 mt-2 w-64 bg-white dark:bg-[#111111] rounded-xl shadow-xl border border-slate-200 dark:border-[#2A2A2A] overflow-hidden"
                   >
                     {/* User Info */}
-                    <div className="px-4 py-3 border-b border-slate-200 dark:border-slate-700">
+                    <div className="px-4 py-3 border-b border-slate-200 dark:border-[#2A2A2A]">
                       <div className="flex items-center gap-3">
                         <Avatar className="w-12 h-12">
                           <AvatarImage src={currentUser.avatar} />
@@ -416,7 +416,7 @@ export default function AuthenticatedNavbar({ user }: AuthenticatedNavbarProps) 
                               {currentUser.name}
                             </span>
                             {currentUser.isPro && (
-                              <span className="flex items-center gap-0.5 px-1.5 py-0.5 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs rounded">
+                              <span className="flex items-center gap-0.5 px-1.5 py-0.5 bg-[#8B5DFF] from-amber-500 to-orange-500 text-white text-xs rounded">
                                 <Crown className="w-3 h-3" />
                                 PRO
                               </span>
@@ -443,7 +443,7 @@ export default function AuthenticatedNavbar({ user }: AuthenticatedNavbarProps) 
                     </div>
 
                     {/* Dark Mode Toggle */}
-                    <div className="px-4 py-2 border-t border-slate-200 dark:border-slate-700">
+                    <div className="px-4 py-2 border-t border-slate-200 dark:border-[#2A2A2A]">
                       <button
                         onClick={toggleDarkMode}
                         className="w-full flex items-center justify-between py-2 text-slate-700 dark:text-slate-300"
@@ -468,10 +468,10 @@ export default function AuthenticatedNavbar({ user }: AuthenticatedNavbarProps) 
 
                     {/* Upgrade to Pro */}
                     {!currentUser.isPro && (
-                      <div className="px-4 py-3 border-t border-slate-200 dark:border-slate-700">
+                      <div className="px-4 py-3 border-t border-slate-200 dark:border-[#2A2A2A]">
                         <Link
                           href="/pricing"
-                          className="flex items-center justify-center gap-2 w-full py-2 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white rounded-lg font-medium"
+                          className="flex items-center justify-center gap-2 w-full py-2 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 text-white rounded-lg font-medium"
                         >
                           <Zap className="w-4 h-4" />
                           Upgrade to Pro
@@ -480,7 +480,7 @@ export default function AuthenticatedNavbar({ user }: AuthenticatedNavbarProps) 
                     )}
 
                     {/* Logout */}
-                    <div className="border-t border-slate-200 dark:border-slate-700">
+                    <div className="border-t border-slate-200 dark:border-[#2A2A2A]">
                       <button
                         onClick={() => {
                           // Handle logout
@@ -500,7 +500,7 @@ export default function AuthenticatedNavbar({ user }: AuthenticatedNavbarProps) 
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
+              className="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-[#111111]"
             >
               <Menu className="w-5 h-5" />
             </button>
@@ -516,7 +516,7 @@ export default function AuthenticatedNavbar({ user }: AuthenticatedNavbarProps) 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/50 z-40 md:hidden"
+              className="fixed inset-0 bg-[#0B0B0C]/50 z-40 md:hidden"
               onClick={() => setIsMobileMenuOpen(false)}
             />
             <motion.div
@@ -524,13 +524,13 @@ export default function AuthenticatedNavbar({ user }: AuthenticatedNavbarProps) 
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 30, stiffness: 300 }}
-              className="fixed right-0 top-0 bottom-0 w-72 bg-white dark:bg-slate-900 z-50 md:hidden"
+              className="fixed right-0 top-0 bottom-0 w-72 bg-white dark:bg-[#111111] z-50 md:hidden"
             >
-              <div className="flex items-center justify-between p-4 border-b border-slate-200 dark:border-slate-800">
+              <div className="flex items-center justify-between p-4 border-b border-slate-200 dark:border-[#1F1F1F]">
                 <span className="font-bold text-slate-900 dark:text-white">Menu</span>
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
+                  className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-[#111111]"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -545,7 +545,7 @@ export default function AuthenticatedNavbar({ user }: AuthenticatedNavbarProps) 
                     className={`flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-colors ${
                       pathname === item.href || pathname.startsWith(item.href + "/")
                         ? "bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300"
-                        : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
+                        : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-[#111111]"
                     }`}
                   >
                     <item.icon className="w-5 h-5" />
@@ -566,7 +566,7 @@ export default function AuthenticatedNavbar({ user }: AuthenticatedNavbarProps) 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/50 z-50"
+              className="fixed inset-0 bg-[#0B0B0C]/50 z-50"
               onClick={() => setIsSearchOpen(false)}
             />
             <motion.div
@@ -575,7 +575,7 @@ export default function AuthenticatedNavbar({ user }: AuthenticatedNavbarProps) 
               exit={{ opacity: 0, scale: 0.95 }}
               className="fixed top-20 left-1/2 -translate-x-1/2 w-full max-w-2xl z-50 px-4"
             >
-              <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl overflow-hidden">
+              <div className="bg-white dark:bg-[#111111] rounded-2xl shadow-2xl overflow-hidden">
                 <form onSubmit={handleSearch} className="relative">
                   <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                   <input
@@ -596,7 +596,7 @@ export default function AuthenticatedNavbar({ user }: AuthenticatedNavbarProps) 
                 </form>
 
                 {/* Quick Actions */}
-                <div className="px-4 py-3 border-t border-slate-200 dark:border-slate-700">
+                <div className="px-4 py-3 border-t border-slate-200 dark:border-[#2A2A2A]">
                   <div className="text-xs font-medium text-slate-500 uppercase mb-2">
                     Quick Actions
                   </div>
@@ -617,7 +617,7 @@ export default function AuthenticatedNavbar({ user }: AuthenticatedNavbarProps) 
 
                 {/* Search History */}
                 {searchHistory.length > 0 && (
-                  <div className="px-4 py-3 border-t border-slate-200 dark:border-slate-700">
+                  <div className="px-4 py-3 border-t border-slate-200 dark:border-[#2A2A2A]">
                     <div className="text-xs font-medium text-slate-500 uppercase mb-2">
                       Recent Searches
                     </div>
@@ -640,8 +640,8 @@ export default function AuthenticatedNavbar({ user }: AuthenticatedNavbarProps) 
                 )}
 
                 {/* Footer */}
-                <div className="px-4 py-3 bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700 text-sm text-slate-500">
-                  Press <kbd className="px-1.5 py-0.5 bg-white dark:bg-slate-800 rounded text-xs">Enter</kbd> to search, <kbd className="px-1.5 py-0.5 bg-white dark:bg-slate-800 rounded text-xs">Esc</kbd> to close
+                <div className="px-4 py-3 bg-slate-50 dark:bg-[#111111] border-t border-slate-200 dark:border-[#2A2A2A] text-sm text-slate-500">
+                  Press <kbd className="px-1.5 py-0.5 bg-white dark:bg-[#111111] rounded text-xs">Enter</kbd> to search, <kbd className="px-1.5 py-0.5 bg-white dark:bg-[#111111] rounded text-xs">Esc</kbd> to close
                 </div>
               </div>
             </motion.div>

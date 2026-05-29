@@ -295,27 +295,27 @@ const mockLeaderboard: LeaderboardEntry[] = [
 function RankBadge({ rank }: { rank: number }) {
   if (rank === 1) {
     return (
-      <div className="w-12 h-12 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full flex items-center justify-center shadow-lg shadow-amber-500/30">
+      <div className="w-12 h-12 bg-[#8B5DFF] from-amber-400 to-amber-600 rounded-full flex items-center justify-center shadow-lg shadow-amber-500/30">
         <Crown className="w-6 h-6 text-white" />
       </div>
     );
   }
   if (rank === 2) {
     return (
-      <div className="w-12 h-12 bg-gradient-to-br from-slate-300 to-slate-500 rounded-full flex items-center justify-center shadow-lg shadow-slate-500/30">
+      <div className="w-12 h-12 bg-[#8B5DFF] from-slate-300 to-slate-500 rounded-full flex items-center justify-center shadow-lg shadow-slate-500/30">
         <Medal className="w-6 h-6 text-white" />
       </div>
     );
   }
   if (rank === 3) {
     return (
-      <div className="w-12 h-12 bg-gradient-to-br from-amber-600 to-amber-800 rounded-full flex items-center justify-center shadow-lg shadow-amber-700/30">
+      <div className="w-12 h-12 bg-[#8B5DFF] from-amber-600 to-amber-800 rounded-full flex items-center justify-center shadow-lg shadow-amber-700/30">
         <Medal className="w-6 h-6 text-white" />
       </div>
     );
   }
   return (
-    <div className="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center">
+    <div className="w-12 h-12 bg-slate-100 dark:bg-[#111111] rounded-full flex items-center justify-center">
       <span className="text-lg font-bold text-slate-600 dark:text-slate-400">
         {rank}
       </span>
@@ -358,8 +358,8 @@ function LeaderboardRow({ entry, isTop3 }: { entry: LeaderboardEntry; isTop3: bo
       animate={{ opacity: 1, y: 0 }}
       className={`flex items-center gap-4 p-4 rounded-xl ${
         isTop3
-          ? "bg-gradient-to-r from-violet-50 to-fuchsia-50 dark:from-violet-900/20 dark:to-fuchsia-900/20 border border-violet-200 dark:border-violet-800"
-          : "bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800"
+          ? "bg-[#8B5DFF] from-violet-50 to-fuchsia-50 dark:from-violet-900/20 dark:to-fuchsia-900/20 border border-violet-200 dark:border-violet-800"
+          : "bg-white dark:bg-[#111111] border border-slate-200 dark:border-[#1F1F1F]"
       } hover:shadow-lg transition-all`}
     >
       {/* Rank */}
@@ -387,10 +387,10 @@ function LeaderboardRow({ entry, isTop3 }: { entry: LeaderboardEntry; isTop3: bo
               </h3>
             </Link>
             {entry.user.isVerified && (
-              <CheckCircle className="w-4 h-4 text-blue-500" />
+              <CheckCircle className="w-4 h-4 text-[#8B5DFF]" />
             )}
             {entry.user.isPro && (
-              <Badge className="bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white text-xs">
+              <Badge className="bg-[#8B5DFF] from-violet-600 to-fuchsia-600 text-white text-xs">
                 PRO
               </Badge>
             )}
@@ -433,7 +433,7 @@ function LeaderboardRow({ entry, isTop3 }: { entry: LeaderboardEntry; isTop3: bo
 
       {/* Score */}
       <div className="text-right">
-        <div className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-fuchsia-600">
+        <div className="text-xl font-bold text-transparent bg-clip-text bg-[#8B5DFF] from-violet-600 to-fuchsia-600">
           {entry.stats.score.toLocaleString()}
         </div>
         <div className="text-xs text-slate-500">Score</div>
@@ -453,7 +453,7 @@ export default function LeaderboardPage() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-violet-600 via-violet-700 to-fuchsia-700 text-white">
+      <section className="bg-[#8B5DFF] from-violet-600 via-violet-700 to-fuchsia-700 text-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center">
             <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
@@ -485,7 +485,7 @@ export default function LeaderboardPage() {
       </section>
 
       {/* Filters */}
-      <section className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-16 z-20">
+      <section className="bg-white dark:bg-[#111111] border-b border-slate-200 dark:border-[#1F1F1F] sticky top-16 z-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             {/* Time Range */}
@@ -541,7 +541,7 @@ export default function LeaderboardPage() {
                     alt={mockLeaderboard[1].user.name}
                     className="w-24 h-24 rounded-full border-4 border-slate-300 object-cover"
                   />
-                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-8 h-8 bg-gradient-to-br from-slate-300 to-slate-500 rounded-full flex items-center justify-center border-2 border-white">
+                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-8 h-8 bg-[#8B5DFF] from-slate-300 to-slate-500 rounded-full flex items-center justify-center border-2 border-white">
                     <span className="text-white font-bold text-sm">2</span>
                   </div>
                 </div>
@@ -569,7 +569,7 @@ export default function LeaderboardPage() {
                     alt={mockLeaderboard[0].user.name}
                     className="w-32 h-32 rounded-full border-4 border-amber-400 object-cover ring-4 ring-amber-200 dark:ring-amber-900"
                   />
-                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-10 h-10 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full flex items-center justify-center border-2 border-white">
+                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-10 h-10 bg-[#8B5DFF] from-amber-400 to-amber-600 rounded-full flex items-center justify-center border-2 border-white">
                     <span className="text-white font-bold">1</span>
                   </div>
                 </div>
@@ -603,7 +603,7 @@ export default function LeaderboardPage() {
                     alt={mockLeaderboard[2].user.name}
                     className="w-24 h-24 rounded-full border-4 border-amber-700 object-cover"
                   />
-                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-8 h-8 bg-gradient-to-br from-amber-600 to-amber-800 rounded-full flex items-center justify-center border-2 border-white">
+                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-8 h-8 bg-[#8B5DFF] from-amber-600 to-amber-800 rounded-full flex items-center justify-center border-2 border-white">
                     <span className="text-white font-bold text-sm">3</span>
                   </div>
                 </div>
@@ -638,7 +638,7 @@ export default function LeaderboardPage() {
       </section>
 
       {/* How Scoring Works */}
-      <section className="py-16 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
+      <section className="py-16 bg-white dark:bg-[#111111] border-t border-slate-200 dark:border-[#1F1F1F]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-8 text-center">
             How Scoring Works
@@ -652,7 +652,7 @@ export default function LeaderboardPage() {
             ].map((item) => (
               <div
                 key={item.label}
-                className="text-center p-6 bg-slate-50 dark:bg-slate-800/50 rounded-xl"
+                className="text-center p-6 bg-slate-50 dark:bg-[#111111]/50 rounded-xl"
               >
                 <item.icon className="w-8 h-8 text-violet-600 mx-auto mb-3" />
                 <h3 className="font-semibold text-slate-900 dark:text-white mb-1">

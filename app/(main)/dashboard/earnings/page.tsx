@@ -67,10 +67,10 @@ const mockPayoutMethods: PayoutMethod[] = [
 // ============ TRANSACTION ICON ============
 function TransactionIcon({ type }: { type: Transaction["type"] }) {
   const config = {
-    income: { icon: ArrowDownLeft, color: "text-green-500", bg: "bg-green-100 dark:bg-green-900/30" },
-    withdrawal: { icon: ArrowUpRight, color: "text-blue-500", bg: "bg-blue-100 dark:bg-blue-900/30" },
+    income: { icon: ArrowDownLeft, color: "text-[#8B5DFF]", bg: "bg-green-100 dark:bg-green-900/30" },
+    withdrawal: { icon: ArrowUpRight, color: "text-[#8B5DFF]", bg: "bg-blue-100 dark:bg-blue-900/30" },
     refund: { icon: ArrowUpRight, color: "text-orange-500", bg: "bg-orange-100 dark:bg-orange-900/30" },
-    fee: { icon: DollarSign, color: "text-slate-500", bg: "bg-slate-100 dark:bg-slate-800" },
+    fee: { icon: DollarSign, color: "text-slate-500", bg: "bg-slate-100 dark:bg-[#111111]" },
   };
 
   const { icon: Icon, color, bg } = config[type];
@@ -117,7 +117,7 @@ export default function EarningsPage() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
       {/* Header */}
-      <section className="bg-gradient-to-br from-violet-600 via-purple-600 to-fuchsia-600 text-white">
+      <section className="bg-[#8B5DFF] from-violet-600 to-fuchsia-600 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center gap-4">
@@ -185,12 +185,12 @@ export default function EarningsPage() {
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-8">
             {/* Earnings Chart */}
-            <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6">
+            <div className="bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#1F1F1F] p-6">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-lg font-semibold text-slate-900 dark:text-white">
                   Earnings Overview
                 </h2>
-                <div className="flex items-center gap-1 border border-slate-200 dark:border-slate-700 rounded-lg p-1">
+                <div className="flex items-center gap-1 border border-slate-200 dark:border-[#2A2A2A] rounded-lg p-1">
                   {(["week", "month", "year"] as const).map((range) => (
                     <button
                       key={range}
@@ -215,7 +215,7 @@ export default function EarningsPage() {
                       initial={{ height: 0 }}
                       animate={{ height: `${(data.earnings / maxEarning) * 100}%` }}
                       transition={{ delay: i * 0.1 }}
-                      className="w-full bg-gradient-to-t from-violet-500 to-fuchsia-500 rounded-t-lg min-h-[20px]"
+                      className="w-full bg-[#8B5DFF] from-violet-500 to-fuchsia-500 rounded-t-lg min-h-[20px]"
                     />
                     <span className="text-xs text-slate-500">{data.month}</span>
                   </div>
@@ -224,7 +224,7 @@ export default function EarningsPage() {
             </div>
 
             {/* Recent Transactions */}
-            <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6">
+            <div className="bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#1F1F1F] p-6">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-lg font-semibold text-slate-900 dark:text-white">
                   Recent Transactions
@@ -241,7 +241,7 @@ export default function EarningsPage() {
                 {mockTransactions.slice(0, 5).map((transaction) => (
                   <div
                     key={transaction.id}
-                    className="flex items-center justify-between py-3 border-b border-slate-100 dark:border-slate-800 last:border-0"
+                    className="flex items-center justify-between py-3 border-b border-slate-100 dark:border-[#1F1F1F] last:border-0"
                   >
                     <div className="flex items-center gap-4">
                       <TransactionIcon type={transaction.type} />
@@ -284,7 +284,7 @@ export default function EarningsPage() {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Quick Actions */}
-            <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6">
+            <div className="bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#1F1F1F] p-6">
               <h3 className="font-semibold text-slate-900 dark:text-white mb-4">
                 Quick Actions
               </h3>
@@ -310,7 +310,7 @@ export default function EarningsPage() {
             </div>
 
             {/* Payout Methods */}
-            <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6">
+            <div className="bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#1F1F1F] p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-slate-900 dark:text-white">
                   Payout Methods
@@ -323,14 +323,14 @@ export default function EarningsPage() {
                 {mockPayoutMethods.map((method) => (
                   <div
                     key={method.id}
-                    className="flex items-center justify-between p-3 rounded-lg bg-slate-50 dark:bg-slate-800"
+                    className="flex items-center justify-between p-3 rounded-lg bg-slate-50 dark:bg-[#111111]"
                   >
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-full bg-white dark:bg-slate-700 flex items-center justify-center">
                         {method.type === "bank" ? (
                           <Building2 className="w-5 h-5 text-slate-600" />
                         ) : method.type === "paypal" ? (
-                          <span className="text-blue-600 font-bold text-sm">PP</span>
+                          <span className="text-[#8B5DFF] font-bold text-sm">PP</span>
                         ) : (
                           <CreditCard className="w-5 h-5 text-violet-600" />
                         )}
@@ -355,7 +355,7 @@ export default function EarningsPage() {
             </div>
 
             {/* Earnings Breakdown */}
-            <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6">
+            <div className="bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#1F1F1F] p-6">
               <h3 className="font-semibold text-slate-900 dark:text-white mb-4">
                 This Month
               </h3>
@@ -372,7 +372,7 @@ export default function EarningsPage() {
                   <span className="text-slate-500">Processing Fee</span>
                   <span className="text-red-500">-$0</span>
                 </div>
-                <hr className="border-slate-200 dark:border-slate-700" />
+                <hr className="border-slate-200 dark:border-[#2A2A2A]" />
                 <div className="flex items-center justify-between">
                   <span className="font-medium text-slate-900 dark:text-white">Net Earnings</span>
                   <span className="font-bold text-green-600">$5,500</span>

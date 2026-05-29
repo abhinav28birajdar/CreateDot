@@ -1,4 +1,5 @@
-export default function EditShotPage({ params }: { params: { shotId: string } }) {
+export default async function EditShotPage({ params }: { params: Promise<{ shotId: string }> }) {
+    await params
     return (
         <div className="container py-8">
             <h1 className="text-2xl font-bold mb-6">Edit Shot</h1>

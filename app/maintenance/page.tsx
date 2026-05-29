@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 
 export default function MaintenancePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-violet-950 to-slate-900 flex items-center justify-center p-4 relative overflow-hidden">
+    <div className="min-h-screen bg-[#8B5DFF] from-slate-900 via-violet-950 to-slate-900 flex items-center justify-center p-4 relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Animated Gradient Orbs */}
@@ -56,7 +56,7 @@ export default function MaintenancePage() {
           className="mb-8"
         >
           <Link href="/" className="inline-flex items-center gap-2">
-            <div className="w-12 h-12 bg-gradient-to-br from-violet-500 to-fuchsia-500 rounded-xl flex items-center justify-center">
+            <div className="w-12 h-12 bg-[#8B5DFF] from-violet-500 to-fuchsia-500 rounded-xl flex items-center justify-center">
               <span className="text-2xl font-bold text-white">D</span>
             </div>
             <span className="text-2xl font-bold text-white">DesignDot</span>

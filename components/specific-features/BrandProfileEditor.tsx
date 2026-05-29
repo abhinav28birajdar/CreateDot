@@ -176,9 +176,9 @@ export function BrandProfileEditor({ initialBrand, onSave }: BrandProfileEditorP
 
   return (
     <Card className="w-full">
-      <CardHeader className="bg-gradient-to-r from-designly-purple-500/20 to-designly-emerald-400/20 border-b">
+      <CardHeader className="bg-[#8B5DFF] /20 to-designly-emerald-400/20 border-b">
         <CardTitle className="flex items-center gap-2">
-          <Palette className="h-5 w-5 text-designly-purple-500" />
+          <Palette className="h-5 w-5 text-[#8B5DFF]" />
           Brand Profile
         </CardTitle>
         <CardDescription>
@@ -200,7 +200,7 @@ export function BrandProfileEditor({ initialBrand, onSave }: BrandProfileEditorP
           <button
             className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
               activeTab === 'colors' 
-                ? 'border-designly-purple-500 text-designly-purple-500' 
+                ? 'border-designly-purple-500 text-[#8B5DFF]' 
                 : 'border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300'
             }`}
             onClick={() => setActiveTab('colors')}
@@ -211,7 +211,7 @@ export function BrandProfileEditor({ initialBrand, onSave }: BrandProfileEditorP
           <button
             className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
               activeTab === 'typography' 
-                ? 'border-designly-purple-500 text-designly-purple-500' 
+                ? 'border-designly-purple-500 text-[#8B5DFF]' 
                 : 'border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300'
             }`}
             onClick={() => setActiveTab('typography')}
@@ -222,7 +222,7 @@ export function BrandProfileEditor({ initialBrand, onSave }: BrandProfileEditorP
           <button
             className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
               activeTab === 'voice' 
-                ? 'border-designly-purple-500 text-designly-purple-500' 
+                ? 'border-designly-purple-500 text-[#8B5DFF]' 
                 : 'border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300'
             }`}
             onClick={() => setActiveTab('voice')}
@@ -233,7 +233,7 @@ export function BrandProfileEditor({ initialBrand, onSave }: BrandProfileEditorP
           <button
             className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
               activeTab === 'imagery' 
-                ? 'border-designly-purple-500 text-designly-purple-500' 
+                ? 'border-designly-purple-500 text-[#8B5DFF]' 
                 : 'border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300'
             }`}
             onClick={() => setActiveTab('imagery')}
@@ -319,10 +319,10 @@ export function BrandProfileEditor({ initialBrand, onSave }: BrandProfileEditorP
               </div>
             </div>
             
-            <div className="bg-designly-purple-500/5 rounded-lg p-4 border border-designly-purple-500/10">
+            <div className="bg-[#8B5DFF]/5 rounded-lg p-4 border border-designly-purple-500/10">
               <div className="flex items-start">
-                <div className="p-2 bg-designly-purple-500/10 rounded-full mr-3 mt-1">
-                  <Palette className="h-4 w-4 text-designly-purple-500" />
+                <div className="p-2 bg-[#8B5DFF]/10 rounded-full mr-3 mt-1">
+                  <Palette className="h-4 w-4 text-[#8B5DFF]" />
                 </div>
                 <div>
                   <h4 className="text-sm font-medium">AI Color Suggestions</h4>
@@ -330,16 +330,16 @@ export function BrandProfileEditor({ initialBrand, onSave }: BrandProfileEditorP
                     Based on your primary color, AI suggests complementary colors that work well together.
                   </p>
                   <div className="flex gap-2 mt-3">
-                    <button className="p-1 rounded-md border border-designly-purple-500/30 bg-designly-purple-500/5 hover:bg-designly-purple-500/10">
+                    <button className="p-1 rounded-md border border-designly-purple-500/30 bg-[#8B5DFF]/5 hover:bg-[#8B5DFF]/10">
                       <div className="w-6 h-6 rounded-sm" style={{ backgroundColor: '#B061F2' }}></div>
                     </button>
-                    <button className="p-1 rounded-md border border-designly-purple-500/30 bg-designly-purple-500/5 hover:bg-designly-purple-500/10">
+                    <button className="p-1 rounded-md border border-designly-purple-500/30 bg-[#8B5DFF]/5 hover:bg-[#8B5DFF]/10">
                       <div className="w-6 h-6 rounded-sm" style={{ backgroundColor: '#7E32C2' }}></div>
                     </button>
-                    <button className="p-1 rounded-md border border-designly-purple-500/30 bg-designly-purple-500/5 hover:bg-designly-purple-500/10">
+                    <button className="p-1 rounded-md border border-designly-purple-500/30 bg-[#8B5DFF]/5 hover:bg-[#8B5DFF]/10">
                       <div className="w-6 h-6 rounded-sm" style={{ backgroundColor: '#55D6BE' }}></div>
                     </button>
-                    <button className="p-1 rounded-md border border-designly-purple-500/30 bg-designly-purple-500/5 hover:bg-designly-purple-500/10">
+                    <button className="p-1 rounded-md border border-designly-purple-500/30 bg-[#8B5DFF]/5 hover:bg-[#8B5DFF]/10">
                       <div className="w-6 h-6 rounded-sm" style={{ backgroundColor: '#FFD166' }}></div>
                     </button>
                   </div>
@@ -379,10 +379,10 @@ export function BrandProfileEditor({ initialBrand, onSave }: BrandProfileEditorP
               </div>
             </div>
             
-            <div className="bg-designly-purple-500/5 rounded-lg p-4 border border-designly-purple-500/10">
+            <div className="bg-[#8B5DFF]/5 rounded-lg p-4 border border-designly-purple-500/10">
               <div className="flex items-start">
-                <div className="p-2 bg-designly-purple-500/10 rounded-full mr-3 mt-1">
-                  <Type className="h-4 w-4 text-designly-purple-500" />
+                <div className="p-2 bg-[#8B5DFF]/10 rounded-full mr-3 mt-1">
+                  <Type className="h-4 w-4 text-[#8B5DFF]" />
                 </div>
                 <div>
                   <h4 className="text-sm font-medium">AI Font Recommendations</h4>
@@ -390,19 +390,19 @@ export function BrandProfileEditor({ initialBrand, onSave }: BrandProfileEditorP
                     Based on your brand's personality, here are font pairings that work well together:
                   </p>
                   <div className="grid grid-cols-2 gap-2 mt-3">
-                    <button className="p-2 text-left rounded-md border border-designly-purple-500/30 bg-designly-purple-500/5 hover:bg-designly-purple-500/10">
+                    <button className="p-2 text-left rounded-md border border-designly-purple-500/30 bg-[#8B5DFF]/5 hover:bg-[#8B5DFF]/10">
                       <div className="text-xs font-medium">Modern & Clean</div>
                       <div className="text-[10px] text-gray-600">Montserrat + Roboto</div>
                     </button>
-                    <button className="p-2 text-left rounded-md border border-designly-purple-500/30 bg-designly-purple-500/5 hover:bg-designly-purple-500/10">
+                    <button className="p-2 text-left rounded-md border border-designly-purple-500/30 bg-[#8B5DFF]/5 hover:bg-[#8B5DFF]/10">
                       <div className="text-xs font-medium">Professional</div>
                       <div className="text-[10px] text-gray-600">Raleway + Open Sans</div>
                     </button>
-                    <button className="p-2 text-left rounded-md border border-designly-purple-500/30 bg-designly-purple-500/5 hover:bg-designly-purple-500/10">
+                    <button className="p-2 text-left rounded-md border border-designly-purple-500/30 bg-[#8B5DFF]/5 hover:bg-[#8B5DFF]/10">
                       <div className="text-xs font-medium">Creative</div>
                       <div className="text-[10px] text-gray-600">Playfair Display + Source Sans Pro</div>
                     </button>
-                    <button className="p-2 text-left rounded-md border border-designly-purple-500/30 bg-designly-purple-500/5 hover:bg-designly-purple-500/10">
+                    <button className="p-2 text-left rounded-md border border-designly-purple-500/30 bg-[#8B5DFF]/5 hover:bg-[#8B5DFF]/10">
                       <div className="text-xs font-medium">Tech & Modern</div>
                       <div className="text-[10px] text-gray-600">Plus Jakarta Sans + Inter</div>
                     </button>
@@ -547,10 +547,10 @@ export function BrandProfileEditor({ initialBrand, onSave }: BrandProfileEditorP
               </div>
             </div>
             
-            <div className="bg-designly-purple-500/5 rounded-lg p-4 border border-designly-purple-500/10">
+            <div className="bg-[#8B5DFF]/5 rounded-lg p-4 border border-designly-purple-500/10">
               <div className="flex items-start">
-                <div className="p-2 bg-designly-purple-500/10 rounded-full mr-3 mt-1">
-                  <ImageIcon className="h-4 w-4 text-designly-purple-500" />
+                <div className="p-2 bg-[#8B5DFF]/10 rounded-full mr-3 mt-1">
+                  <ImageIcon className="h-4 w-4 text-[#8B5DFF]" />
                 </div>
                 <div>
                   <h4 className="text-sm font-medium">AI Style Analysis</h4>
@@ -582,7 +582,7 @@ export function BrandProfileEditor({ initialBrand, onSave }: BrandProfileEditorP
         <Button variant="outline">Cancel</Button>
         <Button 
           onClick={handleSave}
-          className="bg-designly-purple-500 hover:bg-designly-purple-600 text-white"
+          className="bg-[#8B5DFF] hover:bg-[#7B4DE5] text-white"
         >
           <Save className="h-4 w-4 mr-1" />
           Save Brand Profile

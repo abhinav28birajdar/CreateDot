@@ -151,8 +151,8 @@ const mockProjects: WorkspaceProject[] = [
 // ============ STATUS BADGE ============
 function StatusBadge({ status }: { status: ProjectStatus }) {
   const config: Record<ProjectStatus, { label: string; icon: React.ReactNode; className: string }> = {
-    planning: { label: "Planning", icon: <Circle className="w-3 h-3" />, className: "bg-slate-100 text-slate-600 dark:bg-slate-800" },
-    "in-progress": { label: "In Progress", icon: <Play className="w-3 h-3" />, className: "bg-blue-100 text-blue-600 dark:bg-blue-900/30" },
+    planning: { label: "Planning", icon: <Circle className="w-3 h-3" />, className: "bg-slate-100 text-slate-600 dark:bg-[#111111]" },
+    "in-progress": { label: "In Progress", icon: <Play className="w-3 h-3" />, className: "bg-blue-100 text-[#8B5DFF] dark:bg-blue-900/30" },
     review: { label: "In Review", icon: <Clock className="w-3 h-3" />, className: "bg-amber-100 text-amber-600 dark:bg-amber-900/30" },
     completed: { label: "Completed", icon: <Check className="w-3 h-3" />, className: "bg-green-100 text-green-600 dark:bg-green-900/30" },
     "on-hold": { label: "On Hold", icon: <Pause className="w-3 h-3" />, className: "bg-orange-100 text-orange-600 dark:bg-orange-900/30" },
@@ -181,7 +181,7 @@ function ProjectCard({ project, view }: { project: WorkspaceProject; view: "grid
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="flex items-center gap-4 p-4 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 hover:shadow-lg hover:border-violet-300 dark:hover:border-violet-700 transition-all"
+        className="flex items-center gap-4 p-4 bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#1F1F1F] hover:shadow-lg hover:border-violet-300 dark:hover:border-violet-700 transition-all"
       >
         <img
           src={project.thumbnail}
@@ -208,9 +208,9 @@ function ProjectCard({ project, view }: { project: WorkspaceProject; view: "grid
             <span className="text-slate-500">Progress</span>
             <span className="font-medium">{project.progress}%</span>
           </div>
-          <div className="h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+          <div className="h-2 bg-slate-100 dark:bg-[#111111] rounded-full overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full"
+              className="h-full bg-[#8B5DFF] from-violet-500 to-fuchsia-500 rounded-full"
               style={{ width: `${project.progress}%` }}
             />
           </div>
@@ -227,7 +227,7 @@ function ProjectCard({ project, view }: { project: WorkspaceProject; view: "grid
             />
           ))}
           {project.team.length > 3 && (
-            <div className="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 border-2 border-white dark:border-slate-900 flex items-center justify-center text-xs font-medium">
+            <div className="w-8 h-8 rounded-full bg-slate-100 dark:bg-[#111111] border-2 border-white dark:border-slate-900 flex items-center justify-center text-xs font-medium">
               +{project.team.length - 3}
             </div>
           )}
@@ -237,7 +237,7 @@ function ProjectCard({ project, view }: { project: WorkspaceProject; view: "grid
           {isOverdue ? (
             <span className="text-red-500">Overdue</span>
           ) : project.status === "completed" ? (
-            <span className="text-green-500">Done</span>
+            <span className="text-[#8B5DFF]">Done</span>
           ) : (
             `${daysLeft} days left`
           )}
@@ -259,7 +259,7 @@ function ProjectCard({ project, view }: { project: WorkspaceProject; view: "grid
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:shadow-xl hover:border-violet-300 dark:hover:border-violet-700 transition-all"
+      className="bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#1F1F1F] overflow-hidden hover:shadow-xl hover:border-violet-300 dark:hover:border-violet-700 transition-all"
     >
       <div className="relative">
         <img
@@ -270,7 +270,7 @@ function ProjectCard({ project, view }: { project: WorkspaceProject; view: "grid
         <div className="absolute top-3 right-3 flex gap-2">
           <button
             onClick={() => setIsStarred(!isStarred)}
-            className="w-8 h-8 bg-white/90 dark:bg-slate-900/90 rounded-full flex items-center justify-center"
+            className="w-8 h-8 bg-white/90 dark:bg-[#111111]/90 rounded-full flex items-center justify-center"
           >
             <Star className={`w-4 h-4 ${isStarred ? "text-amber-500 fill-amber-500" : "text-slate-400"}`} />
           </button>
@@ -293,17 +293,17 @@ function ProjectCard({ project, view }: { project: WorkspaceProject; view: "grid
           <div className="relative">
             <button
               onClick={() => setShowMenu(!showMenu)}
-              className="p-1 hover:bg-slate-100 dark:hover:bg-slate-800 rounded"
+              className="p-1 hover:bg-slate-100 dark:hover:bg-[#111111] rounded"
             >
               <MoreHorizontal className="w-4 h-4" />
             </button>
             {showMenu && (
-              <div className="absolute right-0 top-full mt-1 w-48 bg-white dark:bg-slate-900 rounded-lg shadow-lg border border-slate-200 dark:border-slate-800 py-2 z-10">
-                <button className="w-full px-4 py-2 text-left text-sm hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center gap-2">
+              <div className="absolute right-0 top-full mt-1 w-48 bg-white dark:bg-[#111111] rounded-lg shadow-lg border border-slate-200 dark:border-[#1F1F1F] py-2 z-10">
+                <button className="w-full px-4 py-2 text-left text-sm hover:bg-slate-50 dark:hover:bg-[#111111] flex items-center gap-2">
                   <Settings className="w-4 h-4" />
                   Project Settings
                 </button>
-                <button className="w-full px-4 py-2 text-left text-sm hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center gap-2">
+                <button className="w-full px-4 py-2 text-left text-sm hover:bg-slate-50 dark:hover:bg-[#111111] flex items-center gap-2">
                   <Archive className="w-4 h-4" />
                   Archive
                 </button>
@@ -322,9 +322,9 @@ function ProjectCard({ project, view }: { project: WorkspaceProject; view: "grid
             <span className="text-slate-500">Progress</span>
             <span className="font-medium text-slate-900 dark:text-white">{project.progress}%</span>
           </div>
-          <div className="h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+          <div className="h-2 bg-slate-100 dark:bg-[#111111] rounded-full overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full transition-all"
+              className="h-full bg-[#8B5DFF] from-violet-500 to-fuchsia-500 rounded-full transition-all"
               style={{ width: `${project.progress}%` }}
             />
           </div>
@@ -347,7 +347,7 @@ function ProjectCard({ project, view }: { project: WorkspaceProject; view: "grid
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
+        <div className="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-[#1F1F1F]">
           <div className="flex items-center gap-2">
             <img
               src={project.client.avatar}
@@ -390,11 +390,11 @@ export default function WorkspacePage() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
       {/* Header */}
-      <section className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+      <section className="bg-white dark:bg-[#111111] border-b border-slate-200 dark:border-[#1F1F1F]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 bg-gradient-to-br from-violet-500 to-fuchsia-500 rounded-2xl flex items-center justify-center">
+              <div className="w-14 h-14 bg-[#8B5DFF] from-violet-500 to-fuchsia-500 rounded-2xl flex items-center justify-center">
                 <FolderKanban className="w-7 h-7 text-white" />
               </div>
               <div>
@@ -416,7 +416,7 @@ export default function WorkspacePage() {
           {/* Quick Stats */}
           <div className="flex items-center gap-6 mt-6">
             <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-blue-500" />
+              <div className="w-3 h-3 rounded-full bg-[#8B5DFF]" />
               <span className="text-sm text-slate-600 dark:text-slate-400">
                 <span className="font-semibold text-slate-900 dark:text-white">{activeProjects}</span> In Progress
               </span>
@@ -428,7 +428,7 @@ export default function WorkspacePage() {
               </span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-green-500" />
+              <div className="w-3 h-3 rounded-full bg-[#8B5DFF]" />
               <span className="text-sm text-slate-600 dark:text-slate-400">
                 <span className="font-semibold text-slate-900 dark:text-white">
                   {mockProjects.filter((p) => p.status === "completed").length}
@@ -468,16 +468,16 @@ export default function WorkspacePage() {
               />
             </div>
 
-            <div className="flex items-center border border-slate-200 dark:border-slate-700 rounded-lg">
+            <div className="flex items-center border border-slate-200 dark:border-[#2A2A2A] rounded-lg">
               <button
                 onClick={() => setView("grid")}
-                className={`p-2 ${view === "grid" ? "bg-slate-100 dark:bg-slate-800" : ""}`}
+                className={`p-2 ${view === "grid" ? "bg-slate-100 dark:bg-[#111111]" : ""}`}
               >
                 <Grid3X3 className="w-4 h-4" />
               </button>
               <button
                 onClick={() => setView("list")}
-                className={`p-2 ${view === "list" ? "bg-slate-100 dark:bg-slate-800" : ""}`}
+                className={`p-2 ${view === "list" ? "bg-slate-100 dark:bg-[#111111]" : ""}`}
               >
                 <List className="w-4 h-4" />
               </button>

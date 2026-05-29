@@ -196,7 +196,7 @@ export default function ShareWorkPage() {
               <div
                 className={`border-2 border-dashed rounded-lg p-8 text-center transition-colors ${
                   dragActive
-                    ? 'border-blue-500 bg-blue-50'
+                    ? 'border-[#8B5DFF] bg-blue-50'
                     : 'border-gray-300 hover:border-gray-400'
                 }`}
                 onDragEnter={handleDrag}
@@ -297,7 +297,7 @@ export default function ShareWorkPage() {
                   value={formData.description}
                   onChange={handleInputChange}
                   placeholder="Describe your work, process, tools used..."
-                  className="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full p-3 border border-gray-300 rounded-md focus:ring-[#8B5DFF] focus:border-[#8B5DFF]"
                   rows={4}
                 />
               </div>
@@ -310,7 +310,7 @@ export default function ShareWorkPage() {
                   name="category"
                   value={formData.category}
                   onChange={handleInputChange}
-                  className="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full p-3 border border-gray-300 rounded-md focus:ring-[#8B5DFF] focus:border-[#8B5DFF]"
                 >
                   <option value="">Select a category</option>
                   {categories.map(category => (
@@ -392,7 +392,7 @@ export default function ShareWorkPage() {
                   name="visibility"
                   value={formData.visibility}
                   onChange={handleInputChange}
-                  className="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full p-3 border border-gray-300 rounded-md focus:ring-[#8B5DFF] focus:border-[#8B5DFF]"
                 >
                   <option value="public">
                     🌐 Public - Anyone can see this
@@ -421,7 +421,7 @@ export default function ShareWorkPage() {
                     name="allowComments"
                     checked={formData.allowComments}
                     onChange={handleInputChange}
-                    className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                    className="rounded border-gray-300 text-[#8B5DFF] focus:ring-[#8B5DFF]"
                   />
                 </div>
 
@@ -438,7 +438,7 @@ export default function ShareWorkPage() {
                     name="allowDownload"
                     checked={formData.allowDownload}
                     onChange={handleInputChange}
-                    className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                    className="rounded border-gray-300 text-[#8B5DFF] focus:ring-[#8B5DFF]"
                   />
                 </div>
               </div>

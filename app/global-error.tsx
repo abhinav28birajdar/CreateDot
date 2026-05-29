@@ -16,7 +16,7 @@ export default function GlobalError({
   return (
     <html>
       <body>
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 flex items-center justify-center p-4">
+        <div className="min-h-screen bg-[#8B5DFF] from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 flex items-center justify-center p-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -51,7 +51,7 @@ export default function GlobalError({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="text-7xl md:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500 mb-4"
+              className="text-7xl md:text-8xl font-bold text-transparent bg-clip-text bg-[#8B5DFF] from-red-500 to-orange-500 mb-4"
             >
               500
             </motion.h1>
@@ -82,7 +82,7 @@ export default function GlobalError({
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
-                className="bg-slate-100 dark:bg-slate-800 rounded-lg p-4 mb-8 text-left overflow-auto max-h-32"
+                className="bg-slate-100 dark:bg-[#111111] rounded-lg p-4 mb-8 text-left overflow-auto max-h-32"
               >
                 <p className="text-xs font-mono text-slate-600 dark:text-slate-400">
                   {error.message}
@@ -105,7 +105,7 @@ export default function GlobalError({
               <Button
                 onClick={reset}
                 size="lg"
-                className="bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600"
+                className="bg-[#8B5DFF] from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600"
               >
                 <RefreshCw className="w-4 h-4 mr-2" />
                 Try Again

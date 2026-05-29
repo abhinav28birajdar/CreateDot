@@ -254,7 +254,7 @@ function ResourceCard({ resource }: { resource: Resource }) {
       animate={{ opacity: 1, y: 0 }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="group bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:shadow-xl hover:border-violet-300 dark:hover:border-violet-700 transition-all"
+      className="group bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#1F1F1F] overflow-hidden hover:shadow-xl hover:border-violet-300 dark:hover:border-violet-700 transition-all"
     >
       {/* Thumbnail */}
       <div className="relative aspect-[16/10] overflow-hidden">
@@ -263,7 +263,7 @@ function ResourceCard({ resource }: { resource: Resource }) {
           alt={resource.title}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
-        <div className={`absolute inset-0 bg-black/40 flex items-center justify-center transition-opacity ${isHovered ? "opacity-100" : "opacity-0"}`}>
+        <div className={`absolute inset-0 bg-[#0B0B0C]/40 flex items-center justify-center transition-opacity ${isHovered ? "opacity-100" : "opacity-0"}`}>
           <Button className="bg-white text-slate-900 hover:bg-slate-100">
             <Download className="w-4 h-4 mr-2" />
             Download
@@ -273,10 +273,10 @@ function ResourceCard({ resource }: { resource: Resource }) {
         {/* Badges */}
         <div className="absolute top-3 left-3 flex gap-2">
           {resource.isFree && (
-            <Badge className="bg-green-500 text-white">Free</Badge>
+            <Badge className="bg-[#8B5DFF] text-white">Free</Badge>
           )}
           {resource.isPremium && (
-            <Badge className="bg-gradient-to-r from-amber-500 to-orange-500 text-white">
+            <Badge className="bg-[#8B5DFF] from-amber-500 to-orange-500 text-white">
               Premium
             </Badge>
           )}
@@ -284,7 +284,7 @@ function ResourceCard({ resource }: { resource: Resource }) {
 
         {/* Type Badge */}
         <div className="absolute top-3 right-3">
-          <Badge className="bg-white/90 dark:bg-slate-900/90">
+          <Badge className="bg-white/90 dark:bg-[#111111]/90">
             <TypeIcon className="w-3 h-3 mr-1" />
             {resource.type}
           </Badge>
@@ -325,7 +325,7 @@ function ResourceCard({ resource }: { resource: Resource }) {
           {resource.format.map((fmt) => (
             <span
               key={fmt}
-              className="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-xs text-slate-600 dark:text-slate-400 rounded"
+              className="px-2 py-0.5 bg-slate-100 dark:bg-[#111111] text-xs text-slate-600 dark:text-slate-400 rounded"
             >
               {fmt}
             </span>
@@ -333,7 +333,7 @@ function ResourceCard({ resource }: { resource: Resource }) {
         </div>
 
         {/* Stats */}
-        <div className="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
+        <div className="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-[#1F1F1F]">
           <div className="flex items-center gap-4 text-sm text-slate-500">
             <span className="flex items-center gap-1">
               <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
@@ -376,7 +376,7 @@ export default function ResourcesPage() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-violet-600 via-violet-700 to-fuchsia-700 text-white">
+      <section className="bg-[#8B5DFF] from-violet-600 via-violet-700 to-fuchsia-700 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="flex items-center gap-4 mb-6">
             <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center">
@@ -422,7 +422,7 @@ export default function ResourcesPage() {
       </section>
 
       {/* Category Pills */}
-      <section className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-16 z-20">
+      <section className="bg-white dark:bg-[#111111] border-b border-slate-200 dark:border-[#1F1F1F] sticky top-16 z-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
@@ -456,16 +456,16 @@ export default function ResourcesPage() {
                 <span className="text-slate-600 dark:text-slate-400">Free only</span>
               </label>
 
-              <div className="flex items-center border border-slate-200 dark:border-slate-700 rounded-lg">
+              <div className="flex items-center border border-slate-200 dark:border-[#2A2A2A] rounded-lg">
                 <button
                   onClick={() => setViewMode("grid")}
-                  className={`p-2 ${viewMode === "grid" ? "bg-slate-100 dark:bg-slate-800" : ""}`}
+                  className={`p-2 ${viewMode === "grid" ? "bg-slate-100 dark:bg-[#111111]" : ""}`}
                 >
                   <Grid3X3 className="w-4 h-4" />
                 </button>
                 <button
                   onClick={() => setViewMode("list")}
-                  className={`p-2 ${viewMode === "list" ? "bg-slate-100 dark:bg-slate-800" : ""}`}
+                  className={`p-2 ${viewMode === "list" ? "bg-slate-100 dark:bg-[#111111]" : ""}`}
                 >
                   <List className="w-4 h-4" />
                 </button>
@@ -522,7 +522,7 @@ export default function ResourcesPage() {
       </section>
 
       {/* Submit Resource CTA */}
-      <section className="py-16 bg-gradient-to-br from-violet-600 to-fuchsia-600 text-white">
+      <section className="py-16 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">Share Your Resources</h2>
           <p className="text-xl text-violet-100 mb-8">

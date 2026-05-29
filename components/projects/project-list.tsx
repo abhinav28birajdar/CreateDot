@@ -1,10 +1,12 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import Link from "next/link"
 import { createClient } from "@/lib/supabase/client"
 import { Database } from "@/types/database"
 import { Loader2, Folder } from "lucide-react"
 import { ProjectCard } from "./project-card"
+import { Button } from "@/components/ui/button"
 
 type Project = Database['public']['Tables']['projects']['Row']
 

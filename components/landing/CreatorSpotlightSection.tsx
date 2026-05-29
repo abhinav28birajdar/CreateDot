@@ -159,7 +159,7 @@ export default function CreatorSpotlightSection() {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-violet-50 dark:from-slate-800 dark:to-slate-900 overflow-hidden">
+    <section className="py-20 bg-[#8B5DFF] from-white to-violet-50 dark:from-slate-800 dark:to-slate-900 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -185,13 +185,13 @@ export default function CreatorSpotlightSection() {
           {/* Navigation Arrows */}
           <button
             onClick={goToPrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-3 bg-white dark:bg-slate-800 rounded-full shadow-xl hover:scale-110 transition-transform -translate-x-1/2 lg:translate-x-0"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-3 bg-white dark:bg-[#111111] rounded-full shadow-xl hover:scale-110 transition-transform -translate-x-1/2 lg:translate-x-0"
           >
             <ChevronLeft className="w-6 h-6 text-slate-600 dark:text-slate-400" />
           </button>
           <button
             onClick={goToNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-3 bg-white dark:bg-slate-800 rounded-full shadow-xl hover:scale-110 transition-transform translate-x-1/2 lg:translate-x-0"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-3 bg-white dark:bg-[#111111] rounded-full shadow-xl hover:scale-110 transition-transform translate-x-1/2 lg:translate-x-0"
           >
             <ChevronRight className="w-6 h-6 text-slate-600 dark:text-slate-400" />
           </button>
@@ -205,7 +205,7 @@ export default function CreatorSpotlightSection() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -100 }}
                 transition={{ duration: 0.5 }}
-                className="bg-white dark:bg-slate-800 rounded-3xl shadow-2xl overflow-hidden"
+                className="bg-white dark:bg-[#111111] rounded-3xl shadow-2xl overflow-hidden"
               >
                 <div className="grid lg:grid-cols-2 gap-0">
                   {/* Creator Info */}
@@ -224,12 +224,12 @@ export default function CreatorSpotlightSection() {
                           className="w-24 h-24 lg:w-32 lg:h-32 rounded-2xl object-cover ring-4 ring-violet-500/20"
                         />
                         {featuredCreators[currentIndex].isAvailable && (
-                          <span className="absolute -bottom-2 -right-2 px-3 py-1 bg-green-500 text-white text-xs font-semibold rounded-full shadow-lg">
+                          <span className="absolute -bottom-2 -right-2 px-3 py-1 bg-[#8B5DFF] text-white text-xs font-semibold rounded-full shadow-lg">
                             Available
                           </span>
                         )}
                         {featuredCreators[currentIndex].isPro && (
-                          <span className="absolute -top-2 -right-2 px-2 py-1 bg-gradient-to-r from-amber-400 to-orange-500 text-white text-xs font-bold rounded-full shadow-lg">
+                          <span className="absolute -top-2 -right-2 px-2 py-1 bg-[#8B5DFF] from-amber-400 to-orange-500 text-white text-xs font-bold rounded-full shadow-lg">
                             PRO
                           </span>
                         )}
@@ -241,7 +241,7 @@ export default function CreatorSpotlightSection() {
                             {featuredCreators[currentIndex].name}
                           </h3>
                           {featuredCreators[currentIndex].isVerified && (
-                            <svg className="w-6 h-6 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-6 h-6 text-[#8B5DFF]" fill="currentColor" viewBox="0 0 24 24">
                               <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                             </svg>
                           )}
@@ -269,7 +269,7 @@ export default function CreatorSpotlightSection() {
                           </strong>{" "}
                           followers
                         </span>
-                        <span className="flex items-center gap-1 text-green-500 text-sm">
+                        <span className="flex items-center gap-1 text-[#8B5DFF] text-sm">
                           <TrendingUp className="w-4 h-4" />
                           +{featuredCreators[currentIndex].followerGrowth}%
                         </span>
@@ -285,7 +285,7 @@ export default function CreatorSpotlightSection() {
                       {featuredCreators[currentIndex].isAvailable && (
                         <Button
                           variant="outline"
-                          className="border-2 border-green-500 text-green-600 hover:bg-green-50 dark:hover:bg-green-900/20 px-6 py-3 rounded-xl font-semibold"
+                          className="border-2 border-[#8B5DFF] text-green-600 hover:bg-green-50 dark:hover:bg-green-900/20 px-6 py-3 rounded-xl font-semibold"
                         >
                           <Briefcase className="w-5 h-5 mr-2" />
                           Hire Me
@@ -303,7 +303,7 @@ export default function CreatorSpotlightSection() {
                   </div>
 
                   {/* Top Projects Grid */}
-                  <div className="relative p-4 lg:p-8 bg-gradient-to-br from-violet-100 to-fuchsia-100 dark:from-violet-900/30 dark:to-fuchsia-900/30">
+                  <div className="relative p-4 lg:p-8 bg-[#8B5DFF] from-violet-100 to-fuchsia-100 dark:from-violet-900/30 dark:to-fuchsia-900/30">
                     <h4 className="text-sm font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider mb-4">
                       Top Projects
                     </h4>

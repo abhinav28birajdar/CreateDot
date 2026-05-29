@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useAuth } from "@/contexts/AuthContext"
+import { useAuth } from "@/contexts/auth-context"
 import { useRouter } from "next/navigation"
 import { useEffect } from "react"
 import { Loader2 } from "lucide-react"
@@ -29,7 +29,7 @@ export function AuthGuard({ children, requireAuth = true }: AuthGuardProps) {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-designly-purple-500" />
+        <Loader2 className="h-8 w-8 animate-spin text-[#8B5DFF]" />
       </div>
     )
   }

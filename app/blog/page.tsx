@@ -133,7 +133,7 @@ function BlogCard({ post }: { post: typeof posts[0] }) {
     <motion.article
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-white dark:bg-slate-800 rounded-xl overflow-hidden hover:shadow-lg transition-shadow group"
+      className="bg-white dark:bg-[#111111] rounded-xl overflow-hidden hover:shadow-lg transition-shadow group"
     >
       <Link href={`/blog/${post.id}`}>
         <div className="aspect-[16/10] relative overflow-hidden">
@@ -152,7 +152,7 @@ function BlogCard({ post }: { post: typeof posts[0] }) {
             {post.title}
           </h3>
           <p className="text-sm text-slate-500 mt-2 line-clamp-2">{post.excerpt}</p>
-          <div className="flex items-center justify-between mt-4 pt-4 border-t border-slate-200 dark:border-slate-700">
+          <div className="flex items-center justify-between mt-4 pt-4 border-t border-slate-200 dark:border-[#2A2A2A]">
             <div className="flex items-center gap-2">
               <Image
                 src={post.author.avatar}
@@ -186,9 +186,9 @@ export default function BlogPage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#111111]">
       {/* Header */}
-      <section className="bg-gradient-to-br from-violet-600 via-fuchsia-600 to-pink-600 py-16">
+      <section className="bg-[#8B5DFF] from-violet-600 via-fuchsia-600 py-16">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -239,7 +239,7 @@ export default function BlogPage() {
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                <div className="absolute inset-0 bg-[#8B5DFF] from-black/80 via-black/40 to-transparent" />
               </div>
               <div className="absolute bottom-0 left-0 right-0 p-8">
                 <Badge className="bg-violet-500 text-white mb-4">
@@ -294,7 +294,7 @@ export default function BlogPage() {
                   className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
                     selectedCategory === cat.name
                       ? "bg-violet-500 text-white"
-                      : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100"
+                      : "bg-white dark:bg-[#111111] text-slate-600 dark:text-slate-400 hover:bg-slate-100"
                   }`}
                 >
                   {cat.name}
@@ -321,7 +321,7 @@ export default function BlogPage() {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Newsletter */}
-            <div className="bg-gradient-to-br from-violet-500 to-fuchsia-500 rounded-xl p-6 text-white">
+            <div className="bg-[#8B5DFF] from-violet-500 to-fuchsia-500 rounded-xl p-6 text-white">
               <h3 className="font-semibold text-lg mb-2">Design Newsletter</h3>
               <p className="text-white/80 text-sm mb-4">
                 Get weekly design tips and inspiration delivered to your inbox.
@@ -336,7 +336,7 @@ export default function BlogPage() {
             </div>
 
             {/* Trending Topics */}
-            <div className="bg-white dark:bg-slate-800 rounded-xl p-6">
+            <div className="bg-white dark:bg-[#111111] rounded-xl p-6">
               <h3 className="font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
                 <TrendingUp className="w-5 h-5 text-violet-500" />
                 Trending Topics
@@ -351,7 +351,7 @@ export default function BlogPage() {
             </div>
 
             {/* Popular Posts */}
-            <div className="bg-white dark:bg-slate-800 rounded-xl p-6">
+            <div className="bg-white dark:bg-[#111111] rounded-xl p-6">
               <h3 className="font-semibold text-slate-900 dark:text-white mb-4">
                 Popular This Week
               </h3>
@@ -375,7 +375,7 @@ export default function BlogPage() {
             </div>
 
             {/* Categories */}
-            <div className="bg-white dark:bg-slate-800 rounded-xl p-6">
+            <div className="bg-white dark:bg-[#111111] rounded-xl p-6">
               <h3 className="font-semibold text-slate-900 dark:text-white mb-4">
                 Categories
               </h3>

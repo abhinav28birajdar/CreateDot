@@ -92,9 +92,9 @@ export function AIImageGenerator({ onImageGenerated }: AIGeneratorProps) {
 
   return (
     <Card className="w-full overflow-hidden">
-      <CardHeader className="bg-designly-purple-500/5 border-b border-designly-purple-500/10">
+      <CardHeader className="bg-[#8B5DFF]/5 border-b border-designly-purple-500/10">
         <CardTitle className="flex items-center gap-2">
-          <Sparkles className="h-5 w-5 text-designly-purple-500" />
+          <Sparkles className="h-5 w-5 text-[#8B5DFF]" />
           AI Image Generator
         </CardTitle>
         <CardDescription>
@@ -128,7 +128,7 @@ export function AIImageGenerator({ onImageGenerated }: AIGeneratorProps) {
             <div className="text-sm text-gray-500">Generating your image...</div>
             <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
               <div
-                className="h-full bg-designly-purple-500 transition-all duration-300"
+                className="h-full bg-[#8B5DFF] transition-all duration-300"
                 style={{ width: `${progress}%` }}
               />
             </div>
@@ -169,7 +169,7 @@ export function AIImageGenerator({ onImageGenerated }: AIGeneratorProps) {
         <Button
           onClick={generateImage}
           disabled={isGenerating || !prompt}
-          className="bg-designly-purple-500 hover:bg-designly-purple-600 text-white"
+          className="bg-[#8B5DFF] hover:bg-[#7B4DE5] text-white"
         >
           {isGenerating ? (
             <>

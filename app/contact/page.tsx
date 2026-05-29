@@ -107,7 +107,7 @@ export default function ContactPage() {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex items-center justify-center p-4">
+      <div className="min-h-screen bg-slate-50 dark:bg-[#111111] flex items-center justify-center p-4">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -142,12 +142,12 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#111111]">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 h-16 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 z-50">
+      <header className="fixed top-0 left-0 right-0 h-16 bg-white/80 dark:bg-[#111111]/80 backdrop-blur-xl border-b border-slate-200 dark:border-[#1F1F1F] z-50">
         <div className="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-9 h-9 bg-gradient-to-br from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center">
+            <div className="w-9 h-9 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center">
               <Sparkles className="w-5 h-5 text-white" />
             </div>
             <span className="font-bold text-lg text-slate-900 dark:text-white">DesignDot</span>
@@ -192,7 +192,7 @@ export default function ContactPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="block bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6 hover:shadow-lg hover:border-violet-300 dark:hover:border-violet-700 transition-all group"
+                className="block bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#2A2A2A] p-6 hover:shadow-lg hover:border-violet-300 dark:hover:border-violet-700 transition-all group"
               >
                 <div className="w-12 h-12 bg-violet-100 dark:bg-violet-900/30 rounded-xl flex items-center justify-center mb-4 group-hover:bg-violet-200 dark:group-hover:bg-violet-900/50 transition-colors">
                   <method.icon className="w-6 h-6 text-violet-600" />
@@ -215,7 +215,7 @@ export default function ContactPage() {
           <div className="grid lg:grid-cols-5 gap-12">
             {/* Contact Form */}
             <div className="lg:col-span-3">
-              <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-8">
+              <div className="bg-white dark:bg-[#111111] rounded-2xl border border-slate-200 dark:border-[#2A2A2A] p-8">
                 <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">
                   Send us a message
                 </h2>
@@ -304,7 +304,7 @@ export default function ContactPage() {
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       placeholder="Tell us what you're looking for..."
-                      className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-violet-500 resize-none"
+                      className="w-full px-4 py-3 bg-slate-50 dark:bg-[#111111] border border-slate-200 dark:border-[#2A2A2A] rounded-xl focus:outline-none focus:ring-2 focus:ring-violet-500 resize-none"
                     />
                   </div>
 
@@ -344,7 +344,7 @@ export default function ContactPage() {
               </div>
 
               {/* Office Locations */}
-              <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6">
+              <div className="bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#2A2A2A] p-6">
                 <h3 className="font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
                   <MapPin className="w-5 h-5 text-violet-600" />
                   Our Offices
@@ -353,7 +353,7 @@ export default function ContactPage() {
                   {offices.map((office) => (
                     <div
                       key={office.city}
-                      className="pb-4 border-b border-slate-100 dark:border-slate-700 last:border-0 last:pb-0"
+                      className="pb-4 border-b border-slate-100 dark:border-[#2A2A2A] last:border-0 last:pb-0"
                     >
                       <div className="flex items-center gap-2 mb-1">
                         <span className="font-medium text-slate-900 dark:text-white">
@@ -373,7 +373,7 @@ export default function ContactPage() {
               </div>
 
               {/* Social Links */}
-              <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6">
+              <div className="bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#2A2A2A] p-6">
                 <h3 className="font-semibold text-slate-900 dark:text-white mb-4">
                   Follow Us
                 </h3>
@@ -406,7 +406,7 @@ export default function ContactPage() {
               </div>
 
               {/* Enterprise CTA */}
-              <div className="bg-gradient-to-br from-violet-600 to-fuchsia-600 rounded-xl p-6 text-white">
+              <div className="bg-[#8B5DFF] from-violet-600 to-fuchsia-600 rounded-xl p-6 text-white">
                 <Building2 className="w-8 h-8 mb-3 opacity-80" />
                 <h3 className="font-semibold mb-2">Enterprise Solutions</h3>
                 <p className="text-sm text-white/80 mb-4">

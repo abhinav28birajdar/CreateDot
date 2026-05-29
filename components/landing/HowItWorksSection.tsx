@@ -33,7 +33,7 @@ const steps: Step[] = [
       "Connect your social media accounts",
       "Set your availability and rates",
     ],
-    color: "from-blue-500 to-cyan-500",
+    color: "to-cyan-500",
   },
   {
     icon: Image,
@@ -92,7 +92,7 @@ export default function HowItWorksSection() {
   };
 
   return (
-    <section className="py-20 bg-white dark:bg-slate-900">
+    <section className="py-20 bg-white dark:bg-[#111111]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -122,11 +122,11 @@ export default function HowItWorksSection() {
             >
               {/* Connector Line */}
               {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-16 left-full w-full h-0.5 bg-gradient-to-r from-slate-300 to-transparent dark:from-slate-700 z-0" />
+                <div className="hidden lg:block absolute top-16 left-full w-full h-0.5 bg-[#8B5DFF] from-slate-300 to-transparent dark:from-slate-700 z-0" />
               )}
 
               <div
-                className={`relative bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-xl border border-slate-100 dark:border-slate-700 transition-all hover:shadow-2xl cursor-pointer ${
+                className={`relative bg-white dark:bg-[#111111] rounded-3xl p-8 shadow-xl border border-slate-100 dark:border-[#2A2A2A] transition-all hover:shadow-2xl cursor-pointer ${
                   expandedStep === index ? "ring-2 ring-violet-500" : ""
                 }`}
                 onClick={() => toggleStep(index)}
@@ -140,7 +140,7 @@ export default function HowItWorksSection() {
                 <motion.div
                   animate={{ rotate: expandedStep === index ? 360 : 0 }}
                   transition={{ duration: 0.5 }}
-                  className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${step.color} flex items-center justify-center mb-6`}
+                  className={`w-16 h-16 rounded-2xl bg-[#8B5DFF] ${step.color} flex items-center justify-center mb-6`}
                 >
                   <step.icon className="w-8 h-8 text-white" />
                 </motion.div>
@@ -186,7 +186,7 @@ export default function HowItWorksSection() {
                         className="flex items-start gap-2 text-slate-600 dark:text-slate-400"
                       >
                         <svg
-                          className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5"
+                          className="w-5 h-5 text-[#8B5DFF] flex-shrink-0 mt-0.5"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -213,7 +213,7 @@ export default function HowItWorksSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-gradient-to-br from-violet-600 to-fuchsia-600 rounded-3xl p-8 lg:p-12"
+          className="bg-[#8B5DFF] from-violet-600 to-fuchsia-600 rounded-3xl p-8 lg:p-12"
         >
           <div className="text-center mb-10">
             <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { useAuth } from "@/contexts/AuthContext";
+import { useAuth } from "@/contexts/auth-context";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -25,9 +25,9 @@ import {
 // Social login providers
 const socialProviders = [
   { id: "google", name: "Google", icon: "/icons/google.svg", color: "bg-white border border-slate-200 hover:bg-slate-50 text-slate-700" },
-  { id: "github", name: "GitHub", icon: "/icons/github.svg", color: "bg-slate-900 hover:bg-slate-800 text-white" },
+  { id: "github", name: "GitHub", icon: "/icons/github.svg", color: "bg-[#111111] hover:bg-[#111111] text-white" },
   { id: "linkedin", name: "LinkedIn", icon: "/icons/linkedin.svg", color: "bg-[#0077B5] hover:bg-[#006097] text-white" },
-  { id: "apple", name: "Apple", icon: "/icons/apple.svg", color: "bg-black hover:bg-slate-900 text-white" },
+  { id: "apple", name: "Apple", icon: "/icons/apple.svg", color: "bg-[#0B0B0C] hover:bg-[#111111] text-white" },
 ];
 
 export default function SignInPage() {
@@ -104,7 +104,7 @@ export default function SignInPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-violet-50 dark:from-slate-900 dark:to-slate-800 flex">
+    <div className="min-h-screen bg-[#8B5DFF] from-slate-50 to-violet-50 dark:from-slate-900 dark:to-slate-800 flex">
       {/* Left Side - Form */}
       <div className="flex-1 flex items-center justify-center p-4 md:p-8">
         <motion.div
@@ -114,7 +114,7 @@ export default function SignInPage() {
         >
           {/* Logo */}
           <Link href="/" className="inline-flex items-center gap-2 mb-8">
-            <div className="w-10 h-10 bg-gradient-to-br from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center">
+            <div className="w-10 h-10 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center">
               <Sparkles className="w-6 h-6 text-white" />
             </div>
             <span className="text-xl font-bold text-slate-900 dark:text-white">DesignDot</span>
@@ -253,7 +253,7 @@ export default function SignInPage() {
                 </form>
 
                 {/* Passkey / Biometric */}
-                <button className="w-full mt-4 flex items-center justify-center gap-2 py-3 px-4 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                <button className="w-full mt-4 flex items-center justify-center gap-2 py-3 px-4 border border-slate-200 dark:border-[#2A2A2A] rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-[#111111] transition-colors">
                   <Fingerprint className="w-5 h-5" />
                   Sign in with Passkey
                 </button>
@@ -347,7 +347,7 @@ export default function SignInPage() {
       </div>
 
       {/* Right Side - Visual */}
-      <div className="hidden lg:flex flex-1 bg-gradient-to-br from-violet-600 to-fuchsia-600 items-center justify-center p-8">
+      <div className="hidden lg:flex flex-1 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 items-center justify-center p-8">
         <div className="max-w-md text-center text-white">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

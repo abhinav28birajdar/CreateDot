@@ -36,7 +36,7 @@ const designCategories = [
     id: 'branding',
     name: 'Branding',
     icon: Palette,
-    color: 'from-purple-500 to-pink-500',
+    color: '',
     count: 1340,
     trending: [
       { id: 1, title: 'Coffee Brand Identity', image: '/api/placeholder/300/200', likes: 234 },
@@ -48,7 +48,7 @@ const designCategories = [
     id: 'graphic-design',
     name: 'Graphic Design',
     icon: Brush,
-    color: 'from-blue-500 to-cyan-500',
+    color: 'to-cyan-500',
     count: 2100,
     trending: [
       { id: 4, title: 'Event Poster Design', image: '/api/placeholder/300/200', likes: 312 },
@@ -60,7 +60,7 @@ const designCategories = [
     id: 'photography',
     name: 'Photography',
     icon: Camera,
-    color: 'from-green-500 to-emerald-500',
+    color: '',
     count: 2890,
     trending: [
       { id: 7, title: 'Portrait Photography', image: '/api/placeholder/300/200', likes: 445 },
@@ -96,7 +96,7 @@ const designCategories = [
     id: 'ui-ux',
     name: 'UI/UX',
     icon: Monitor,
-    color: 'from-indigo-500 to-blue-500',
+    color: 'from-indigo-500 ',
     count: 2340,
     trending: [
       { id: 16, title: 'Mobile App Design', image: '/api/placeholder/300/200', likes: 567 },
@@ -120,7 +120,7 @@ const designCategories = [
     id: 'product-design',
     name: 'Product Design',
     icon: Package,
-    color: 'from-teal-500 to-green-500',
+    color: 'from-teal-500 ',
     count: 560,
     trending: [
       { id: 22, title: 'Smart Watch Design', image: '/api/placeholder/300/200', likes: 345 },
@@ -132,7 +132,7 @@ const designCategories = [
     id: 'fashion',
     name: 'Fashion Design',
     icon: Shirt,
-    color: 'from-rose-500 to-pink-500',
+    color: 'from-rose-500 ',
     count: 430,
     trending: [
       { id: 25, title: 'Streetwear Collection', image: '/api/placeholder/300/200', likes: 289 },
@@ -169,12 +169,12 @@ function CategoryCarousel({ category }: CategoryCarouselProps) {
     <Card className="group overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
       <div className="relative h-64">
         {/* Background gradient */}
-        <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-10`} />
+        <div className={`absolute inset-0 bg-[#8B5DFF] ${category.color} opacity-10`} />
         
         {/* Header */}
         <div className="relative p-6 flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <div className={`p-3 rounded-lg bg-gradient-to-r ${category.color} text-white`}>
+            <div className={`p-3 rounded-lg bg-[#8B5DFF] ${category.color} text-white`}>
               <Icon className="h-6 w-6" />
             </div>
             <div>
@@ -199,7 +199,7 @@ function CategoryCarousel({ category }: CategoryCarouselProps) {
                     alt={design.title}
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div className="absolute inset-0 bg-[#8B5DFF] from-black/60 to-transparent" />
                   <div className="absolute bottom-3 left-3 right-3">
                     <h4 className="font-semibold text-white text-sm line-clamp-1">
                       {design.title}
@@ -234,7 +234,7 @@ function CategoryCarousel({ category }: CategoryCarouselProps) {
 
 export default function DashboardPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100/50 pt-16">
+    <div className="min-h-screen bg-[#8B5DFF] from-gray-50 to-gray-100/50 pt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Welcome Header */}
         <div className="mb-8">
@@ -278,7 +278,7 @@ export default function DashboardPage() {
                       </div>
                     </div>
                     <div className="flex items-center mt-2">
-                      <TrendingUp className="h-3 w-3 text-green-500 mr-1" />
+                      <TrendingUp className="h-3 w-3 text-[#8B5DFF] mr-1" />
                       <span className="text-xs text-green-600 font-medium">{stat.change}</span>
                       <span className="text-xs text-gray-500 ml-1">vs last month</span>
                     </div>
@@ -321,7 +321,7 @@ export default function DashboardPage() {
             </div>
             
             {/* Gradient fade on scroll */}
-            <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-gray-50 to-transparent pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-16 bg-[#8B5DFF] from-gray-50 to-transparent pointer-events-none" />
           </div>
         </div>
 

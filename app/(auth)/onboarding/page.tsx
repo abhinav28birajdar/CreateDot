@@ -286,12 +286,12 @@ export default function OnboardingWizard() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#111111]">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 z-50">
+      <header className="fixed top-0 left-0 right-0 bg-white/80 dark:bg-[#111111]/80 backdrop-blur-xl border-b border-slate-200 dark:border-[#1F1F1F] z-50">
         <div className="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-violet-600 to-fuchsia-600 rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 rounded-lg flex items-center justify-center">
               <Sparkles className="w-5 h-5 text-white" />
             </div>
             <span className="font-bold text-slate-900 dark:text-white">DesignDot</span>
@@ -321,7 +321,7 @@ export default function OnboardingWizard() {
                   <div
                     className={`w-12 h-12 rounded-full flex items-center justify-center transition-all ${
                       step.id < currentStep
-                        ? "bg-green-500 text-white"
+                        ? "bg-[#8B5DFF] text-white"
                         : step.id === currentStep
                         ? "bg-violet-600 text-white"
                         : "bg-slate-200 dark:bg-slate-700 text-slate-500"
@@ -344,7 +344,7 @@ export default function OnboardingWizard() {
                 {index < steps.length - 1 && (
                   <div
                     className={`w-16 h-0.5 mx-2 ${
-                      step.id < currentStep ? "bg-green-500" : "bg-slate-200 dark:bg-slate-700"
+                      step.id < currentStep ? "bg-[#8B5DFF]" : "bg-slate-200 dark:bg-slate-700"
                     }`}
                   />
                 )}
@@ -375,7 +375,7 @@ export default function OnboardingWizard() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
-              className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl p-6 md:p-8"
+              className="bg-white dark:bg-[#111111] rounded-2xl shadow-xl p-6 md:p-8"
             >
               {/* Step 1: Profile Basics */}
               {currentStep === 1 && (
@@ -393,7 +393,7 @@ export default function OnboardingWizard() {
                   <div className="relative">
                     <div
                       onClick={() => handlePhotoUpload("cover")}
-                      className="h-32 md:h-48 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-xl overflow-hidden cursor-pointer group"
+                      className="h-32 md:h-48 bg-[#8B5DFF] from-violet-500 to-fuchsia-500 rounded-xl overflow-hidden cursor-pointer group"
                     >
                       {coverPhoto ? (
                         <img src={coverPhoto} alt="Cover" className="w-full h-full object-cover" />
@@ -410,7 +410,7 @@ export default function OnboardingWizard() {
                     {/* Profile Photo */}
                     <div
                       onClick={() => handlePhotoUpload("profile")}
-                      className="absolute -bottom-12 left-6 w-24 h-24 bg-white dark:bg-slate-700 rounded-full border-4 border-white dark:border-slate-800 overflow-hidden cursor-pointer group"
+                      className="absolute -bottom-12 left-6 w-24 h-24 bg-white dark:bg-slate-700 rounded-full border-4 border-white dark:border-[#1F1F1F] overflow-hidden cursor-pointer group"
                     >
                       {profilePhoto ? (
                         <img src={profilePhoto} alt="Profile" className="w-full h-full object-cover" />
@@ -457,7 +457,7 @@ export default function OnboardingWizard() {
                         <select
                           value={timezone}
                           onChange={(e) => setTimezone(e.target.value)}
-                          className="w-full px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900"
+                          className="w-full px-4 py-2 rounded-lg border border-slate-200 dark:border-[#2A2A2A] bg-white dark:bg-[#111111]"
                         >
                           <option value="">Select timezone</option>
                           <option value="PST">Pacific Time (PST)</option>
@@ -476,7 +476,7 @@ export default function OnboardingWizard() {
                       <select
                         value={pronouns}
                         onChange={(e) => setPronouns(e.target.value)}
-                        className="w-full px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900"
+                        className="w-full px-4 py-2 rounded-lg border border-slate-200 dark:border-[#2A2A2A] bg-white dark:bg-[#111111]"
                       >
                         <option value="">Select pronouns</option>
                         <option value="he/him">He/Him</option>
@@ -549,7 +549,7 @@ export default function OnboardingWizard() {
                           className={`p-4 rounded-xl border-2 text-left transition-all ${
                             experienceLevel === level.id
                               ? "border-violet-600 bg-violet-50 dark:bg-violet-900/30"
-                              : "border-slate-200 dark:border-slate-700 hover:border-slate-300"
+                              : "border-slate-200 dark:border-[#2A2A2A] hover:border-slate-300"
                           }`}
                         >
                           <div className="font-medium text-slate-900 dark:text-white">
@@ -616,10 +616,10 @@ export default function OnboardingWizard() {
                       onChange={(e) => setBio(e.target.value)}
                       placeholder="Write a short bio about yourself, your background, and what you're passionate about..."
                       rows={5}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white resize-none"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-[#2A2A2A] bg-white dark:bg-[#111111] text-slate-900 dark:text-white resize-none"
                     />
                     <div className="flex justify-between text-xs text-slate-500 mt-1">
-                      <span className={bio.length < 50 ? "text-red-500" : "text-green-500"}>
+                      <span className={bio.length < 50 ? "text-red-500" : "text-[#8B5DFF]"}>
                         {bio.length}/50 minimum
                       </span>
                       <span>{bio.length}/500</span>
@@ -689,8 +689,8 @@ export default function OnboardingWizard() {
                       onClick={() => setImportSource("behance")}
                       className={`p-6 rounded-xl border-2 text-left transition-all ${
                         importSource === "behance"
-                          ? "border-blue-500 bg-blue-50 dark:bg-blue-900/30"
-                          : "border-slate-200 dark:border-slate-700 hover:border-slate-300"
+                          ? "border-[#8B5DFF] bg-blue-50 dark:bg-blue-900/30"
+                          : "border-slate-200 dark:border-[#2A2A2A] hover:border-slate-300"
                       }`}
                     >
                       <div className="font-medium text-slate-900 dark:text-white mb-1">
@@ -705,7 +705,7 @@ export default function OnboardingWizard() {
                       className={`p-6 rounded-xl border-2 text-left transition-all ${
                         importSource === "dribbble"
                           ? "border-pink-500 bg-pink-50 dark:bg-pink-900/30"
-                          : "border-slate-200 dark:border-slate-700 hover:border-slate-300"
+                          : "border-slate-200 dark:border-[#2A2A2A] hover:border-slate-300"
                       }`}
                     >
                       <div className="font-medium text-slate-900 dark:text-white mb-1">
@@ -772,7 +772,7 @@ export default function OnboardingWizard() {
                                 className="w-full h-full object-cover"
                               />
                             </div>
-                            <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center">
+                            <div className="absolute inset-0 bg-[#0B0B0C]/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center">
                               <button
                                 onClick={() =>
                                   setUploadedProjects(uploadedProjects.filter((_, i) => i !== index))
@@ -921,7 +921,7 @@ export default function OnboardingWizard() {
                           className={`p-4 rounded-xl border-2 text-left transition-all ${
                             availability === option.id
                               ? "border-violet-600 bg-violet-50 dark:bg-violet-900/30"
-                              : "border-slate-200 dark:border-slate-700 hover:border-slate-300"
+                              : "border-slate-200 dark:border-[#2A2A2A] hover:border-slate-300"
                           }`}
                         >
                           <div className="font-medium text-slate-900 dark:text-white">
@@ -1017,7 +1017,7 @@ export default function OnboardingWizard() {
       </div>
 
       {/* Footer Navigation */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700 p-4">
+      <div className="fixed bottom-0 left-0 right-0 bg-white dark:bg-[#111111] border-t border-slate-200 dark:border-[#2A2A2A] p-4">
         <div className="max-w-4xl mx-auto flex justify-between items-center">
           <button
             onClick={handleBack}
@@ -1042,7 +1042,7 @@ export default function OnboardingWizard() {
               <Button
                 onClick={handleComplete}
                 disabled={!canProceed() || isSubmitting}
-                className="bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 text-white px-8"
+                className="bg-[#8B5DFF] from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 text-white px-8"
               >
                 {isSubmitting ? (
                   <>

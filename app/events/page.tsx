@@ -246,9 +246,9 @@ function EventCard({ event, size = "medium" }: { event: Event; size?: "large" | 
   const getEventTypeColor = () => {
     switch (event.type) {
       case "online":
-        return "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400";
+        return "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-[#8B5DFF]";
       case "in-person":
-        return "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400";
+        return "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-[#8B5DFF]";
       case "hybrid":
         return "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400";
     }
@@ -263,7 +263,7 @@ function EventCard({ event, size = "medium" }: { event: Event; size?: "large" | 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="group relative overflow-hidden rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800"
+        className="group relative overflow-hidden rounded-2xl bg-white dark:bg-[#111111] border border-slate-200 dark:border-[#1F1F1F]"
       >
         <Link href={`/events/${event.id}`}>
           <div className="relative h-80 overflow-hidden">
@@ -272,7 +272,7 @@ function EventCard({ event, size = "medium" }: { event: Event; size?: "large" | 
               alt={event.title}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+            <div className="absolute inset-0 bg-[#8B5DFF] from-black/80 via-black/40 to-transparent" />
 
             {/* Badges */}
             <div className="absolute top-4 left-4 flex gap-2">
@@ -343,7 +343,7 @@ function EventCard({ event, size = "medium" }: { event: Event; size?: "large" | 
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="group bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:shadow-lg hover:border-violet-300 dark:hover:border-violet-700 transition-all"
+      className="group bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#1F1F1F] overflow-hidden hover:shadow-lg hover:border-violet-300 dark:hover:border-violet-700 transition-all"
     >
       <Link href={`/events/${event.id}`}>
         <div className="relative h-48 overflow-hidden">
@@ -352,7 +352,7 @@ function EventCard({ event, size = "medium" }: { event: Event; size?: "large" | 
             alt={event.title}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+          <div className="absolute inset-0 bg-[#8B5DFF] from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
 
           {/* Badges */}
           <div className="absolute top-3 left-3 flex gap-2">
@@ -368,7 +368,7 @@ function EventCard({ event, size = "medium" }: { event: Event; size?: "large" | 
 
           {/* Price */}
           <div className="absolute top-3 right-3">
-            <Badge className="bg-white/90 dark:bg-slate-900/90 text-slate-900 dark:text-white font-semibold">
+            <Badge className="bg-white/90 dark:bg-[#111111]/90 text-slate-900 dark:text-white font-semibold">
               {event.price === "free" ? "Free" : `$${event.price}`}
             </Badge>
           </div>
@@ -419,7 +419,7 @@ function EventCard({ event, size = "medium" }: { event: Event; size?: "large" | 
               <span className="text-red-600 font-medium">Sold out</span>
             )}
           </div>
-          <div className="w-full h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+          <div className="w-full h-2 bg-slate-100 dark:bg-[#111111] rounded-full overflow-hidden">
             <div
               className={`h-full rounded-full ${
                 isSoldOut ? "bg-red-500" : isAlmostFull ? "bg-amber-500" : "bg-violet-600"
@@ -430,12 +430,12 @@ function EventCard({ event, size = "medium" }: { event: Event; size?: "large" | 
         </div>
 
         {/* Actions */}
-        <div className="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
+        <div className="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-[#1F1F1F]">
           <div className="flex items-center gap-2">
-            <button className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400 hover:text-red-500 transition-colors">
+            <button className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-[#111111] text-slate-400 hover:text-red-500 transition-colors">
               <Heart className="w-4 h-4" />
             </button>
-            <button className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400 hover:text-blue-500 transition-colors">
+            <button className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-[#111111] text-slate-400 hover:text-[#8B5DFF] transition-colors">
               <Share2 className="w-4 h-4" />
             </button>
           </div>
@@ -477,7 +477,7 @@ export default function EventsPage() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-violet-600 via-violet-700 to-fuchsia-700 text-white">
+      <section className="bg-[#8B5DFF] from-violet-600 via-violet-700 to-fuchsia-700 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="flex items-center gap-4 mb-6">
             <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center">
@@ -548,7 +548,7 @@ export default function EventsPage() {
 
       {/* Featured Events */}
       {featuredEvents.length > 0 && (
-        <section className="py-12 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+        <section className="py-12 bg-white dark:bg-[#111111] border-b border-slate-200 dark:border-[#1F1F1F]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between mb-8">
               <h2 className="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
@@ -570,7 +570,7 @@ export default function EventsPage() {
       )}
 
       {/* Filters */}
-      <section className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-16 z-20">
+      <section className="bg-white dark:bg-[#111111] border-b border-slate-200 dark:border-[#1F1F1F] sticky top-16 z-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
@@ -594,7 +594,7 @@ export default function EventsPage() {
               <select
                 value={selectedType}
                 onChange={(e) => setSelectedType(e.target.value)}
-                className="px-3 py-2 text-sm border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-900"
+                className="px-3 py-2 text-sm border border-slate-200 dark:border-[#2A2A2A] rounded-lg bg-white dark:bg-[#111111]"
               >
                 <option value="all">All Types</option>
                 <option value="online">Online</option>
@@ -653,7 +653,7 @@ export default function EventsPage() {
       </section>
 
       {/* Host Your Event CTA */}
-      <section className="py-16 bg-gradient-to-br from-violet-600 to-fuchsia-600 text-white">
+      <section className="py-16 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">Host Your Own Event</h2>
           <p className="text-xl text-violet-100 mb-8">

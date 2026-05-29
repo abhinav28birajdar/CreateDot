@@ -34,7 +34,7 @@ const categories = [
     title: "Getting Started",
     description: "New to DesignDot? Start here",
     icon: Book,
-    color: "bg-blue-500",
+    color: "bg-[#8B5DFF]",
     articles: [
       { title: "Creating your account", views: "12.5k" },
       { title: "Setting up your profile", views: "10.2k" },
@@ -62,7 +62,7 @@ const categories = [
     title: "Account & Profile",
     description: "Manage your account settings",
     icon: Settings,
-    color: "bg-green-500",
+    color: "bg-[#8B5DFF]",
     articles: [
       { title: "Updating profile information", views: "7.2k" },
       { title: "Changing your username", views: "5.8k" },
@@ -153,12 +153,12 @@ export default function HelpCenterPage() {
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#111111]">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 h-16 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 z-50">
+      <header className="fixed top-0 left-0 right-0 h-16 bg-white/80 dark:bg-[#111111]/80 backdrop-blur-xl border-b border-slate-200 dark:border-[#1F1F1F] z-50">
         <div className="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-9 h-9 bg-gradient-to-br from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center">
+            <div className="w-9 h-9 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center">
               <Sparkles className="w-5 h-5 text-white" />
             </div>
             <span className="font-bold text-lg text-slate-900 dark:text-white">DesignDot</span>
@@ -178,7 +178,7 @@ export default function HelpCenterPage() {
       </header>
 
       {/* Hero Section with Search */}
-      <section className="pt-32 pb-16 bg-gradient-to-b from-violet-600 to-violet-700">
+      <section className="pt-32 pb-16 bg-[#8B5DFF] from-violet-600 to-violet-700">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -199,7 +199,7 @@ export default function HelpCenterPage() {
                 placeholder="Search for help articles..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-12 pr-4 py-4 h-14 bg-white dark:bg-slate-800 border-0 rounded-xl text-lg shadow-lg"
+                className="pl-12 pr-4 py-4 h-14 bg-white dark:bg-[#111111] border-0 rounded-xl text-lg shadow-lg"
               />
             </div>
 
@@ -232,7 +232,7 @@ export default function HelpCenterPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6 hover:shadow-lg transition-shadow"
+                className="bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#2A2A2A] p-6 hover:shadow-lg transition-shadow"
               >
                 <div className={`w-12 h-12 ${category.color} rounded-xl flex items-center justify-center mb-4`}>
                   <category.icon className="w-6 h-6 text-white" />
@@ -279,7 +279,7 @@ export default function HelpCenterPage() {
               {faqs.map((faq, index) => (
                 <div
                   key={index}
-                  className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden"
+                  className="bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#2A2A2A] overflow-hidden"
                 >
                   <button
                     onClick={() => setExpandedFaq(expandedFaq === index ? null : index)}
@@ -316,7 +316,7 @@ export default function HelpCenterPage() {
           {/* Sidebar */}
           <aside className="space-y-8">
             {/* Popular Articles */}
-            <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6">
+            <div className="bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#2A2A2A] p-6">
               <h3 className="font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
                 <Zap className="w-5 h-5 text-amber-500" />
                 Popular Articles
@@ -339,7 +339,7 @@ export default function HelpCenterPage() {
             </div>
 
             {/* Contact Options */}
-            <div className="bg-gradient-to-br from-violet-600 to-fuchsia-600 rounded-xl p-6 text-white">
+            <div className="bg-[#8B5DFF] from-violet-600 to-fuchsia-600 rounded-xl p-6 text-white">
               <h3 className="font-semibold mb-2">Still need help?</h3>
               <p className="text-sm text-white/80 mb-4">
                 Our support team is here to assist you
@@ -369,7 +369,7 @@ export default function HelpCenterPage() {
             </div>
 
             {/* Resources */}
-            <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6">
+            <div className="bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#2A2A2A] p-6">
               <h3 className="font-semibold text-slate-900 dark:text-white mb-4">
                 Resources
               </h3>
@@ -417,7 +417,7 @@ export default function HelpCenterPage() {
       </main>
 
       {/* Footer CTA */}
-      <section className="bg-slate-100 dark:bg-slate-800/50 py-12 mt-16">
+      <section className="bg-slate-100 dark:bg-[#111111]/50 py-12 mt-16">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
             Can't find what you're looking for?

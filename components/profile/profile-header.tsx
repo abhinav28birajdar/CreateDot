@@ -11,7 +11,7 @@ export function ProfileHeader({ profile, isOwnProfile }: { profile: Profile, isO
     return (
         <div className="bg-background border-b pb-8">
             {/* Banner */}
-            <div className="h-48 md:h-64 bg-gradient-to-r from-purple-500 to-pink-500 w-full relative">
+            <div className="h-48 md:h-64 bg-[#8B5DFF] w-full relative">
                 {profile.banner_url && (
                     <img src={profile.banner_url} alt="Banner" className="w-full h-full object-cover" />
                 )}
@@ -61,7 +61,7 @@ export function ProfileHeader({ profile, isOwnProfile }: { profile: Profile, isO
                         )}
                         {/* Socials placeholder - in real app would verify existence */}
                         <div className="flex gap-3 ml-auto">
-                            {profile.twitter && <Twitter className="h-4 w-4 cursor-pointer hover:text-blue-400" />}
+                            {profile.twitter && <Twitter className="h-4 w-4 cursor-pointer hover:text-[#8B5DFF]" />}
                             {profile.instagram && <Instagram className="h-4 w-4 cursor-pointer hover:text-pink-600" />}
                             {profile.dribbble && <Globe className="h-4 w-4 cursor-pointer hover:text-pink-500" />}
                         </div>

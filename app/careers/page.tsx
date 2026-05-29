@@ -245,12 +245,12 @@ export default function CareersPage() {
   });
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-900">
+    <div className="min-h-screen bg-white dark:bg-[#111111]">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 h-16 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 z-50">
+      <header className="fixed top-0 left-0 right-0 h-16 bg-white/80 dark:bg-[#111111]/80 backdrop-blur-xl border-b border-slate-200 dark:border-[#1F1F1F] z-50">
         <div className="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-9 h-9 bg-gradient-to-br from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center">
+            <div className="w-9 h-9 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center">
               <Sparkles className="w-5 h-5 text-white" />
             </div>
             <span className="font-bold text-lg text-slate-900 dark:text-white">DesignDot</span>
@@ -271,7 +271,7 @@ export default function CareersPage() {
       </header>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-b from-violet-50 to-white dark:from-slate-800 dark:to-slate-900">
+      <section className="pt-32 pb-20 bg-[#8B5DFF] from-violet-50 to-white dark:from-slate-800 dark:to-slate-900">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -284,7 +284,7 @@ export default function CareersPage() {
             <h1 className="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white mb-6">
               Help us empower
               <br />
-              <span className="bg-gradient-to-r from-violet-600 to-fuchsia-600 bg-clip-text text-transparent">
+              <span className="bg-[#8B5DFF] from-violet-600 to-fuchsia-600 bg-clip-text text-transparent">
                 5 million creators
               </span>
             </h1>
@@ -303,7 +303,7 @@ export default function CareersPage() {
               </Link>
               <Link
                 href="/about"
-                className="px-6 py-3 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white rounded-xl font-medium"
+                className="px-6 py-3 bg-slate-100 dark:bg-[#111111] hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white rounded-xl font-medium"
               >
                 Learn About Us
               </Link>
@@ -313,7 +313,7 @@ export default function CareersPage() {
       </section>
 
       {/* Culture Values */}
-      <section className="py-16 border-b border-slate-200 dark:border-slate-800">
+      <section className="py-16 border-b border-slate-200 dark:border-[#1F1F1F]">
         <div className="max-w-5xl mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-6">
             {cultureValues.map((value, index) => (
@@ -351,7 +351,7 @@ export default function CareersPage() {
           </div>
 
           {/* Filters */}
-          <div className="bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4 mb-8">
+          <div className="bg-slate-50 dark:bg-[#111111]/50 rounded-xl p-4 mb-8">
             <div className="flex flex-col md:flex-row gap-4">
               {/* Search */}
               <div className="relative flex-1">
@@ -398,7 +398,7 @@ export default function CareersPage() {
           {/* Job List */}
           <div className="space-y-4">
             {filteredJobs.length === 0 ? (
-              <div className="text-center py-12 bg-slate-50 dark:bg-slate-800/50 rounded-xl">
+              <div className="text-center py-12 bg-slate-50 dark:bg-[#111111]/50 rounded-xl">
                 <Briefcase className="w-12 h-12 text-slate-300 mx-auto mb-4" />
                 <p className="text-slate-500">No positions match your criteria.</p>
                 <button
@@ -422,10 +422,10 @@ export default function CareersPage() {
                 >
                   <Link
                     href={`/careers/${job.id}`}
-                    className={`block bg-white dark:bg-slate-800 rounded-xl border ${
+                    className={`block bg-white dark:bg-[#111111] rounded-xl border ${
                       job.featured
                         ? "border-violet-200 dark:border-violet-800 ring-1 ring-violet-100 dark:ring-violet-900"
-                        : "border-slate-200 dark:border-slate-700"
+                        : "border-slate-200 dark:border-[#2A2A2A]"
                     } p-6 hover:shadow-lg transition-shadow group`}
                   >
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -476,7 +476,7 @@ export default function CareersPage() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 bg-slate-50 dark:bg-slate-800/50">
+      <section className="py-20 bg-slate-50 dark:bg-[#111111]/50">
         <div className="max-w-5xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
@@ -495,7 +495,7 @@ export default function CareersPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700"
+                className="bg-white dark:bg-[#111111] rounded-xl p-6 border border-slate-200 dark:border-[#2A2A2A]"
               >
                 <div className="w-10 h-10 bg-violet-100 dark:bg-violet-900/30 rounded-lg flex items-center justify-center mb-4">
                   <benefit.icon className="w-5 h-5 text-violet-600" />
@@ -530,9 +530,9 @@ export default function CareersPage() {
             ].map((office, index) => (
               <div
                 key={office.city}
-                className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden"
+                className="bg-white dark:bg-[#111111] rounded-xl border border-slate-200 dark:border-[#2A2A2A] overflow-hidden"
               >
-                <div className="h-40 bg-gradient-to-br from-violet-200 to-fuchsia-200 dark:from-violet-900 dark:to-fuchsia-900" />
+                <div className="h-40 bg-[#8B5DFF] from-violet-200 to-fuchsia-200 dark:from-violet-900 dark:to-fuchsia-900" />
                 <div className="p-6">
                   <div className="flex items-center gap-2 mb-1">
                     <h3 className="font-semibold text-slate-900 dark:text-white">
@@ -550,7 +550,7 @@ export default function CareersPage() {
           </div>
 
           <div className="mt-8 text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-[#111111] rounded-lg">
               <Globe className="w-5 h-5 text-violet-600" />
               <span className="text-slate-600 dark:text-slate-400">
                 Plus <strong className="text-slate-900 dark:text-white">50+</strong> remote team members across 20 countries
@@ -561,7 +561,7 @@ export default function CareersPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-violet-600 to-fuchsia-600">
+      <section className="py-20 bg-[#8B5DFF] from-violet-600 to-fuchsia-600">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">
             Don't see the right role?

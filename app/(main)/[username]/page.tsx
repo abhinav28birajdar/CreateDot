@@ -3,9 +3,8 @@ import { ProfileHeader } from "@/components/profile/profile-header"
 import { ProfileTabs } from "@/components/profile/profile-tabs"
 import { notFound } from "next/navigation"
 
-export default async function ProfilePage({ params }: { params: { username: string } }) {
-    // @ts-ignore
-    const username = params.username
+export default async function ProfilePage({ params }: { params: Promise<{ username: string }> }) {
+    const { username } = await params
     const supabase = createClient()
 
     // Fetch profile
@@ -39,7 +38,6 @@ export default async function ProfilePage({ params }: { params: { username: stri
 
     return (
         <div className="min-h-screen bg-background">
-            {/* @ts-ignore */}
             <ProfileHeader profile={displayProfile} isOwnProfile={isOwnProfile} />
             <ProfileTabs />
         </div>

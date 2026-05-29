@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   Paintbrush,
@@ -89,7 +90,7 @@ const clientBenefits = [
 
 export default function PlatformBenefitsSection() {
   return (
-    <section className="py-20 bg-gradient-to-b from-violet-50 to-white dark:from-slate-900 dark:to-slate-800">
+    <section className="py-20 bg-[#8B5DFF] from-violet-50 to-white dark:from-slate-900 dark:to-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -117,7 +118,7 @@ export default function PlatformBenefitsSection() {
           >
             {/* Header */}
             <div className="flex items-center gap-4 mb-8">
-              <div className="w-14 h-14 bg-gradient-to-br from-violet-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg shadow-violet-500/30">
+              <div className="w-14 h-14 bg-[#8B5DFF] from-violet-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg shadow-violet-500/30">
                 <Paintbrush className="w-7 h-7 text-white" />
               </div>
               <div>
@@ -139,7 +140,7 @@ export default function PlatformBenefitsSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="group p-5 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 hover:border-violet-200 dark:hover:border-violet-800 hover:shadow-lg transition-all"
+                  className="group p-5 bg-white dark:bg-[#111111] rounded-2xl border border-slate-100 dark:border-[#2A2A2A] hover:border-violet-200 dark:hover:border-violet-800 hover:shadow-lg transition-all"
                 >
                   <div className="w-10 h-10 bg-violet-100 dark:bg-violet-900/50 rounded-xl flex items-center justify-center mb-4 group-hover:bg-violet-200 dark:group-hover:bg-violet-800 transition-colors">
                     <benefit.icon className="w-5 h-5 text-violet-600 dark:text-violet-400" />
@@ -161,18 +162,18 @@ export default function PlatformBenefitsSection() {
               viewport={{ once: true }}
               className="mt-8"
             >
-              <a
+              <Link
                 href="/get-started"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-violet-600 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:shadow-violet-500/30 transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-[#8B5DFF] from-violet-600 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:shadow-violet-500/30 transition-all"
               >
                 <Paintbrush className="w-5 h-5" />
                 Start Creating
-              </a>
+              </Link>
             </motion.div>
           </motion.div>
 
           {/* Divider (Desktop) */}
-          <div className="hidden lg:block absolute left-1/2 top-32 bottom-32 w-px bg-gradient-to-b from-transparent via-slate-200 dark:via-slate-700 to-transparent" />
+          <div className="hidden lg:block absolute left-1/2 top-32 bottom-32 w-px bg-[#8B5DFF] from-transparent via-slate-200 dark:via-slate-700 to-transparent" />
 
           {/* For Clients */}
           <motion.div
@@ -183,7 +184,7 @@ export default function PlatformBenefitsSection() {
           >
             {/* Header */}
             <div className="flex items-center gap-4 mb-8">
-              <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/30">
+              <div className="w-14 h-14 bg-[#8B5DFF] to-cyan-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/30">
                 <Briefcase className="w-7 h-7 text-white" />
               </div>
               <div>
@@ -205,10 +206,10 @@ export default function PlatformBenefitsSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="group p-5 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 hover:border-blue-200 dark:hover:border-blue-800 hover:shadow-lg transition-all"
+                  className="group p-5 bg-white dark:bg-[#111111] rounded-2xl border border-slate-100 dark:border-[#2A2A2A] hover:border-blue-200 dark:hover:border-blue-800 hover:shadow-lg transition-all"
                 >
                   <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/50 rounded-xl flex items-center justify-center mb-4 group-hover:bg-blue-200 dark:group-hover:bg-blue-800 transition-colors">
-                    <benefit.icon className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                    <benefit.icon className="w-5 h-5 text-[#8B5DFF] dark:text-[#8B5DFF]" />
                   </div>
                   <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">
                     {benefit.title}
@@ -227,13 +228,13 @@ export default function PlatformBenefitsSection() {
               viewport={{ once: true }}
               className="mt-8"
             >
-              <a
+              <Link
                 href="/hire"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:shadow-blue-500/30 transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-[#8B5DFF] to-cyan-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:shadow-blue-500/30 transition-all"
               >
                 <Search className="w-5 h-5" />
                 Find Designers
-              </a>
+              </Link>
             </motion.div>
           </motion.div>
         </div>
@@ -257,7 +258,7 @@ export default function PlatformBenefitsSection() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="text-center p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700"
+              className="text-center p-6 bg-white dark:bg-[#111111] rounded-2xl border border-slate-100 dark:border-[#2A2A2A]"
             >
               <stat.icon className="w-8 h-8 text-violet-600 dark:text-violet-400 mx-auto mb-3" />
               <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">

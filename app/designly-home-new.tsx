@@ -65,21 +65,21 @@ export default function DesignlyHomePage() {
       title: "Logo Design",
       description: "Professional brand identities",
       count: "2.5K+ created",
-      gradient: "from-purple-500 to-pink-500",
+      gradient: "",
       icon: <Target className="h-6 w-6" />
     },
     {
       title: "Social Media",
       description: "Engaging post templates",
       count: "12K+ created",
-      gradient: "from-blue-500 to-cyan-500",
+      gradient: "to-cyan-500",
       icon: <Share2 className="h-6 w-6" />
     },
     {
       title: "Marketing Materials",
       description: "Banners, flyers & ads",
       count: "8.3K+ created",
-      gradient: "from-green-500 to-emerald-500",
+      gradient: "",
       icon: <TrendingUp className="h-6 w-6" />
     },
     {
@@ -116,12 +116,12 @@ export default function DesignlyHomePage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-purple-50/30">
+    <div className="min-h-screen bg-[#8B5DFF] from-slate-50 via-white to-purple-50/30">
       <Navbar />
       
       {/* Hero Section */}
       <section className="relative py-20 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-600/5 via-transparent to-emerald-500/5"></div>
+        <div className="absolute inset-0 bg-[#8B5DFF] /5 via-transparent /5"></div>
         <div className="container-fluid relative max-w-7xl">
           <div className="max-w-4xl mx-auto text-center space-content animate-fade-in">
             <Badge className="mb-6 bg-designly-purple-50 text-designly-purple-700 border-designly-purple-200 hover:bg-designly-purple-100 transition-colors">
@@ -142,7 +142,7 @@ export default function DesignlyHomePage() {
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
               <Link href="/create">
-                <Button className="bg-designly-purple-500 hover:bg-designly-purple-600 text-white text-lg px-8 py-4 h-auto font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-200">
+                <Button className="bg-[#8B5DFF] hover:bg-[#7B4DE5] text-white text-lg px-8 py-4 h-auto font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-200">
                   <Sparkles className="h-5 w-5 mr-2" />
                   Start Creating Free
                   <ArrowRight className="h-5 w-5 ml-2" />
@@ -157,15 +157,15 @@ export default function DesignlyHomePage() {
             
             <div className="flex flex-wrap justify-center items-center gap-6 text-sm text-gray-500">
               <div className="flex items-center">
-                <Check className="h-4 w-4 mr-2 text-green-500" />
+                <Check className="h-4 w-4 mr-2 text-[#8B5DFF]" />
                 No credit card required
               </div>
               <div className="flex items-center">
-                <Check className="h-4 w-4 mr-2 text-green-500" />
+                <Check className="h-4 w-4 mr-2 text-[#8B5DFF]" />
                 Free forever plan
               </div>
               <div className="flex items-center">
-                <Check className="h-4 w-4 mr-2 text-green-500" />
+                <Check className="h-4 w-4 mr-2 text-[#8B5DFF]" />
                 Premium templates
               </div>
             </div>
@@ -221,7 +221,7 @@ export default function DesignlyHomePage() {
             {features.map((feature, index) => (
               <Card key={index} className="border-0 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-white group">
                 <CardHeader className="text-center pb-4">
-                  <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-designly-purple-100 to-emerald-100 rounded-2xl flex items-center justify-center text-designly-purple-600 group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-16 h-16 mx-auto mb-4 bg-[#8B5DFF] rounded-2xl flex items-center justify-center text-designly-purple-600 group-hover:scale-110 transition-transform duration-300">
                     {feature.icon}
                   </div>
                   <CardTitle className="text-xl mb-2 font-bold">{feature.title}</CardTitle>
@@ -252,10 +252,10 @@ export default function DesignlyHomePage() {
           <div className="responsive-grid-large">
             {designTypes.map((type, index) => (
               <Card key={index} className="border-0 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-white overflow-hidden group cursor-pointer">
-                <div className={`h-2 bg-gradient-to-r ${type.gradient}`}></div>
+                <div className={`h-2 bg-[#8B5DFF] ${type.gradient}`}></div>
                 <CardHeader className="pb-4">
                   <div className="flex items-center space-x-3 mb-2">
-                    <div className={`p-2 rounded-lg bg-gradient-to-r ${type.gradient} text-white`}>
+                    <div className={`p-2 rounded-lg bg-[#8B5DFF] ${type.gradient} text-white`}>
                       {type.icon}
                     </div>
                     <CardTitle className="text-xl font-bold">{type.title}</CardTitle>
@@ -312,7 +312,7 @@ export default function DesignlyHomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-br from-designly-purple-600 via-designly-purple-700 to-emerald-600 text-white">
+      <section className="section-padding bg-[#8B5DFF] via-designly-purple-700 text-white">
         <div className="container-fluid max-w-5xl text-center">
           <h2 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
             Ready to revolutionize your design process?

@@ -25,9 +25,9 @@ export function ShotCard({ shot }: { shot: Shot }) {
                     <div className="flex items-center justify-center h-full text-muted-foreground">No Image</div>
                 )}
 
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
+                <div className="absolute inset-0 bg-[#0B0B0C]/0 group-hover:bg-[#0B0B0C]/10 transition-colors" />
 
-                <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-between">
+                <div className="absolute bottom-0 left-0 right-0 p-4 bg-[#8B5DFF] from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-between">
                     <h3 className="text-white font-medium truncate drop-shadow-sm">{shot.title}</h3>
                 </div>
             </Link>

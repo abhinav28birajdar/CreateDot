@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 
 export default function NotFoundPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-violet-50 via-white to-fuchsia-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-[#8B5DFF] from-violet-50 via-white to-fuchsia-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800 flex items-center justify-center px-4">
       <div className="text-center max-w-2xl">
         {/* Animated 404 */}
         <motion.div
@@ -17,7 +17,7 @@ export default function NotFoundPage() {
           transition={{ duration: 0.5 }}
           className="relative mb-8"
         >
-          <span className="text-[200px] md:text-[280px] font-black text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-fuchsia-500 leading-none">
+          <span className="text-[200px] md:text-[280px] font-black text-transparent bg-clip-text bg-[#8B5DFF] from-violet-500 to-fuchsia-500 leading-none">
             404
           </span>
           <motion.div
@@ -73,7 +73,7 @@ export default function NotFoundPage() {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.5 }}
-          className="mt-12 pt-8 border-t border-slate-200 dark:border-slate-700"
+          className="mt-12 pt-8 border-t border-slate-200 dark:border-[#2A2A2A]"
         >
           <p className="text-sm text-slate-500 mb-4">Looking for something specific?</p>
           <div className="flex flex-wrap justify-center gap-4 text-sm">

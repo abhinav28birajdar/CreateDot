@@ -148,7 +148,7 @@ export default function TwoFactorSetupPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-violet-50 dark:from-slate-900 dark:to-slate-800 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-[#8B5DFF] from-slate-50 to-violet-50 dark:from-slate-900 dark:to-slate-800 flex items-center justify-center p-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -156,13 +156,13 @@ export default function TwoFactorSetupPage() {
       >
         {/* Logo */}
         <Link href="/" className="inline-flex items-center gap-2 mb-8">
-          <div className="w-10 h-10 bg-gradient-to-br from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center">
+          <div className="w-10 h-10 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center">
             <Sparkles className="w-6 h-6 text-white" />
           </div>
           <span className="text-xl font-bold text-slate-900 dark:text-white">DesignDot</span>
         </Link>
 
-        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl overflow-hidden">
+        <div className="bg-white dark:bg-[#111111] rounded-2xl shadow-xl overflow-hidden">
           <AnimatePresence mode="wait">
             {/* Step 1: Choose Method */}
             {step === "choose" && (
@@ -188,7 +188,7 @@ export default function TwoFactorSetupPage() {
                 <div className="space-y-4">
                   <button
                     onClick={() => handleChooseMethod("authenticator")}
-                    className="w-full p-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 hover:border-violet-500 text-left transition-all group"
+                    className="w-full p-4 rounded-xl border-2 border-slate-200 dark:border-[#2A2A2A] hover:border-violet-500 text-left transition-all group"
                   >
                     <div className="flex items-start gap-4">
                       <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -199,7 +199,7 @@ export default function TwoFactorSetupPage() {
                           <h3 className="font-semibold text-slate-900 dark:text-white">
                             Authenticator App
                           </h3>
-                          <span className="text-xs px-2 py-0.5 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-full">
+                          <span className="text-xs px-2 py-0.5 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-[#8B5DFF] rounded-full">
                             Recommended
                           </span>
                         </div>
@@ -213,11 +213,11 @@ export default function TwoFactorSetupPage() {
 
                   <button
                     onClick={() => handleChooseMethod("sms")}
-                    className="w-full p-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 hover:border-violet-500 text-left transition-all group"
+                    className="w-full p-4 rounded-xl border-2 border-slate-200 dark:border-[#2A2A2A] hover:border-violet-500 text-left transition-all group"
                   >
                     <div className="flex items-start gap-4">
                       <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center flex-shrink-0">
-                        <Key className="w-6 h-6 text-blue-600" />
+                        <Key className="w-6 h-6 text-[#8B5DFF]" />
                       </div>
                       <div className="flex-1">
                         <h3 className="font-semibold text-slate-900 dark:text-white">
@@ -278,12 +278,12 @@ export default function TwoFactorSetupPage() {
                 </div>
 
                 {/* Manual Entry */}
-                <div className="bg-slate-50 dark:bg-slate-900 rounded-xl p-4 mb-6">
+                <div className="bg-slate-50 dark:bg-[#111111] rounded-xl p-4 mb-6">
                   <p className="text-sm text-slate-500 mb-2">
                     Can't scan? Enter this code manually:
                   </p>
                   <div className="flex items-center gap-2">
-                    <code className="flex-1 bg-white dark:bg-slate-800 px-3 py-2 rounded-lg font-mono text-sm">
+                    <code className="flex-1 bg-white dark:bg-[#111111] px-3 py-2 rounded-lg font-mono text-sm">
                       {showSecret ? totpSecret : "••••••••••••••••"}
                     </code>
                     <button
@@ -376,7 +376,7 @@ export default function TwoFactorSetupPage() {
                       Phone Number
                     </label>
                     <div className="flex gap-2">
-                      <select className="px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900">
+                      <select className="px-3 py-2 rounded-lg border border-slate-200 dark:border-[#2A2A2A] bg-white dark:bg-[#111111]">
                         <option value="+1">🇺🇸 +1</option>
                         <option value="+44">🇬🇧 +44</option>
                         <option value="+91">🇮🇳 +91</option>
@@ -482,12 +482,12 @@ export default function TwoFactorSetupPage() {
                 </div>
 
                 {/* Backup Codes Grid */}
-                <div className="bg-slate-50 dark:bg-slate-900 rounded-xl p-4 mb-6">
+                <div className="bg-slate-50 dark:bg-[#111111] rounded-xl p-4 mb-6">
                   <div className="grid grid-cols-2 gap-2">
                     {backupCodes.map((code, index) => (
                       <div
                         key={index}
-                        className="bg-white dark:bg-slate-800 px-3 py-2 rounded-lg font-mono text-sm text-center"
+                        className="bg-white dark:bg-[#111111] px-3 py-2 rounded-lg font-mono text-sm text-center"
                       >
                         {code}
                       </div>
@@ -501,8 +501,8 @@ export default function TwoFactorSetupPage() {
                     onClick={copyToClipboard}
                     className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl border transition-all ${
                       copiedCodes
-                        ? "border-green-500 bg-green-50 text-green-700"
-                        : "border-slate-200 dark:border-slate-700 hover:border-violet-500"
+                        ? "border-[#8B5DFF] bg-green-50 text-green-700"
+                        : "border-slate-200 dark:border-[#2A2A2A] hover:border-violet-500"
                     }`}
                   >
                     {copiedCodes ? (
@@ -521,8 +521,8 @@ export default function TwoFactorSetupPage() {
                     onClick={downloadCodes}
                     className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl border transition-all ${
                       downloadedCodes
-                        ? "border-green-500 bg-green-50 text-green-700"
-                        : "border-slate-200 dark:border-slate-700 hover:border-violet-500"
+                        ? "border-[#8B5DFF] bg-green-50 text-green-700"
+                        : "border-slate-200 dark:border-[#2A2A2A] hover:border-violet-500"
                     }`}
                   >
                     {downloadedCodes ? (
@@ -564,7 +564,7 @@ export default function TwoFactorSetupPage() {
                   transition={{ type: "spring", stiffness: 200, damping: 15 }}
                   className="w-20 h-20 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-6"
                 >
-                  <CheckCircle className="w-10 h-10 text-green-500" />
+                  <CheckCircle className="w-10 h-10 text-[#8B5DFF]" />
                 </motion.div>
 
                 <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
@@ -574,7 +574,7 @@ export default function TwoFactorSetupPage() {
                   Your account is now more secure. You'll need your {method === "authenticator" ? "authenticator app" : "phone"} when signing in.
                 </p>
 
-                <div className="bg-slate-50 dark:bg-slate-900 rounded-xl p-4 mb-8">
+                <div className="bg-slate-50 dark:bg-[#111111] rounded-xl p-4 mb-8">
                   <div className="flex items-center justify-center gap-3">
                     <Lock className="w-5 h-5 text-green-600" />
                     <span className="text-sm text-slate-700 dark:text-slate-300">
@@ -585,7 +585,7 @@ export default function TwoFactorSetupPage() {
 
                 <Button
                   onClick={handleComplete}
-                  className="w-full bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 text-white py-6 rounded-xl font-semibold"
+                  className="w-full bg-[#8B5DFF] from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 text-white py-6 rounded-xl font-semibold"
                 >
                   Go to Dashboard
                   <ArrowRight className="w-5 h-5 ml-2" />

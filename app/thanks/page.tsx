@@ -51,7 +51,7 @@ export default function ThanksPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-pink-50 relative overflow-hidden">
+    <div className="min-h-screen bg-[#8B5DFF] from-purple-50 via-white to-pink-50 relative overflow-hidden">
       {/* Confetti Animation */}
       {confetti && (
         <div className="fixed inset-0 pointer-events-none z-50">
@@ -66,7 +66,7 @@ export default function ThanksPage() {
                 animationDuration: `${2 + Math.random() * 2}s`
               }}
             >
-              <div className="w-2 h-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
+              <div className="w-2 h-2 bg-[#8B5DFF] rounded-full"></div>
             </div>
           ))}
         </div>
@@ -83,11 +83,11 @@ export default function ThanksPage() {
         <div className="max-w-4xl mx-auto text-center">
           {/* Main Thank You Message */}
           <div className="mb-12">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mb-8 animate-pulse">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-[#8B5DFF] rounded-full mb-8 animate-pulse">
               <Heart className="h-10 w-10 text-white" />
             </div>
             
-            <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600 mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-[#8B5DFF] mb-6">
               Thank You!
             </h1>
             
@@ -97,7 +97,7 @@ export default function ThanksPage() {
             </p>
 
             <div className="flex justify-center space-x-4 mb-12">
-              <Button asChild className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600">
+              <Button asChild className="bg-[#8B5DFF] hover:hover:">
                 <Link href="/sign-in">
                   Sign In Again
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -139,7 +139,7 @@ export default function ThanksPage() {
                 return (
                   <Card key={index} className="bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-shadow">
                     <CardContent className="p-8 text-center">
-                      <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full mb-6">
+                      <div className="inline-flex items-center justify-center w-16 h-16 bg-[#8B5DFF] rounded-full mb-6">
                         <Icon className="h-8 w-8 text-purple-600" />
                       </div>
                       <h3 className="text-xl font-semibold text-gray-900 mb-4">
@@ -166,10 +166,10 @@ export default function ThanksPage() {
             
             <div className="flex justify-center space-x-6">
               {[
-                { icon: Twitter, href: '#', color: 'hover:text-blue-400' },
+                { icon: Twitter, href: '#', color: 'hover:text-[#8B5DFF]' },
                 { icon: Instagram, href: '#', color: 'hover:text-pink-400' },
                 { icon: Github, href: '#', color: 'hover:text-gray-600' },
-                { icon: Linkedin, href: '#', color: 'hover:text-blue-600' }
+                { icon: Linkedin, href: '#', color: 'hover:text-[#8B5DFF]' }
               ].map((social, index) => {
                 const Icon = social.icon;
                 return (
@@ -186,7 +186,7 @@ export default function ThanksPage() {
           </div>
 
           {/* Newsletter Signup */}
-          <Card className="bg-gradient-to-r from-purple-500 to-pink-500 border-0 text-white">
+          <Card className="bg-[#8B5DFF] border-0 text-white">
             <CardContent className="p-8">
               <h3 className="text-2xl font-bold mb-4">
                 Stay Updated

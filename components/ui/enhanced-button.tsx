@@ -12,7 +12,7 @@ const buttonVariants = cva(
         default: "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
         primary: "bg-designly-purple-600 text-white hover:bg-designly-purple-700 hover:shadow-lg active:scale-95 designly-hover-lift",
         secondary: "bg-transparent text-designly-purple-700 border-2 border-designly-purple-700 hover:bg-designly-purple-700 hover:text-white designly-hover-lift",
-        emerald: "bg-designly-emerald-500 text-white hover:bg-designly-emerald-600 hover:shadow-lg active:scale-95 designly-hover-lift",
+        emerald: "bg-[#8B5DFF] text-white hover:bg-designly-emerald-600 hover:shadow-lg active:scale-95 designly-hover-lift",
         gradient: "designly-gradient text-white hover:opacity-90 designly-hover-lift animate-pulse-glow",
         destructive: "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20",
         outline: "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground",

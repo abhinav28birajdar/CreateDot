@@ -163,7 +163,7 @@ function ImageUploader({
           }`}
         >
           <Image src={currentImage} alt="Avatar" fill className="object-cover" />
-          <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+          <div className="absolute inset-0 bg-[#0B0B0C]/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
             <Camera className="w-8 h-8 text-white" />
           </div>
         </div>
@@ -192,9 +192,9 @@ function ImageUploader({
       {currentImage ? (
         <Image src={currentImage} alt="Cover" fill className="object-cover" />
       ) : (
-        <div className="absolute inset-0 bg-gradient-to-r from-violet-500 to-fuchsia-500" />
+        <div className="absolute inset-0 bg-[#8B5DFF] from-violet-500 to-fuchsia-500" />
       )}
-      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+      <div className="absolute inset-0 bg-[#0B0B0C]/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
         <div className="text-center text-white">
           <Camera className="w-8 h-8 mx-auto mb-2" />
           <p className="text-sm">Change cover image</p>
@@ -383,14 +383,14 @@ export default function EditProfilePage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 py-8">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#111111] py-8">
       <div className="max-w-4xl mx-auto px-4">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-4">
             <button
               onClick={() => router.back()}
-              className="w-10 h-10 rounded-full bg-white dark:bg-slate-800 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-700"
+              className="w-10 h-10 rounded-full bg-white dark:bg-[#111111] flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-700"
             >
               <ArrowLeft className="w-5 h-5" />
             </button>
@@ -434,7 +434,7 @@ export default function EditProfilePage() {
 
         {/* Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="w-full bg-white dark:bg-slate-800 p-1 rounded-lg mb-6">
+          <TabsList className="w-full bg-white dark:bg-[#111111] p-1 rounded-lg mb-6">
             <TabsTrigger value="basic" className="flex-1">
               Basic Info
             </TabsTrigger>
@@ -451,9 +451,9 @@ export default function EditProfilePage() {
 
           {/* Basic Info Tab */}
           <TabsContent value="basic">
-            <div className="bg-white dark:bg-slate-800 rounded-xl p-6 space-y-6">
+            <div className="bg-white dark:bg-[#111111] rounded-xl p-6 space-y-6">
               {/* Avatar & Name */}
-              <div className="flex flex-col md:flex-row gap-8 pb-6 border-b border-slate-200 dark:border-slate-700">
+              <div className="flex flex-col md:flex-row gap-8 pb-6 border-b border-slate-200 dark:border-[#2A2A2A]">
                 <ImageUploader
                   type="avatar"
                   currentImage={profile.avatar}
@@ -495,7 +495,7 @@ export default function EditProfilePage() {
                       {usernameAvailable !== null && (
                         <span
                           className={`absolute right-3 top-1/2 -translate-y-1/2 ${
-                            usernameAvailable ? "text-green-500" : "text-red-500"
+                            usernameAvailable ? "text-[#8B5DFF]" : "text-red-500"
                           }`}
                         >
                           {usernameAvailable ? (
@@ -596,7 +596,7 @@ export default function EditProfilePage() {
 
           {/* Skills & Tools Tab */}
           <TabsContent value="skills">
-            <div className="bg-white dark:bg-slate-800 rounded-xl p-6 space-y-8">
+            <div className="bg-white dark:bg-[#111111] rounded-xl p-6 space-y-8">
               <SkillSelector
                 selected={profile.skills}
                 onSelect={(skills) => updateField("skills", skills)}
@@ -631,7 +631,7 @@ export default function EditProfilePage() {
 
           {/* Social Links Tab */}
           <TabsContent value="social">
-            <div className="bg-white dark:bg-slate-800 rounded-xl p-6 space-y-4">
+            <div className="bg-white dark:bg-[#111111] rounded-xl p-6 space-y-4">
               <p className="text-slate-500 mb-4">
                 Connect your social profiles to help others find and follow you.
               </p>
@@ -664,9 +664,9 @@ export default function EditProfilePage() {
 
           {/* Preferences Tab */}
           <TabsContent value="preferences">
-            <div className="bg-white dark:bg-slate-800 rounded-xl p-6 space-y-6">
+            <div className="bg-white dark:bg-[#111111] rounded-xl p-6 space-y-6">
               {/* Availability */}
-              <div className="flex items-center justify-between p-4 rounded-lg border border-slate-200 dark:border-slate-700">
+              <div className="flex items-center justify-between p-4 rounded-lg border border-slate-200 dark:border-[#2A2A2A]">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
                     <Briefcase className="w-5 h-5 text-green-600" />
@@ -683,7 +683,7 @@ export default function EditProfilePage() {
                 <button
                   onClick={() => updateField("isAvailable", !profile.isAvailable)}
                   className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                    profile.isAvailable ? "bg-green-500" : "bg-slate-200"
+                    profile.isAvailable ? "bg-[#8B5DFF]" : "bg-slate-200"
                   }`}
                 >
                   <span
@@ -695,7 +695,7 @@ export default function EditProfilePage() {
               </div>
 
               {/* Profile Visibility */}
-              <div className="p-4 rounded-lg border border-slate-200 dark:border-slate-700">
+              <div className="p-4 rounded-lg border border-slate-200 dark:border-[#2A2A2A]">
                 <p className="font-medium text-slate-900 dark:text-white mb-2">
                   Profile Visibility
                 </p>
@@ -756,7 +756,7 @@ export default function EditProfilePage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-6 py-3 rounded-full shadow-lg flex items-center gap-4"
+            className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-[#111111] text-white px-6 py-3 rounded-full shadow-lg flex items-center gap-4"
           >
             <AlertCircle className="w-5 h-5 text-yellow-400" />
             <span>You have unsaved changes</span>

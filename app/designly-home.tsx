@@ -91,7 +91,7 @@ const DesignlyHomePage: React.FC = () => {
       title: "Design Assets",
       description: "General Graphics, Posters, Social Media, Ads",
       icon: <Palette className="w-8 h-8" />,
-      color: "from-designly-purple-500 to-designly-purple-600",
+      color: "",
       features: ["Social Media Graphics", "Print Materials", "Digital Ads", "Posters & Banners"]
     },
     {
@@ -107,7 +107,7 @@ const DesignlyHomePage: React.FC = () => {
       title: "UI/UX Concepts", 
       description: "App Screens, Website Sections, Component Kits",
       icon: <Smartphone className="w-8 h-8" />,
-      color: "from-blue-500 to-blue-600",
+      color: "",
       features: ["Mobile Apps", "Web Interfaces", "Component Libraries", "Wireframes"]
     },
     {
@@ -123,7 +123,7 @@ const DesignlyHomePage: React.FC = () => {
       title: "Editorial & Publication",
       description: "Ebook Layouts, Blog Graphics, Newsletter Concepts",
       icon: <Monitor className="w-8 h-8" />,
-      color: "from-purple-500 to-purple-600", 
+      color: "to-purple-600", 
       features: ["Magazine Layouts", "Ebook Design", "Blog Graphics", "Newsletters"]
     },
     {
@@ -131,7 +131,7 @@ const DesignlyHomePage: React.FC = () => {
       title: "Data Storytelling",
       description: "Styled Charts, Infographics, Dashboard Elements",
       icon: <TrendingUp className="w-8 h-8" />,
-      color: "from-green-500 to-green-600",
+      color: "",
       features: ["Infographics", "Charts & Graphs", "Dashboards", "Data Visualization"]
     }
   ];
@@ -178,10 +178,10 @@ const DesignlyHomePage: React.FC = () => {
   }, [heroSlides.length]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-almost-white via-white to-light-slate">
+    <div className="min-h-screen bg-[#8B5DFF] from-almost-white via-white to-light-slate">
       {/* Hero Carousel Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-designly-purple-50 via-white to-designly-emerald-50" />
+        <div className="absolute inset-0 bg-[#8B5DFF] from-designly-purple-50 via-white to-designly-emerald-50" />
         
         <AnimatePresence mode="wait">
           <motion.div
@@ -235,7 +235,7 @@ const DesignlyHomePage: React.FC = () => {
                     key={index}
                     className={`w-3 h-3 rounded-full transition-all ${
                       index === activeHeroSlide 
-                        ? 'bg-designly-purple-500 w-8' 
+                        ? 'bg-[#8B5DFF] w-8' 
                         : 'bg-gray-300 hover:bg-gray-400'
                     }`}
                     onClick={() => setActiveHeroSlide(index)}
@@ -323,7 +323,7 @@ const DesignlyHomePage: React.FC = () => {
             >
               <Card className="p-6 h-full border-2 border-transparent hover:border-designly-purple-200 transition-all designly-hover-lift">
                 <CardHeader className="pb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-designly-emerald-500 to-designly-emerald-600 rounded-lg flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 bg-[#8B5DFF] from-designly-emerald-500 to-designly-emerald-600 rounded-lg flex items-center justify-center mb-4">
                     <Palette className="w-6 h-6 text-white" />
                   </div>
                   <CardTitle className="text-xl font-bold">Smart Palettes</CardTitle>
@@ -336,7 +336,7 @@ const DesignlyHomePage: React.FC = () => {
                       placeholder="Describe the mood..."
                       className="w-full p-3 border border-gray-200 rounded-lg focus:border-designly-purple-500 focus:outline-none transition-colors"
                     />
-                    <Button className="w-full bg-gradient-to-r from-designly-emerald-500 to-designly-emerald-600 text-white hover:opacity-90">
+                    <Button className="w-full bg-[#8B5DFF] from-designly-emerald-500 to-designly-emerald-600 text-white hover:opacity-90">
                       Create Palette
                     </Button>
                   </div>
@@ -353,7 +353,7 @@ const DesignlyHomePage: React.FC = () => {
             >
               <Card className="p-6 h-full border-2 border-transparent hover:border-designly-purple-200 transition-all designly-hover-lift">
                 <CardHeader className="pb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 bg-[#8B5DFF] rounded-lg flex items-center justify-center mb-4">
                     <Layers className="w-6 h-6 text-white" />
                   </div>
                   <CardTitle className="text-xl font-bold">Layout Wizard</CardTitle>
@@ -367,7 +367,7 @@ const DesignlyHomePage: React.FC = () => {
                       <option>Flyer</option>
                       <option>Web Banner</option>
                     </select>
-                    <Button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white hover:opacity-90">
+                    <Button className="w-full bg-[#8B5DFF] text-white hover:opacity-90">
                       Generate Layout
                     </Button>
                   </div>
@@ -379,7 +379,7 @@ const DesignlyHomePage: React.FC = () => {
       </section>
 
       {/* AI Design Modes Showcase */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
+      <section className="py-20 bg-[#8B5DFF] from-gray-50 to-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -406,7 +406,7 @@ const DesignlyHomePage: React.FC = () => {
               >
                 <Card className="p-6 h-full border-2 border-transparent hover:border-designly-purple-200 transition-all designly-hover-lift hover:shadow-2xl">
                   <CardHeader className="pb-4">
-                    <div className={`w-16 h-16 bg-gradient-to-br ${mode.color} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                    <div className={`w-16 h-16 bg-[#8B5DFF] ${mode.color} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
                       {mode.icon}
                     </div>
                     <CardTitle className="text-xl font-bold">{mode.title}</CardTitle>
@@ -416,14 +416,14 @@ const DesignlyHomePage: React.FC = () => {
                     <ul className="space-y-2 mb-6">
                       {mode.features.map((feature, idx) => (
                         <li key={idx} className="flex items-center text-sm text-muted-foreground">
-                          <CheckCircle className="w-4 h-4 text-designly-emerald-500 mr-2" />
+                          <CheckCircle className="w-4 h-4 text-[#8B5DFF] mr-2" />
                           {feature}
                         </li>
                       ))}
                     </ul>
                     <Button 
                       asChild
-                      className="w-full bg-gradient-to-r from-designly-purple-500 to-designly-purple-600 text-white hover:opacity-90"
+                      className="w-full bg-[#8B5DFF] text-white hover:opacity-90"
                     >
                       <Link href={`/create/${mode.id}`}>
                         Start Creating
@@ -479,7 +479,7 @@ const DesignlyHomePage: React.FC = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 bg-gradient-to-br from-designly-purple-50 to-designly-emerald-50">
+      <section className="py-20 bg-[#8B5DFF] from-designly-purple-50 to-designly-emerald-50">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -536,7 +536,7 @@ const DesignlyHomePage: React.FC = () => {
                   key={index}
                   className={`w-3 h-3 rounded-full transition-all ${
                     index === currentTestimonial 
-                      ? 'bg-designly-purple-500 w-8' 
+                      ? 'bg-[#8B5DFF] w-8' 
                       : 'bg-gray-300 hover:bg-gray-400'
                   }`}
                   onClick={() => setCurrentTestimonial(index)}
@@ -548,7 +548,7 @@ const DesignlyHomePage: React.FC = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-designly-purple-600 via-designly-purple-700 to-designly-purple-800 text-white">
+      <section className="py-20 bg-[#8B5DFF] via-designly-purple-700 text-white">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 50 }}

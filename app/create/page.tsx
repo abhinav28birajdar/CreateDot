@@ -41,7 +41,7 @@ const projectTypes = [
     name: 'Logo Design',
     description: 'Create unique brand logos with AI assistance',
     icon: <Target className="h-8 w-8" />,
-    gradient: 'from-purple-500 to-pink-500',
+    gradient: '',
     popular: true
   },
   {
@@ -49,7 +49,7 @@ const projectTypes = [
     name: 'Banner & Ads',
     description: 'Marketing banners for web and social media',
     icon: <Layers className="h-8 w-8" />,
-    gradient: 'from-blue-500 to-cyan-500',
+    gradient: 'to-cyan-500',
     popular: false
   },
   {
@@ -57,7 +57,7 @@ const projectTypes = [
     name: 'Poster Design',
     description: 'Eye-catching posters for events and promotions',
     icon: <Calendar className="h-8 w-8" />,
-    gradient: 'from-green-500 to-teal-500',
+    gradient: 'to-teal-500',
     popular: false
   },
   {
@@ -158,7 +158,7 @@ export default function CreateProjectPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-purple-50/30">
+    <div className="min-h-screen bg-[#8B5DFF] from-slate-50 via-white to-purple-50/30">
       <main className="container mx-auto px-6 py-12 max-w-7xl">
         {/* Header */}
         <div className="flex items-center mb-12">
@@ -169,7 +169,7 @@ export default function CreateProjectPage() {
             </Button>
           </Link>
           <div className="flex items-center space-x-4">
-            <div className="w-16 h-16 bg-gradient-to-br from-designly-purple to-purple-600 rounded-2xl flex items-center justify-center">
+            <div className="w-16 h-16 bg-[#8B5DFF] from-designly-purple to-purple-600 rounded-2xl flex items-center justify-center">
               <Sparkles className="h-8 w-8 text-white" />
             </div>
             <div>
@@ -216,7 +216,7 @@ export default function CreateProjectPage() {
                   key={type.id}
                   className={`cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border-0 group ${
                     selectedType === type.id 
-                      ? 'ring-2 ring-designly-purple bg-gradient-to-br from-designly-purple/5 to-purple-50 shadow-lg' 
+                      ? 'ring-2 ring-designly-purple bg-[#8B5DFF] from-designly-purple/5 to-purple-50 shadow-lg' 
                       : 'hover:ring-1 hover:ring-designly-purple/30 bg-white shadow-md hover:shadow-xl'
                   }`}
                   onClick={() => setSelectedType(type.id)}
@@ -224,12 +224,12 @@ export default function CreateProjectPage() {
                   <CardContent className="p-8">
                     <div className="relative text-center">
                       {type.popular && (
-                        <Badge className="absolute -top-4 -right-4 bg-gradient-to-r from-orange-400 to-red-500 text-white text-xs font-medium px-3 py-1 shadow-lg">
+                        <Badge className="absolute -top-4 -right-4 bg-[#8B5DFF] from-orange-400 to-red-500 text-white text-xs font-medium px-3 py-1 shadow-lg">
                           Popular
                         </Badge>
                       )}
                       
-                      <div className={`w-20 h-20 mx-auto rounded-2xl bg-gradient-to-br ${type.gradient} flex items-center justify-center text-white mb-6 transition-transform group-hover:scale-110 ${
+                      <div className={`w-20 h-20 mx-auto rounded-2xl bg-[#8B5DFF] ${type.gradient} flex items-center justify-center text-white mb-6 transition-transform group-hover:scale-110 ${
                         selectedType === type.id ? 'scale-110 shadow-lg' : ''
                       }`}>
                         {React.cloneElement(type.icon, { className: "h-10 w-10" })}
@@ -316,7 +316,7 @@ export default function CreateProjectPage() {
                       key={mode.id}
                       className={`cursor-pointer transition-all duration-300 border-0 ${
                         selectedMode === mode.id 
-                          ? 'ring-2 ring-designly-purple bg-gradient-to-br from-designly-purple/5 to-purple-50 shadow-lg' 
+                          ? 'ring-2 ring-designly-purple bg-[#8B5DFF] from-designly-purple/5 to-purple-50 shadow-lg' 
                           : 'hover:ring-1 hover:ring-designly-purple/30 bg-gray-50 hover:bg-gray-100 shadow-sm'
                       }`}
                       onClick={() => setSelectedMode(mode.id)}
@@ -381,7 +381,7 @@ export default function CreateProjectPage() {
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               <div>
-                <Card className="border-0 bg-gradient-to-br from-designly-purple/5 to-purple-50 shadow-lg">
+                <Card className="border-0 bg-[#8B5DFF] from-designly-purple/5 to-purple-50 shadow-lg">
                   <CardContent className="p-8">
                     <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
                       <FileText className="h-6 w-6 mr-3 text-designly-purple" />
@@ -461,7 +461,7 @@ export default function CreateProjectPage() {
                 ) : (
                   <Card className="w-full max-w-md">
                     <CardContent className="p-8 text-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-designly-purple to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <div className="w-16 h-16 bg-[#8B5DFF] from-designly-purple to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
                         <Rocket className="h-8 w-8 text-white" />
                       </div>
                       <h3 className="text-lg font-semibold text-gray-900 mb-2">Ready to Launch</h3>

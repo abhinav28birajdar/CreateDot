@@ -185,7 +185,7 @@ const notificationIcons = {
 
 const priorityColors = {
   low: 'text-gray-500',
-  normal: 'text-blue-500',
+  normal: 'text-[#8B5DFF]',
   high: 'text-orange-500',
   urgent: 'text-red-500'
 };
@@ -253,7 +253,7 @@ export default function EnhancedNotificationsPage() {
         break;
       case 'priority':
         filtered = [...filtered].sort((a, b) => {
-          const priorityOrder = { urgent: 4, high: 3, normal: 2, low: 1 };
+          const priorityOrder: Record<string, number> = { urgent: 4, high: 3, normal: 2, low: 1 };
           return priorityOrder[b.priority] - priorityOrder[a.priority];
         });
         break;
@@ -288,7 +288,7 @@ export default function EnhancedNotificationsPage() {
   };
 
   const getNotificationIcon = (type: string) => {
-    const Icon = notificationIcons[type] || Bell;
+    const Icon = (notificationIcons as Record<string, any>)[type] || Bell;
     return Icon;
   };
 
@@ -385,7 +385,7 @@ export default function EnhancedNotificationsPage() {
                     <select
                       value={selectedPriority}
                       onChange={(e) => setSelectedPriority(e.target.value)}
-                      className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full p-2 border border-gray-300 rounded-md focus:ring-[#8B5DFF] focus:border-[#8B5DFF]"
                     >
                       {priorities.map(priority => (
                         <option key={priority.value} value={priority.value}>
@@ -400,7 +400,7 @@ export default function EnhancedNotificationsPage() {
                     <select
                       value={selectedCategory}
                       onChange={(e) => setSelectedCategory(e.target.value)}
-                      className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full p-2 border border-gray-300 rounded-md focus:ring-[#8B5DFF] focus:border-[#8B5DFF]"
                     >
                       {categories.map(category => (
                         <option key={category.value} value={category.value}>
@@ -415,7 +415,7 @@ export default function EnhancedNotificationsPage() {
                     <select
                       value={sortBy}
                       onChange={(e) => setSortBy(e.target.value)}
-                      className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full p-2 border border-gray-300 rounded-md focus:ring-[#8B5DFF] focus:border-[#8B5DFF]"
                     >
                       <option value="newest">Newest First</option>
                       <option value="oldest">Oldest First</option>
@@ -447,9 +447,9 @@ export default function EnhancedNotificationsPage() {
               ].map(({ key, label, icon: Icon }) => (
                 <Button
                   key={key}
-                  variant={notificationSettings[key] ? "default" : "outline"}
+                  variant={(notificationSettings as Record<string, boolean>)[key] ? "default" : "outline"}
                   size="sm"
-                  onClick={() => setNotificationSettings(prev => ({ ...prev, [key]: !prev[key] }))}
+                  onClick={() => setNotificationSettings(prev => ({ ...prev, [key]: !(prev as Record<string, boolean>)[key] }))}
                   className="flex items-center justify-center"
                 >
                   <Icon className="h-4 w-4 mr-2" />
@@ -470,7 +470,7 @@ export default function EnhancedNotificationsPage() {
                   onClick={() => setActiveTab(tab.id)}
                   className={`py-4 px-1 border-b-2 font-medium text-sm whitespace-nowrap ${
                     activeTab === tab.id
-                      ? 'border-blue-500 text-blue-600'
+                      ? 'border-[#8B5DFF] text-[#8B5DFF]'
                       : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                   }`}
                 >
@@ -508,12 +508,12 @@ export default function EnhancedNotificationsPage() {
                             className="w-10 h-10 rounded-full"
                           />
                         ) : (
-                          <div className={`w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center ${priorityColors[notification.priority]}`}>
+                          <div className={`w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center ${(priorityColors as Record<string, string>)[notification.priority]}`}>
                             <Icon className="h-5 w-5" />
                           </div>
                         )}
                         {notification.isNew && (
-                          <div className="w-3 h-3 bg-blue-500 rounded-full -mt-2 ml-8 border-2 border-white"></div>
+                          <div className="w-3 h-3 bg-[#8B5DFF] rounded-full -mt-2 ml-8 border-2 border-white"></div>
                         )}
                       </div>
 

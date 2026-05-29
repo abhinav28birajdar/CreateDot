@@ -2,7 +2,7 @@
 
 import type React from "react";
 import Link from "next/link";
-import { AuthProvider } from "@/contexts/AuthContext";
+import { AuthProvider } from "@/contexts/auth-context";
 import { SocketProvider } from "@/contexts/SocketContext";
 import { Palette, Search, Bell, Menu, ChevronDown, User, Settings, LogOut, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -14,7 +14,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useAuth } from "@/contexts/AuthContext";
+import { useAuth } from "@/contexts/auth-context";
 
 function Navbar() {
   const { user, signOut } = useAuth();
@@ -26,10 +26,10 @@ function Navbar() {
           {/* Logo & Main Navigation */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
-              <div className="h-8 w-8 bg-designly-purple-500 flex items-center justify-center rounded-md text-white mr-2">
+              <div className="h-8 w-8 bg-[#8B5DFF] flex items-center justify-center rounded-md text-white mr-2">
                 <Palette className="h-5 w-5" />
               </div>
-              <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-designly-purple-500 to-designly-purple-600">
+              <span className="text-xl font-bold bg-clip-text text-transparent bg-[#8B5DFF] ">
                 Design.ly
               </span>
             </Link>
@@ -94,7 +94,7 @@ function Navbar() {
             {/* Notifications */}
             <Link href="/notifications" className="text-gray-500 hover:text-gray-900 relative">
               <Bell className="h-5 w-5" />
-              <span className="absolute top-0 right-0 block h-2 w-2 rounded-full bg-designly-purple-500 ring-2 ring-white" />
+              <span className="absolute top-0 right-0 block h-2 w-2 rounded-full bg-[#8B5DFF] ring-2 ring-white" />
             </Link>
 
             {/* Mobile Menu (visible on small screens) */}
@@ -110,7 +110,7 @@ function Navbar() {
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <button className="flex items-center space-x-2 text-sm text-gray-700 hover:text-gray-900">
-                      <div className="h-8 w-8 rounded-full bg-designly-purple-500/10 flex items-center justify-center">
+                      <div className="h-8 w-8 rounded-full bg-[#8B5DFF]/10 flex items-center justify-center">
                         {user.user_metadata?.avatar_url ? (
                           <img
                             src={user.user_metadata.avatar_url}
@@ -118,7 +118,7 @@ function Navbar() {
                             className="h-8 w-8 rounded-full"
                           />
                         ) : (
-                          <User className="h-5 w-5 text-designly-purple-500" />
+                          <User className="h-5 w-5 text-[#8B5DFF]" />
                         )}
                       </div>
                       <span className="font-medium">
@@ -166,7 +166,7 @@ function Navbar() {
                 <Link href="/sign-up">
                   <Button
                     size="sm"
-                    className="bg-designly-purple-500 hover:bg-designly-purple-600 text-white"
+                    className="bg-[#8B5DFF] hover:bg-[#7B4DE5] text-white"
                   >
                     Sign Up
                   </Button>
