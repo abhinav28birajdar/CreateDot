@@ -984,12 +984,6 @@ For issues or questions:
 
 ---
 
-## 📄 License
-
-MIT License - feel free to use this project for your own purposes.
-
----
-
 ## 🙏 Acknowledgments
 
 Built with:
