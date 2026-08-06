@@ -106,7 +106,7 @@ export default function SimpleHome() {
             Ready to Transform Your Creative Process?
           </h2>
           <p className="text-xl text-purple-100 mb-8 max-w-2xl mx-auto">
-            Join thousands of creators who are already using Design.ly to bring their ideas to life faster than ever.
+            Join thousands of creators who are already using CreateDOT to bring their ideas to life faster than ever.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className="bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">

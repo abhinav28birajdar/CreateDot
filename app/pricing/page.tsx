@@ -211,7 +211,7 @@ export default function PricingPage() {
             <div className="w-9 h-9 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center">
               <Sparkles className="w-5 h-5 text-white" />
             </div>
-            <span className="font-bold text-lg text-slate-900 dark:text-white">DesignDot</span>
+            <span className="font-bold text-lg text-slate-900 dark:text-white">CreateDOT</span>
           </Link>
           <div className="flex items-center gap-4">
             <Link href="/sign-in" className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">

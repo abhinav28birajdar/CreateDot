@@ -6,7 +6,7 @@
  * SUPABASE AUTHENTICATION SETUP
  * 
  * This guide explains how to configure all authentication methods
- * for the CreatedDot application.
+ * for the CreateDOT application.
  */
 
 // ============================================================================
@@ -73,7 +73,7 @@
  *    - Go to https://github.com/settings/developers
  *    - Select "OAuth Apps" → "New OAuth App"
  *    - Fill in application details:
- *      * Application name: CreatedDot
+ *      * Application name: CreateDOT
  *      * Homepage URL: http://localhost:3000 (dev)
  *      * Authorization callback URL: http://localhost:3000/auth/callback
  *    - Click "Register application"
@@ -133,7 +133,7 @@ const REQUIRED_ENV_VARS = {
 
   // Application
   NEXT_PUBLIC_APP_URL: "http://localhost:3000",
-  NEXT_PUBLIC_APP_NAME: "CreatedDot",
+  NEXT_PUBLIC_APP_NAME: "CreateDOT",
 };
 
 // ============================================================================

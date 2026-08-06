@@ -30,7 +30,7 @@ const plans = [
       "Advanced analytics",
       "Custom portfolio URL",
       "Priority job applications",
-      "Remove DesignDot branding",
+      "Remove CreateDOT branding",
       "Featured in search results",
       "Pro badge on profile",
       "Priority support",

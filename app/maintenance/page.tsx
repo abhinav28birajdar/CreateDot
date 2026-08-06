@@ -59,7 +59,7 @@ export default function MaintenancePage() {
             <div className="w-12 h-12 bg-[#8B5DFF] from-violet-500 to-fuchsia-500 rounded-xl flex items-center justify-center">
               <span className="text-2xl font-bold text-white">D</span>
             </div>
-            <span className="text-2xl font-bold text-white">DesignDot</span>
+            <span className="text-2xl font-bold text-white">CreateDOT</span>
           </Link>
         </motion.div>
 
@@ -170,23 +170,23 @@ export default function MaintenancePage() {
           <p className="mb-4">Follow our status for real-time updates:</p>
           <div className="flex justify-center gap-4">
             <a 
-              href="https://twitter.com/designdot" 
+              href="https://twitter.com/createdot" 
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-slate-300 hover:text-white transition-colors"
             >
               <Twitter className="w-4 h-4" />
-              @designdot
+              @createdot
             </a>
             <span className="text-slate-600">•</span>
             <a 
-              href="https://status.designdot.com" 
+              href="https://status.createdot.com" 
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-slate-300 hover:text-white transition-colors"
             >
               <ArrowRight className="w-4 h-4" />
-              status.designdot.com
+              status.createdot.com
             </a>
           </div>
         </motion.div>
@@ -201,11 +201,11 @@ export default function MaintenancePage() {
           <p className="text-slate-400 text-sm">
             Need urgent assistance?{" "}
             <a 
-              href="mailto:support@designdot.com" 
+              href="mailto:support@createdot.com" 
               className="text-violet-400 hover:text-violet-300 inline-flex items-center gap-1"
             >
               <Mail className="w-4 h-4" />
-              support@designdot.com
+              support@createdot.com
             </a>
           </p>
         </motion.div>

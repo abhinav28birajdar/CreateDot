@@ -454,7 +454,7 @@ export default function ShowcasePage() {
                     URL Slug
                   </label>
                   <div className="flex items-center gap-2">
-                    <span className="text-sm text-slate-500">designdot.com/portfolio/</span>
+                    <span className="text-sm text-slate-500">createdot.com/portfolio/</span>
                     <Input
                       placeholder="my-portfolio"
                       defaultValue={editingPortfolio?.slug}

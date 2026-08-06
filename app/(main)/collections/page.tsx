@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-    title: 'Collections - CreatorFlow',
+    title: 'Collections - CreateDOT',
     description: 'Your saved collections',
 }
 

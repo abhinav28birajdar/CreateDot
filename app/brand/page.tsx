@@ -113,7 +113,7 @@ export default function BrandPage() {
             <div className="w-9 h-9 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center">
               <Sparkles className="w-5 h-5 text-white" />
             </div>
-            <span className="font-bold text-lg text-slate-900 dark:text-white">DesignDot</span>
+            <span className="font-bold text-lg text-slate-900 dark:text-white">CreateDOT</span>
           </Link>
           <nav className="hidden md:flex items-center gap-6">
             <Link href="/about" className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">About</Link>
@@ -141,10 +141,10 @@ export default function BrandPage() {
               Brand Assets
             </span>
             <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-              DesignDot Brand Guidelines
+              CreateDOT Brand Guidelines
             </h1>
             <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-8">
-              Everything you need to represent DesignDot in your content, 
+              Everything you need to represent CreateDOT in your content, 
               integrations, and partnerships.
             </p>
 
@@ -203,7 +203,7 @@ export default function BrandPage() {
                           ? "text-white"
                           : "text-slate-900 dark:text-white"
                       }`}>
-                        DesignDot
+                        CreateDOT
                       </span>
                     )}
                   </div>

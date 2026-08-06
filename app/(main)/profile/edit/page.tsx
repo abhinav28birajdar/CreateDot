@@ -274,6 +274,7 @@ function PortfolioLinks({
 
   const updateLink = (index: number, field: "title" | "url", value: string) => {
     const newLinks = [...links];
+    if (!newLinks[index]) return;
     newLinks[index][field] = value;
     onChange(newLinks);
   };
@@ -513,7 +514,7 @@ export default function EditProfilePage() {
                       </p>
                     )}
                     <p className="text-xs text-slate-500 mt-1">
-                      designdot.com/@{profile.username || "username"}
+                      createdot.com/@{profile.username || "username"}
                     </p>
                   </div>
                 </div>

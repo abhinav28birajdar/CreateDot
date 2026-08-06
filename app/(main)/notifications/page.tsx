@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Notifications - CreatorFlow',
+  title: 'Notifications - CreateDOT',
   description: 'Your updates',
 }
 

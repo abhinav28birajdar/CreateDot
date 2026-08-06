@@ -91,7 +91,7 @@ const mockEvents: Event[] = [
     hosts: [
       {
         id: "h1",
-        name: "DesignDot",
+        name: "CreateDOT",
         avatar: "/logo.png",
         role: "Host",
       },
@@ -175,7 +175,7 @@ const mockEvents: Event[] = [
     hosts: [
       {
         id: "h4",
-        name: "DesignDot",
+        name: "CreateDOT",
         avatar: "/logo.png",
         role: "Host",
       },
@@ -204,7 +204,7 @@ const mockEvents: Event[] = [
     hosts: [
       {
         id: "h5",
-        name: "DesignDot",
+        name: "CreateDOT",
         avatar: "/logo.png",
         role: "Host",
       },
@@ -523,7 +523,7 @@ export default function EventsPage() {
       </section>
 
       {/* Live Now Banner */}
-      {liveEvents.length > 0 && (
+      {liveEvents[0] && (
         <section className="bg-red-500 text-white py-4">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between">
@@ -533,9 +533,9 @@ export default function EventsPage() {
                   LIVE NOW
                 </span>
                 <span className="text-red-100">•</span>
-                <span>{liveEvents[0].title}</span>
+                <span>{liveEvents[0]?.title}</span>
               </div>
-              <Link href={`/events/${liveEvents[0].id}`}>
+              <Link href={`/events/${liveEvents[0]?.id}`}>
                 <Button size="sm" className="bg-white text-red-500 hover:bg-red-50">
                   Join Now
                   <ArrowRight className="w-4 h-4 ml-1" />

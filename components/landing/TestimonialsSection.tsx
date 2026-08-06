@@ -31,7 +31,7 @@ const testimonials: Testimonial[] = [
     role: "Senior Product Designer",
     company: "Airbnb",
     type: "creator",
-    quote: "DesignDot completely transformed my career. Within 6 months of joining, I landed my dream job at Airbnb. The exposure and networking opportunities are unmatched.",
+    quote: "CreateDOT completely transformed my career. Within 6 months of joining, I landed my dream job at Airbnb. The exposure and networking opportunities are unmatched.",
     rating: 5,
     stats: {
       label: "Follower Growth",
@@ -48,7 +48,7 @@ const testimonials: Testimonial[] = [
     role: "Design Director",
     company: "Stripe",
     type: "client",
-    quote: "We've hired 12 designers through DesignDot in the past year. The quality of talent and the ease of finding the right fit has been exceptional. It's our go-to platform.",
+    quote: "We've hired 12 designers through CreateDOT in the past year. The quality of talent and the ease of finding the right fit has been exceptional. It's our go-to platform.",
     rating: 5,
     hasVideo: false,
   },
@@ -76,7 +76,7 @@ const testimonials: Testimonial[] = [
     role: "Head of Product",
     company: "Notion",
     type: "client",
-    quote: "The portfolio quality on DesignDot is outstanding. We can easily find designers who match our aesthetic and culture. It's streamlined our entire hiring process.",
+    quote: "The portfolio quality on CreateDOT is outstanding. We can easily find designers who match our aesthetic and culture. It's streamlined our entire hiring process.",
     rating: 5,
     hasVideo: false,
   },
@@ -126,6 +126,7 @@ export default function TestimonialsSection() {
   };
 
   const current = testimonials[currentIndex];
+  if (!current) return null;
 
   const variants = {
     enter: (direction: number) => ({
@@ -160,7 +161,7 @@ export default function TestimonialsSection() {
             Loved by Creators & Companies
           </h2>
           <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            See how DesignDot is helping designers and businesses succeed
+            See how CreateDOT is helping designers and businesses succeed
           </p>
         </motion.div>
 

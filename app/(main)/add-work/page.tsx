@@ -17,7 +17,6 @@ import {
   Upload, 
   X, 
   Plus, 
-  Image as ImageIcon, 
   Video, 
   FileText,
   ChevronDown,

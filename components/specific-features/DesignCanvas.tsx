@@ -119,14 +119,16 @@ export function DesignCanvas({
   const handleUndo = () => {
     if (historyIndex > 0) {
       setHistoryIndex(historyIndex - 1);
-      setElements([...history[historyIndex - 1]]);
+      const prev = history[historyIndex - 1];
+      if (prev) setElements([...prev]);
     }
   };
 
   const handleRedo = () => {
     if (historyIndex < history.length - 1) {
       setHistoryIndex(historyIndex + 1);
-      setElements([...history[historyIndex + 1]]);
+      const next = history[historyIndex + 1];
+      if (next) setElements([...next]);
     }
   };
 

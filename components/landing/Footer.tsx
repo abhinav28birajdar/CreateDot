@@ -51,7 +51,7 @@ const footerLinks = {
     { name: "Help Center", href: "/help" },
     { name: "API Documentation", href: "/developers" },
     { name: "Brand Assets", href: "/brand" },
-    { name: "Status Page", href: "https://status.designdot.com" },
+    { name: "Status Page", href: "https://status.createdot.com" },
     { name: "Community", href: "/community" },
   ],
   company: [
@@ -71,12 +71,12 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { name: "Twitter", icon: Twitter, href: "https://twitter.com/designdot", color: "hover:text-[#8B5DFF]" },
-  { name: "Instagram", icon: Instagram, href: "https://instagram.com/designdot", color: "hover:text-pink-500" },
-  { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com/company/designdot", color: "hover:text-[#8B5DFF]" },
-  { name: "YouTube", icon: Youtube, href: "https://youtube.com/designdot", color: "hover:text-red-500" },
-  { name: "GitHub", icon: Github, href: "https://github.com/designdot", color: "hover:text-slate-300" },
-  { name: "Facebook", icon: Facebook, href: "https://facebook.com/designdot", color: "hover:text-[#8B5DFF]" },
+  { name: "Twitter", icon: Twitter, href: "https://twitter.com/createdot", color: "hover:text-[#8B5DFF]" },
+  { name: "Instagram", icon: Instagram, href: "https://instagram.com/createdot", color: "hover:text-pink-500" },
+  { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com/company/createdot", color: "hover:text-[#8B5DFF]" },
+  { name: "YouTube", icon: Youtube, href: "https://youtube.com/createdot", color: "hover:text-red-500" },
+  { name: "GitHub", icon: Github, href: "https://github.com/createdot", color: "hover:text-slate-300" },
+  { name: "Facebook", icon: Facebook, href: "https://facebook.com/createdot", color: "hover:text-[#8B5DFF]" },
 ];
 
 const languages = [
@@ -132,7 +132,7 @@ export default function Footer() {
               <div className="w-10 h-10 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center">
                 <Sparkles className="w-6 h-6 text-white" />
               </div>
-              <span className="text-xl font-bold">DesignDot</span>
+              <span className="text-xl font-bold">CreateDOT</span>
             </Link>
             <p className="text-slate-400 text-sm mb-6">
               Where creativity meets opportunity. The world's leading platform for designers to showcase work and get hired.
@@ -341,7 +341,7 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             {/* Copyright */}
             <div className="flex items-center gap-2 text-slate-400 text-sm">
-              <span>© 2026 DesignDot Inc. All rights reserved.</span>
+              <span>© 2026 CreateDOT Inc. All rights reserved.</span>
               <span className="hidden md:inline">•</span>
               <span className="hidden md:flex items-center gap-1">
                 Made with <Heart className="w-4 h-4 text-red-500 fill-red-500" /> in San Francisco

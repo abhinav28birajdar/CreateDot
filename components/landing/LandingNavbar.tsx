@@ -116,7 +116,7 @@ export default function LandingNavbar() {
                     : "text-white"
                 }`}
               >
-                DesignDot
+                CreateDOT
               </span>
             </Link>
 

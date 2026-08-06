@@ -18,8 +18,7 @@ import {
   Loader2,
   Fingerprint,
   Smartphone,
-  Check,
-  X,
+  
 } from "lucide-react";
 
 // Social login providers
@@ -117,7 +116,7 @@ export default function SignInPage() {
             <div className="w-10 h-10 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center">
               <Sparkles className="w-6 h-6 text-white" />
             </div>
-            <span className="text-xl font-bold text-slate-900 dark:text-white">DesignDot</span>
+            <span className="text-xl font-bold text-slate-900 dark:text-white">CreateDOT</span>
           </Link>
 
           <AnimatePresence mode="wait">

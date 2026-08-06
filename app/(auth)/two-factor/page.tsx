@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -20,7 +20,6 @@ import {
   Eye,
   EyeOff,
   Lock,
-  X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -50,7 +49,7 @@ export default function TwoFactorSetupPage() {
 
   // Mock TOTP secret
   const totpSecret = "JBSWY3DPEHPK3PXP";
-  const qrCodeUrl = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=otpauth://totp/DesignDot:user@example.com?secret=" + totpSecret + "&issuer=DesignDot";
+  const qrCodeUrl = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=otpauth://totp/CreateDOT:user@example.com?secret=" + totpSecret + "&issuer=CreateDOT";
 
   const handleChooseMethod = (selectedMethod: "authenticator" | "sms") => {
     setMethod(selectedMethod);
@@ -121,7 +120,7 @@ export default function TwoFactorSetupPage() {
 
   const downloadCodes = () => {
     const blob = new Blob([
-      "DesignDot Backup Codes\n",
+      "CreateDOT Backup Codes\n",
       "========================\n",
       "Keep these codes in a safe place. Each code can only be used once.\n\n",
       backupCodes.join("\n"),
@@ -131,7 +130,7 @@ export default function TwoFactorSetupPage() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "designdot-backup-codes.txt";
+    a.download = "createdot-backup-codes.txt";
     a.click();
     URL.revokeObjectURL(url);
     setDownloadedCodes(true);
@@ -159,7 +158,7 @@ export default function TwoFactorSetupPage() {
           <div className="w-10 h-10 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center">
             <Sparkles className="w-6 h-6 text-white" />
           </div>
-          <span className="text-xl font-bold text-slate-900 dark:text-white">DesignDot</span>
+          <span className="text-xl font-bold text-slate-900 dark:text-white">CreateDOT</span>
         </Link>
 
         <div className="bg-white dark:bg-[#111111] rounded-2xl shadow-xl overflow-hidden">

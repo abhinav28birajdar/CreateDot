@@ -113,7 +113,7 @@ export default function PreSignupInterestPage() {
               <Sparkles className="w-7 h-7 text-white" />
             </div>
             <span className="text-2xl font-bold text-slate-900 dark:text-white">
-              DesignDot
+              CreateDOT
             </span>
           </Link>
 

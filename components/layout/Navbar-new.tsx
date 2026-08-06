@@ -62,7 +62,7 @@ export function Navbar() {
               <Palette className="w-6 h-6 text-white" />
             </div>
             <div className="hidden sm:block">
-              <span className="text-xl font-bold designly-text-gradient">Design.ly</span>
+              <span className="text-xl font-bold designly-text-gradient">CreateDOT</span>
               <div className="text-xs text-gray-500 font-medium">AI-Powered Creative Engine</div>
             </div>
           </Link>

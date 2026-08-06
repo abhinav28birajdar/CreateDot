@@ -37,16 +37,17 @@ function AnimatedCounter({ value, prefix = "", suffix = "" }: { value: number; p
   const ref = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
+    let timer: NodeJS.Timeout;
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated) {
+        if (entry?.isIntersecting && !hasAnimated) {
           setHasAnimated(true);
           let start = 0;
           const end = value;
           const duration = 2000;
           const increment = end / (duration / 16);
 
-          const timer = setInterval(() => {
+          timer = setInterval(() => {
             start += increment;
             if (start >= end) {
               setCount(end);
@@ -55,8 +56,6 @@ function AnimatedCounter({ value, prefix = "", suffix = "" }: { value: number; p
               setCount(Math.floor(start));
             }
           }, 16);
-
-          return () => clearInterval(timer);
         }
       },
       { threshold: 0.1 }

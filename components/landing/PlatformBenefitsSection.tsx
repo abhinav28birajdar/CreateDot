@@ -103,7 +103,7 @@ export default function PlatformBenefitsSection() {
             Built for Everyone
           </h2>
           <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            Whether you're creating or hiring, DesignDot has the tools you need
+            Whether you're creating or hiring, CreateDOT has the tools you need
           </p>
         </motion.div>
 

@@ -63,7 +63,7 @@ const DesignlyHomePage: React.FC = () => {
       name: "Sarah Chen",
       role: "Creative Director", 
       company: "Design Studio Inc.",
-      content: "Design.ly has revolutionized our design workflow. The AI suggestions are incredibly intuitive and save us hours of work.",
+      content: "CreateDOT has revolutionized our design workflow. The AI suggestions are incredibly intuitive and save us hours of work.",
       rating: 5,
       avatar: "/api/placeholder/64/64"
     },
@@ -71,7 +71,7 @@ const DesignlyHomePage: React.FC = () => {
       name: "Marcus Rodriguez", 
       role: "Brand Manager",
       company: "TechCorp",
-      content: "The brand consistency tools in Design.ly ensure our visual identity remains cohesive across all touchpoints.",
+      content: "The brand consistency tools in CreateDOT ensure our visual identity remains cohesive across all touchpoints.",
       rating: 5,
       avatar: "/api/placeholder/64/64"
     },
@@ -79,7 +79,7 @@ const DesignlyHomePage: React.FC = () => {
       name: "Elena Petrov",
       role: "UX Designer", 
       company: "StartupX",
-      content: "From concept to execution, Design.ly streamlines every step of the design process. It's like having a creative partner.",
+      content: "From concept to execution, CreateDOT streamlines every step of the design process. It's like having a creative partner.",
       rating: 5,
       avatar: "/api/placeholder/64/64"
     }
@@ -199,7 +199,7 @@ const DesignlyHomePage: React.FC = () => {
               className="max-w-4xl mx-auto"
             >
               <h1 className="text-6xl md:text-7xl font-bold font-heading mb-6">
-                <span className="designly-text-gradient">Design.ly</span>
+                <span className="designly-text-gradient">CreateDOT</span>
               </h1>
               <p className="text-xl md:text-2xl text-dark-slate mb-4">
                 The AI-Powered Creative Engine
@@ -208,25 +208,31 @@ const DesignlyHomePage: React.FC = () => {
                 Innovate. Automate. Elevate. Every Design, Masterfully Crafted.
               </p>
               
-              <div className="mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold text-dark-slate mb-4">
-                  {heroSlides[activeHeroSlide].title}
-                </h2>
-                <p className="text-lg text-muted-foreground mb-8">
-                  {heroSlides[activeHeroSlide].subtitle}
-                </p>
-                
-                <Button 
-                  asChild
-                  size="lg"
-                  className="designly-gradient text-white hover:opacity-90 designly-hover-lift animate-pulse-glow font-semibold px-8 py-4 text-lg"
-                >
-                  <Link href={heroSlides[activeHeroSlide].ctaLink}>
-                    {heroSlides[activeHeroSlide].ctaText}
-                    <ArrowRight className="ml-2 w-5 h-5" />
-                  </Link>
-                </Button>
-              </div>
+              {(() => {
+                const slide = heroSlides[activeHeroSlide] || heroSlides[0];
+                if (!slide) return null;
+                return (
+                  <div className="mb-12">
+                    <h2 className="text-3xl md:text-4xl font-bold text-dark-slate mb-4">
+                      {slide?.title}
+                    </h2>
+                    <p className="text-lg text-muted-foreground mb-8">
+                      {slide?.subtitle}
+                    </p>
+                    
+                    <Button 
+                      asChild
+                      size="lg"
+                      className="designly-gradient text-white hover:opacity-90 designly-hover-lift animate-pulse-glow font-semibold px-8 py-4 text-lg"
+                    >
+                      <Link href={slide?.ctaLink || '#'}>
+                        {slide?.ctaText}
+                        <ArrowRight className="ml-2 w-5 h-5" />
+                      </Link>
+                    </Button>
+                  </div>
+                );
+              })()}
 
               {/* Hero Slide Indicators */}
               <div className="flex justify-center space-x-2">
@@ -279,7 +285,7 @@ const DesignlyHomePage: React.FC = () => {
               Experience <span className="designly-text-gradient">AI Magic</span> Instantly
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Try our interactive mini-generators and see the power of Design.ly in action
+              Try our interactive mini-generators and see the power of CreateDOT in action
             </p>
           </motion.div>
 
@@ -448,7 +454,7 @@ const DesignlyHomePage: React.FC = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold font-heading mb-6">
-              Why Choose <span className="designly-text-gradient">Design.ly</span>?
+              Why Choose <span className="designly-text-gradient">CreateDOT</span>?
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Our AI-powered platform combines cutting-edge technology with intuitive design to deliver unmatched creative capabilities
@@ -491,42 +497,48 @@ const DesignlyHomePage: React.FC = () => {
               What Our <span className="designly-text-gradient">Creators</span> Say
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Join thousands of satisfied designers, marketers, and businesses who trust Design.ly
+              Join thousands of satisfied designers, marketers, and businesses who trust CreateDOT
             </p>
           </motion.div>
 
           <div className="max-w-4xl mx-auto">
             <AnimatePresence mode="wait">
-              <motion.div
-                key={currentTestimonial}
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -50 }}
-                transition={{ duration: 0.6 }}
-                className="text-center"
-              >
-                <Quote className="w-12 h-12 text-designly-purple-400 mx-auto mb-8" />
-                <blockquote className="text-2xl md:text-3xl font-medium mb-8 leading-relaxed text-dark-slate">
-                  "{testimonials[currentTestimonial].content}"
-                </blockquote>
-                <div className="flex items-center justify-center mb-4">
-                  {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                <div className="flex items-center justify-center space-x-4">
-                  <img
-                    src={testimonials[currentTestimonial].avatar}
-                    alt={testimonials[currentTestimonial].name}
-                    className="w-16 h-16 rounded-full"
-                  />
-                  <div className="text-left">
-                    <p className="font-semibold text-lg">{testimonials[currentTestimonial].name}</p>
-                    <p className="text-muted-foreground">{testimonials[currentTestimonial].role}</p>
-                    <p className="text-sm text-designly-purple-600">{testimonials[currentTestimonial].company}</p>
-                  </div>
-                </div>
-              </motion.div>
+              {(() => {
+                const item = testimonials[currentTestimonial] || testimonials[0];
+                if (!item) return null;
+                return (
+                  <motion.div
+                    key={currentTestimonial}
+                    initial={{ opacity: 0, x: 50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -50 }}
+                    transition={{ duration: 0.6 }}
+                    className="text-center"
+                  >
+                    <Quote className="w-12 h-12 text-designly-purple-400 mx-auto mb-8" />
+                    <blockquote className="text-2xl md:text-3xl font-medium mb-8 leading-relaxed text-dark-slate">
+                      "{item?.content}"
+                    </blockquote>
+                    <div className="flex items-center justify-center mb-4">
+                      {[...Array(item?.rating || 5)].map((_, i) => (
+                        <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                      ))}
+                    </div>
+                    <div className="flex items-center justify-center space-x-4">
+                      <img
+                        src={item?.avatar}
+                        alt={item?.name}
+                        className="w-16 h-16 rounded-full"
+                      />
+                      <div className="text-left">
+                        <p className="font-semibold text-lg">{item?.name}</p>
+                        <p className="text-muted-foreground">{item?.role}</p>
+                        <p className="text-sm text-designly-purple-600">{item?.company}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })()}
             </AnimatePresence>
 
             {/* Testimonial Indicators */}

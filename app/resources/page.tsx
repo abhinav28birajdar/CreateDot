@@ -82,7 +82,7 @@ const mockResources: Resource[] = [
     isFree: true,
     isPremium: false,
     author: {
-      name: "DesignDot Team",
+      name: "CreateDOT Team",
       avatar: "/logo.png",
     },
     tags: ["Design Systems", "Components", "Documentation"],

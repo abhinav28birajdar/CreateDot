@@ -5,7 +5,7 @@ import Link from "next/link"
 import { ProjectList } from "@/components/projects/project-list"
 
 export const metadata: Metadata = {
-    title: "Projects - CreatorFlow",
+    title: "Projects - CreateDOT",
     description: "Manage your projects",
 }
 

@@ -39,7 +39,7 @@ const article = {
     id: "u1",
     name: "Sarah Chen",
     avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop",
-    role: "Design Lead at Designly",
+    role: "Design Lead at CreateDOT",
     bio: "Senior Product Designer with 8+ years of experience. Passionate about creating intuitive digital experiences.",
     followers: 12500,
   },

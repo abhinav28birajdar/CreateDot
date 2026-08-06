@@ -112,7 +112,7 @@ export default function DesignEditor() {
   const router = useRouter();
   const { user } = useAuth();
   const [isLoaded, setIsLoaded] = useState(false);
-  const [canvasSize, setCanvasSize] = useState(CANVAS_SIZES[0]);
+  const [canvasSize, setCanvasSize] = useState(CANVAS_SIZES[0]!);
   const [designTitle, setDesignTitle] = useState("Untitled Design");
   const [selectedElement, setSelectedElement] = useState<DesignElement | null>(null);
   const [activeTab, setActiveTab] = useState("elements");
@@ -141,7 +141,7 @@ export default function DesignEditor() {
   const handleUndo = () => {
     if (historyIndex > 0) {
       setHistoryIndex(historyIndex - 1);
-      setElements([...history[historyIndex - 1]]);
+      setElements([...(history?.[historyIndex - 1] ?? [])]);
     }
   };
   
@@ -149,7 +149,7 @@ export default function DesignEditor() {
   const handleRedo = () => {
     if (historyIndex < history.length - 1) {
       setHistoryIndex(historyIndex + 1);
-      setElements([...history[historyIndex + 1]]);
+      setElements([...(history?.[historyIndex + 1] ?? [])]);
     }
   };
   
@@ -898,7 +898,7 @@ export default function DesignEditor() {
                     min={0}
                     max={100}
                     step={1}
-                    onValueChange={(value) => updateElement(selectedElement.id, { opacity: value[0] / 100 })}
+                    onValueChange={(value) => updateElement(selectedElement.id, { opacity: (value[0] ?? 100) / 100 })}
                     disabled={selectedElement.locked}
                   />
                 </div>

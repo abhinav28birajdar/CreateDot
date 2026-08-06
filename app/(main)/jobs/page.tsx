@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
-    title: 'Jobs - CreatorFlow',
+    title: 'Jobs - CreateDOT',
     description: 'Find your next role',
 }
 

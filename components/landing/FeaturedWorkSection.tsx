@@ -118,6 +118,7 @@ export default function FeaturedWorkSection() {
       checkScroll();
       return () => scrollContainer.removeEventListener("scroll", checkScroll);
     }
+    return undefined;
   }, []);
 
   const scroll = (direction: "left" | "right") => {

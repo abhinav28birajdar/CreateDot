@@ -18,7 +18,7 @@ export async function GET() {
                     justifyContent: 'center',
                 }}
             >
-                CreatorFlow
+                CreateDOT
             </div>
         ),
         {

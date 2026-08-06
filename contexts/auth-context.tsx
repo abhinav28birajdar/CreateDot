@@ -139,8 +139,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       if (profileError) {
         console.error("Profile creation error:", profileError);
-        // If profile creation fails, delete the auth user
-        await supabase.auth.admin.deleteUser(data.user.id);
         throw new Error(`Failed to create profile: ${profileError.message}`);
       }
 

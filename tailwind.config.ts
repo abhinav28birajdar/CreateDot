@@ -57,7 +57,7 @@ const config: Config = {
           "purple-light": "#F3E8FF",
           "purple-dark": "#7C2D92",
         },
-        // Design.ly Brand Colors
+        // CreateDOT Brand Colors
         "designly-purple": {
           50: "#faf5ff",
           100: "#f3e8ff",
@@ -84,7 +84,7 @@ const config: Config = {
           900: "#064e3b",
           950: "#022c22",
         },
-        // Design.ly Neutral Palette
+        // CreateDOT Neutral Palette
         "obsidian": "#121212",
         "charcoal": "#282828",
         "almost-white": "#F7F7F7",

@@ -41,6 +41,7 @@ export default function VerifyEmailClient() {
       const timer = setTimeout(() => setResendCooldown(resendCooldown - 1), 1000);
       return () => clearTimeout(timer);
     }
+    return undefined;
   }, [resendCooldown]);
 
   const handleInputChange = (index: number, value: string) => {
@@ -136,7 +137,9 @@ export default function VerifyEmailClient() {
   };
 
   const maskEmail = (value: string) => {
-    const [local, domain] = value.split("@");
+    const parts = value.split("@");
+    const local = parts[0] || "";
+    const domain = parts[1] || "";
     if (local.length <= 2) return value;
     return `${local[0]}${"*".repeat(local.length - 2)}${local[local.length - 1]}@${domain}`;
   };
@@ -152,7 +155,7 @@ export default function VerifyEmailClient() {
           <div className="w-10 h-10 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center">
             <Sparkles className="w-6 h-6 text-white" />
           </div>
-          <span className="text-xl font-bold text-slate-900 dark:text-white">DesignDot</span>
+          <span className="text-xl font-bold text-slate-900 dark:text-white">CreateDOT</span>
         </Link>
 
         <div className="bg-white dark:bg-[#111111] rounded-2xl shadow-xl p-8">

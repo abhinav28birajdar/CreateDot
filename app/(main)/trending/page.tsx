@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-    title: 'Trending - CreatorFlow',
+    title: 'Trending - CreateDOT',
     description: 'See what is trending today',
 }
 

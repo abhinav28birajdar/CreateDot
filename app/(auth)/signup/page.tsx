@@ -3,7 +3,7 @@ import Link from "next/link"
 import { SignupForm } from "@/components/auth/signup-form"
 
 export const metadata: Metadata = {
-  title: "Sign Up - CreatorFlow",
+  title: "Sign Up - CreateDOT",
   description: "Create a new account",
 }
 

@@ -472,7 +472,7 @@ export default function ContractsPage() {
             <div>
               <h2 className="text-xl font-bold mb-2">Protect Your Work</h2>
               <p className="text-slate-300 mb-4">
-                All contracts on DesignDot are legally binding and include our standard protections for both parties. 
+                All contracts on CreateDOT are legally binding and include our standard protections for both parties. 
                 Learn more about how we keep your work and payments secure.
               </p>
               <Button variant="outline" className="border-white/20 text-white hover:bg-white/10">

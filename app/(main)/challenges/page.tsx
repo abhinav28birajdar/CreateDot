@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-    title: 'Challenges - CreatorFlow',
+    title: 'Challenges - CreateDOT',
     description: 'Test your skills',
 }
 

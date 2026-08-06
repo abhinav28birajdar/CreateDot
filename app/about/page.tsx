@@ -132,7 +132,7 @@ export default function AboutPage() {
             <div className="w-9 h-9 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center">
               <Sparkles className="w-5 h-5 text-white" />
             </div>
-            <span className="font-bold text-lg text-slate-900 dark:text-white">DesignDot</span>
+            <span className="font-bold text-lg text-slate-900 dark:text-white">CreateDOT</span>
           </Link>
           <nav className="hidden md:flex items-center gap-6">
             <Link href="/about" className="text-violet-600 font-medium">About</Link>
@@ -158,7 +158,7 @@ export default function AboutPage() {
           >
             <span className="inline-flex items-center gap-2 px-3 py-1 bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300 rounded-full text-sm font-medium mb-6">
               <Heart className="w-4 h-4" />
-              About DesignDot
+              About CreateDOT
             </span>
             <h1 className="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white mb-6 leading-tight">
               Empowering creators to
@@ -223,7 +223,7 @@ export default function AboutPage() {
                 tell their story, and connect with opportunities that matter.
               </p>
               <p className="text-lg text-slate-600 dark:text-slate-400 mb-6">
-                DesignDot was founded with a simple vision: to create the most beautiful, 
+                CreateDOT was founded with a simple vision: to create the most beautiful, 
                 accessible, and inspiring portfolio platform in the world. A place where 
                 design speaks for itself.
               </p>

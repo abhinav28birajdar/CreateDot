@@ -526,96 +526,104 @@ export default function LeaderboardPage() {
       <section className="py-12">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Top 3 Podium (Desktop) */}
-          <div className="hidden lg:flex justify-center gap-8 mb-12">
-            {/* 2nd Place */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="mt-8"
-            >
-              <div className="w-48 text-center">
-                <div className="relative inline-block mb-4">
-                  <img
-                    src={mockLeaderboard[1].user.avatar}
-                    alt={mockLeaderboard[1].user.name}
-                    className="w-24 h-24 rounded-full border-4 border-slate-300 object-cover"
-                  />
-                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-8 h-8 bg-[#8B5DFF] from-slate-300 to-slate-500 rounded-full flex items-center justify-center border-2 border-white">
-                    <span className="text-white font-bold text-sm">2</span>
+          {(() => {
+            const first = mockLeaderboard[0];
+            const second = mockLeaderboard[1];
+            const third = mockLeaderboard[2];
+            if (!first || !second || !third) return null;
+            return (
+              <div className="hidden lg:flex justify-center gap-8 mb-12">
+                {/* 2nd Place */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 }}
+                  className="mt-8"
+                >
+                  <div className="w-48 text-center">
+                    <div className="relative inline-block mb-4">
+                      <img
+                        src={second?.user?.avatar}
+                        alt={second?.user?.name}
+                        className="w-24 h-24 rounded-full border-4 border-slate-300 object-cover"
+                      />
+                      <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-8 h-8 bg-[#8B5DFF] from-slate-300 to-slate-500 rounded-full flex items-center justify-center border-2 border-white">
+                        <span className="text-white font-bold text-sm">2</span>
+                      </div>
+                    </div>
+                    <h3 className="font-semibold text-slate-900 dark:text-white">
+                      {second?.user?.name}
+                    </h3>
+                    <p className="text-sm text-slate-500 mb-2">
+                      {second?.stats?.score?.toLocaleString()} pts
+                    </p>
                   </div>
-                </div>
-                <h3 className="font-semibold text-slate-900 dark:text-white">
-                  {mockLeaderboard[1].user.name}
-                </h3>
-                <p className="text-sm text-slate-500 mb-2">
-                  {mockLeaderboard[1].stats.score.toLocaleString()} pts
-                </p>
-              </div>
-            </motion.div>
+                </motion.div>
 
-            {/* 1st Place */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-            >
-              <div className="w-56 text-center">
-                <div className="relative inline-block mb-4">
-                  <div className="absolute -top-6 left-1/2 -translate-x-1/2">
-                    <Crown className="w-10 h-10 text-amber-500" />
+                {/* 1st Place */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                >
+                  <div className="w-56 text-center">
+                    <div className="relative inline-block mb-4">
+                      <div className="absolute -top-6 left-1/2 -translate-x-1/2">
+                        <Crown className="w-10 h-10 text-amber-500" />
+                      </div>
+                      <img
+                        src={first?.user?.avatar}
+                        alt={first?.user?.name}
+                        className="w-32 h-32 rounded-full border-4 border-amber-400 object-cover ring-4 ring-amber-200 dark:ring-amber-900"
+                      />
+                      <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-10 h-10 bg-[#8B5DFF] from-amber-400 to-amber-600 rounded-full flex items-center justify-center border-2 border-white">
+                        <span className="text-white font-bold">1</span>
+                      </div>
+                    </div>
+                    <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+                      {first?.user?.name}
+                    </h3>
+                    <p className="text-violet-600 font-semibold mb-2">
+                      {first?.stats?.score?.toLocaleString()} pts
+                    </p>
+                    <div className="flex justify-center gap-1">
+                      {first?.badges?.slice(0, 3).map((badge) => (
+                        <Badge key={badge} variant="secondary" className="text-xs">
+                          {badge}
+                        </Badge>
+                      ))}
+                    </div>
                   </div>
-                  <img
-                    src={mockLeaderboard[0].user.avatar}
-                    alt={mockLeaderboard[0].user.name}
-                    className="w-32 h-32 rounded-full border-4 border-amber-400 object-cover ring-4 ring-amber-200 dark:ring-amber-900"
-                  />
-                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-10 h-10 bg-[#8B5DFF] from-amber-400 to-amber-600 rounded-full flex items-center justify-center border-2 border-white">
-                    <span className="text-white font-bold">1</span>
-                  </div>
-                </div>
-                <h3 className="text-lg font-bold text-slate-900 dark:text-white">
-                  {mockLeaderboard[0].user.name}
-                </h3>
-                <p className="text-violet-600 font-semibold mb-2">
-                  {mockLeaderboard[0].stats.score.toLocaleString()} pts
-                </p>
-                <div className="flex justify-center gap-1">
-                  {mockLeaderboard[0].badges.slice(0, 3).map((badge) => (
-                    <Badge key={badge} variant="secondary" className="text-xs">
-                      {badge}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
+                </motion.div>
 
-            {/* 3rd Place */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="mt-8"
-            >
-              <div className="w-48 text-center">
-                <div className="relative inline-block mb-4">
-                  <img
-                    src={mockLeaderboard[2].user.avatar}
-                    alt={mockLeaderboard[2].user.name}
-                    className="w-24 h-24 rounded-full border-4 border-amber-700 object-cover"
-                  />
-                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-8 h-8 bg-[#8B5DFF] from-amber-600 to-amber-800 rounded-full flex items-center justify-center border-2 border-white">
-                    <span className="text-white font-bold text-sm">3</span>
+                {/* 3rd Place */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="mt-8"
+                >
+                  <div className="w-48 text-center">
+                    <div className="relative inline-block mb-4">
+                      <img
+                        src={third?.user?.avatar}
+                        alt={third?.user?.name}
+                        className="w-24 h-24 rounded-full border-4 border-amber-700 object-cover"
+                      />
+                      <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-8 h-8 bg-[#8B5DFF] from-amber-600 to-amber-800 rounded-full flex items-center justify-center border-2 border-white">
+                        <span className="text-white font-bold text-sm">3</span>
+                      </div>
+                    </div>
+                    <h3 className="font-semibold text-slate-900 dark:text-white">
+                      {third?.user?.name}
+                    </h3>
+                    <p className="text-sm text-slate-500 mb-2">
+                      {third?.stats?.score?.toLocaleString()} pts
+                    </p>
                   </div>
-                </div>
-                <h3 className="font-semibold text-slate-900 dark:text-white">
-                  {mockLeaderboard[2].user.name}
-                </h3>
-                <p className="text-sm text-slate-500 mb-2">
-                  {mockLeaderboard[2].stats.score.toLocaleString()} pts
-                </p>
+                </motion.div>
               </div>
-            </motion.div>
-          </div>
+            );
+          })()}
 
           {/* Leaderboard List */}
           <div className="space-y-3">

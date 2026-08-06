@@ -26,8 +26,8 @@ export function BrandProfileEditor({ initialBrand, onSave }: BrandProfileEditorP
   const [brand, setBrand] = useState<Partial<BrandProfile>>(initialBrand || {
     name: '',
     colors: {
-      primary: '#9929EA', // Design.ly purple as default
-      secondary: '#34D399', // Design.ly emerald as default
+      primary: '#9929EA', // CreateDOT purple as default
+      secondary: '#34D399', // CreateDOT emerald as default
       accent: '#F59E0B',
       text: '#1F2937',
       background: '#FFFFFF'

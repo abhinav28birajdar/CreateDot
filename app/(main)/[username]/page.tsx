@@ -1,7 +1,7 @@
 import { createClient } from "@/lib/supabase/client"
 import { ProfileHeader } from "@/components/profile/profile-header"
 import { ProfileTabs } from "@/components/profile/profile-tabs"
-import { notFound } from "next/navigation"
+// import { notFound } from "next/navigation"
 
 export default async function ProfilePage({ params }: { params: Promise<{ username: string }> }) {
     const { username } = await params
@@ -25,7 +25,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ userna
         full_name: username.charAt(0).toUpperCase() + username.slice(1),
         avatar_url: null,
         banner_url: null,
-        bio: "This is a creator on CreatorFlow.",
+        bio: "This is a creator on CreateDOT.",
         followers_count: 0,
         following_count: 0,
         likes_count: 0,

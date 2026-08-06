@@ -1,5 +1,7 @@
 -- Design.ly Database Schema
 -- This file contains the complete database schema for Design.ly: The AI-Powered Creative Engine
+-- IMPORTANT: Use complete-schema.sql instead - this file is kept for reference
+-- Execute complete-schema.sql in your Supabase SQL Editor
 
 -- Enable necessary extensions
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";

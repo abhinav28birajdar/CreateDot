@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { UploadForm } from "@/components/upload/upload-form"
 
 export const metadata: Metadata = {
-    title: "Upload - CreatorFlow",
+    title: "Upload - CreateDOT",
     description: "Share your work with the world",
 }
 

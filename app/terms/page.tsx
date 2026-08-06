@@ -25,14 +25,14 @@ export default function TermsPage() {
           <div className="prose dark:prose-invert max-w-none prose-headings:font-semibold prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-4 prose-h3:text-xl prose-h3:mt-6 prose-h3:mb-3 prose-p:text-slate-600 dark:prose-p:text-slate-400 prose-li:text-slate-600 dark:prose-li:text-slate-400">
             <h2>1. Acceptance of Terms</h2>
             <p>
-              By accessing or using Designly (&quot;the Platform&quot;), you agree to be
+              By accessing or using CreateDOT (&quot;the Platform&quot;), you agree to be
               bound by these Terms of Service. If you do not agree to these terms,
               please do not use the Platform.
             </p>
 
             <h2>2. Description of Service</h2>
             <p>
-              Designly is a creative portfolio platform that allows designers to
+              CreateDOT is a creative portfolio platform that allows designers to
               showcase their work, connect with other creatives, and find
               opportunities. The Platform includes:
             </p>
@@ -63,7 +63,7 @@ export default function TermsPage() {
             <h3>4.1 Ownership</h3>
             <p>
               You retain ownership of all content you upload to the Platform
-              (&quot;User Content&quot;). By uploading content, you grant Designly a
+              (&quot;User Content&quot;). By uploading content, you grant CreateDOT a
               non-exclusive, worldwide, royalty-free license to display, reproduce,
               and distribute your content on the Platform.
             </p>
@@ -89,14 +89,14 @@ export default function TermsPage() {
             <h2>5. Intellectual Property</h2>
             <p>
               The Platform, including its design, features, and content (excluding
-              User Content), is owned by Designly and protected by copyright,
+              User Content), is owned by CreateDOT and protected by copyright,
               trademark, and other intellectual property laws.
             </p>
 
             <h2>6. Marketplace Terms</h2>
             <h3>6.1 Hiring and Jobs</h3>
             <p>
-              Designly facilitates connections between designers and clients but is
+              CreateDOT facilitates connections between designers and clients but is
               not a party to any agreement between users. We do not guarantee the
               quality, safety, or legality of any work or payment.
             </p>
@@ -134,7 +134,7 @@ export default function TermsPage() {
 
             <h2>10. Limitation of Liability</h2>
             <p>
-              IN NO EVENT SHALL DESIGNLY BE LIABLE FOR ANY INDIRECT, INCIDENTAL,
+              IN NO EVENT SHALL CREATEDOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL,
               SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES ARISING FROM YOUR USE OF
               THE PLATFORM.
             </p>
@@ -151,7 +151,7 @@ export default function TermsPage() {
               If you have questions about these Terms, please contact us at:
             </p>
             <ul>
-              <li>Email: legal@designly.com</li>
+              <li>Email: legal@createdot.com</li>
               <li>Address: 123 Design Street, San Francisco, CA 94105</li>
             </ul>
           </div>

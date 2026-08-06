@@ -3,7 +3,7 @@ import { ExploreFilters } from "@/components/explore/explore-filters"
 import { FeedContainer } from "@/components/feed/feed-container"
 
 export const metadata: Metadata = {
-  title: "Explore - CreatorFlow",
+  title: "Explore - CreateDOT",
   description: "Explore the best designs",
 }
 

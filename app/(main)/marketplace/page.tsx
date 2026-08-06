@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Marketplace - CreatorFlow',
+  title: 'Marketplace - CreateDOT',
   description: 'Buy and sell design assets',
 }
 

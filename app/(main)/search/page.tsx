@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Search } from "lucide-react"
 
 export const metadata: Metadata = {
-    title: 'Search - CreatorFlow',
+    title: 'Search - CreateDOT',
     description: 'Search for inspiration',
 }
 

@@ -23,8 +23,6 @@ import {
   Upload,
   ExternalLink,
   Loader2,
-  ChevronDown,
-  Search,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -105,7 +103,6 @@ const projectTypes = [
 export default function OnboardingWizard() {
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [uploadProgress, setUploadProgress] = useState(0);
 
   // Step 1: Profile Basics
   const [displayName, setDisplayName] = useState("");
@@ -139,7 +136,6 @@ export default function OnboardingWizard() {
   // Step 6: Interests
   const [favoriteStyles, setFavoriteStyles] = useState<string[]>([]);
   const [interestedIndustries, setInterestedIndustries] = useState<string[]>([]);
-  const [followTopics, setFollowTopics] = useState<string[]>([]);
 
   // Step 7: Availability
   const [availability, setAvailability] = useState("");
@@ -294,7 +290,7 @@ export default function OnboardingWizard() {
             <div className="w-8 h-8 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 rounded-lg flex items-center justify-center">
               <Sparkles className="w-5 h-5 text-white" />
             </div>
-            <span className="font-bold text-slate-900 dark:text-white">DesignDot</span>
+            <span className="font-bold text-slate-900 dark:text-white">CreateDOT</span>
           </Link>
 
           <button
@@ -358,7 +354,7 @@ export default function OnboardingWizard() {
               <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
                 Step {currentStep} of 7
               </span>
-              <span className="text-sm text-slate-500">{steps[currentStep - 1].label}</span>
+              <span className="text-sm text-slate-500">{steps[currentStep - 1]?.label || ""}</span>
             </div>
             <div className="h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
               <div

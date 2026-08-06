@@ -13,7 +13,7 @@ export function Footer() {
                 <Palette className="h-7 w-7 text-white" />
               </div>
               <div>
-                <span className="text-2xl font-bold designly-text-gradient">Design.ly</span>
+                <span className="text-2xl font-bold designly-text-gradient">CreateDOT</span>
                 <div className="text-sm text-gray-400">AI-Powered Creative Engine</div>
               </div>
             </div>
@@ -68,7 +68,7 @@ export function Footer() {
                 <Mail className="h-5 w-5 text-purple-400" />
                 <div>
                   <div className="text-sm font-medium text-white">Email</div>
-                  <div className="text-sm">hello@design.ly</div>
+                  <div className="text-sm">hello@createdot.io</div>
                 </div>
               </div>
               <div className="flex items-center space-x-3 text-gray-400">
@@ -107,7 +107,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-[#1F1F1F] mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; 2024 Design.ly. All rights reserved.</p>
+          <p>&copy; 2024 CreateDOT. All rights reserved.</p>
         </div>
       </div>
     </footer>

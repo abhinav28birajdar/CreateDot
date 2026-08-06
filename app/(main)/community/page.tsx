@@ -121,7 +121,7 @@ const CommunityPage = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            DesignDot Community
+            CreateDOT Community
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Connect with fellow creators, discover inspiration, and grow together in our vibrant design community.
@@ -200,10 +200,13 @@ const CommunityPage = () => {
                   </div>
                   <div className="flex items-center">
                     <Avatar className="h-8 w-8 mr-2">
-                      <AvatarImage src={design.creator.avatar_url} alt={design.creator.display_name} />
-                      <AvatarFallback>{design.creator.display_name[0]}</AvatarFallback>
+                      {design.creator?.avatar_url ? (
+                        <AvatarImage src={design.creator.avatar_url} alt={design.creator.display_name ?? design.title} />
+                      ) : (
+                        <AvatarFallback>{design.creator?.display_name?.[0] ?? "?"}</AvatarFallback>
+                      )}
                     </Avatar>
-                    <span className="text-sm font-medium">{design.creator.display_name}</span>
+                    <span className="text-sm font-medium">{design.creator?.display_name ?? "Unknown"}</span>
                   </div>
                 </CardContent>
               </Card>
@@ -302,8 +305,11 @@ const CommunityPage = () => {
                   <div className="space-y-4">
                     <div className="flex items-center space-x-3 text-sm">
                       <Avatar className="h-8 w-8">
-                        <AvatarImage src={featuredCreators[0].avatar_url} alt="" />
-                        <AvatarFallback>AJ</AvatarFallback>
+                        {featuredCreators?.[0]?.avatar_url ? (
+                          <AvatarImage src={featuredCreators?.[0]?.avatar_url ?? ""} alt={featuredCreators?.[0]?.display_name ?? ""} />
+                        ) : (
+                          <AvatarFallback>{featuredCreators?.[0]?.display_name?.split(" ").map(n=>n[0]).join("") ?? "AJ"}</AvatarFallback>
+                        )}
                       </Avatar>
                       <div>
                         <span className="font-medium">Alex Johnson</span> uploaded a new design "Mobile Banking Interface"
@@ -312,8 +318,11 @@ const CommunityPage = () => {
                     </div>
                     <div className="flex items-center space-x-3 text-sm">
                       <Avatar className="h-8 w-8">
-                        <AvatarImage src={featuredCreators[1].avatar_url} alt="" />
-                        <AvatarFallback>SW</AvatarFallback>
+                        {featuredCreators?.[1]?.avatar_url ? (
+                          <AvatarImage src={featuredCreators?.[1]?.avatar_url ?? ""} alt={featuredCreators?.[1]?.display_name ?? ""} />
+                        ) : (
+                          <AvatarFallback>{featuredCreators?.[1]?.display_name?.split(" ").map(n=>n[0]).join("") ?? "SW"}</AvatarFallback>
+                        )}
                       </Avatar>
                       <div>
                         <span className="font-medium">Sarah Wilson</span> liked a design by Mike Chen
@@ -322,8 +331,11 @@ const CommunityPage = () => {
                     </div>
                     <div className="flex items-center space-x-3 text-sm">
                       <Avatar className="h-8 w-8">
-                        <AvatarImage src={featuredCreators[2].avatar_url} alt="" />
-                        <AvatarFallback>MC</AvatarFallback>
+                        {featuredCreators?.[2]?.avatar_url ? (
+                          <AvatarImage src={featuredCreators?.[2]?.avatar_url ?? ""} alt={featuredCreators?.[2]?.display_name ?? ""} />
+                        ) : (
+                          <AvatarFallback>{featuredCreators?.[2]?.display_name?.split(" ").map(n=>n[0]).join("") ?? "MC"}</AvatarFallback>
+                        )}
                       </Avatar>
                       <div>
                         <span className="font-medium">Mike Chen</span> started following 3 new creators

@@ -92,7 +92,7 @@ export default function ThanksPage() {
             </h1>
             
             <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-              Thank you for being part of the DesignDot community! Your creativity and passion inspire us every day. 
+              Thank you for being part of the CreateDOT community! Your creativity and passion inspire us every day. 
               We hope to see you again soon.
             </p>
 
@@ -130,7 +130,7 @@ export default function ThanksPage() {
           {/* Features Section */}
           <div className="mb-16">
             <h2 className="text-3xl font-bold text-gray-900 mb-8">
-              Why Designers Love DesignDot
+              Why Designers Love CreateDOT
             </h2>
             
             <div className="grid md:grid-cols-3 gap-8">
@@ -210,7 +210,7 @@ export default function ThanksPage() {
           {/* Footer */}
           <div className="mt-16 pt-8 border-t border-gray-200">
             <p className="text-gray-500 text-sm">
-              © 2025 DesignDot. Made with <Heart className="inline h-4 w-4 text-red-500" /> for designers worldwide.
+              © 2025 CreateDOT. Made with <Heart className="inline h-4 w-4 text-red-500" /> for designers worldwide.
             </p>
           </div>
         </div>

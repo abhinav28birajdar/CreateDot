@@ -351,7 +351,7 @@ function CollectionCard({ collection }: { collection: typeof mockCollections[0] 
 // ============ SHARE MODAL ============
 function ShareModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
   const [copied, setCopied] = useState(false);
-  const shareUrl = `https://designdot.com/${mockUser.username}`;
+  const shareUrl = `https://createdot.com/${mockUser.username}`;
 
   const copyLink = () => {
     navigator.clipboard.writeText(shareUrl);

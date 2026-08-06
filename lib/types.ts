@@ -1,4 +1,4 @@
-// Types for Design.ly platform
+// Types for CreateDOT platform
 
 // User-related types
 export interface User {

@@ -30,7 +30,7 @@ function Navbar() {
                 <Palette className="h-5 w-5" />
               </div>
               <span className="text-xl font-bold bg-clip-text text-transparent bg-[#8B5DFF] ">
-                Design.ly
+                CreateDOT
               </span>
             </Link>
 
@@ -111,9 +111,9 @@ function Navbar() {
                   <DropdownMenuTrigger asChild>
                     <button className="flex items-center space-x-2 text-sm text-gray-700 hover:text-gray-900">
                       <div className="h-8 w-8 rounded-full bg-[#8B5DFF]/10 flex items-center justify-center">
-                        {user.user_metadata?.avatar_url ? (
+                        {user.avatar_url ? (
                           <img
-                            src={user.user_metadata.avatar_url}
+                            src={user.avatar_url}
                             alt="User"
                             className="h-8 w-8 rounded-full"
                           />
@@ -122,7 +122,7 @@ function Navbar() {
                         )}
                       </div>
                       <span className="font-medium">
-                        {user.user_metadata?.full_name || user.email?.split("@")[0]}
+                        {user.full_name || user.username || user.email?.split("@")[0]}
                       </span>
                       <ChevronDown className="h-4 w-4" />
                     </button>

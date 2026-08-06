@@ -2,14 +2,13 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   Activity,
   Heart,
   MessageCircle,
   UserPlus,
   Star,
-  Award,
   Briefcase,
   Eye,
   Bookmark,
@@ -18,7 +17,6 @@ import {
   Upload,
   Bell,
   Settings,
-  Filter,
   CheckCircle,
   Clock,
   Image,
@@ -59,10 +57,10 @@ interface ActivityItem {
   isRead: boolean;
 }
 
-interface ActivityGroup {
-  date: string;
-  activities: ActivityItem[];
-}
+// interface ActivityGroup {
+//   date: string;
+//   activities: ActivityItem[];
+// }
 
 // ============ MOCK DATA ============
 const mockActivities: ActivityItem[] = [
@@ -93,7 +91,7 @@ const mockActivities: ActivityItem[] = [
   {
     id: "4",
     type: "award",
-    user: { name: "DesignDot Team", avatar: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=100", username: "designdot" },
+    user: { name: "CreateDOT Team", avatar: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=100", username: "createdot" },
     target: { type: "project", title: "3D Abstract Shapes Collection", thumbnail: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200", id: "p3" },
     content: "Your project was featured as Pick of the Day!",
     timestamp: "2025-01-11T18:00:00",

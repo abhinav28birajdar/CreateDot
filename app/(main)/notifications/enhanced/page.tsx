@@ -254,7 +254,7 @@ export default function EnhancedNotificationsPage() {
       case 'priority':
         filtered = [...filtered].sort((a, b) => {
           const priorityOrder: Record<string, number> = { urgent: 4, high: 3, normal: 2, low: 1 };
-          return priorityOrder[b.priority] - priorityOrder[a.priority];
+          return (priorityOrder[b.priority ?? 'normal'] ?? 0) - (priorityOrder[a.priority ?? 'normal'] ?? 0);
         });
         break;
       case 'unread':

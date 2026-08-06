@@ -83,6 +83,7 @@ export default function SignInPage() {
       }, 1000);
       return () => clearInterval(timer);
     }
+    return undefined;
   }, [lockoutTime]);
 
   // Handle Form Submission
@@ -151,7 +152,7 @@ export default function SignInPage() {
               <Sparkles className="w-6 h-6 text-white" />
             </div>
             <span className="text-xl font-bold bg-[#8B5DFF] from-violet-600 to-fuchsia-600 bg-clip-text text-transparent">
-              DesignDot
+              CreateDOT
             </span>
           </Link>
 

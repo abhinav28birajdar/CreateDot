@@ -32,7 +32,7 @@ const categories = [
   {
     id: "getting-started",
     title: "Getting Started",
-    description: "New to DesignDot? Start here",
+    description: "New to CreateDOT? Start here",
     icon: Book,
     color: "bg-[#8B5DFF]",
     articles: [
@@ -131,12 +131,12 @@ const faqs = [
     answer: "Go to the sign-in page and click 'Forgot password'. Enter your email address and we'll send you a link to reset your password. The link expires in 24 hours.",
   },
   {
-    question: "Can I use DesignDot for free?",
+    question: "Can I use CreateDOT for free?",
     answer: "Yes! Our free plan includes up to 10 projects, basic analytics, and full community access. You can upgrade anytime to unlock unlimited projects and premium features.",
   },
   {
     question: "How do I upload high-resolution images?",
-    answer: "DesignDot supports images up to 50MB each. We recommend using PNG or JPEG format with at least 2000px width for best quality. Pro users get unlimited storage.",
+    answer: "CreateDOT supports images up to 50MB each. We recommend using PNG or JPEG format with at least 2000px width for best quality. Pro users get unlimited storage.",
   },
   {
     question: "Can I transfer my work from another platform?",
@@ -161,7 +161,7 @@ export default function HelpCenterPage() {
             <div className="w-9 h-9 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center">
               <Sparkles className="w-5 h-5 text-white" />
             </div>
-            <span className="font-bold text-lg text-slate-900 dark:text-white">DesignDot</span>
+            <span className="font-bold text-lg text-slate-900 dark:text-white">CreateDOT</span>
           </Link>
           <div className="flex items-center gap-4">
             <Link href="/contact" className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
@@ -356,7 +356,7 @@ export default function HelpCenterPage() {
                   </div>
                 </Link>
                 <Link
-                  href="mailto:support@designdot.io"
+                  href="mailto:support@createdot.io"
                   className="flex items-center gap-3 p-3 bg-white/10 hover:bg-white/20 rounded-lg transition-colors"
                 >
                   <Mail className="w-5 h-5" />
@@ -434,12 +434,12 @@ export default function HelpCenterPage() {
               Contact Support
             </Link>
             <a
-              href="https://twitter.com/designdot"
+              href="https://twitter.com/createdot"
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-3 bg-white dark:bg-slate-700 hover:bg-slate-50 dark:hover:bg-slate-600 text-slate-900 dark:text-white rounded-xl font-medium border border-slate-200 dark:border-slate-600"
             >
-              Follow @designdot
+              Follow @createdot
             </a>
           </div>
         </div>

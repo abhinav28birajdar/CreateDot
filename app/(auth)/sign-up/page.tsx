@@ -41,7 +41,7 @@ export default function SignUpPage() {
       return
     }
 
-    const { error } = await signUp(email, password, fullName)
+    const { error } = await signUp(email, password, { full_name: fullName })
 
     if (error) {
       setError(error.message)
@@ -59,7 +59,7 @@ export default function SignUpPage() {
             <Palette className="h-8 w-8 text-white" />
           </div>
         </div>
-        <h1 className="text-3xl font-bold text-gray-900">Join Design.ly</h1>
+        <h1 className="text-3xl font-bold text-gray-900">Join CreateDOT</h1>
         <p className="text-gray-600 mt-2">Create your account and start designing with AI</p>
       </div>
 

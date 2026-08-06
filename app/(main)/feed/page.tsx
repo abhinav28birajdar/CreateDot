@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { FeedContainer } from "@/components/feed/feed-container"
 
 export const metadata: Metadata = {
-    title: "Feed - CreatorFlow",
+    title: "Feed - CreateDOT",
     description: "Your personalized design feed",
 }
 

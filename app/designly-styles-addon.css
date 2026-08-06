@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
-/* Design.ly Custom Styles */
+/* CreateDOT Custom Styles */
 
-/* Design.ly Brand Variables */
+/* CreateDOT Brand Variables */
 :root {
   --designly-purple-50: hsl(255, 100%, 98%);
   --designly-purple-100: hsl(252, 100%, 95%);
@@ -93,7 +93,7 @@
   background-size: 20px 20px;
 }
 
-/* Utility classes for Design.ly */
+/* Utility classes for CreateDOT */
 .almost-white {
   color: #fefefe;
 }

@@ -1,9 +1,10 @@
 import type { Metadata } from "next"
+import { Suspense } from "react"
 import Link from "next/link"
 import { LoginForm } from "@/components/auth/login-form"
 
 export const metadata: Metadata = {
-    title: "Login - CreatorFlow",
+    title: "Login - CreateDOT",
     description: "Login to your account",
 }
 
@@ -16,7 +17,9 @@ export default function LoginPage() {
                     Enter your email to sign in to your account
                 </p>
             </div>
-            <LoginForm />
+            <Suspense fallback={<div className="text-center text-sm py-4">Loading login form...</div>}>
+                <LoginForm />
+            </Suspense>
             <p className="px-8 text-center text-sm text-muted-foreground">
                 <Link href="/signup" className="hover:text-brand underline underline-offset-4">
                     Don&apos;t have an account? Sign Up

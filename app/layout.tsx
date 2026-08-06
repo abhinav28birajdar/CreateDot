@@ -20,10 +20,10 @@ const montserrat = Montserrat({
 })
 
 export const metadata: Metadata = {
-  title: "CerateDOT",
-  description: "A modern creative platform for designers and creators.",
-  keywords: ["CerateDOT", "design", "creative platform", "portfolio", "supabase"],
-  authors: [{ name: "CerateDOT Team" }],
+  title: "CreateDOT",
+  description: "CreateDOT is a modern creative platform for designers and creators.",
+  keywords: ["CreateDOT", "design", "creative platform", "portfolio", "supabase"],
+  authors: [{ name: "CreateDOT Team" }],
 }
 
 export const viewport = {

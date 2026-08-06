@@ -63,9 +63,9 @@ const contactMethods = [
   {
     title: "Email Us",
     description: "Get a response within 24 hours",
-    value: "hello@designdot.io",
+    value: "hello@createdot.io",
     icon: Mail,
-    action: "mailto:hello@designdot.io",
+    action: "mailto:hello@createdot.io",
   },
   {
     title: "Live Chat",
@@ -150,7 +150,7 @@ export default function ContactPage() {
             <div className="w-9 h-9 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center">
               <Sparkles className="w-5 h-5 text-white" />
             </div>
-            <span className="font-bold text-lg text-slate-900 dark:text-white">DesignDot</span>
+            <span className="font-bold text-lg text-slate-900 dark:text-white">CreateDOT</span>
           </Link>
           <div className="flex items-center gap-4">
             <Link href="/help" className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
@@ -379,7 +379,7 @@ export default function ContactPage() {
                 </h3>
                 <div className="flex items-center gap-3">
                   <a
-                    href="https://twitter.com/designdot"
+                    href="https://twitter.com/createdot"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-10 h-10 bg-slate-100 dark:bg-slate-700 hover:bg-violet-100 dark:hover:bg-violet-900/30 rounded-lg flex items-center justify-center transition-colors"
@@ -387,7 +387,7 @@ export default function ContactPage() {
                     <Twitter className="w-5 h-5 text-slate-600 dark:text-slate-400" />
                   </a>
                   <a
-                    href="https://linkedin.com/company/designdot"
+                    href="https://linkedin.com/company/createdot"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-10 h-10 bg-slate-100 dark:bg-slate-700 hover:bg-violet-100 dark:hover:bg-violet-900/30 rounded-lg flex items-center justify-center transition-colors"
@@ -395,7 +395,7 @@ export default function ContactPage() {
                     <Linkedin className="w-5 h-5 text-slate-600 dark:text-slate-400" />
                   </a>
                   <a
-                    href="https://github.com/designdot"
+                    href="https://github.com/createdot"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-10 h-10 bg-slate-100 dark:bg-slate-700 hover:bg-violet-100 dark:hover:bg-violet-900/30 rounded-lg flex items-center justify-center transition-colors"

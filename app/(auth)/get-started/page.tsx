@@ -12,7 +12,6 @@ import {
   AtSign,
   Check,
   X,
-  AlertCircle,
   Sparkles,
   ArrowRight,
   Paintbrush,
@@ -102,7 +101,7 @@ export default function EnhancedSignupPage() {
   // Email validation with domain suggestion
   useEffect(() => {
     if (email && email.includes("@")) {
-      const domain = email.split("@")[1];
+      const domain = email.split("@")[1] ?? "";
       const commonDomains = ["gmail.com", "yahoo.com", "outlook.com", "hotmail.com"];
       const closest = commonDomains.find(
         (d) => d.startsWith(domain.slice(0, 3)) && d !== domain
@@ -123,7 +122,7 @@ export default function EnhancedSignupPage() {
       setUsernameStatus("checking");
       const timer = setTimeout(() => {
         // Simulate API check
-        const taken = ["admin", "designdot", "test", "user"];
+        const taken = ["admin", "createdot", "test", "user"];
         if (taken.includes(username.toLowerCase())) {
           setUsernameStatus("taken");
           setUsernameSuggestions([
@@ -140,6 +139,7 @@ export default function EnhancedSignupPage() {
     } else {
       setUsernameStatus("idle");
     }
+    return undefined;
   }, [username]);
 
   // Auto-generate username from name
@@ -236,7 +236,7 @@ export default function EnhancedSignupPage() {
             <div className="w-10 h-10 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center">
               <Sparkles className="w-6 h-6 text-white" />
             </div>
-            <span className="text-xl font-bold text-slate-900 dark:text-white">DesignDot</span>
+            <span className="text-xl font-bold text-slate-900 dark:text-white">CreateDOT</span>
           </Link>
 
           {/* Progress Indicator */}
@@ -257,7 +257,7 @@ export default function EnhancedSignupPage() {
                   Create your account
                 </h1>
                 <p className="text-slate-600 dark:text-slate-400 mb-8">
-                  Join millions of creatives on DesignDot
+                  Join millions of creatives on CreateDOT
                 </p>
 
                 {/* Social Signup */}
@@ -386,7 +386,7 @@ export default function EnhancedSignupPage() {
                         <X className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-red-500" />
                       )}
                     </div>
-                    <p className="text-slate-500 text-xs mt-1">designdot.com/@{username || "username"}</p>
+                    <p className="text-slate-500 text-xs mt-1">createdot.com/@{username || "username"}</p>
                     {usernameStatus === "taken" && usernameSuggestions.length > 0 && (
                       <div className="flex flex-wrap gap-2 mt-2">
                         {usernameSuggestions.map((suggestion) => (

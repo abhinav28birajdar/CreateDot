@@ -15,7 +15,7 @@ export function Navbar() {
           <Link href="/" className="mr-6 flex items-center space-x-2">
             {/* Logo would go here */}
             <span className="hidden font-bold sm:inline-block text-xl tracking-tight">
-              CreatorFlow
+              CreateDOT
             </span>
           </Link>
           <nav className="flex items-center space-x-6 text-sm font-medium">

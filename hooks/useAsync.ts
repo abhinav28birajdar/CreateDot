@@ -19,8 +19,10 @@ export const useAsync = <T,>(
       setStatus("success");
       return response;
     } catch (err) {
-      setError(err instanceof Error ? err : new Error("Unknown error"));
+      const formattedError = err instanceof Error ? err : new Error("Unknown error");
+      setError(formattedError);
       setStatus("error");
+      return undefined;
     }
   }, [asyncFunction]);
 

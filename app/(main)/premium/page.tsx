@@ -19,7 +19,7 @@ import { Button } from "@/components/ui/button"
 import { createSupabaseServerClient } from "@/lib/supabase/server"
 
 export const metadata: Metadata = {
-    title: "Premium | Design.ly",
+    title: "Premium | CreateDOT",
     description: "Review your current plan, usage, and request premium access powered by Supabase.",
 }
 

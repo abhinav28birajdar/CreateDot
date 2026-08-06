@@ -123,6 +123,7 @@ export default function ResetPasswordClient() {
     } else if (isSubmitted && countdown === 0) {
       router.push("/signin");
     }
+    return undefined;
   }, [isSubmitted, countdown, router]);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -201,7 +202,7 @@ export default function ResetPasswordClient() {
               <Sparkles className="w-6 h-6 text-white" />
             </div>
             <span className="text-xl font-bold bg-[#8B5DFF] from-violet-600 to-fuchsia-600 bg-clip-text text-transparent">
-              DesignDot
+              CreateDOT
             </span>
           </Link>
 

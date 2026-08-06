@@ -1,4 +1,4 @@
-// Comprehensive Type Definitions for DesignDot Platform
+// Comprehensive Type Definitions for CreateDOT Platform
 
 // ============ USER TYPES ============
 export interface User {
