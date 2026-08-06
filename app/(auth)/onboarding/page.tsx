@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   User,
   Briefcase,
@@ -101,6 +102,7 @@ const projectTypes = [
 ];
 
 export default function OnboardingWizard() {
+  const router = useRouter();
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -268,9 +270,9 @@ export default function OnboardingWizard() {
   const handleComplete = async () => {
     setIsSubmitting(true);
     // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    await new Promise((resolve) => setTimeout(resolve, 1200));
     // Redirect to dashboard
-    window.location.href = "/dashboard";
+    router.push("/dashboard");
   };
 
   const handleSkip = () => {

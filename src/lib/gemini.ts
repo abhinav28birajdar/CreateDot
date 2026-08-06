@@ -23,8 +23,8 @@ export class GeminiAIService {
   private visionModel;
 
   constructor() {
-    this.textModel = genAI.getGenerativeModel({ model: 'gemini-pro' });
-    this.visionModel = genAI.getGenerativeModel({ model: 'gemini-pro-vision' });
+    this.textModel = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+    this.visionModel = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
   }
 
   /**

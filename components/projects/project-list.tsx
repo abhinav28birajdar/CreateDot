@@ -37,7 +37,7 @@ export function ProjectList() {
         }
 
         loadProjects()
-    }, [])
+    }, [supabase])
 
     if (loading) {
         return <div className="flex justify-center p-12"><Loader2 className="h-8 w-8 animate-spin text-muted-foreground" /></div>

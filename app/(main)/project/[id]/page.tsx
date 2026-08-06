@@ -18,11 +18,7 @@ export default function ProjectPage() {
   const [liked, setLiked] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
-  useEffect(() => {
-    fetchProject();
-  }, [projectId]);
-
-  const fetchProject = async () => {
+  const fetchProject = React.useCallback(async () => {
     try {
       const response = await fetch(`/api/projects/${projectId}`);
       if (!response.ok) throw new Error("Failed to fetch project");
@@ -37,7 +33,11 @@ export default function ProjectPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [projectId]);
+
+  useEffect(() => {
+    fetchProject();
+  }, [fetchProject]);
 
   const handleLike = async () => {
     try {

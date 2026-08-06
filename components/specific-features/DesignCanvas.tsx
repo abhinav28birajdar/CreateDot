@@ -14,7 +14,7 @@ import {
   ZoomIn, 
   ZoomOut, 
   Type, 
-  Image, 
+  ImageIcon, 
   Square, 
   Palette, 
   Grid, 
@@ -105,16 +105,19 @@ export function DesignCanvas({
 
   // Add elements to history when they change
   useEffect(() => {
-    if (
-      historyIndex < history.length - 1 || 
-      JSON.stringify(elements) !== JSON.stringify(history[historyIndex])
-    ) {
-      const newHistory = history.slice(0, historyIndex + 1);
-      newHistory.push([...elements]);
-      setHistory(newHistory);
-      setHistoryIndex(newHistory.length - 1);
-    }
-  }, [elements]);
+    setHistory((prevHistory) => {
+      if (
+        historyIndex < prevHistory.length - 1 || 
+        JSON.stringify(elements) !== JSON.stringify(prevHistory[historyIndex])
+      ) {
+        const newHistory = prevHistory.slice(0, historyIndex + 1);
+        newHistory.push([...elements]);
+        setHistoryIndex(newHistory.length - 1);
+        return newHistory;
+      }
+      return prevHistory;
+    });
+  }, [elements, historyIndex]);
 
   const handleUndo = () => {
     if (historyIndex > 0) {
@@ -307,7 +310,7 @@ export function DesignCanvas({
               handleAddImage();
             }}
           >
-            <Image className="h-4 w-4 mr-1" />
+            <ImageIcon className="h-4 w-4 mr-1" />
             Image
           </Button>
           <Button 

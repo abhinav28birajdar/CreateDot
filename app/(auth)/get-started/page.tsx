@@ -148,7 +148,7 @@ export default function EnhancedSignupPage() {
       const suggested = (firstName + lastName).toLowerCase().replace(/\s/g, "");
       setUsername(suggested);
     }
-  }, [firstName, lastName]);
+  }, [firstName, lastName, username]);
 
   const getPasswordStrength = () => {
     let strength = 0;

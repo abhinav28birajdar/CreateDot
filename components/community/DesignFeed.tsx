@@ -23,7 +23,7 @@ export function DesignFeed({
   const [loading, setLoading] = useState(isLoading);
 
   // Mock fetch more designs for demo
-  const fetchMoreDesigns = () => {
+  const fetchMoreDesigns = React.useCallback(() => {
     setLoading(true);
     
     // Simulate network request
@@ -77,17 +77,17 @@ export function DesignFeed({
         },
       ];
       
-      setDesigns([...designs, ...newDesigns]);
+      setDesigns((prev) => [...prev, ...newDesigns]);
       setLoading(false);
     }, 1000);
-  };
+  }, []);
 
   // Simulate initial load if no designs provided
   useEffect(() => {
     if (designs.length === 0) {
       fetchMoreDesigns();
     }
-  }, []);
+  }, [designs.length, fetchMoreDesigns]);
 
   // Function to format date to relative time (e.g., "2 days ago")
   const formatDate = (dateString: string) => {

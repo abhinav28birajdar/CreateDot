@@ -21,7 +21,7 @@ import {
   Settings,
   MessageCircle,
   FileText,
-  Image,
+  ImageIcon,
   Upload,
   Filter,
   ChevronRight,
@@ -337,7 +337,7 @@ function ProjectCard({ project, view }: { project: WorkspaceProject; view: "grid
             {project.tasks.completed}/{project.tasks.total}
           </span>
           <span className="flex items-center gap-1">
-            <Image className="w-4 h-4" />
+            <ImageIcon className="w-4 h-4" />
             {project.files}
           </span>
           <span className="flex items-center gap-1">

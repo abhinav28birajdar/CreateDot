@@ -103,13 +103,13 @@ export default function SignInPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#8B5DFF] from-slate-50 to-violet-50 dark:from-slate-900 dark:to-slate-800 flex">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#0B0B0C] text-slate-900 dark:text-slate-100 flex transition-colors">
       {/* Left Side - Form */}
-      <div className="flex-1 flex items-center justify-center p-4 md:p-8">
+      <div className="flex-1 flex items-center justify-center p-6 md:p-12">
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="w-full max-w-md"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="w-full max-w-md bg-white dark:bg-[#121215] p-8 md:p-10 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 shadow-xl shadow-purple-500/5"
         >
           {/* Logo */}
           <Link href="/" className="inline-flex items-center gap-2 mb-8">
@@ -345,33 +345,41 @@ export default function SignInPage() {
         </motion.div>
       </div>
 
-      {/* Right Side - Visual */}
-      <div className="hidden lg:flex flex-1 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 items-center justify-center p-8">
-        <div className="max-w-md text-center text-white">
+      {/* Right Side - Visual Hero */}
+      <div className="hidden lg:flex flex-1 relative bg-gradient-to-br from-[#8B5DFF] via-purple-700 to-indigo-900 items-center justify-center p-12 overflow-hidden">
+        {/* Decorative background glow circles */}
+        <div className="absolute -top-24 -left-24 w-96 h-96 bg-white/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-fuchsia-500/20 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="max-w-lg text-center text-white relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
+            transition={{ delay: 0.2 }}
           >
-            <h2 className="text-3xl font-bold mb-4">
-              Your creative workspace awaits
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold text-white mb-6">
+              <Sparkles className="w-3.5 h-3.5" /> Next-Gen AI Design Platform
+            </div>
+
+            <h2 className="text-4xl font-extrabold tracking-tight mb-4 text-white leading-tight">
+              Create, Collaborate & Share Your Design Vision
             </h2>
-            <p className="text-white/80 mb-8">
-              Access your portfolio, connect with clients, and discover amazing design inspiration.
+            <p className="text-white/80 text-base mb-10 leading-relaxed max-w-md mx-auto">
+              Join thousands of creators using CreateDOT's AI-assisted design engine, real-time collaboration canvas, and professional showcase network.
             </p>
 
-            <div className="grid grid-cols-3 gap-4 text-center">
+            <div className="grid grid-cols-3 gap-6 bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-2xl">
               <div>
-                <div className="text-4xl font-bold">5M+</div>
-                <div className="text-white/70 text-sm">Creators</div>
+                <div className="text-3xl font-extrabold">5M+</div>
+                <div className="text-white/70 text-xs mt-1 font-medium">Active Creators</div>
               </div>
               <div>
-                <div className="text-4xl font-bold">10M+</div>
-                <div className="text-white/70 text-sm">Projects</div>
+                <div className="text-3xl font-extrabold">10M+</div>
+                <div className="text-white/70 text-xs mt-1 font-medium">Design Assets</div>
               </div>
               <div>
-                <div className="text-4xl font-bold">150K+</div>
-                <div className="text-white/70 text-sm">Hires</div>
+                <div className="text-3xl font-extrabold">150K+</div>
+                <div className="text-white/70 text-xs mt-1 font-medium">Client Matches</div>
               </div>
             </div>
           </motion.div>

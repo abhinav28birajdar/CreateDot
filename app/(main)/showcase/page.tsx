@@ -13,7 +13,7 @@ import {
   ExternalLink,
   Globe,
   Lock,
-  Image,
+  ImageIcon,
   Palette,
   Settings,
   CheckCircle,
@@ -192,7 +192,7 @@ function PortfolioCard({ portfolio, onEdit, onDelete }: {
         ))}
         {portfolio.projects.length === 0 && (
           <div className="col-span-2 aspect-video flex items-center justify-center bg-slate-200 dark:bg-slate-700 rounded">
-            <Image className="w-8 h-8 text-slate-400" />
+            <ImageIcon className="w-8 h-8 text-slate-400" />
           </div>
         )}
       </div>
@@ -336,7 +336,7 @@ export default function ShowcasePage() {
           <div className="grid grid-cols-4 gap-4 mt-8">
             {[
               { label: "Total Portfolios", value: portfolios.length, icon: Layout },
-              { label: "Total Projects", value: totalProjects, icon: Image },
+              { label: "Total Projects", value: totalProjects, icon: ImageIcon },
               { label: "Total Views", value: totalViews.toLocaleString(), icon: Eye },
               { label: "Public Portfolios", value: portfolios.filter((p) => p.isPublic).length, icon: Globe },
             ].map((stat) => (

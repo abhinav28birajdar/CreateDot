@@ -142,10 +142,10 @@ export default function SignInPage() {
   };
 
   return (
-    <div className="min-h-screen flex">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#0B0B0C] text-slate-900 dark:text-slate-100 flex transition-colors">
       {/* Left Side - Form */}
-      <div className="flex-1 flex items-center justify-center p-8">
-        <div className="w-full max-w-md">
+      <div className="flex-1 flex items-center justify-center p-6 md:p-12">
+        <div className="w-full max-w-md bg-white dark:bg-[#121215] p-8 md:p-10 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 shadow-xl shadow-purple-500/5">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 mb-8">
             <div className="w-10 h-10 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center">
@@ -356,12 +356,11 @@ export default function SignInPage() {
       </div>
 
       {/* Right Side - Visual */}
-      <div className="hidden lg:flex flex-1 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 relative overflow-hidden">
+      <div className="hidden lg:flex flex-1 bg-gradient-to-br from-[#8B5DFF] via-purple-700 to-indigo-900 relative overflow-hidden items-center justify-center p-12">
         {/* Background Pattern */}
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-20 left-20 w-40 h-40 bg-white/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 right-20 w-60 h-60 bg-white/10 rounded-full blur-3xl" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-white/5 rounded-full" />
+          <div className="absolute bottom-20 right-20 w-60 h-60 bg-fuchsia-500/20 rounded-full blur-3xl" />
         </div>
 
         {/* Content */}

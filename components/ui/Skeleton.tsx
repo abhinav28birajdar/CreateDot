@@ -142,7 +142,7 @@ export const PageLoadingSkeleton = ({ type = "dashboard" }: { type?: "dashboard"
   }
 };
 
-export default {
+const Skeleton = {
   ProjectCardSkeleton,
   ProjectGridSkeleton,
   CommentCardSkeleton,
@@ -153,4 +153,6 @@ export default {
   ProfilePageSkeleton,
   PageLoadingSkeleton,
 };
+
+export default Skeleton;
 

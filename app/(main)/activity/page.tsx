@@ -19,7 +19,7 @@ import {
   Settings,
   CheckCircle,
   Clock,
-  Image,
+  ImageIcon,
   Users,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -160,7 +160,7 @@ function ActivityIcon({ type }: { type: ActivityType }) {
     upload: { icon: <Upload className="w-4 h-4" />, color: "text-cyan-500", bg: "bg-cyan-100 dark:bg-cyan-900/30" },
     award: { icon: <Trophy className="w-4 h-4" />, color: "text-yellow-500", bg: "bg-yellow-100 dark:bg-yellow-900/30" },
     hire: { icon: <Briefcase className="w-4 h-4" />, color: "text-[#8B5DFF]", bg: "bg-emerald-100 dark:bg-emerald-900/30" },
-    collection_add: { icon: <Image className="w-4 h-4" />, color: "text-pink-500", bg: "bg-pink-100 dark:bg-pink-900/30" },
+    collection_add: { icon: <ImageIcon className="w-4 h-4" />, color: "text-pink-500", bg: "bg-pink-100 dark:bg-pink-900/30" },
   };
 
   const config = iconConfig[type];
