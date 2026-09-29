@@ -1,17 +1,14 @@
-import type { Metadata } from "next"
-import { FeedContainer } from "@/components/feed/feed-container"
+import type { Metadata } from 'next'
+import { FeedContainer } from '@/components/feed/FeedContainer'
 
 export const metadata: Metadata = {
-    title: "Feed - CreateDOT",
-    description: "Your personalized design feed",
+    title: 'Curated Feed — CreateDOT',
+    description: 'Discover world-class portfolio projects, UI/UX designs, 3D art, and motion graphics.',
 }
 
 export default function FeedPage() {
     return (
-        <div className="container py-6">
-            <div className="flex items-center justify-between mb-6">
-                <h1 className="text-3xl font-bold tracking-tight">Your Feed</h1>
-            </div>
+        <div className="py-6 px-4 sm:px-6">
             <FeedContainer />
         </div>
     )

@@ -101,7 +101,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         try {
           await supabase.from('profiles').insert({
             id: data.user.id,
-            username: email.split('@')[0],
+            username: email.split('@')[0] || 'user',
             full_name: fullName,
             email_notifications: true,
             push_notifications: true,

@@ -1,18 +1,15 @@
-import type { Metadata } from "next"
-import { UploadForm } from "@/components/upload/upload-form"
+import type { Metadata } from 'next'
+import { ProjectUploadForm } from '@/components/project/ProjectUploadForm'
 
 export const metadata: Metadata = {
-    title: "Upload - CreateDOT",
-    description: "Share your work with the world",
+    title: 'Publish Project - CreateDOT',
+    description: 'Showcase your creative work to the world',
 }
 
 export default function UploadPage() {
     return (
-        <div className="container py-8 max-w-5xl">
-            <div className="mb-8">
-                <h1 className="text-3xl font-bold tracking-tight">Upload new shot</h1>
-            </div>
-            <UploadForm />
+        <div className="min-h-screen bg-slate-50/50 dark:bg-slate-950 py-8">
+            <ProjectUploadForm />
         </div>
     )
 }

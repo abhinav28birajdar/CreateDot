@@ -17,15 +17,21 @@ export function AuthGuard({ children, requireAuth = true }: AuthGuardProps) {
   const loading = session?.isLoading ?? false
   const router = useRouter()
 
+  const hasDemo = typeof window !== 'undefined' && (
+    localStorage.getItem("createdot_demo_user") ||
+    document.cookie.includes("createdot_demo_user=true")
+  )
+  const isAuthenticated = Boolean(user || hasDemo)
+
   useEffect(() => {
     if (!loading) {
-      if (requireAuth && !user) {
-        router.push("/sign-in")
-      } else if (!requireAuth && user) {
+      if (requireAuth && !isAuthenticated) {
+        router.push("/login")
+      } else if (!requireAuth && isAuthenticated) {
         router.push("/dashboard")
       }
     }
-  }, [user, loading, requireAuth, router])
+  }, [isAuthenticated, loading, requireAuth, router])
 
   if (loading) {
     return (
@@ -35,11 +41,11 @@ export function AuthGuard({ children, requireAuth = true }: AuthGuardProps) {
     )
   }
 
-  if (requireAuth && !user) {
+  if (requireAuth && !isAuthenticated) {
     return null
   }
 
-  if (!requireAuth && user) {
+  if (!requireAuth && isAuthenticated) {
     return null
   }
 

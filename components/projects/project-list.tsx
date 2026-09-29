@@ -43,26 +43,70 @@ export function ProjectList() {
         return <div className="flex justify-center p-12"><Loader2 className="h-8 w-8 animate-spin text-muted-foreground" /></div>
     }
 
-    if (projects.length === 0) {
-        return (
-            <div className="flex flex-col items-center justify-center py-20 border rounded-lg border-dashed bg-muted/50">
-                <div className="bg-background p-4 rounded-full mb-4">
-                    <Folder className="h-8 w-8 text-muted-foreground" />
-                </div>
-                <h3 className="text-lg font-medium">No projects yet</h3>
-                <p className="text-muted-foreground mb-4">Create your first project to get started.</p>
-                <Button variant="outline" asChild>
-                    <Link href="/projects/new">Create Project</Link>
-                </Button>
-            </div>
-        )
-    }
+    const fallbackProjects: Project[] = [
+        {
+            id: 'proj-demo-1',
+            name: 'QuantumPay — NextGen AI Banking App',
+            description: 'Autonomous financial assistant with dark mode glassmorphism interface and micro-interactions.',
+            cover_url: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
+            user_id: 'u1',
+            status: 'completed',
+            visibility: 'public',
+            is_collaborative: false,
+            start_date: null,
+            end_date: null,
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString()
+        },
+        {
+            id: 'proj-demo-2',
+            name: 'Sphere 3D — Geometric Spatial Studio',
+            description: 'Interactive 3D geometry engine built for web experiences and AR/VR spatial devices.',
+            cover_url: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80',
+            user_id: 'u1',
+            status: 'in_progress',
+            visibility: 'public',
+            is_collaborative: false,
+            start_date: null,
+            end_date: null,
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString()
+        },
+        {
+            id: 'proj-demo-3',
+            name: 'Nova Design System — Tokens & Multi-brand',
+            description: 'Component architecture with variable color modes, semantic tokens, and React parity.',
+            cover_url: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&q=80',
+            user_id: 'u1',
+            status: 'completed',
+            visibility: 'public',
+            is_collaborative: false,
+            start_date: null,
+            end_date: null,
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString()
+        }
+    ]
+
+    const displayProjects = projects.length > 0 ? projects : fallbackProjects
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.map((project) => (
-                <ProjectCard key={project.id} project={project} />
-            ))}
+        <div className="space-y-6">
+            {projects.length === 0 && (
+                <div className="flex items-center justify-between p-4 rounded-2xl bg-violet-50/60 dark:bg-violet-950/20 border border-violet-200/60 dark:border-violet-900/40 text-xs">
+                    <span className="font-semibold text-violet-700 dark:text-violet-300">
+                        ⚡ Showing sample creator projects. Publish your own work to showcase it here!
+                    </span>
+                    <Button asChild size="sm" className="bg-violet-600 hover:bg-violet-700 text-white rounded-xl h-8 px-3">
+                        <Link href="/upload">Upload Work</Link>
+                    </Button>
+                </div>
+            )}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {displayProjects.map((project) => (
+                    <ProjectCard key={project.id} project={project} />
+                ))}
+            </div>
         </div>
     )
 }

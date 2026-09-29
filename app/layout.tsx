@@ -20,9 +20,12 @@ const montserrat = Montserrat({
 })
 
 export const metadata: Metadata = {
-  title: "CreateDOT",
-  description: "CreateDOT is a modern creative platform for designers and creators.",
-  keywords: ["CreateDOT", "design", "creative platform", "portfolio", "supabase"],
+  title: {
+    default: "CreateDOT — Where Creativity Meets Opportunity",
+    template: "%s | CreateDOT",
+  },
+  description: "CreateDOT is the premier creative platform to showcase work, discover inspiration, get feedback, and find meaningful opportunities.",
+  keywords: ["CreateDOT", "design", "creative platform", "portfolio", "creative jobs", "AI design tools", "Abhinav"],
   authors: [{ name: "CreateDOT Team" }],
 }
 
