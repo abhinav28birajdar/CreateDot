@@ -6,7 +6,7 @@ export type Json =
     | { [key: string]: Json | undefined }
     | Json[]
 
-export type UserRole = 'creator' | 'recruiter' | 'curator' | 'admin'
+export type UserRole = 'creator' | 'consumer' | 'client' | 'recruiter' | 'curator' | 'admin'
 
 export type CreatorType =
     | 'ui_ux_designer'
