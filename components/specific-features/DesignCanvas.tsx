@@ -224,7 +224,7 @@ export function DesignCanvas({
     // This would typically open a file picker or image gallery
     // For demo purposes, we'll use a placeholder
     const newId = `image-${Date.now()}`;
-    const placeholderImage = 'https://source.unsplash.com/random/300x200/?design';
+    const placeholderImage = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80';
     
     const img = new window.Image();
     img.src = placeholderImage;

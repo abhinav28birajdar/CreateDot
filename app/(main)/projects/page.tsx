@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { Button } from "@/components/ui/button"
-import { Plus } from "lucide-react"
+import { FaPlus } from "react-icons/fa6"
 import Link from "next/link"
 import { ProjectList } from "@/components/projects/project-list"
 
@@ -19,7 +19,7 @@ export default function ProjectsPage() {
                 </div>
                 <Button asChild>
                     <Link href="/projects/new">
-                        <Plus className="mr-2 h-4 w-4" />
+                        <FaPlus className="mr-2 h-3.5 w-3.5" />
                         New Project
                     </Link>
                 </Button>

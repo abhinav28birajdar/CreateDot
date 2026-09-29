@@ -269,10 +269,38 @@ export default function OnboardingWizard() {
 
   const handleComplete = async () => {
     setIsSubmitting(true);
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1200));
-    // Redirect to dashboard
-    router.push("/dashboard");
+    try {
+      const { createClient } = await import("@/lib/supabase/client");
+      const supabase = createClient();
+      const { data: { user } } = await supabase.auth.getUser();
+
+      if (user) {
+        const generatedUsername = displayName
+          ? displayName.toLowerCase().replace(/[^a-z0-9]/g, '_') + '_' + Math.floor(Math.random() * 1000)
+          : (user.email?.split("@")[0] || "creator") + "_" + Math.floor(Math.random() * 1000);
+
+        await supabase.from("users").upsert({
+          auth_id: user.id,
+          name: displayName || user.email?.split("@")[0] || "Creator",
+          username: generatedUsername,
+          email: user.email!,
+          bio: bio || null,
+          tagline: headline || null,
+          avatar_url: profilePhoto || null,
+          cover_url: coverPhoto || null,
+          location: location || null,
+          website: socialLinks.website || null,
+          skills: selectedSkills.length > 0 ? selectedSkills : null,
+          is_onboarded: true,
+          updated_at: new Date().toISOString(),
+        }, { onConflict: "auth_id" });
+      }
+    } catch (e) {
+      console.error("Error completing onboarding:", e);
+    } finally {
+      setIsSubmitting(false);
+      router.push("/feed");
+    }
   };
 
   const handleSkip = () => {

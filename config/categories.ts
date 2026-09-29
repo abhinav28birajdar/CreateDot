@@ -1,0 +1,17 @@
+export const CATEGORIES = [
+    { id: 'all', name: 'All', icon: '✨', color: '#576A8F' },
+    { id: 'ui-design', name: 'UI Design', icon: '🖥️', color: '#576A8F' },
+    { id: 'branding', name: 'Branding', icon: '✨', color: '#FF6B6B' },
+    { id: 'illustration', name: 'Illustration', icon: '🎨', color: '#4ECDC4' },
+    { id: 'typography', name: 'Typography', icon: '🔤', color: '#B7BDF7' },
+    { id: 'photography', name: 'Photography', icon: '📷', color: '#F59E0B' },
+    { id: 'motion', name: 'Motion & Animation', icon: '🎬', color: '#EF4444' },
+    { id: '3d', name: '3D & Modeling', icon: '🎮', color: '#8B5CF6' },
+    { id: 'web-design', name: 'Web Design', icon: '🌐', color: '#22C55E' },
+    { id: 'mobile-design', name: 'Mobile Design', icon: '📱', color: '#3B82F6' },
+    { id: 'game-design', name: 'Game Design', icon: '🕹️', color: '#F97316' },
+    { id: 'architecture', name: 'Architecture', icon: '🏗️', color: '#6B7280' },
+    { id: 'fashion', name: 'Fashion & Apparel', icon: '👗', color: '#EC4899' },
+    { id: 'product-design', name: 'Product Design', icon: '📦', color: '#14B8A6' },
+    { id: 'data-viz', name: 'Data Visualization', icon: '📊', color: '#A855F7' },
+]

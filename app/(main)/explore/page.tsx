@@ -1,23 +1,15 @@
-import type { Metadata } from "next"
-import { ExploreFilters } from "@/components/explore/explore-filters"
-import { FeedContainer } from "@/components/feed/feed-container"
+import type { Metadata } from 'next'
+import { FeedContainer } from '@/components/feed/FeedContainer'
 
 export const metadata: Metadata = {
-  title: "Explore - CreateDOT",
-  description: "Explore the best designs",
+    title: 'Discover Works — CreateDOT',
+    description: 'Discover curated UI/UX designs, 3D art, motion graphics, branding, and creative portfolios.',
 }
 
 export default function ExplorePage() {
-  return (
-    <div className="container py-6">
-      <div className="flex flex-col space-y-4 mb-8">
-        <h1 className="text-3xl font-bold tracking-tight">Explore</h1>
-        <p className="text-muted-foreground">Discover the latest trends in design and creativity.</p>
-      </div>
-      <ExploreFilters />
-      <div className="mt-8">
-        <FeedContainer />
-      </div>
-    </div>
-  )
+    return (
+        <div className="py-6 px-4 sm:px-6">
+            <FeedContainer />
+        </div>
+    )
 }

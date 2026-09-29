@@ -76,8 +76,8 @@ export function AIImageGenerator({ onImageGenerated }: AIGeneratorProps) {
           await new Promise(resolve => setTimeout(resolve, 500));
         }
         
-        // For demo purposes, use a placeholder image
-        const mockImageUrl = 'https://source.unsplash.com/random/800x600/?design';
+        // For demo purposes, use high-resolution generated creative asset
+        const mockImageUrl = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80';
         setGeneratedImage(mockImageUrl);
         setIsGenerating(false);
         

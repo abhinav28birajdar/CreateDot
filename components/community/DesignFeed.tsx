@@ -32,12 +32,12 @@ export function DesignFeed({
       const newDesigns: DesignCard[] = [
         {
           id: `design-${Date.now()}-1`,
-          title: 'Modern Logo Design',
-          imageUrl: 'https://source.unsplash.com/random/800x600/?logo',
+          title: 'QuantumPay — Mobile Banking System',
+          imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
           author: {
             id: 'user-1',
             name: 'Alex Johnson',
-            avatarUrl: 'https://source.unsplash.com/random/100x100/?portrait&sig=1',
+            avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80',
           },
           likes: 42,
           views: 256,
@@ -47,12 +47,12 @@ export function DesignFeed({
         },
         {
           id: `design-${Date.now()}-2`,
-          title: 'Social Media Campaign',
-          imageUrl: 'https://source.unsplash.com/random/800x600/?social',
+          title: 'Sphere 3D — Spatial Geometry Studio',
+          imageUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
           author: {
             id: 'user-2',
             name: 'Sarah Parker',
-            avatarUrl: 'https://source.unsplash.com/random/100x100/?portrait&sig=2',
+            avatarUrl: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=120&q=80',
           },
           likes: 68,
           views: 420,
@@ -63,11 +63,11 @@ export function DesignFeed({
         {
           id: `design-${Date.now()}-3`,
           title: 'App UI Design System',
-          imageUrl: 'https://source.unsplash.com/random/800x600/?ui',
+          imageUrl: 'https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=800&q=80',
           author: {
             id: 'user-3',
             name: 'Miguel Rodriguez',
-            avatarUrl: 'https://source.unsplash.com/random/100x100/?portrait&sig=3',
+            avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80',
           },
           likes: 103,
           views: 735,
