@@ -16,7 +16,7 @@ export interface User {
   bio: string | null;
   website_url?: string;
   location?: string;
-  role: "guest" | "creator" | "client" | "admin";
+  role: "guest" | "creator" | "client" | "consumer" | "admin";
   verified: boolean;
   skills: string[];
   tools: string[];

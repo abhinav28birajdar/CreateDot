@@ -2,249 +2,551 @@
 
 import * as React from "react"
 import { useRouter } from "next/navigation"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import * as z from "zod"
-import { createClient } from "@/lib/supabase/client"
-
+import { useAuth } from "@/contexts/auth-context"
 import { Button } from "@/components/ui/button"
-import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
-} from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { toast } from "sonner"
-import { Loader2, Eye, EyeOff, User, Mail, Lock, Zap } from "lucide-react"
+import {
+  FaUser,
+  FaEnvelope,
+  FaLock,
+  FaBriefcase,
+  FaPalette,
+  FaBuilding,
+  FaCoins,
+  FaWandMagicSparkles,
+  FaCircleCheck,
+  FaArrowRight,
+  FaSpinner,
+  FaEye,
+  FaEyeSlash,
+  FaGithub,
+  FaGoogle,
+} from "react-icons/fa6"
 
-const formSchema = z.object({
-    name: z.string().min(2, {
-        message: "Please enter your name.",
-    }),
-    email: z.string().email({
-        message: "Please enter a valid email address.",
-    }),
-    password: z.string().min(8, {
-        message: "Password must be at least 8 characters.",
-    }),
-})
+const CREATOR_DISCIPLINES = [
+  "UI/UX & Product Design",
+  "3D Spatial & WebXR Engine",
+  "Design Systems & Tokens",
+  "Frontend & React Engineering",
+  "Brand Identity & Art Direction",
+  "Motion & Micro-interactions",
+]
+
+const CONSUMER_INTENTS = [
+  "Hire Full-Time Senior Designers",
+  "Contract High-End Freelancers",
+  "Commission 3D / Spatial Studio Projects",
+  "Enterprise Design System Architecture",
+  "Browse Curated Inspiration & License Works",
+]
+
+const BUDGET_RANGES = [
+  "Under $5,000",
+  "$5,000 – $20,000",
+  "$20,000 – $50,000",
+  "$50,000+ (Enterprise)",
+]
 
 export function SignupForm() {
-    const [isLoading, setIsLoading] = React.useState(false)
-    const [isDemoLoading, setIsDemoLoading] = React.useState(false)
-    const [showPassword, setShowPassword] = React.useState(false)
-    const router = useRouter()
-    const supabase = createClient()
+  const router = useRouter()
+  const { signUp, signInWithGoogle, signInWithGitHub, setLocalSession } = useAuth()
 
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
-        defaultValues: {
-            name: "",
-            email: "",
-            password: "",
-        },
-    })
+  const [role, setRole] = React.useState<"creator" | "consumer">("creator")
+  const [isLoading, setIsLoading] = React.useState(false)
+  const [showPassword, setShowPassword] = React.useState(false)
 
-    async function onSubmit(values: z.infer<typeof formSchema>) {
-        setIsLoading(true)
+  // Shared fields
+  const [name, setName] = React.useState("")
+  const [email, setEmail] = React.useState("")
+  const [password, setPassword] = React.useState("")
 
-        try {
-            const { data, error } = await supabase.auth.signUp({
-                email: values.email,
-                password: values.password,
-                options: {
-                    data: {
-                        name: values.name,
-                        full_name: values.name,
-                    },
-                    emailRedirectTo: `${location.origin}/api/auth/callback`,
-                }
-            })
+  // Creator specific fields
+  const [discipline, setDiscipline] = React.useState(CREATOR_DISCIPLINES[0])
+  const [username, setUsername] = React.useState("")
+  const [portfolioUrl, setPortfolioUrl] = React.useState("")
+  const [selectedSkills, setSelectedSkills] = React.useState<string[]>([
+    "Figma",
+    "React",
+    "Tailwind",
+  ])
 
-            if (error) {
-                toast.error("Sign up failed", {
-                    description: error.message,
-                })
-            } else {
-                toast.success("Account created successfully!", {
-                    description: "Let's set up your creative profile.",
-                })
-                router.push("/onboarding")
-            }
-        } catch (error) {
-            toast.error("An unexpected error occurred")
-        } finally {
-            setIsLoading(false)
-        }
-    }
+  // Consumer specific fields
+  const [companyName, setCompanyName] = React.useState("")
+  const [intent, setIntent] = React.useState(CONSUMER_INTENTS[0])
+  const [budget, setBudget] = React.useState(BUDGET_RANGES[1])
+  const [location, setLocation] = React.useState("San Francisco, CA")
 
-    const handleDemoSignup = async () => {
-        setIsDemoLoading(true)
-        try {
-            document.cookie = `createdot_demo_user=true; path=/; max-age=86400`
-            localStorage.setItem("createdot_demo_user", JSON.stringify({
-                id: "demo-creator-1",
-                name: "Abhinav",
-                email: "abhinav@createdot.io",
-                username: "abhinav",
-                role: "creator",
-                avatar_url: "/images/profile-image-4.png"
-            }))
-            toast.success("Welcome, Abhinav! Profile loaded on CreateDOT.")
-            router.push("/feed")
-        } catch (e) {
-            toast.error("Could not activate demo mode")
-        } finally {
-            setIsDemoLoading(false)
-        }
-    }
-
-    const handleOAuthSignIn = async (provider: 'github' | 'google') => {
-        setIsLoading(true)
-        try {
-            const { error } = await supabase.auth.signInWithOAuth({
-                provider,
-                options: {
-                    redirectTo: `${location.origin}/api/auth/callback`,
-                }
-            })
-            if (error) throw error
-        } catch (error: any) {
-            toast.error("OAuth Error", { description: error.message })
-            setIsLoading(false)
-        }
-    }
-
-    return (
-        <div className="grid gap-5">
-            {/* Quick 1-Click Demo Login Banner */}
-            <div className="relative group overflow-hidden rounded-2xl border border-[#14161F]/10 dark:border-white/10 bg-[#FAF0D7]/50 dark:bg-white/5 p-4 transition-all hover:border-[#FF6B6B]/40">
-                <div className="flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-2.5">
-                        <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#14161F] text-white shadow-md">
-                            <Zap className="h-4 w-4 text-[#FFE185]" />
-                        </div>
-                        <div>
-                            <p className="text-xs font-black text-[#8A6318] dark:text-[#FFE185] uppercase tracking-wider">Instant Access</p>
-                            <p className="text-xs text-[#647087] dark:text-[#9DA7C2] font-medium">Explore onboarding & showcase right away</p>
-                        </div>
-                    </div>
-                    <Button
-                        type="button"
-                        size="sm"
-                        onClick={handleDemoSignup}
-                        disabled={isDemoLoading || isLoading}
-                        className="bg-[#14161F] hover:bg-[#252B3F] text-white dark:bg-white dark:text-[#14161F] font-bold shadow-md rounded-full text-xs h-9 px-4"
-                    >
-                        {isDemoLoading ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : "1-Click Demo"}
-                    </Button>
-                </div>
-            </div>
-
-            <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                    <FormField
-                        control={form.control}
-                        name="name"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel className="text-xs font-bold text-[#14161F] dark:text-white">Full Name</FormLabel>
-                                <FormControl>
-                                    <div className="relative">
-                                        <User className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-[#8C96AB]" />
-                                        <Input placeholder="Elena Rostova" className="pl-10 h-12 rounded-2xl bg-white/70 dark:bg-white/5 border-[#14161F]/10 dark:border-white/10 text-sm" {...field} />
-                                    </div>
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-                    <FormField
-                        control={form.control}
-                        name="email"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel className="text-xs font-bold text-[#14161F] dark:text-white">Email Address</FormLabel>
-                                <FormControl>
-                                    <div className="relative">
-                                        <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-[#8C96AB]" />
-                                        <Input placeholder="name@example.com" className="pl-10 h-12 rounded-2xl bg-white/70 dark:bg-white/5 border-[#14161F]/10 dark:border-white/10 text-sm" {...field} />
-                                    </div>
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-                    <FormField
-                        control={form.control}
-                        name="password"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel className="text-xs font-bold text-[#14161F] dark:text-white">Create Password (8+ chars)</FormLabel>
-                                <FormControl>
-                                    <div className="relative">
-                                        <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-[#8C96AB]" />
-                                        <Input
-                                            type={showPassword ? "text" : "password"}
-                                            placeholder="••••••••"
-                                            className="pl-10 pr-10 h-12 rounded-2xl bg-white/70 dark:bg-white/5 border-[#14161F]/10 dark:border-white/10 text-sm"
-                                            {...field}
-                                        />
-                                        <button
-                                            type="button"
-                                            onClick={() => setShowPassword(!showPassword)}
-                                            className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#8C96AB] hover:text-[#14161F]"
-                                        >
-                                            {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                                        </button>
-                                    </div>
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-                    <Button type="submit" className="w-full h-12 bg-[#FF6B6B] hover:bg-[#F35555] text-white font-bold rounded-full shadow-lg shadow-[#FF6B6B]/25 transition" disabled={isLoading}>
-                        {isLoading && (
-                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        )}
-                        Create Free Account
-                    </Button>
-                </form>
-            </Form>
-
-            <div className="relative my-1">
-                <div className="absolute inset-0 flex items-center">
-                    <span className="w-full border-t border-[#14161F]/8 dark:border-white/10" />
-                </div>
-                <div className="relative flex justify-center text-[10px] uppercase font-bold tracking-widest">
-                    <span className="bg-[#FAF7F0] dark:bg-[#14161F] px-3 text-[#8C96AB]">
-                        Or register with
-                    </span>
-                </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-3">
-                <Button variant="outline" type="button" className="h-11 rounded-full border-[#14161F]/15 dark:border-white/10 font-bold text-xs" disabled={isLoading} onClick={() => handleOAuthSignIn('github')}>
-                    {isLoading ? (
-                        <Loader2 className="mr-2 h-3.5 w-3.5 animate-spin" />
-                    ) : (
-                        <svg role="img" viewBox="0 0 24 24" className="mr-2 h-4 w-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" /></svg>
-                    )}
-                    GitHub
-                </Button>
-                <Button variant="outline" type="button" className="h-11 rounded-full border-[#14161F]/15 dark:border-white/10 font-bold text-xs" disabled={isLoading} onClick={() => handleOAuthSignIn('google')}>
-                    {isLoading ? (
-                        <Loader2 className="mr-2 h-3.5 w-3.5 animate-spin" />
-                    ) : (
-                        <svg role="img" viewBox="0 0 24 24" className="mr-2 h-4 w-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><title>Google</title><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z" /></svg>
-                    )}
-                    Google
-                </Button>
-            </div>
-        </div>
+  const toggleSkill = (skill: string) => {
+    setSelectedSkills((prev) =>
+      prev.includes(skill) ? prev.filter((s) => s !== skill) : [...prev, skill]
     )
-}
+  }
 
+  // Handle Form Submission
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+
+    if (!name.trim()) {
+      toast.error("Please enter your full name")
+      return
+    }
+    if (!email.trim() || !email.includes("@")) {
+      toast.error("Please enter a valid email address")
+      return
+    }
+    if (password.length < 8) {
+      toast.error("Password must be at least 8 characters")
+      return
+    }
+
+    setIsLoading(true)
+
+    try {
+      const result = await signUp(email, password, {
+        name,
+        full_name: name,
+        username: username || (email.split("@")[0] || "user").toLowerCase().replace(/[^a-z0-9_]/g, ""),
+        role,
+        discipline: role === "creator" ? discipline : undefined,
+        portfolio_url: role === "creator" ? portfolioUrl : undefined,
+        skills: role === "creator" ? selectedSkills : ["Creative Direction", "Sourcing"],
+        company_name: role === "consumer" ? companyName : undefined,
+        intent: role === "consumer" ? intent : undefined,
+        budget: role === "consumer" ? budget : undefined,
+        location,
+        avatar_url: name.toLowerCase().includes("abhinav") ? "/images/profile-image-4.png" : undefined,
+      })
+
+      if (result.error) {
+        toast.error("Registration error", { description: result.error.message })
+      } else {
+        toast.success(
+          role === "creator"
+            ? "Welcome to CreateDOT! Your Creator Portfolio is ready."
+            : "Welcome to CreateDOT! Your Client & Hiring Account is active.",
+          {
+            description: `Logged in as ${name} (${role === "creator" ? "Creator" : "Consumer"})`,
+          }
+        )
+
+        if (role === "creator") {
+          router.push("/feed")
+        } else {
+          router.push("/jobs")
+        }
+      }
+    } catch {
+      toast.error("Registration failed. Please try again.")
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  // Quick 1-Click Demo Logins for Testing
+  const handleQuickDemo = (demoRole: "creator" | "consumer") => {
+    if (demoRole === "creator") {
+      setLocalSession({
+        id: "u-abhinav",
+        email: "abhinav@createdot.io",
+        username: "abhinav",
+        full_name: "Abhinav",
+        avatar_url: "/images/profile-image-4.png",
+        cover_url: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1600&q=80",
+        bio: "Principal Product Designer & Creative Technologist. Building autonomous AI banking apps, 3D spatial studios, and token design systems on CreateDOT.",
+        website_url: "https://createdot.io",
+        location: "San Francisco, CA",
+        role: "creator",
+        verified: true,
+        skills: ["UI/UX Design", "3D Spatial Engine", "Design Systems", "React & Tailwind"],
+        tools: ["Figma", "TailwindCSS", "Next.js", "Three.js"],
+        social_links: { github: "https://github.com", twitter: "https://x.com" },
+        followers_count: 24500,
+        following_count: 180,
+        projects_count: 3,
+        likes_count: 142000,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+      })
+      toast.success("Welcome Abhinav! Logged in as Creator.", {
+        description: "Profile loaded with 3 real-time projects and verified badge.",
+      })
+      router.push("/feed")
+    } else {
+      setLocalSession({
+        id: "u-aura-client",
+        email: "sarah@aurastudios.design",
+        username: "aurastudios",
+        full_name: "Sarah Jenkins",
+        avatar_url: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+        cover_url: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80",
+        bio: "Head of Product Experience at Aura Studios. Hiring world-class UI engineers, spatial artists, and brand architects.",
+        website_url: "https://aurastudios.design",
+        location: "New York & Remote",
+        role: "consumer",
+        verified: true,
+        skills: ["Creative Direction", "Talent Sourcing", "Contracting"],
+        tools: ["CreateDOT Studio"],
+        social_links: {},
+        followers_count: 840,
+        following_count: 320,
+        projects_count: 0,
+        likes_count: 512,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+      })
+      toast.success("Welcome Sarah! Logged in as Consumer / Client.", {
+        description: "Accessing direct creator hiring board and contracts.",
+      })
+      router.push("/jobs")
+    }
+  }
+
+  return (
+    <div className="space-y-6">
+      {/* Role Selection Switcher */}
+      <div className="space-y-2">
+        <label className="text-xs font-black uppercase tracking-wider text-[#647087] dark:text-[#9DA7C2]">
+          Choose Your Account Type
+        </label>
+        <div className="grid grid-cols-2 gap-3 p-1.5 rounded-2xl bg-[#14161F]/5 dark:bg-white/5 border border-[#14161F]/8 dark:border-white/10">
+          <button
+            type="button"
+            onClick={() => setRole("creator")}
+            className={`flex flex-col items-center justify-center py-3 px-3 rounded-xl transition-all ${
+              role === "creator"
+                ? "bg-white dark:bg-[#1C2237] text-[#14161F] dark:text-white shadow-md ring-2 ring-[#FF6B6B]"
+                : "text-[#5A637A] dark:text-[#9DA7C2] hover:text-[#14161F] dark:hover:text-white"
+            }`}
+          >
+            <div className="flex items-center gap-1.5 font-bold text-xs">
+              <FaPalette className={`text-xs ${role === "creator" ? "text-[#FF6B6B]" : ""}`} />
+              <span>Creator Profile</span>
+            </div>
+            <span className="text-[10px] text-[#8C96AB] mt-0.5">Showcase & Get Hired</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setRole("consumer")}
+            className={`flex flex-col items-center justify-center py-3 px-3 rounded-xl transition-all ${
+              role === "consumer"
+                ? "bg-white dark:bg-[#1C2237] text-[#14161F] dark:text-white shadow-md ring-2 ring-[#10B981]"
+                : "text-[#5A637A] dark:text-[#9DA7C2] hover:text-[#14161F] dark:hover:text-white"
+            }`}
+          >
+            <div className="flex items-center gap-1.5 font-bold text-xs">
+              <FaBriefcase className={`text-xs ${role === "consumer" ? "text-[#10B981]" : ""}`} />
+              <span>Consumer / Client</span>
+            </div>
+            <span className="text-[10px] text-[#8C96AB] mt-0.5">Hire & Source Talent</span>
+          </button>
+        </div>
+      </div>
+
+      {/* 1-Click Fast Instant Demo Box */}
+      <div className="p-3.5 rounded-2xl bg-gradient-to-r from-[#FAF0D7]/60 to-[#FFF0E6]/50 dark:from-white/5 dark:to-white/[0.02] border border-[#14161F]/8 dark:border-white/10">
+        <div className="flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2">
+            <FaWandMagicSparkles className="text-amber-500 text-xs flex-shrink-0" />
+            <span className="text-xs font-bold text-[#14161F] dark:text-white">
+              Instant 1-Click Test Access:
+            </span>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <button
+              type="button"
+              onClick={() => handleQuickDemo("creator")}
+              className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-[#FF6B6B] text-white hover:bg-[#F05555] transition shadow-sm"
+            >
+              Demo Creator (Abhinav)
+            </button>
+            <button
+              type="button"
+              onClick={() => handleQuickDemo("consumer")}
+              className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-[#10B981] text-white hover:bg-[#059669] transition shadow-sm"
+            >
+              Demo Client
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Registration Form */}
+      <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Full Name */}
+        <div className="space-y-1">
+          <label className="text-xs font-bold text-[#14161F] dark:text-white flex items-center justify-between">
+            <span>{role === "creator" ? "Your Name / Artist Alias" : "Contact Full Name"}</span>
+            <span className="text-[10px] text-[#FF6B6B] font-semibold">Required</span>
+          </label>
+          <div className="relative">
+            <FaUser className="absolute left-3.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-[#8C96AB]" />
+            <Input
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder={role === "creator" ? "Abhinav" : "Sarah Jenkins"}
+              className="pl-10 h-11 rounded-2xl bg-white/70 dark:bg-white/5 border-[#14161F]/10 dark:border-white/10 text-xs font-medium"
+              required
+            />
+          </div>
+        </div>
+
+        {/* Email Address */}
+        <div className="space-y-1">
+          <label className="text-xs font-bold text-[#14161F] dark:text-white flex items-center justify-between">
+            <span>{role === "creator" ? "Creator Email" : "Work / Company Email"}</span>
+            <span className="text-[10px] text-[#FF6B6B] font-semibold">Required</span>
+          </label>
+          <div className="relative">
+            <FaEnvelope className="absolute left-3.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-[#8C96AB]" />
+            <Input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder={role === "creator" ? "abhinav@createdot.io" : "sarah@company.com"}
+              className="pl-10 h-11 rounded-2xl bg-white/70 dark:bg-white/5 border-[#14161F]/10 dark:border-white/10 text-xs font-medium"
+              required
+            />
+          </div>
+        </div>
+
+        {/* Password */}
+        <div className="space-y-1">
+          <label className="text-xs font-bold text-[#14161F] dark:text-white flex items-center justify-between">
+            <span>Password</span>
+            <span className="text-[10px] text-[#8C96AB]">8+ characters</span>
+          </label>
+          <div className="relative">
+            <FaLock className="absolute left-3.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-[#8C96AB]" />
+            <Input
+              type={showPassword ? "text" : "password"}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="••••••••••••"
+              className="pl-10 pr-10 h-11 rounded-2xl bg-white/70 dark:bg-white/5 border-[#14161F]/10 dark:border-white/10 text-xs font-medium"
+              required
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#8C96AB] hover:text-[#14161F] dark:hover:text-white"
+            >
+              {showPassword ? <FaEyeSlash className="h-3.5 w-3.5" /> : <FaEye className="h-3.5 w-3.5" />}
+            </button>
+          </div>
+        </div>
+
+        {/* ---------------- CREATOR SPECIFIC FIELDS ---------------- */}
+        {role === "creator" && (
+          <div className="space-y-4 pt-1 border-t border-[#14161F]/8 dark:border-white/10">
+            {/* Discipline Dropdown */}
+            <div className="space-y-1">
+              <label className="text-xs font-bold text-[#14161F] dark:text-white">
+                Primary Creative Discipline
+              </label>
+              <select
+                value={discipline}
+                onChange={(e) => setDiscipline(e.target.value)}
+                className="w-full h-11 px-3.5 rounded-2xl bg-white/80 dark:bg-[#161B2B] border border-[#14161F]/10 dark:border-white/10 text-xs font-semibold text-[#14161F] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#FF6B6B]"
+              >
+                {CREATOR_DISCIPLINES.map((d) => (
+                  <option key={d} value={d}>
+                    {d}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Portfolio URL / Username */}
+            <div className="grid grid-cols-2 gap-3">
+              <div className="space-y-1">
+                <label className="text-xs font-bold text-[#14161F] dark:text-white">
+                  Profile Handle
+                </label>
+                <div className="relative">
+                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-[#8C96AB] font-bold">
+                    @
+                  </span>
+                  <Input
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="abhinav"
+                    className="pl-7 h-10 rounded-xl bg-white/70 dark:bg-white/5 border-[#14161F]/10 dark:border-white/10 text-xs"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-xs font-bold text-[#14161F] dark:text-white">
+                  Portfolio / Figma
+                </label>
+                <Input
+                  value={portfolioUrl}
+                  onChange={(e) => setPortfolioUrl(e.target.value)}
+                  placeholder="https://..."
+                  className="h-10 rounded-xl bg-white/70 dark:bg-white/5 border-[#14161F]/10 dark:border-white/10 text-xs"
+                />
+              </div>
+            </div>
+
+            {/* Skills selection */}
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold text-[#14161F] dark:text-white">
+                Core Craft Skills
+              </label>
+              <div className="flex flex-wrap gap-1.5">
+                {["Figma", "React", "Tailwind", "Three.js", "Blender", "TypeScript", "Next.js"].map(
+                  (sk) => {
+                    const isSelected = selectedSkills.includes(sk)
+                    return (
+                      <button
+                        type="button"
+                        key={sk}
+                        onClick={() => toggleSkill(sk)}
+                        className={`text-[10px] font-bold px-2.5 py-1 rounded-full border transition-all ${
+                          isSelected
+                            ? "bg-[#FF6B6B] text-white border-[#FF6B6B] shadow-sm"
+                            : "bg-white/60 dark:bg-white/5 border-[#14161F]/10 dark:border-white/10 text-[#647087] dark:text-[#9DA7C2]"
+                        }`}
+                      >
+                        {isSelected ? `✓ ${sk}` : `+ ${sk}`}
+                      </button>
+                    )
+                  }
+                )}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ---------------- CONSUMER / CLIENT SPECIFIC FIELDS ---------------- */}
+        {role === "consumer" && (
+          <div className="space-y-4 pt-1 border-t border-[#14161F]/8 dark:border-white/10">
+            {/* Company / Brand Name */}
+            <div className="space-y-1">
+              <label className="text-xs font-bold text-[#14161F] dark:text-white flex items-center justify-between">
+                <span>Company or Studio Name</span>
+                <span className="text-[10px] text-[#8C96AB]">Optional for individual clients</span>
+              </label>
+              <div className="relative">
+                <FaBuilding className="absolute left-3.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-[#8C96AB]" />
+                <Input
+                  value={companyName}
+                  onChange={(e) => setCompanyName(e.target.value)}
+                  placeholder="Aura Digital Labs, Inc."
+                  className="pl-10 h-11 rounded-2xl bg-white/70 dark:bg-white/5 border-[#14161F]/10 dark:border-white/10 text-xs font-medium"
+                />
+              </div>
+            </div>
+
+            {/* Hiring Intent Dropdown */}
+            <div className="space-y-1">
+              <label className="text-xs font-bold text-[#14161F] dark:text-white">
+                What are you looking to accomplish?
+              </label>
+              <select
+                value={intent}
+                onChange={(e) => setIntent(e.target.value)}
+                className="w-full h-11 px-3.5 rounded-2xl bg-white/80 dark:bg-[#161B2B] border border-[#14161F]/10 dark:border-white/10 text-xs font-semibold text-[#14161F] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#10B981]"
+              >
+                {CONSUMER_INTENTS.map((item) => (
+                  <option key={item} value={item}>
+                    {item}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Estimated Budget & Location */}
+            <div className="grid grid-cols-2 gap-3">
+              <div className="space-y-1">
+                <label className="text-xs font-bold text-[#14161F] dark:text-white flex items-center gap-1">
+                  <FaCoins className="text-amber-500 text-xs" /> Budget Scale
+                </label>
+                <select
+                  value={budget}
+                  onChange={(e) => setBudget(e.target.value)}
+                  className="w-full h-10 px-2.5 rounded-xl bg-white/80 dark:bg-[#161B2B] border border-[#14161F]/10 dark:border-white/10 text-xs font-medium text-[#14161F] dark:text-white"
+                >
+                  {BUDGET_RANGES.map((b) => (
+                    <option key={b} value={b}>
+                      {b}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-xs font-bold text-[#14161F] dark:text-white">
+                  Headquarters
+                </label>
+                <Input
+                  value={location}
+                  onChange={(e) => setLocation(e.target.value)}
+                  placeholder="San Francisco, CA"
+                  className="h-10 rounded-xl bg-white/70 dark:bg-white/5 border-[#14161F]/10 dark:border-white/10 text-xs"
+                />
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Submit Button */}
+        <Button
+          type="submit"
+          disabled={isLoading}
+          className={`w-full h-12 text-white font-bold rounded-full shadow-lg transition-all flex items-center justify-center gap-2 text-xs uppercase tracking-wider ${
+            role === "creator"
+              ? "bg-[#FF6B6B] hover:bg-[#F05555] shadow-[#FF6B6B]/25"
+              : "bg-[#10B981] hover:bg-[#059669] shadow-[#10B981]/25"
+          }`}
+        >
+          {isLoading ? (
+            <FaSpinner className="h-4 w-4 animate-spin" />
+          ) : (
+            <>
+              <span>
+                {role === "creator" ? "Complete Creator Registration" : "Launch Client Account"}
+              </span>
+              <FaArrowRight className="text-xs" />
+            </>
+          )}
+        </Button>
+      </form>
+
+      {/* OAuth Register Options */}
+      <div className="relative my-2">
+        <div className="absolute inset-0 flex items-center">
+          <span className="w-full border-t border-[#14161F]/8 dark:border-white/10" />
+        </div>
+        <div className="relative flex justify-center text-[10px] uppercase font-bold tracking-widest">
+          <span className="bg-[#FAF7F0] dark:bg-[#14161F] px-3 text-[#8C96AB]">
+            Or authenticate with
+          </span>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-3">
+        <Button
+          variant="outline"
+          type="button"
+          className="h-10 rounded-xl border-[#14161F]/15 dark:border-white/10 font-bold text-xs flex items-center justify-center gap-2"
+          onClick={() => signInWithGitHub()}
+        >
+          <FaGithub className="h-4 w-4" />
+          <span>GitHub</span>
+        </Button>
+        <Button
+          variant="outline"
+          type="button"
+          className="h-10 rounded-xl border-[#14161F]/15 dark:border-white/10 font-bold text-xs flex items-center justify-center gap-2"
+          onClick={() => signInWithGoogle()}
+        >
+          <FaGoogle className="h-3.5 w-3.5 text-rose-500" />
+          <span>Google</span>
+        </Button>
+      </div>
+    </div>
+  )
+}
