@@ -527,11 +527,35 @@ export default function ProfilePage() {
                   {/* Action Buttons */}
                   <div className="flex items-center gap-3">
                     {mockUser.isOwner ? (
-                      <>
+                      <div className="flex flex-wrap items-center gap-2">
                         <Link href="/profile/edit">
-                          <Button variant="outline">
-                            <Edit className="w-4 h-4 mr-2" />
-                            Edit Profile
+                          <Button variant="outline" size="sm">
+                            <Edit className="w-4 h-4 mr-1.5" />
+                            Edit
+                          </Button>
+                        </Link>
+                        <Link href="/profile/analytics">
+                          <Button variant="outline" size="sm">
+                            <TrendingUp className="w-4 h-4 mr-1.5 text-blue-500" />
+                            Analytics
+                          </Button>
+                        </Link>
+                        <Link href="/profile/resume">
+                          <Button variant="outline" size="sm">
+                            <Briefcase className="w-4 h-4 mr-1.5 text-emerald-500" />
+                            Resume / CV
+                          </Button>
+                        </Link>
+                        <Link href="/profile/reviews">
+                          <Button variant="outline" size="sm">
+                            <Award className="w-4 h-4 mr-1.5 text-amber-500" />
+                            Reviews
+                          </Button>
+                        </Link>
+                        <Link href="/profile/saved">
+                          <Button variant="outline" size="sm">
+                            <Bookmark className="w-4 h-4 mr-1.5 text-rose-500" />
+                            Saved
                           </Button>
                         </Link>
                         <Link href="/settings">
@@ -539,7 +563,7 @@ export default function ProfilePage() {
                             <Settings className="w-4 h-4" />
                           </Button>
                         </Link>
-                      </>
+                      </div>
                     ) : (
                       <>
                         <Button
