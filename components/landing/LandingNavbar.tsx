@@ -214,7 +214,7 @@ export default function LandingNavbar() {
 
               <Link
                 href="/designers"
-                className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+                className={`px-3 py-2 rounded-lg font-medium transition-colors ${
                   isScrolled
                     ? "text-slate-600 hover:text-violet-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-violet-400"
                     : "text-white/90 hover:text-white hover:bg-white/10"
@@ -224,25 +224,58 @@ export default function LandingNavbar() {
               </Link>
 
               <Link
+                href="/gigs"
+                className={`px-3 py-2 rounded-lg font-medium transition-colors ${
+                  isScrolled
+                    ? "text-slate-600 hover:text-pink-500 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-pink-400"
+                    : "text-white/90 hover:text-pink-400 hover:bg-white/10"
+                }`}
+              >
+                Gigs
+              </Link>
+
+              <Link
+                href="/pins"
+                className={`px-3 py-2 rounded-lg font-medium transition-colors ${
+                  isScrolled
+                    ? "text-slate-600 hover:text-violet-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-violet-400"
+                    : "text-white/90 hover:text-white hover:bg-white/10"
+                }`}
+              >
+                Pins
+              </Link>
+
+              <Link
                 href="/jobs"
-                className={`px-4 py-2 rounded-lg font-medium transition-colors flex items-center gap-2 ${
+                className={`px-3 py-2 rounded-lg font-medium transition-colors flex items-center gap-1.5 ${
                   isScrolled
                     ? "text-slate-600 hover:text-violet-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-violet-400"
                     : "text-white/90 hover:text-white hover:bg-white/10"
                 }`}
               >
                 Jobs
-                <span className="px-1.5 py-0.5 bg-[#8B5DFF] text-white text-xs font-bold rounded-full">
+                <span className="px-1.5 py-0.5 bg-[#ff4b6e] text-white text-[10px] font-bold rounded-full">
                   12
                 </span>
               </Link>
 
               <Link
-                href="/hire"
-                className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+                href="/sitemap-index"
+                className={`px-3 py-2 rounded-lg font-medium transition-colors ${
                   isScrolled
-                    ? "text-green-600 hover:text-green-700 hover:bg-green-50 dark:text-[#8B5DFF] dark:hover:bg-green-900/30"
-                    : "text-green-300 hover:text-green-200 hover:bg-[#8B5DFF]/20"
+                    ? "text-slate-600 hover:text-violet-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-violet-400"
+                    : "text-white/90 hover:text-white hover:bg-white/10"
+                }`}
+              >
+                Directory
+              </Link>
+
+              <Link
+                href="/hire"
+                className={`px-3 py-2 rounded-lg font-medium transition-colors ${
+                  isScrolled
+                    ? "text-emerald-500 hover:text-emerald-600 hover:bg-emerald-50 dark:text-emerald-400 dark:hover:bg-emerald-950/30"
+                    : "text-emerald-300 hover:text-emerald-200 hover:bg-emerald-500/20"
                 }`}
               >
                 <Briefcase className="w-4 h-4 inline mr-1" />
