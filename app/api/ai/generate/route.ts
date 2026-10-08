@@ -1,9 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { geminiAI } from '@/src/lib/gemini';
 import { supabase } from '@/lib/supabase';
+import { requireAuth } from '@/lib/api-response';
 
 export async function POST(request: NextRequest) {
   try {
+    const auth = await requireAuth(request);
+    if (!auth.auth) return auth.error;
     const body = await request.json();
     const { 
       brief, 
@@ -16,7 +19,6 @@ export async function POST(request: NextRequest) {
       designStyleId, 
       brandProfileId, 
       targetPlatforms,
-      userId 
     } = body;
 
     const projectTitle = projectName || title || 'Creative Design Concept';
@@ -25,26 +27,17 @@ export async function POST(request: NextRequest) {
     const effectiveMode = mode || aiModeId || 'quick';
 
     // If no userId passed in body, try to check auth header
-    let targetUserId = userId;
-    if (!targetUserId) {
-      const authHeader = request.headers.get('authorization');
-      if (authHeader) {
-        const token = authHeader.replace('Bearer ', '');
-        const { data: { user } } = await supabase.auth.getUser(token);
-        if (user) targetUserId = user.id;
-      }
-    }
+    const targetUserId = auth.userId;
 
     // Try AI generation with Gemini if available
     let suggestions: any = null;
     let enhancedPrompt: string = '';
-    let copyVariations: any = {
-      headlines: [`${projectTitle}: Modern Experience`, `The New Standard in ${projectCategory}`],
-      body: [`Designed with pixel-perfection and responsive accessibility.`],
-      cta: ['Explore Study', 'Get Started']
-    };
+    let copyVariations: any = null;
 
     try {
+      if (!process.env.GEMINI_API_KEY) {
+        return NextResponse.json({ error: 'AI generation is not configured' }, { status: 503 });
+      }
       if (process.env.GEMINI_API_KEY) {
         suggestions = await geminiAI.generateDesignSuggestions(
           projectBrief,
@@ -62,21 +55,12 @@ export async function POST(request: NextRequest) {
         const headlines = await geminiAI.generateDesignCopy('headline', projectBrief);
         if (headlines && headlines.length) copyVariations.headlines = headlines;
       }
-    } catch (aiErr) {
-      console.warn('Gemini AI fallback active:', aiErr);
+    } catch {
+      return NextResponse.json({ error: 'AI generation failed' }, { status: 502 });
     }
 
     if (!suggestions) {
-      suggestions = {
-        colorPalette: ['#14161F', '#FF6B6B', '#3B82F6', '#FAF7F0'],
-        typography: { heading: 'Plus Jakarta Sans', body: 'Inter' },
-        layoutSuggestions: [
-          'High-contrast hero section with glassmorphic cards',
-          'Responsive grid layout with interactive micro-animations',
-          'Fluid typography with accessible contrast ratios'
-        ]
-      };
-      enhancedPrompt = `A high-end editorial ${projectCategory} mockup for ${projectTitle}, sleek studio lighting, 8k resolution, minimalist dark glass UI`;
+      return NextResponse.json({ error: 'AI generation returned no result' }, { status: 502 });
     }
 
     // Pick a thematic cover image based on category

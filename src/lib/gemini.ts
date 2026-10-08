@@ -1,7 +1,7 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 // Initialize the Gemini AI client
-const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI_API_KEY || '');
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
 
 export interface ImageGenerationOptions {
   prompt: string;
@@ -64,9 +64,8 @@ export class GeminiAIService {
       const result = await this.generateText({ prompt: prompts[type] });
       // Parse the response to extract individual variations
       return result.split('\n').filter(line => line.trim().length > 0).slice(0, 5);
-    } catch (error) {
-      console.error('Error generating design copy:', error);
-      return [`Default ${type} text`];
+    } catch {
+      throw new Error('Failed to generate design copy');
     }
   }
 
@@ -112,9 +111,8 @@ export class GeminiAIService {
 
     try {
       return await this.generateText({ prompt: enhancementPrompt });
-    } catch (error) {
-      console.error('Error enhancing image prompt:', error);
-      return originalPrompt; // Fallback to original prompt
+    } catch {
+      throw new Error('Failed to enhance image prompt');
     }
   }
 
@@ -160,14 +158,8 @@ export class GeminiAIService {
         typographySuggestions: this.parseSection(sections[3] || ''),
         contentSuggestions: this.parseSection(sections[4] || '')
       };
-    } catch (error) {
-      console.error('Error generating design suggestions:', error);
-      return {
-        layoutSuggestions: ['Grid-based layout', 'Asymmetric composition', 'Minimal centered design'],
-        colorSuggestions: ['Monochromatic scheme', 'Complementary colors', 'Neutral with accent'],
-        typographySuggestions: ['Modern sans-serif', 'Classic serif', 'Mixed type hierarchy'],
-        contentSuggestions: ['Hero + features', 'Problem + solution', 'Benefits focused']
-      };
+    } catch {
+      throw new Error('Failed to generate design suggestions');
     }
   }
 

@@ -229,7 +229,7 @@ SUPABASE_SERVICE_ROLE_KEY=your-service-role-key-here
 # ============================================================================
 # GOOGLE GEMINI API (Optional - for AI features)
 # ============================================================================
-NEXT_PUBLIC_GOOGLE_GEMINI_API_KEY=your-gemini-api-key-here
+GEMINI_API_KEY=your-gemini-api-key-here
 
 # ============================================================================
 # APP CONFIGURATION
@@ -912,7 +912,7 @@ npm run dev
    NEXT_PUBLIC_SUPABASE_URL
    NEXT_PUBLIC_SUPABASE_ANON_KEY
    SUPABASE_SERVICE_ROLE_KEY
-   NEXT_PUBLIC_GOOGLE_GEMINI_API_KEY
+   GEMINI_API_KEY
    ```
 5. Deploy
 
