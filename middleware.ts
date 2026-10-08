@@ -8,61 +8,94 @@ export async function middleware(request: NextRequest) {
     },
   })
 
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co'
-  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder-key'
+  let user: any = null
 
-  const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
-    cookies: {
-      getAll() {
-        return request.cookies.getAll()
-      },
-      setAll(cookiesToSet) {
-        cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value))
-        response = NextResponse.next({
-          request: {
-            headers: request.headers,
+  // Fast check: Demo / local authenticated session cookie
+  const localAuthCookie = request.cookies.get('createdot-auth-session')?.value
+  if (localAuthCookie) {
+    try {
+      user = JSON.parse(decodeURIComponent(localAuthCookie))
+    } catch {
+      try {
+        user = JSON.parse(localAuthCookie)
+      } catch {}
+    }
+  }
+
+  // If no local cookie, check for Supabase auth cookies
+  const hasSupabaseCookie = request.cookies.getAll().some(
+    (c) => c.name.startsWith('sb-') && c.name.endsWith('-auth-token')
+  )
+
+  if (!user && hasSupabaseCookie) {
+    try {
+      const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co'
+      const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder-key'
+
+      const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
+        cookies: {
+          getAll() {
+            return request.cookies.getAll()
           },
-        })
-        cookiesToSet.forEach(({ name, value, options }) =>
-          response.cookies.set(name, value, options)
-        )
-      },
-    },
-  })
+          setAll(cookiesToSet) {
+            cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value))
+            response = NextResponse.next({
+              request: {
+                headers: request.headers,
+              },
+            })
+            cookiesToSet.forEach(({ name, value, options }) =>
+              response.cookies.set(name, value, options)
+            )
+          },
+        },
+      })
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+      // Race with a 1.2s timeout so unresolvable Supabase URLs never block the app
+      const authPromise = supabase.auth.getUser()
+      const timeoutPromise = new Promise<{ data: { user: null } }>((resolve) =>
+        setTimeout(() => resolve({ data: { user: null } }), 1200)
+      )
+      const { data } = await Promise.race([authPromise, timeoutPromise])
+      user = data?.user || null
+    } catch {
+      // Supabase host unreachable
+    }
+  }
 
   const { pathname } = request.nextUrl
 
-  // Protected paths: only accessible to authenticated users
-  const protectedRoutes = [
-    '/dashboard',
-    '/upload',
-    '/settings',
-    '/messages',
-    '/create',
-    '/projects/new',
-    '/projects/drafts',
-    '/projects/scheduled',
-    '/gigs/new',
-    '/pins/new',
-    '/boards/new',
-    '/collections/new',
-    '/profile/edit',
-    '/wallet',
-    '/admin',
+  // Auth pages
+  const isAuthPage = [
+    '/login',
+    '/signup',
+    '/sign-in',
+    '/sign-up',
+    '/signin',
+    '/register',
+    '/forgot-password',
+    '/reset-password',
+  ].some((route) => pathname === route || pathname.startsWith(route + '/'))
+
+  // Public pages that anyone can view without an account
+  const publicRoutes = [
+    '/',
+    '/about',
+    '/brand',
+    '/guidelines',
+    '/privacy',
+    '/terms',
+    '/help',
   ]
 
-  const isProtected = protectedRoutes.some((route) => pathname.startsWith(route))
-  const isAuthPage = ['/login', '/signup', '/sign-in', '/sign-up', '/signin', '/register'].some(
-    (route) => pathname === route || pathname.startsWith(route + '/')
-  )
+  const isPublicPage =
+    publicRoutes.some((route) => pathname === route || pathname.startsWith(route + '/')) ||
+    pathname.startsWith('/auth/') ||
+    pathname.startsWith('/api/')
 
-  // Unauthenticated access to protected route -> redirect to login with redirectTo param
-  if (!user && isProtected) {
-    const redirectUrl = new URL('/login', request.url)
+  // Unauthenticated access to the app -> redirect to signup to create account first
+  if (!user && !isPublicPage && !isAuthPage) {
+    const redirectUrl = new URL('/signup', request.url)
     redirectUrl.searchParams.set('redirectTo', pathname)
     return NextResponse.redirect(redirectUrl)
   }

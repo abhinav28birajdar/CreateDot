@@ -6,6 +6,8 @@ import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import { supabase } from "@/lib/supabase"
 import { useRealtimeSubscription } from "@/hooks/useRealtime"
+import { useAuth } from "@/contexts/auth-context"
+import { UserMenu } from "@/components/layout/user-menu"
 import {
   FaMagnifyingGlass,
   FaWandMagicSparkles,
@@ -88,28 +90,8 @@ const stats = [
   { value: "$3.2M+", label: "Client Contracts Won" },
 ]
 
-// --- Animation Variants ---
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.15,
-    },
-  },
-}
-
-const fadeInUp = {
-  hidden: { opacity: 0, y: 25 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const },
-  },
-}
-
 export default function ModernHomePage() {
+  const { user } = useAuth()
   const [likedProjects, setLikedProjects] = useState<string[]>([])
   const [liveProjects, setLiveProjects] = useState<any[]>(DEFAULT_SHOWCASE_PROJECTS)
 
@@ -232,37 +214,52 @@ export default function ModernHomePage() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <Link
-              href="/login"
-              className="hidden text-sm font-bold text-[#14161F] transition hover:text-[#FF6B6B] sm:block"
-            >
-              Sign In
-            </Link>
-            <Link
-              href="/signup"
-              className="inline-flex items-center gap-2 rounded-full bg-[#14161F] px-5 py-2.5 text-xs font-bold text-white shadow-md shadow-[#14161F]/15 transition hover:bg-[#2A3147] hover:shadow-lg"
-            >
-              <span>Join CreateDOT</span>
-              <FaArrowRight className="h-3 w-3 text-[#FF6B6B]" />
-            </Link>
+            {user ? (
+              <div className="flex items-center gap-3">
+                <Link
+                  href="/feed"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#14161F] px-5 py-2.5 text-xs font-bold text-white shadow-md shadow-[#14161F]/15 transition hover:bg-[#2A3147] hover:shadow-lg"
+                >
+                  <span>Go to App</span>
+                  <FaArrowRight className="h-3 w-3 text-[#FF6B6B]" />
+                </Link>
+                <UserMenu />
+              </div>
+            ) : (
+              <>
+                <Link
+                  href="/login"
+                  className="hidden text-sm font-bold text-[#14161F] transition hover:text-[#FF6B6B] sm:block"
+                >
+                  Sign In
+                </Link>
+                <Link
+                  href="/signup"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#14161F] px-5 py-2.5 text-xs font-bold text-white shadow-md shadow-[#14161F]/15 transition hover:bg-[#2A3147] hover:shadow-lg"
+                >
+                  <span>Join CreateDOT</span>
+                  <FaArrowRight className="h-3 w-3 text-[#FF6B6B]" />
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </header>
 
       {/* --- Main Hero Section --- */}
       <main>
-        <section className="relative mx-auto max-w-7xl px-6 pt-16 pb-20 lg:px-10 lg:pt-24 lg:pb-28">
+        <section className="relative mx-auto max-w-7xl px-6 pt-12 pb-20 lg:px-10 lg:pt-20 lg:pb-28">
           <div className="grid items-center gap-12 lg:grid-cols-12">
             
             {/* Left Narrative Pitch */}
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              animate="show"
-              className="lg:col-span-7"
-            >
+            <div className="lg:col-span-7 space-y-6">
               {/* Guild Tag */}
-              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 rounded-full border border-[#14161F]/10 bg-white/80 px-4 py-1.5 shadow-sm backdrop-blur-md">
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="inline-flex items-center gap-2 rounded-full border border-[#14161F]/10 bg-white/80 px-4 py-1.5 shadow-sm backdrop-blur-md"
+              >
                 <span className="flex h-2 w-2 rounded-full bg-[#FF6B6B] animate-pulse" />
                 <span className="text-xs font-bold uppercase tracking-wider text-[#4A5568]">
                   Spring Showcase 2026 · Live Submissions
@@ -271,54 +268,61 @@ export default function ModernHomePage() {
 
               {/* Main Headline */}
               <motion.h1
-                variants={fadeInUp}
-                className="mt-6 text-4xl font-black tracking-tight text-[#14161F] sm:text-6xl sm:leading-[1.08] lg:text-7xl"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="text-4xl font-black tracking-tight text-[#14161F] sm:text-6xl sm:leading-[1.08] lg:text-7xl"
               >
                 Where visionary craft finds its{" "}
                 <span className="relative inline-block">
                   <span className="relative z-10 bg-gradient-to-r from-[#FF6B6B] via-[#E25C80] to-[#7057BD] bg-clip-text text-transparent">
                     universe.
                   </span>
-                  <motion.span
-                    initial={{ width: 0 }}
-                    animate={{ width: "100%" }}
-                    transition={{ delay: 0.6, duration: 0.8 }}
-                    className="absolute bottom-2 left-0 -z-0 h-3 bg-[#FFE185]/40 rounded-full"
-                  />
+                  <span className="absolute bottom-2 left-0 -z-0 h-3 w-full bg-[#FFE185]/40 rounded-full" />
                 </span>
               </motion.h1>
 
               {/* Supporting Value Proposition */}
               <motion.p
-                variants={fadeInUp}
-                className="mt-6 max-w-2xl text-base leading-relaxed text-[#5A637A] sm:text-xl"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="max-w-2xl text-base leading-relaxed text-[#5A637A] sm:text-xl"
               >
                 The modern home for designers, directors, and creative technologists. Showcase high-fidelity work, discover curated taste, and build client relationships without algorithm fatigue.
               </motion.p>
 
               {/* Dual Action CTAs */}
-              <motion.div variants={fadeInUp} className="mt-9 flex flex-wrap items-center gap-4">
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="pt-2 flex flex-wrap items-center gap-4"
+              >
                 <Link
-                  href="/signup"
+                  href={user ? "/upload" : "/signup"}
                   className="group inline-flex items-center gap-3 rounded-full bg-[#FF6B6B] px-8 py-4 text-sm font-bold text-white shadow-xl shadow-[#FF6B6B]/25 transition hover:bg-[#F05555] hover:shadow-2xl hover:shadow-[#FF6B6B]/35 active:scale-95"
                 >
-                  <span>Claim Your Portfolio</span>
+                  <span>{user ? "Upload New Project" : "Claim Your Portfolio"}</span>
                   <FaArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-1" />
                 </Link>
 
-                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                  <Link
-                    href="/explore"
-                    className="inline-flex items-center gap-2 rounded-full border border-[#14161F]/10 bg-white/70 px-7 py-4 text-sm font-bold text-[#14161F] shadow-sm backdrop-blur-md transition hover:bg-white hover:shadow-md"
-                  >
-                    <FaMagnifyingGlass className="h-3.5 w-3.5 text-[#7A839E]" />
-                    <span>Explore Curated Archive</span>
-                  </Link>
-                </motion.div>
+                <Link
+                  href={user ? "/feed" : "/signup"}
+                  className="inline-flex items-center gap-2 rounded-full border border-[#14161F]/10 bg-white/70 px-7 py-4 text-sm font-bold text-[#14161F] shadow-sm backdrop-blur-md transition hover:bg-white hover:shadow-md active:scale-95"
+                >
+                  <FaMagnifyingGlass className="h-3.5 w-3.5 text-[#7A839E]" />
+                  <span>{user ? "Explore Guild Feed" : "Join to Explore Archive"}</span>
+                </Link>
               </motion.div>
 
               {/* Creator Avatars & Proof */}
-              <motion.div variants={fadeInUp} className="mt-10 flex items-center gap-4 pt-6 border-t border-[#14161F]/8">
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="flex items-center gap-4 pt-6 border-t border-[#14161F]/8"
+              >
                 <div className="flex -space-x-3">
                   <img
                     src="/images/profile-image-4.png"
@@ -350,13 +354,13 @@ export default function ModernHomePage() {
                   </p>
                 </div>
               </motion.div>
-            </motion.div>
+            </div>
 
             {/* Right Visual Bento Showcase */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.94 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
               className="relative lg:col-span-5"
             >
               {/* Floating Accents */}
@@ -387,7 +391,7 @@ export default function ModernHomePage() {
               <div className="grid grid-cols-12 gap-3.5 rounded-[36px] border border-white/60 bg-white/40 p-4 shadow-2xl shadow-[#384566]/10 backdrop-blur-xl sm:gap-4 sm:p-5">
                 
                 {/* Hero Tile 1: Studio Card */}
-                <div className="group relative col-span-7 flex h-64 flex-col justify-between overflow-hidden rounded-2xl bg-gradient-to-br from-[#121829] to-[#252E4B] p-5 text-white shadow-md transition-all hover:shadow-lg">
+                <div className="group relative col-span-12 sm:col-span-7 flex h-64 flex-col justify-between overflow-hidden rounded-2xl bg-gradient-to-br from-[#121829] to-[#252E4B] p-5 text-white shadow-md transition-all hover:shadow-lg">
                   <div className="flex items-center justify-between text-xs font-medium text-white/60">
                     <span className="tracking-wider">ABHINAV STUDIO</span>
                     <span className="rounded-full bg-white/10 px-2 py-0.5 text-[10px] text-white/90">2026</span>
@@ -410,7 +414,7 @@ export default function ModernHomePage() {
                 </div>
 
                 {/* Hero Tile 2: Typography Accent */}
-                <div className="col-span-5 flex h-64 flex-col justify-between rounded-2xl bg-[#E8E4FF] p-5 text-[#352A68] shadow-sm">
+                <div className="col-span-12 sm:col-span-5 flex h-64 flex-col justify-between rounded-2xl bg-[#E8E4FF] p-5 text-[#352A68] shadow-sm">
                   <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#6355A4]">Curated</span>
                   <div className="text-3xl font-black leading-[1.05] tracking-tight">
                     Shape<br />
@@ -424,7 +428,7 @@ export default function ModernHomePage() {
                 </div>
 
                 {/* Hero Tile 3: Sound study visualizer */}
-                <div className="col-span-5 flex h-36 flex-col justify-between rounded-2xl bg-[#D2EFEB] p-4 text-[#1E5249]">
+                <div className="col-span-12 sm:col-span-5 flex h-36 flex-col justify-between rounded-2xl bg-[#D2EFEB] p-4 text-[#1E5249]">
                   <span className="text-[10px] font-bold uppercase tracking-wider">Spatial Audio</span>
                   <div className="flex h-12 items-end gap-1.5">
                     {[45, 90, 60, 100, 75, 40, 65, 80].map((h, idx) => (
@@ -439,7 +443,7 @@ export default function ModernHomePage() {
                 </div>
 
                 {/* Hero Tile 4: Note Card */}
-                <div className="col-span-7 flex h-36 flex-col justify-between rounded-2xl bg-[#FFE4DC] p-5 text-[#8F3C2C]">
+                <div className="col-span-12 sm:col-span-7 flex h-36 flex-col justify-between rounded-2xl bg-[#FFE4DC] p-5 text-[#8F3C2C]">
                   <div className="flex justify-between items-center">
                     <span className="text-[10px] font-bold uppercase tracking-wider">Designer Note</span>
                     <FaWandMagicSparkles className="h-3.5 w-3.5 text-[#FF6B6B]" />
@@ -832,16 +836,16 @@ export default function ModernHomePage() {
               </p>
               <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
                 <Link
-                  href="/signup"
+                  href={user ? "/feed" : "/signup"}
                   className="rounded-full bg-white px-8 py-4 text-base font-bold text-[#14161F] shadow-xl hover:bg-[#F3F4F6] transition"
                 >
-                  Create Your Free Profile
+                  {user ? "Enter Guild Feed" : "Create Your Free Profile"}
                 </Link>
                 <Link
-                  href="/explore"
+                  href={user ? "/explore" : "/signup"}
                   className="rounded-full border border-white/30 bg-black/10 px-8 py-4 text-base font-bold text-white backdrop-blur-md hover:bg-black/20 transition"
                 >
-                  Explore Showcase
+                  {user ? "Explore Showcase" : "Join to Explore Archive"}
                 </Link>
               </div>
             </div>

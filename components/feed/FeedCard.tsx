@@ -92,14 +92,14 @@ export function FeedCard({ project }: { project: Project }) {
           </h3>
         </Link>
 
-        <div className="flex items-center justify-between mt-2.5 pt-2 border-t border-slate-100 dark:border-slate-800/80">
-          <div className="flex items-center gap-2 min-w-0">
+        <div className="flex items-center justify-between mt-3 pt-2.5 border-t border-slate-100 dark:border-slate-800/80 gap-2">
+          <div className="flex items-center gap-1.5 min-w-0 overflow-hidden">
             <img
               src={authorAvatar}
               alt={authorName}
               className="w-5 h-5 rounded-full object-cover shrink-0 ring-1 ring-slate-200 dark:ring-slate-700"
             />
-            <Link href={`/profile/${authorUsername}`}>
+            <Link href={`/profile/${authorUsername}`} className="min-w-0 truncate">
               <span className="text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 truncate block">
                 {authorName}
               </span>
@@ -109,7 +109,7 @@ export function FeedCard({ project }: { project: Project }) {
             )}
           </div>
 
-          <div className="flex items-center gap-2 text-xs text-slate-400 shrink-0">
+          <div className="flex items-center gap-2 text-xs text-slate-400 shrink-0 ml-auto">
             <span className="flex items-center gap-1">
               <FaHeart className={`w-3 h-3 ${isLiked ? 'text-[#FF6B6B]' : 'text-slate-400'}`} />
               {formatCount(count)}
