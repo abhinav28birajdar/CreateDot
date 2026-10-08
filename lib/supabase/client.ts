@@ -1,11 +1,11 @@
 import { createBrowserClient } from '@supabase/ssr'
 import type { Database } from '@/types/database'
+import { getSupabaseEnv } from './env'
 
 let client: ReturnType<typeof createBrowserClient<Database>> | null = null
 
 export function createClient() {
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co'
-  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder-key'
+  const { url: supabaseUrl, anonKey: supabaseAnonKey } = getSupabaseEnv()
 
   if (typeof window === 'undefined') {
     return createBrowserClient<Database>(supabaseUrl, supabaseAnonKey)

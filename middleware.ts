@@ -1,5 +1,6 @@
 import { type NextRequest, NextResponse } from 'next/server'
 import { createServerClient } from '@supabase/ssr'
+import { getSupabaseEnv } from '@/lib/supabase/env'
 
 export async function middleware(request: NextRequest) {
   let response = NextResponse.next({
@@ -8,31 +9,11 @@ export async function middleware(request: NextRequest) {
     },
   })
 
-  let user: any = null
+  let user = null
 
-  // Fast check: Demo / local authenticated session cookie
-  const localAuthCookie = request.cookies.get('createdot-auth-session')?.value
-  if (localAuthCookie) {
-    try {
-      user = JSON.parse(decodeURIComponent(localAuthCookie))
-    } catch {
-      try {
-        user = JSON.parse(localAuthCookie)
-      } catch {}
-    }
-  }
-
-  // If no local cookie, check for Supabase auth cookies
-  const hasSupabaseCookie = request.cookies.getAll().some(
-    (c) => c.name.startsWith('sb-') && c.name.endsWith('-auth-token')
-  )
-
-  if (!user && hasSupabaseCookie) {
-    try {
-      const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co'
-      const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder-key'
-
-      const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
+  try {
+      const { url, anonKey } = getSupabaseEnv()
+      const supabase = createServerClient(url, anonKey, {
         cookies: {
           getAll() {
             return request.cookies.getAll()
@@ -58,9 +39,8 @@ export async function middleware(request: NextRequest) {
       )
       const { data } = await Promise.race([authPromise, timeoutPromise])
       user = data?.user || null
-    } catch {
-      // Supabase host unreachable
-    }
+  } catch {
+    // Missing configuration or an unavailable auth provider must fail closed.
   }
 
   const { pathname } = request.nextUrl

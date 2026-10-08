@@ -1,11 +1,11 @@
 import { createServerClient, type CookieOptions } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 import type { Database } from '@/types/database'
+import { getSupabaseEnv } from './env'
 
 export async function createSupabaseServerClient() {
   const cookieStore = await cookies()
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co'
-  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder-key'
+  const { url: supabaseUrl, anonKey: supabaseAnonKey } = getSupabaseEnv()
 
   return createServerClient<Database>(
     supabaseUrl,

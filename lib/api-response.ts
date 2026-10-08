@@ -1,5 +1,7 @@
 import { NextResponse, NextRequest } from "next/server";
 import { ZodSchema, ZodError } from "zod";
+import { createClient } from "@supabase/supabase-js";
+import { getSupabaseEnv } from "@/lib/supabase/env";
 
 // ============================================================================
 // API RESPONSE TYPES
@@ -221,16 +223,25 @@ export function getAuthUser(request: NextRequest): string | null {
 }
 
 export async function requireAuth(request: NextRequest): Promise<{ auth: false; error: NextResponse } | { auth: true; userId: string }> {
-  const userId = getAuthUser(request);
-
-  if (!userId) {
-    return {
-      auth: false,
-      error: unauthorizedError("Authentication required"),
-    };
+  const token = request.headers.get("authorization")?.match(/^Bearer\s+(.+)$/i)?.[1];
+  if (!token) {
+    return { auth: false, error: unauthorizedError("Authentication required") };
   }
 
-  return { auth: true, userId };
+  try {
+    const { url, anonKey } = getSupabaseEnv();
+    const supabase = createClient(url, anonKey, {
+      auth: { autoRefreshToken: false, persistSession: false },
+      global: { headers: { Authorization: `Bearer ${token}` } },
+    });
+    const { data, error } = await supabase.auth.getUser(token);
+    if (error || !data.user) {
+      return { auth: false, error: unauthorizedError("Authentication required") };
+    }
+    return { auth: true, userId: data.user.id };
+  } catch {
+    return { auth: false, error: unauthorizedError("Authentication required") };
+  }
 }
 
 // ============================================================================
@@ -318,4 +329,3 @@ export class ApiResponseBuilder {
     return successResponse(this.data, this.statusCode);
   }
 }
-
