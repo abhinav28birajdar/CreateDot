@@ -30,7 +30,7 @@ const navigationLinks = [
 
 export function Navbar() {
   const pathname = usePathname();
-  const { user, signOut } = useAuth();
+  const { user, profile, signOut } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const [userMenuOpen, setUserMenuOpen] = React.useState(false);
 
@@ -112,7 +112,7 @@ export function Navbar() {
                   onClick={() => setUserMenuOpen(!userMenuOpen)}
                 >
                   <div className="w-8 h-8 bg-aakar-green-100 text-aakar-green-700 rounded-full flex items-center justify-center text-sm font-semibold">
-                    {(user.full_name || user.email).charAt(0).toUpperCase()}
+                    {(profile?.full_name || user.email || "U").charAt(0).toUpperCase()}
                   </div>
                   <ChevronDown className="w-4 h-4" />
                 </Button>
@@ -126,7 +126,7 @@ export function Navbar() {
                       className="absolute right-0 mt-2 w-56 bg-card border border-border rounded-lg shadow-lg"
                     >
                       <div className="px-4 py-3 border-b border-border">
-                        <p className="text-sm font-medium">{user.full_name || user.username || "User"}</p>
+                        <p className="text-sm font-medium">{profile?.full_name || profile?.username || user.email?.split("@")[0] || "User"}</p>
                         <p className="text-xs text-muted-foreground">{user.email}</p>
                       </div>
                       <div className="py-1">

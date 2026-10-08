@@ -1,9 +1,9 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import {
-  FaCompass,
   FaMagnifyingGlass,
   FaBell,
   FaComments,
@@ -33,8 +33,15 @@ export function Navbar() {
         {/* Brand / Logo */}
         <div className="flex items-center gap-8">
           <Link href="/" className="group flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#14161F] text-white shadow-md shadow-[#14161F]/15 group-hover:rotate-6 transition-transform">
-              <FaCompass className="h-5 w-5 text-[#FF6B6B]" />
+            <div className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-2xl bg-[#14161F] text-white shadow-md shadow-[#14161F]/15 group-hover:rotate-6 transition-transform">
+              <Image
+                src="/images/appicon.png"
+                alt="CreateDOT"
+                width={40}
+                height={40}
+                className="h-full w-full object-cover"
+                priority
+              />
             </div>
             <div className="flex flex-col">
               <span className="text-lg font-black tracking-tight text-[#14161F] dark:text-white">

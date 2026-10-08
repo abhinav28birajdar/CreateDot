@@ -2,13 +2,14 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useAuth } from "@/contexts/auth-context";
 import { Button } from "@/components/ui/button";
 import { Avatar } from "@/components/ui/avatar";
 import { Dropdown } from "@/components/ui/Dropdown";
 
 export function Header() {
-  const { user, signOut } = useAuth();
+  const { user, profile, signOut } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
 
@@ -19,7 +20,7 @@ export function Header() {
   ];
 
   const userMenuItems = [
-    { id: "profile", label: "👤 My Profile", onClick: () => window.location.href = `/profile/${user?.username}` },
+    { id: "profile", label: "👤 My Profile", onClick: () => window.location.href = `/profile/${profile?.username || 'me'}` },
     { id: "dashboard", label: "📊 Dashboard", onClick: () => window.location.href = "/dashboard" },
     { id: "upload", label: "📤 Upload Project", onClick: () => window.location.href = "/upload" },
     { id: "collections", label: "⭐ Collections", onClick: () => window.location.href = "/collections" },
@@ -45,8 +46,15 @@ export function Header() {
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 font-bold text-lg hover:opacity-80 transition">
-          <div className="w-9 h-9 rounded-lg bg-[#4300FF] flex items-center justify-center text-white text-sm font-bold">
-            CD
+          <div className="relative w-9 h-9 rounded-lg overflow-hidden shadow-sm flex items-center justify-center">
+            <Image
+              src="/images/appicon.png"
+              alt="CreateDot"
+              width={36}
+              height={36}
+              className="w-full h-full object-cover"
+              priority
+            />
           </div>
           <span className="hidden sm:inline text-[#FFFFFF]">CreateDot</span>
         </Link>
@@ -90,8 +98,8 @@ export function Header() {
               <Dropdown
                 trigger={
                   <Avatar
-                    src={user.avatar_url || ""}
-                    alt={user.full_name || user.username || "User"}
+                    src={profile?.avatar_url || ""}
+                    alt={profile?.full_name || profile?.username || "User"}
                     size="sm"
                     className="cursor-pointer hover:ring-2 hover:ring-[#4300FF] transition"
                   />

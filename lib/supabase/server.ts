@@ -1,13 +1,15 @@
-import { createServerClient, type CookieOptions } from "@supabase/ssr"
-import { cookies } from "next/headers"
-import { Database } from "@/types/database"
+import { createServerClient, type CookieOptions } from '@supabase/ssr'
+import { cookies } from 'next/headers'
+import type { Database } from '@/types/database'
 
-export function createSupabaseServerClient() {
-  const cookieStore: any = cookies()
+export async function createSupabaseServerClient() {
+  const cookieStore = await cookies()
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co'
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder-key'
 
   return createServerClient<Database>(
-    process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co',
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder-key',
+    supabaseUrl,
+    supabaseAnonKey,
     {
       cookies: {
         get(name: string) {
@@ -17,18 +19,19 @@ export function createSupabaseServerClient() {
           try {
             cookieStore.set({ name, value, ...options })
           } catch {
-            // Server Components can read cookies, but only route handlers and
-            // server actions can safely mutate them.
+            // Ignored when called from Server Component rendering
           }
         },
         remove(name: string, options: CookieOptions) {
           try {
-            cookieStore.set({ name, value: "", ...options })
+            cookieStore.set({ name, value: '', ...options })
           } catch {
-            // Ignore write attempts from read-only rendering contexts.
+            // Ignored when called from Server Component rendering
           }
         },
       },
     }
   )
 }
+
+export { createSupabaseServerClient as createClient }

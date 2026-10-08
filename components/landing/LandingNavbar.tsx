@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Search,
@@ -105,9 +106,16 @@ export default function LandingNavbar() {
               <motion.div
                 whileHover={{ rotate: 180 }}
                 transition={{ duration: 0.5 }}
-                className="w-10 h-10 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center"
+                className="relative w-10 h-10 rounded-xl overflow-hidden shadow-lg flex items-center justify-center"
               >
-                <Sparkles className="w-6 h-6 text-white" />
+                <Image
+                  src="/images/appicon.png"
+                  alt="CreateDOT"
+                  width={40}
+                  height={40}
+                  className="w-full h-full object-cover"
+                  priority
+                />
               </motion.div>
               <span
                 className={`text-xl font-bold transition-colors ${

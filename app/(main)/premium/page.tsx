@@ -128,7 +128,7 @@ async function requestPremiumAccess(formData: FormData) {
     const message = String(formData.get("message") ?? "").trim()
     const targetTier: PlanTier = requestedTier === "team" ? "team" : "pro"
 
-    const supabase = createSupabaseServerClient()
+    const supabase = await createSupabaseServerClient()
     const {
         data: { user },
     } = await supabase.auth.getUser()
@@ -309,7 +309,7 @@ function PlanCard({
 
 export default async function PremiumPage({ searchParams }: { searchParams?: Promise<SearchParams> }) {
     const resolvedSearchParams = (await searchParams) ?? {}
-    const supabase = createSupabaseServerClient()
+    const supabase = await createSupabaseServerClient()
     const {
         data: { user },
     } = await supabase.auth.getUser()
@@ -568,7 +568,7 @@ export default async function PremiumPage({ searchParams }: { searchParams?: Pro
 
                         <div className="mt-6 space-y-4">
                             {recentActivity.length > 0 ? (
-                                recentActivity.map((activity) => (
+                                recentActivity.map((activity: any) => (
                                     <div key={`${activity.event_type}-${activity.created_at}`} className="rounded-2xl border border-slate-200 p-4">
                                         <div className="flex items-start justify-between gap-3">
                                             <div>

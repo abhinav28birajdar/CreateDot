@@ -2,6 +2,7 @@
 
 import React, { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -58,8 +59,15 @@ export function Navbar() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity group">
-            <div className="w-10 h-10 bg-[#8B5DFF] rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
-              <Palette className="w-6 h-6 text-white" />
+            <div className="relative w-10 h-10 rounded-xl overflow-hidden shadow-lg group-hover:scale-105 transition-transform">
+              <Image
+                src="/images/appicon.png"
+                alt="CreateDOT"
+                width={40}
+                height={40}
+                className="w-full h-full object-cover"
+                priority
+              />
             </div>
             <div className="hidden sm:block">
               <span className="text-xl font-bold designly-text-gradient">CreateDOT</span>

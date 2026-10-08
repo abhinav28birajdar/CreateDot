@@ -27,7 +27,7 @@ import {
 import { toast } from 'sonner'
 
 export function UserMenu() {
-  const { user, signOut, switchRole } = useAuth()
+  const { user, profile, role, updateProfile, signOut } = useAuth()
 
   if (!user) {
     return (
@@ -53,15 +53,15 @@ export function UserMenu() {
     )
   }
 
-  const isConsumer = user.role === 'consumer' || user.role === 'client'
-  const displayName = user.full_name || user.username || (isConsumer ? 'Client Member' : 'Abhinav')
-  const displayEmail = user.email || 'abhinav@createdot.io'
-  const avatarSrc = user.avatar_url || (displayName.toLowerCase().includes('abhinav') ? '/images/profile-image-4.png' : '')
+  const isConsumer = role === 'consumer' || role === 'client'
+  const displayName = profile?.full_name || profile?.username || user.email?.split('@')[0] || 'Creator'
+  const displayEmail = user.email || ''
+  const avatarSrc = profile?.avatar_url || '/images/profile-image-4.png'
   const initials = displayName.substring(0, 2).toUpperCase()
 
-  const handleRoleToggle = () => {
+  const handleRoleToggle = async () => {
     const nextRole = isConsumer ? 'creator' : 'consumer'
-    switchRole(nextRole)
+    await updateProfile({ role: nextRole as any })
     toast.success(`Switched to ${nextRole === 'creator' ? 'Creator' : 'Consumer / Client'} mode in real time!`)
   }
 
@@ -130,9 +130,9 @@ export function UserMenu() {
         </DropdownMenuItem>
 
         <DropdownMenuItem asChild className="cursor-pointer rounded-xl">
-          <Link href={`/profile/${user.username || 'abhinav'}`} className="flex items-center w-full gap-2 text-xs font-semibold py-2">
+          <Link href={`/profile/${profile?.username || 'me'}`} className="flex items-center w-full gap-2 text-xs font-semibold py-2">
             <FaUser className="h-3.5 w-3.5 text-slate-400" />
-            <span>Profile ({user.username || 'abhinav'})</span>
+            <span>Profile ({profile?.username || 'me'})</span>
           </Link>
         </DropdownMenuItem>
 

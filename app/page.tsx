@@ -1,10 +1,12 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
+import { supabase } from "@/lib/supabase"
+import { useRealtimeSubscription } from "@/hooks/useRealtime"
 import {
-  FaCompass,
   FaMagnifyingGlass,
   FaWandMagicSparkles,
   FaComments,
@@ -24,8 +26,8 @@ import {
   FaClock,
 } from "react-icons/fa6"
 
-// --- Mock Data ---
-const projects = [
+// --- Showcase Projects ---
+const DEFAULT_SHOWCASE_PROJECTS = [
   {
     id: "proj-demo-1",
     title: "QuantumPay — NextGen AI Banking App",
@@ -109,6 +111,66 @@ const fadeInUp = {
 
 export default function ModernHomePage() {
   const [likedProjects, setLikedProjects] = useState<string[]>([])
+  const [liveProjects, setLiveProjects] = useState<any[]>(DEFAULT_SHOWCASE_PROJECTS)
+
+  useEffect(() => {
+    async function loadProjects() {
+      try {
+        const { data } = await supabase
+          .from('projects')
+          .select(`*, profiles:user_id(*)`)
+          .eq('is_published', true)
+          .order('likes_count', { ascending: false })
+          .limit(6)
+
+        if (data && data.length > 0) {
+          setLiveProjects(data.map((p, idx) => ({
+            id: p.id,
+            title: p.title,
+            desc: p.description || 'Curated design study featured on CreateDOT.',
+            date: p.created_at ? new Date(p.created_at).toLocaleDateString() : 'Recent',
+            status: p.status || 'completed',
+            author: p.profiles?.full_name || p.profiles?.username || 'Creator',
+            handle: `@${p.profiles?.username || 'creator'}`,
+            avatar: p.profiles?.avatar_url || '/images/profile-image-4.png',
+            likes: p.likes_count || 0,
+            tags: p.tags?.length ? p.tags : [p.category || 'UI/UX Design'],
+            gradient: ['from-[#0F172A] via-[#1E293B] to-[#334155]', 'from-[#1E1B4B] via-[#4338CA] to-[#6366F1]', 'from-[#111827] via-[#0F766E] to-[#14B8A6]'][idx % 3],
+            art: p.category === '3D & Motion' ? 'sphere3d' : p.category === 'Brand Identity' ? 'novasystem' : 'quantumpay',
+            coverImage: p.cover_image
+          })))
+        }
+      } catch (e) {
+        console.warn('Error loading landing projects:', e)
+      }
+    }
+    loadProjects()
+  }, [])
+
+  useRealtimeSubscription({
+    table: 'projects',
+    onInsert: async (newRecord) => {
+      if (newRecord.is_published) {
+        const { data: prof } = await supabase.from('profiles').select('*').eq('id', newRecord.user_id).single()
+        const newProj = {
+          id: newRecord.id,
+          title: newRecord.title,
+          desc: newRecord.description || 'Newly published work.',
+          date: 'Just now',
+          status: newRecord.status || 'completed',
+          author: prof?.full_name || prof?.username || 'Creator',
+          handle: `@${prof?.username || 'creator'}`,
+          avatar: prof?.avatar_url || '/images/profile-image-4.png',
+          likes: newRecord.likes_count || 0,
+          tags: newRecord.tags?.length ? newRecord.tags : [newRecord.category || 'UI/UX Design'],
+          gradient: 'from-[#1E1B4B] via-[#4338CA] to-[#6366F1]',
+          art: 'sphere3d',
+          coverImage: newRecord.cover_image
+        }
+        setLiveProjects(prev => [newProj, ...prev.slice(0, 5)])
+      }
+    }
+  })
 
   const toggleLike = (id: string) => {
     setLikedProjects((prev) =>
@@ -129,9 +191,16 @@ export default function ModernHomePage() {
             <motion.div
               whileHover={{ rotate: 12, scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#14161F] text-white shadow-md shadow-[#14161F]/15"
+              className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-2xl shadow-md shadow-[#14161F]/15"
             >
-              <FaCompass className="h-5 w-5 text-[#FF6B6B]" />
+              <Image
+                src="/images/appicon.png"
+                alt="CreateDOT"
+                width={40}
+                height={40}
+                className="h-full w-full object-cover"
+                priority
+              />
             </motion.div>
             <div className="flex flex-col">
               <span className="text-lg font-black tracking-tight text-[#14161F]">
@@ -432,7 +501,7 @@ export default function ModernHomePage() {
           </div>
 
           <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
-            {projects.map((project, idx) => {
+            {liveProjects.map((project, idx) => {
               const isLiked = likedProjects.includes(project.id)
               return (
                 <motion.article
@@ -447,8 +516,15 @@ export default function ModernHomePage() {
                   <div
                     className={`relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-gradient-to-br ${project.gradient} p-5 shadow-lg shadow-[#14161F]/5 transition-all duration-300 group-hover:-translate-y-1.5`}
                   >
-                    {/* Art Simulation */}
-                    <ProjectArtPreview type={project.art} />
+                    {project.coverImage ? (
+                      <img
+                        src={project.coverImage}
+                        alt={project.title}
+                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    ) : (
+                      <ProjectArtPreview type={project.art} />
+                    )}
 
                     {/* Top Action Tags */}
                     <div className="relative z-10 flex items-center justify-between">

@@ -27,6 +27,15 @@ export const metadata: Metadata = {
   description: "CreateDOT is the premier creative platform to showcase work, discover inspiration, get feedback, and find meaningful opportunities.",
   keywords: ["CreateDOT", "design", "creative platform", "portfolio", "creative jobs", "AI design tools", "Abhinav"],
   authors: [{ name: "CreateDOT Team" }],
+  icons: {
+    icon: [
+      { url: "/images/appicon.png", sizes: "any" },
+      { url: "/images/appicon.png", sizes: "32x32", type: "image/png" },
+      { url: "/images/appicon.png", sizes: "16x16", type: "image/png" },
+    ],
+    shortcut: "/images/appicon.png",
+    apple: "/images/appicon.png",
+  },
 }
 
 export const viewport = {

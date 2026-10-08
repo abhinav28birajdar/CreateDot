@@ -1,167 +1,77 @@
-"use client";
+"use client"
 
-import { useEffect, useCallback, useRef } from "react";
-import { createSupabaseClient } from "@/lib/supabase";
+import { useEffect, useRef } from "react"
+import { supabase } from "@/lib/supabase"
+import type { RealtimeChannel } from "@supabase/supabase-js"
 
-type RealtimeCallback = (payload: any) => void;
-type TableName = 
-  | "projects" 
-  | "comments" 
-  | "likes" 
-  | "followers" 
-  | "messages" 
-  | "conversations" 
-  | "notifications" 
-  | "jobs" 
-  | "job_applications" 
-  | "collections" 
-  | "collection_items" 
-  | "reviews" 
-  | "saved_items" 
-  | "users";
+export type RealtimeEvent = "INSERT" | "UPDATE" | "DELETE" | "*"
 
-interface RealtimeSubscription {
-  table: TableName;
-  events?: ("INSERT" | "UPDATE" | "DELETE")[];
-  filter?: string;
-  callback: RealtimeCallback;
+export interface RealtimeSubscriptionOptions {
+  table: string
+  schema?: string
+  filter?: string
+  event?: RealtimeEvent
+  onInsert?: (payload: any) => void
+  onUpdate?: (payload: any) => void
+  onDelete?: (payload: any) => void
+  onChange?: (payload: any) => void
 }
 
 /**
- * Hook to manage Supabase real-time subscriptions
- * Handles automatic cleanup on unmount
- * 
- * Usage:
- * useRealtime({
- *   table: "projects",
- *   events: ["INSERT", "UPDATE"],
- *   filter: `user_id=eq.${userId}`,
- *   callback: (payload) => {
- *     console.log("Project updated:", payload.new);
- *   }
- * });
+ * Universal hook for Supabase Postgres Changes with guaranteed unmount cleanup
  */
-export function useRealtime(subscription: RealtimeSubscription) {
-  const supabaseRef = useRef(createSupabaseClient());
-  const channelRef = useRef<any>(null);
+export function useRealtimeSubscription({
+  table,
+  schema = "public",
+  filter,
+  event = "*",
+  onInsert,
+  onUpdate,
+  onDelete,
+  onChange,
+}: RealtimeSubscriptionOptions) {
+  const channelRef = useRef<RealtimeChannel | null>(null)
+  const handlersRef = useRef({ onInsert, onUpdate, onDelete, onChange })
 
   useEffect(() => {
-    const supabase = supabaseRef.current;
-    
-    // Create unique channel name
-    const channelName = `${subscription.table}-${subscription.filter || "all"}`;
+    handlersRef.current = { onInsert, onUpdate, onDelete, onChange }
+  }, [onInsert, onUpdate, onDelete, onChange])
 
-    // Set up subscription
+  useEffect(() => {
+    const channelName = `realtime-${table}-${filter || "all"}-${Date.now()}`
+
     const channel = supabase
-      .channel(channelName, {
-        config: {
-          broadcast: { self: true },
-        },
-      })
+      .channel(channelName)
       .on(
         "postgres_changes",
         {
-          event: "*" as any,
-          schema: "public",
-          table: subscription.table,
-          filter: subscription.filter,
+          event: event as any,
+          schema,
+          table,
+          ...(filter ? { filter } : {}),
         },
-        subscription.callback
-      )
-      .subscribe((status) => {
-        if (status === "SUBSCRIBED") {
-          console.log(`[Realtime] Subscribed to ${subscription.table}`);
-        } else if (status === "CLOSED") {
-          console.log(`[Realtime] Subscription to ${subscription.table} closed`);
+        (payload) => {
+          handlersRef.current.onChange?.(payload)
+          if (payload.eventType === "INSERT") {
+            handlersRef.current.onInsert?.(payload.new)
+          } else if (payload.eventType === "UPDATE") {
+            handlersRef.current.onUpdate?.(payload.new)
+          } else if (payload.eventType === "DELETE") {
+            handlersRef.current.onDelete?.(payload.old)
+          }
         }
-      });
+      )
+      .subscribe()
 
-    channelRef.current = channel;
+    channelRef.current = channel
 
-    // Cleanup on unmount
     return () => {
       if (channelRef.current) {
-        supabase.removeChannel(channelRef.current);
+        supabase.removeChannel(channelRef.current)
+        channelRef.current = null
       }
-    };
-  }, [subscription.table, subscription.filter, subscription.callback]);
+    }
+  }, [table, schema, filter, event])
 }
 
-/**
- * Hook to manage multiple real-time subscriptions
- * Usage:
- * useMultiRealtime([
- *   {
- *     table: "projects",
- *     callback: onProjectChange
- *   },
- *   {
- *     table: "notifications",
- *     filter: `user_id=eq.${userId}`,
- *     callback: onNotificationChange
- *   }
- * ]);
- */
-export function useMultiRealtime(subscriptions: RealtimeSubscription[]) {
-  subscriptions.forEach((sub) => {
-    useRealtime(sub);
-  });
-}
-
-/**
- * Hook for real-time project updates
- */
-export function useProjectRealtime(projectId: string, callback: RealtimeCallback) {
-  useRealtime({
-    table: "projects",
-    filter: `id=eq.${projectId}`,
-    callback,
-  });
-}
-
-/**
- * Hook for real-time notification updates
- */
-export function useNotificationRealtime(userId: string, callback: RealtimeCallback) {
-  useRealtime({
-    table: "notifications",
-    filter: `user_id=eq.${userId}`,
-    callback,
-  });
-}
-
-/**
- * Hook for real-time message updates
- */
-export function useMessageRealtime(conversationId: string, callback: RealtimeCallback) {
-  useRealtime({
-    table: "messages",
-    events: ["INSERT"],
-    callback,
-  });
-}
-
-/**
- * Hook for real-time comment updates on a project
- */
-export function useCommentRealtime(projectId: string, callback: RealtimeCallback) {
-  useRealtime({
-    table: "comments",
-    filter: `project_id=eq.${projectId}`,
-    callback,
-  });
-}
-
-/**
- * Hook for real-time like updates on a project
- */
-export function useLikeRealtime(projectId: string, callback: RealtimeCallback) {
-  useRealtime({
-    table: "likes",
-    filter: `project_id=eq.${projectId}`,
-    callback,
-  });
-}
-
-export default useRealtime;
-
+export default useRealtimeSubscription

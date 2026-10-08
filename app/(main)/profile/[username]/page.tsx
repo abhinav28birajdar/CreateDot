@@ -7,25 +7,25 @@ import {
   FaCircleCheck,
   FaLocationDot,
   FaGlobe,
-  FaEnvelope,
-  FaAward,
   FaHeart,
   FaEye,
   FaPlus,
-  FaWandMagicSparkles,
 } from 'react-icons/fa6'
-import { createClient } from '@/lib/supabase/client'
-import { User, Project } from '@/types/database.types'
+import { supabase } from '@/lib/supabase'
 import { FeedGrid } from '@/components/feed/FeedGrid'
 import { Button } from '@/components/ui/button'
 import { formatCount } from '@/components/feed/FeedCard'
 import { toast } from 'sonner'
+import type { Database } from '@/types/database'
 
-export default function ProfilePage() {
+type ProfileRow = Database['public']['Tables']['profiles']['Row']
+type ProjectRow = Database['public']['Tables']['projects']['Row']
+
+export default function PublicProfilePage() {
   const params = useParams()
-  const username = (params.username as string) || 'abhinav'
-  const [profile, setProfile] = useState<User | null>(null)
-  const [projects, setProjects] = useState<Project[]>([])
+  const username = (params?.username as string) || ''
+  const [profile, setProfile] = useState<ProfileRow | null>(null)
+  const [projects, setProjects] = useState<ProjectRow[]>([])
   const [activeTab, setActiveTab] = useState<'work' | 'about'>('work')
   const [isFollowing, setIsFollowing] = useState(false)
   const [loading, setLoading] = useState(true)
@@ -33,66 +33,54 @@ export default function ProfilePage() {
   useEffect(() => {
     let isMounted = true
     async function loadProfileData() {
+      if (!username) return
       setLoading(true)
       try {
-        const supabase = createClient()
-        const { data: userProfile } = await supabase
-          .from('users')
+        // Query profiles by username
+        const { data: userProfile, error: profileError } = await supabase
+          .from('profiles')
           .select('*')
           .eq('username', username)
           .single()
 
         if (isMounted && userProfile) {
           setProfile(userProfile)
+
+          // Fetch user's published projects
           const { data: userProjects } = await supabase
             .from('projects')
-            .select('*, user:users(*)')
+            .select('*')
             .eq('user_id', userProfile.id)
             .eq('is_published', true)
+            .order('created_at', { ascending: false })
 
           if (userProjects) setProjects(userProjects)
         } else if (isMounted) {
-          const isAbhinav = username.toLowerCase() === 'abhinav'
-          // Mock profile fallback
-          setProfile({
-            id: 'u-abhinav',
-            auth_id: 'a-abhinav',
-            name: isAbhinav ? 'Abhinav' : username.charAt(0).toUpperCase() + username.slice(1),
-            username: username,
-            email: `${username}@createdot.io`,
-            tagline: 'Principal Product Designer & Creative Technologist',
-            bio: 'Crafting autonomous AI banking apps, 3D spatial studios, and multi-brand design systems on CreateDOT.',
-            avatar_url: isAbhinav ? '/images/profile-image-4.png' : 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
-            cover_url: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1600&q=80',
-            role: 'creator',
-            location: 'San Francisco, CA',
-            website: 'https://createdot.io',
-            skills: ['UI/UX Design', 'Design Systems', '3D Spatial Engine', 'React & Tailwind', 'Heuristic Critique'],
-            tools: ['Next.js', 'Figma', 'Blender', 'TailwindCSS', 'WebGL'],
-            availability: 'available',
-            is_verified: true,
-            is_pro: true,
-            subscription_tier: 'pro',
-            followers_count: 24500,
-            following_count: 180,
-            projects_count: 3,
-            likes_received: 142000,
-            views_received: 680000,
-            awards_count: 14,
-            profile_views: 45000,
-            is_onboarded: true,
-            is_banned: false,
-            created_at: '2026-09-29T00:00:00.000Z',
-            updated_at: '2026-09-29T00:00:00.000Z',
-            last_active: '2026-09-29T22:00:00.000Z',
-          })
+          // Check by ID if username was a uuid
+          const { data: byId } = await supabase
+            .from('profiles')
+            .select('*')
+            .eq('id', username)
+            .single()
+
+          if (byId) {
+            setProfile(byId)
+            const { data: userProjects } = await supabase
+              .from('projects')
+              .select('*')
+              .eq('user_id', byId.id)
+              .eq('is_published', true)
+
+            if (userProjects) setProjects(userProjects)
+          }
         }
-      } catch {
-        // Ignore error
+      } catch (err) {
+        console.warn('Error loading public profile:', err)
       } finally {
         if (isMounted) setLoading(false)
       }
     }
+
     loadProfileData()
     return () => {
       isMounted = false
@@ -102,12 +90,26 @@ export default function ProfilePage() {
   if (loading) {
     return (
       <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-[#FF6B6B]"></div>
+        <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-[#FF6B6B]" />
       </div>
     )
   }
 
-  if (!profile) return null
+  if (!profile) {
+    return (
+      <div className="min-h-[70vh] flex flex-col items-center justify-center text-center p-8">
+        <h2 className="text-2xl font-bold">Creator Not Found</h2>
+        <p className="text-sm text-muted-foreground mt-2 max-w-sm">
+          No profile exists with username @{username}. They may have changed their handle or not joined yet.
+        </p>
+        <Link href="/explore">
+          <Button className="mt-4 bg-[#FF6B6B] hover:bg-[#F35555] text-white rounded-full text-xs font-bold px-6">
+            Explore Other Creators
+          </Button>
+        </Link>
+      </div>
+    )
+  }
 
   return (
     <div className="pb-24">
@@ -118,7 +120,7 @@ export default function ProfilePage() {
           alt="Profile Cover"
           className="w-full h-full object-cover opacity-85"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#14161F]/80 via-transparent to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#14161F]/80 via-transparent to-transparent" />
       </div>
 
       {/* Profile Info Header */}
@@ -127,13 +129,13 @@ export default function ProfilePage() {
           <div className="flex flex-col md:flex-row items-center md:items-end gap-5 text-center md:text-left">
             <img
               src={profile.avatar_url || '/images/profile-image-4.png'}
-              alt={profile.name}
+              alt={profile.full_name || profile.username || 'Creator'}
               className="w-32 h-32 rounded-3xl border-4 border-[#FAF7F0] dark:border-[#14161F] shadow-2xl object-cover ring-2 ring-black/5"
             />
             <div className="space-y-1">
               <div className="flex items-center justify-center md:justify-start gap-2">
                 <h1 className="text-2xl sm:text-3xl font-black text-[#14161F] dark:text-white">
-                  {profile.name}
+                  {profile.full_name || profile.username}
                 </h1>
                 {profile.is_verified && <FaCircleCheck className="w-5 h-5 text-[#FF6B6B]" />}
                 {profile.is_pro && (
@@ -143,7 +145,7 @@ export default function ProfilePage() {
                 )}
               </div>
               <p className="text-sm font-semibold text-[#5A637A] dark:text-[#9DA7C2]">
-                {profile.tagline || `@${profile.username}`}
+                {profile.headline || `@${profile.username}`}
               </p>
               {profile.location && (
                 <p className="text-xs text-[#647087] dark:text-[#9DA7C2] flex items-center justify-center md:justify-start gap-1 font-medium">
@@ -166,7 +168,7 @@ export default function ProfilePage() {
               {isFollowing ? 'Following' : '+ Follow'}
             </Button>
             <Button
-              onClick={() => toast.success(`Inquiry sent to ${profile.name}!`)}
+              onClick={() => toast.success(`Inquiry sent to ${profile.full_name || profile.username}!`)}
               className="rounded-full px-6 text-xs font-bold bg-[#FF6B6B] hover:bg-[#F35555] text-white shadow-md shadow-[#FF6B6B]/25"
             >
               Hire Creator
@@ -177,7 +179,7 @@ export default function ProfilePage() {
         {/* Stats Row */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 my-8">
           <div className="bg-white/90 dark:bg-white/[0.04] p-5 rounded-3xl border border-[#14161F]/8 dark:border-white/10 text-center shadow-sm">
-            <div className="text-2xl font-black text-[#14161F] dark:text-white">{formatCount(profile.projects_count || projects.length)}</div>
+            <div className="text-2xl font-black text-[#14161F] dark:text-white">{formatCount(projects.length)}</div>
             <div className="text-xs font-bold uppercase tracking-wider text-[#647087] dark:text-[#9DA7C2] mt-0.5">Projects</div>
           </div>
           <div className="bg-white/90 dark:bg-white/[0.04] p-5 rounded-3xl border border-[#14161F]/8 dark:border-white/10 text-center shadow-sm">
@@ -220,12 +222,14 @@ export default function ProfilePage() {
 
         {/* Tab Content */}
         {activeTab === 'work' ? (
-          <FeedGrid projects={projects} />
+          <FeedGrid projects={projects as any} />
         ) : (
           <div className="bg-white/90 dark:bg-white/[0.04] p-8 rounded-[32px] border border-[#14161F]/8 dark:border-white/10 space-y-6 shadow-sm backdrop-blur-sm">
             <div>
               <h3 className="text-xs font-black text-[#647087] dark:text-[#9DA7C2] uppercase tracking-wider mb-2">Biography</h3>
-              <p className="text-[#5A637A] dark:text-[#E2E8F0] text-sm leading-relaxed">{profile.bio}</p>
+              <p className="text-[#5A637A] dark:text-[#E2E8F0] text-sm leading-relaxed">
+                {profile.bio || 'This creator has not written a biography yet.'}
+              </p>
             </div>
 
             {profile.skills && profile.skills.length > 0 && (

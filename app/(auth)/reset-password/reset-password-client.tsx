@@ -21,6 +21,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useAuth } from "@/contexts/auth-context";
 
 function PasswordStrengthIndicator({ password }: { password: string }) {
   const requirements = [
@@ -87,6 +88,7 @@ export default function ResetPasswordClient() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const token = searchParams.get("token");
+  const { updatePassword, user, session } = useAuth();
 
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -100,21 +102,10 @@ export default function ResetPasswordClient() {
   const [countdown, setCountdown] = useState(5);
 
   useEffect(() => {
-    const validateToken = async () => {
-      setIsValidating(true);
-      try {
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-        setIsTokenValid(Boolean(token && token.length > 5));
-      } catch (err) {
-        console.error("Token validation error:", err);
-        setIsTokenValid(false);
-      } finally {
-        setIsValidating(false);
-      }
-    };
-
-    validateToken();
-  }, [token]);
+    // Valid if user has an authenticated recovery session or recovery token param
+    setIsTokenValid(Boolean(token || user || session));
+    setIsValidating(false);
+  }, [token, user, session]);
 
   useEffect(() => {
     if (isSubmitted && countdown > 0) {
@@ -148,11 +139,15 @@ export default function ResetPasswordClient() {
     setIsLoading(true);
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      setIsSubmitted(true);
-    } catch (err) {
+      const { error: updateErr } = await updatePassword(password);
+      if (updateErr) {
+        setError(updateErr.message || "Failed to update password. Please try again.");
+      } else {
+        setIsSubmitted(true);
+      }
+    } catch (err: any) {
       console.error("Password reset error:", err);
-      setError("Something went wrong. Please try again.");
+      setError(err?.message || "Something went wrong. Please try again.");
     } finally {
       setIsLoading(false);
     }

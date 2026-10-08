@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { Palette, Heart, Mail, MapPin, Phone } from "lucide-react"
+import Image from "next/image"
+import { Heart, Mail, MapPin, Phone } from "lucide-react"
 
 export function Footer() {
   return (
@@ -9,8 +10,15 @@ export function Footer() {
           {/* Logo and Description */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-3 mb-6">
-              <div className="w-12 h-12 bg-[#8B5DFF] rounded-xl flex items-center justify-center shadow-lg">
-                <Palette className="h-7 w-7 text-white" />
+              <div className="relative w-12 h-12 rounded-xl overflow-hidden shadow-lg flex items-center justify-center">
+                <Image
+                  src="/images/appicon.png"
+                  alt="CreateDOT"
+                  width={48}
+                  height={48}
+                  className="w-full h-full object-cover"
+                  priority
+                />
               </div>
               <div>
                 <span className="text-2xl font-bold designly-text-gradient">CreateDOT</span>

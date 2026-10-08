@@ -69,7 +69,7 @@
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
   }
   
   body {
@@ -127,7 +127,8 @@
   }
   
   .card {
-    @apply shadow-lg shadow-black/5 border border-border/50;
+    border-color: hsl(var(--border) / 0.5);
+    @apply shadow-lg shadow-black/5 border;
   }
   
   .card-hover {

@@ -16,8 +16,10 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useAuth } from "@/contexts/auth-context";
 
 export default function ForgotPasswordPage() {
+  const { resetPassword } = useAuth();
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -43,12 +45,15 @@ export default function ForgotPasswordPage() {
     setIsLoading(true);
 
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      setIsSubmitted(true);
-    } catch (err) {
+      const { error: resetErr } = await resetPassword(email)
+      if (resetErr) {
+        setError(resetErr.message || "Failed to send reset email. Please try again.")
+      } else {
+        setIsSubmitted(true)
+      }
+    } catch (err: any) {
       console.error("Password reset error:", err);
-      setError("Something went wrong. Please try again.");
+      setError(err?.message || "Something went wrong. Please try again.");
     } finally {
       setIsLoading(false);
     }

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -194,8 +195,15 @@ export default function AuthenticatedNavbar({ user }: AuthenticatedNavbarProps) 
           <div className="flex items-center gap-6">
             {/* Logo */}
             <Link href="/home" className="flex items-center gap-2">
-              <div className="w-9 h-9 bg-[#8B5DFF] from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center">
-                <Sparkles className="w-5 h-5 text-white" />
+              <div className="relative w-9 h-9 rounded-xl overflow-hidden shadow-md flex items-center justify-center">
+                <Image
+                  src="/images/appicon.png"
+                  alt="CreateDOT"
+                  width={36}
+                  height={36}
+                  className="w-full h-full object-cover"
+                  priority
+                />
               </div>
               <span className="hidden sm:block text-lg font-bold text-slate-900 dark:text-white">
                 CreateDOT

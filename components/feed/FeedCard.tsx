@@ -25,9 +25,9 @@ export function FeedCard({ project }: { project: Project }) {
     project.likes_count || 0
   )
 
-  const authorName = project.user?.name || 'Abhinav'
-  const authorAvatar = project.user?.avatar_url || '/images/profile-image-4.png'
-  const authorUsername = project.user?.username || 'abhinav'
+  const authorName = (project as any).profiles?.full_name || (project.user as any)?.full_name || (project.user as any)?.name || project.user?.username || 'Creator'
+  const authorAvatar = (project as any).profiles?.avatar_url || project.user?.avatar_url || `https://api.dicebear.com/7.x/avataaars/svg?seed=${project.user_id || 'creator'}`
+  const authorUsername = (project as any).profiles?.username || project.user?.username || 'creator'
 
   return (
     <motion.div

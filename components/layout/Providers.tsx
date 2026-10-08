@@ -17,7 +17,7 @@ import {
 import { useAuth } from "@/contexts/auth-context";
 
 function Navbar() {
-  const { user, signOut } = useAuth();
+  const { user, profile, signOut } = useAuth();
 
   return (
     <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
@@ -111,18 +111,18 @@ function Navbar() {
                   <DropdownMenuTrigger asChild>
                     <button className="flex items-center space-x-2 text-sm text-gray-700 hover:text-gray-900">
                       <div className="h-8 w-8 rounded-full bg-[#8B5DFF]/10 flex items-center justify-center">
-                        {user.avatar_url ? (
+                        {profile?.avatar_url ? (
                           <img
-                            src={user.avatar_url}
+                            src={profile.avatar_url}
                             alt="User"
-                            className="h-8 w-8 rounded-full"
+                            className="h-8 w-8 rounded-full object-cover"
                           />
                         ) : (
                           <User className="h-5 w-5 text-[#8B5DFF]" />
                         )}
                       </div>
                       <span className="font-medium">
-                        {user.full_name || user.username || user.email?.split("@")[0]}
+                        {profile?.full_name || profile?.username || user.email?.split("@")[0]}
                       </span>
                       <ChevronDown className="h-4 w-4" />
                     </button>

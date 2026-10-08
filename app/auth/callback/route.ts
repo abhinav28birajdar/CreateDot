@@ -10,8 +10,8 @@ export async function GET(request: Request) {
     if (code) {
         const cookieStore = await cookies()
         const supabase = createServerClient(
-            process.env.NEXT_PUBLIC_SUPABASE_URL!,
-            process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+            process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co',
+            process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder-key',
             {
                 cookies: {
                     getAll() {
@@ -23,7 +23,7 @@ export async function GET(request: Request) {
                                 cookieStore.set(name, value, options)
                             )
                         } catch {
-                            // The `setAll` method was called from a Server Component.
+                            // Ignored in server component rendering
                         }
                     },
                 },
@@ -32,29 +32,23 @@ export async function GET(request: Request) {
 
         const { data, error } = await supabase.auth.exchangeCodeForSession(code)
         if (!error && data.user) {
-            // Check if profile exists, if not create one
+            // Check if profile exists, if not create default profile
             const { data: profile } = await supabase
-                .from('users')
-                .select('is_onboarded')
-                .eq('auth_id', data.user.id)
+                .from('profiles')
+                .select('id, username')
+                .eq('id', data.user.id)
                 .single()
 
             if (!profile) {
-                const username = (data.user.email?.split('@')[0] || 'creator') + '_' + Math.floor(Math.random() * 1000)
-                await supabase.from('users').insert({
-                    auth_id: data.user.id,
+                const cleanUsername = (data.user.email?.split('@')[0] || 'creator').toLowerCase().replace(/[^a-z0-9_]/g, '') + '_' + Math.floor(Math.random() * 1000)
+                await supabase.from('profiles').insert({
+                    id: data.user.id,
                     email: data.user.email!,
-                    name: data.user.user_metadata?.full_name || data.user.user_metadata?.name || data.user.email?.split('@')[0] || 'Creator',
-                    username,
-                    avatar_url: data.user.user_metadata?.avatar_url || data.user.user_metadata?.picture,
-                    role: 'creator',
-                    is_onboarded: false,
+                    full_name: data.user.user_metadata?.full_name || data.user.user_metadata?.name || data.user.email?.split('@')[0] || 'Creator',
+                    username: cleanUsername,
+                    avatar_url: data.user.user_metadata?.avatar_url || data.user.user_metadata?.picture || null,
+                    role: data.user.user_metadata?.role || 'creator',
                 })
-                return NextResponse.redirect(`${origin}/onboarding`)
-            }
-
-            if (!profile.is_onboarded) {
-                return NextResponse.redirect(`${origin}/onboarding`)
             }
 
             return NextResponse.redirect(`${origin}${next}`)

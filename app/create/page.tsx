@@ -10,6 +10,9 @@ import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
+import { useAuth } from "@/contexts/auth-context"
+import { toast } from "sonner"
 import { 
   ArrowLeft, 
   Sparkles, 
@@ -124,6 +127,9 @@ export default function CreateProjectPage() {
   const [isGenerating, setIsGenerating] = useState(false)
   const [step, setStep] = useState(1)
 
+  const { user } = useAuth()
+  const router = useRouter()
+
   const handleCreateProject = async () => {
     if (!selectedType || !projectName) return
 
@@ -140,18 +146,21 @@ export default function CreateProjectPage() {
           description,
           type: selectedType,
           mode: selectedMode,
+          userId: user?.id,
+          brief: description || projectName,
         }),
       })
 
       if (response.ok) {
         const result = await response.json()
-        // Redirect to project editor or results page
-        window.location.href = `/project/${result.projectId}`
+        toast.success("AI project generated and saved!")
+        router.push(`/project/${result.projectId}`)
       } else {
-        console.error('Failed to create project')
+        toast.error("Failed to generate project with AI")
       }
     } catch (error) {
       console.error('Error creating project:', error)
+      toast.error("Error creating project")
     } finally {
       setIsGenerating(false)
     }

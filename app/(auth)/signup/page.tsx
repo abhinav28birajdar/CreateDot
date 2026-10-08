@@ -1,7 +1,8 @@
 import type { Metadata } from "next"
 import Link from "next/link"
+import Image from "next/image"
 import { SignupForm } from "@/components/auth/signup-form"
-import { FaCompass, FaShieldHalved } from "react-icons/fa6"
+import { FaShieldHalved } from "react-icons/fa6"
 
 export const metadata: Metadata = {
   title: "Create Account — CreateDOT",
@@ -19,8 +20,15 @@ export default function SignupPage() {
         {/* Brand Header */}
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center gap-3 group">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#14161F] text-white shadow-md shadow-[#14161F]/15 group-hover:scale-105 transition-transform">
-              <FaCompass className="h-5 w-5 text-[#FF6B6B]" />
+            <div className="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-2xl shadow-md shadow-[#14161F]/15 group-hover:scale-105 transition-transform">
+              <Image
+                src="/images/appicon.png"
+                alt="CreateDOT"
+                width={44}
+                height={44}
+                className="w-full h-full object-cover"
+                priority
+              />
             </div>
             <div className="flex flex-col text-left">
               <span className="text-xl font-black tracking-tight text-[#14161F] dark:text-white">

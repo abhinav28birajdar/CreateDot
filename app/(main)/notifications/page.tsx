@@ -15,131 +15,40 @@ import {
   Trash2, 
   Sparkles,
   ArrowRight,
-  ShieldAlert,
   Search,
-  Filter,
-  Check
+  Check,
+  Loader2
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-
-interface NotificationItem {
-  id: string;
-  type: 'like' | 'comment' | 'follow' | 'award' | 'trending' | 'system';
-  title: string;
-  message: string;
-  avatar?: string | null;
-  userInitial?: string;
-  timestamp: string;
-  isRead: boolean;
-  actionUrl?: string;
-  category: 'engagement' | 'social' | 'achievement' | 'system';
-}
-
-const initialNotifications: NotificationItem[] = [
-  {
-    id: '1',
-    type: 'like',
-    title: 'Sarah Jenkins liked your design',
-    message: '"Cyberpunk 3D Dashboard UI" received a new appreciation.',
-    avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=100&h=100&fit=crop&crop=face',
-    timestamp: '2 mins ago',
-    isRead: false,
-    actionUrl: '/showcase',
-    category: 'engagement'
-  },
-  {
-    id: '2',
-    type: 'comment',
-    title: 'New comment from Marcus Chen',
-    message: '"The color contrast and typography hierarchy in this mobile flow look fantastic!"',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
-    timestamp: '18 mins ago',
-    isRead: false,
-    actionUrl: '/explore',
-    category: 'engagement'
-  },
-  {
-    id: '3',
-    type: 'follow',
-    title: 'Elena Rostova started following you',
-    message: 'Elena added your profile to her favorite creators list.',
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&crop=face',
-    timestamp: '1 hour ago',
-    isRead: true,
-    actionUrl: '/profile',
-    category: 'social'
-  },
-  {
-    id: '4',
-    type: 'award',
-    title: 'Achievement Unlocked: Top Creator',
-    message: 'Congratulations! Your portfolio reached over 1,000 views this week.',
-    userInitial: 'CD',
-    timestamp: '3 hours ago',
-    isRead: false,
-    actionUrl: '/dashboard',
-    category: 'achievement'
-  },
-  {
-    id: '5',
-    type: 'trending',
-    title: 'Your design is on the Explore Front Page!',
-    message: '"Neomorphic Banking App" is currently trending #4 in UI/UX Design.',
-    userInitial: 'AI',
-    timestamp: '5 hours ago',
-    isRead: true,
-    actionUrl: '/explore',
-    category: 'achievement'
-  },
-  {
-    id: '6',
-    type: 'system',
-    title: 'CreateDOT 2.0 Feature Release',
-    message: 'Explore our new AI Prompt Enhancer & real-time canvas collaboration tools.',
-    userInitial: 'SYS',
-    timestamp: '1 day ago',
-    isRead: true,
-    actionUrl: '/tools',
-    category: 'system'
-  }
-];
+import { useNotifications, Notification } from '@/hooks/useNotifications';
+import { useAuth } from '@/contexts/auth-context';
 
 export default function NotificationsPage() {
-  const [notifications, setNotifications] = useState<NotificationItem[]>(initialNotifications);
-  const [activeTab, setActiveTab] = useState<'all' | 'unread' | 'engagement' | 'social' | 'achievement' | 'system'>('all');
+  const { user } = useAuth();
+  const {
+    notifications,
+    unreadCount,
+    isLoading,
+    markAsRead,
+    markAllAsRead,
+    deleteNotification
+  } = useNotifications();
+
+  const [activeTab, setActiveTab] = useState<'all' | 'unread' | 'like' | 'comment' | 'follow' | 'system'>('all');
   const [searchQuery, setSearchQuery] = useState('');
 
-  const unreadCount = notifications.filter(n => !n.isRead).length;
-
-  const markAllAsRead = () => {
-    setNotifications(prev => prev.map(n => ({ ...n, isRead: true })));
-  };
-
-  const toggleReadStatus = (id: string) => {
-    setNotifications(prev => prev.map(n => n.id === id ? { ...n, isRead: !n.isRead } : n));
-  };
-
-  const deleteNotification = (id: string) => {
-    setNotifications(prev => prev.filter(n => n.id !== id));
-  };
-
-  const clearAllRead = () => {
-    setNotifications(prev => prev.filter(n => !n.isRead));
-  };
-
   const filteredNotifications = notifications.filter(n => {
-    if (activeTab === 'unread') return !n.isRead;
-    if (activeTab !== 'all') return n.category === activeTab;
+    if (activeTab === 'unread') return !n.is_read;
+    if (activeTab !== 'all') return n.type === activeTab;
     return true;
   }).filter(n => 
-    n.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-    n.message.toLowerCase().includes(searchQuery.toLowerCase())
+    (n.title?.toLowerCase().includes(searchQuery.toLowerCase()) || 
+     n.message?.toLowerCase().includes(searchQuery.toLowerCase()))
   );
 
-  const getIcon = (type: NotificationItem['type']) => {
+  const getIcon = (type: string) => {
     switch (type) {
       case 'like': return <Heart className="w-4 h-4 text-rose-500 fill-rose-500/20" />;
       case 'comment': return <MessageCircle className="w-4 h-4 text-[#8B5DFF]" />;
@@ -147,6 +56,23 @@ export default function NotificationsPage() {
       case 'award': return <Award className="w-4 h-4 text-amber-500" />;
       case 'trending': return <TrendingUp className="w-4 h-4 text-emerald-500" />;
       default: return <Sparkles className="w-4 h-4 text-[#8B5DFF]" />;
+    }
+  };
+
+  const formatTimestamp = (dateString: string) => {
+    try {
+      const date = new Date(dateString);
+      const now = new Date();
+      const diffMs = now.getTime() - date.getTime();
+      const diffMins = Math.floor(diffMs / 60000);
+      if (diffMins < 1) return 'Just now';
+      if (diffMins < 60) return `${diffMins}m ago`;
+      const diffHours = Math.floor(diffMins / 60);
+      if (diffHours < 24) return `${diffHours}h ago`;
+      const diffDays = Math.floor(diffHours / 24);
+      return `${diffDays}d ago`;
+    } catch {
+      return 'Recently';
     }
   };
 
@@ -184,14 +110,6 @@ export default function NotificationsPage() {
                 <CheckCheck className="w-3.5 h-3.5 mr-1.5" /> Mark all read
               </Button>
             )}
-            <Button 
-              onClick={clearAllRead} 
-              variant="ghost" 
-              size="sm" 
-              className="text-xs text-slate-500 hover:text-rose-500"
-            >
-              <Trash2 className="w-3.5 h-3.5 mr-1" /> Clear read
-            </Button>
             <Link href="/settings">
               <Button variant="ghost" size="icon" className="h-9 w-9">
                 <Settings className="w-4 h-4 text-slate-500" />
@@ -208,9 +126,9 @@ export default function NotificationsPage() {
             {[
               { id: 'all', label: 'All' },
               { id: 'unread', label: `Unread (${unreadCount})` },
-              { id: 'engagement', label: 'Engagement' },
-              { id: 'social', label: 'Social' },
-              { id: 'achievement', label: 'Awards' },
+              { id: 'like', label: 'Likes' },
+              { id: 'comment', label: 'Comments' },
+              { id: 'follow', label: 'Follows' },
               { id: 'system', label: 'System' },
             ].map(tab => (
               <button
@@ -242,99 +160,108 @@ export default function NotificationsPage() {
 
         {/* Notification List */}
         <div className="space-y-3">
-          <AnimatePresence mode="popLayout">
-            {filteredNotifications.length > 0 ? (
-              filteredNotifications.map((notification) => (
-                <motion.div
-                  key={notification.id}
-                  layout
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  className={`p-4 rounded-2xl border transition-all duration-200 flex items-start gap-4 ${
-                    !notification.isRead
-                      ? 'bg-white dark:bg-[#121215] border-[#8B5DFF]/30 shadow-md shadow-purple-500/5'
-                      : 'bg-white/60 dark:bg-[#121215]/60 border-slate-200/70 dark:border-slate-800/70 opacity-90'
-                  }`}
-                >
-                  {/* Avatar or Icon */}
-                  <div className="relative flex-shrink-0">
-                    <Avatar className="h-10 w-10">
-                      {notification.avatar ? (
-                        <AvatarImage src={notification.avatar} />
-                      ) : (
-                        <AvatarFallback className="bg-gradient-to-tr from-[#8B5DFF] to-indigo-600 text-white font-bold text-xs">
-                          {notification.userInitial || 'CD'}
-                        </AvatarFallback>
-                      )}
-                    </Avatar>
-                    <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-white dark:bg-[#121215] border border-slate-200 dark:border-slate-800 flex items-center justify-center shadow-sm">
-                      {getIcon(notification.type)}
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center justify-between gap-2">
-                      <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100 truncate">
-                        {notification.title}
-                      </h3>
-                      <span className="text-[11px] font-medium text-slate-400 whitespace-nowrap">
-                        {notification.timestamp}
-                      </span>
-                    </div>
-
-                    <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 line-clamp-2 leading-relaxed">
-                      {notification.message}
-                    </p>
-
-                    {/* Action buttons */}
-                    <div className="flex items-center gap-3 mt-3">
-                      {notification.actionUrl && (
-                        <Link href={notification.actionUrl}>
-                          <Button size="sm" variant="outline" className="h-7 text-[11px] px-3 font-semibold text-[#8B5DFF] hover:bg-[#8B5DFF]/10 border-[#8B5DFF]/30">
-                            View details <ArrowRight className="w-3 h-3 ml-1" />
-                          </Button>
-                        </Link>
-                      )}
-                      <button
-                        onClick={() => toggleReadStatus(notification.id)}
-                        className="text-[11px] font-medium text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 flex items-center gap-1"
-                      >
-                        <Check className="w-3 h-3" />
-                        {notification.isRead ? 'Mark unread' : 'Mark read'}
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Options / Delete */}
-                  <button
-                    onClick={() => deleteNotification(notification.id)}
-                    className="text-slate-400 hover:text-rose-500 transition p-1"
-                    title="Delete notification"
+          {isLoading ? (
+            <div className="bg-white dark:bg-[#121215] p-12 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 text-center">
+              <Loader2 className="w-8 h-8 text-[#8B5DFF] animate-spin mx-auto mb-3" />
+              <p className="text-xs text-slate-500">Loading your live notifications...</p>
+            </div>
+          ) : (
+            <AnimatePresence mode="popLayout">
+              {filteredNotifications.length > 0 ? (
+                filteredNotifications.map((notification) => (
+                  <motion.div
+                    key={notification.id}
+                    layout
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    className={`p-4 rounded-2xl border transition-all duration-200 flex items-start gap-4 ${
+                      !notification.is_read
+                        ? 'bg-white dark:bg-[#121215] border-[#8B5DFF]/30 shadow-md shadow-purple-500/5'
+                        : 'bg-white/60 dark:bg-[#121215]/60 border-slate-200/70 dark:border-slate-800/70 opacity-90'
+                    }`}
                   >
-                    <Trash2 className="w-4 h-4" />
-                  </button>
+                    {/* Avatar or Icon */}
+                    <div className="relative flex-shrink-0">
+                      <Avatar className="h-10 w-10">
+                        {notification.actor?.avatar_url ? (
+                          <AvatarImage src={notification.actor.avatar_url} />
+                        ) : (
+                          <AvatarFallback className="bg-gradient-to-tr from-[#8B5DFF] to-indigo-600 text-white font-bold text-xs">
+                            {notification.actor?.full_name?.charAt(0) || notification.actor?.username?.charAt(0) || 'CD'}
+                          </AvatarFallback>
+                        )}
+                      </Avatar>
+                      <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-white dark:bg-[#121215] border border-slate-200 dark:border-slate-800 flex items-center justify-center shadow-sm">
+                        {getIcon(notification.type)}
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between gap-2">
+                        <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100 truncate">
+                          {notification.title}
+                        </h3>
+                        <span className="text-[11px] font-medium text-slate-400 whitespace-nowrap">
+                          {formatTimestamp(notification.created_at || '')}
+                        </span>
+                      </div>
+
+                      <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 line-clamp-2 leading-relaxed">
+                        {notification.message}
+                      </p>
+
+                      {/* Action buttons */}
+                      <div className="flex items-center gap-3 mt-3">
+                        {notification.action_url && (
+                          <Link href={notification.action_url}>
+                            <Button size="sm" variant="outline" className="h-7 text-[11px] px-3 font-semibold text-[#8B5DFF] hover:bg-[#8B5DFF]/10 border-[#8B5DFF]/30">
+                              View details <ArrowRight className="w-3 h-3 ml-1" />
+                            </Button>
+                          </Link>
+                        )}
+                        {!notification.is_read && (
+                          <button
+                            onClick={() => markAsRead(notification.id)}
+                            className="text-[11px] font-medium text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 flex items-center gap-1"
+                          >
+                            <Check className="w-3 h-3" />
+                            Mark read
+                          </button>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Options / Delete */}
+                    <button
+                      onClick={() => deleteNotification(notification.id)}
+                      className="text-slate-400 hover:text-rose-500 transition p-1"
+                      title="Delete notification"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  </motion.div>
+                ))
+              ) : (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="bg-white dark:bg-[#121215] p-12 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 text-center space-y-4"
+                >
+                  <div className="w-16 h-16 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-400 flex items-center justify-center mx-auto">
+                    <Bell className="w-8 h-8" />
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">
+                    No notifications yet
+                  </h3>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 max-w-sm mx-auto">
+                    You&apos;re completely up to date! Real-time notifications for likes, comments, and messages will arrive here automatically.
+                  </p>
                 </motion.div>
-              ))
-            ) : (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="bg-white dark:bg-[#121215] p-12 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 text-center space-y-4"
-              >
-                <div className="w-16 h-16 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-400 flex items-center justify-center mx-auto">
-                  <Bell className="w-8 h-8" />
-                </div>
-                <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">
-                  No notifications found
-                </h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400 max-w-sm mx-auto">
-                  You're all caught up! When you receive new likes, comments, or system updates, they will appear here.
-                </p>
-              </motion.div>
-            )}
-          </AnimatePresence>
+              )}
+            </AnimatePresence>
+          )}
         </div>
 
       </div>

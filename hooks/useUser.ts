@@ -1,16 +1,18 @@
-import { useAuth } from "@/contexts/auth-context";
-import { User } from "@/types";
+"use client"
 
-export const useUser = () => {
-  const { user, session } = useAuth();
+import { useAuth } from '@/contexts/auth-context'
+
+export function useUser() {
+  const { user, profile, isLoading, role, isAdmin } = useAuth()
 
   return {
-    user: user as User | null,
-    isLoading: session.isLoading,
+    user,
+    profile,
+    isLoading,
     isAuthenticated: !!user,
-    error: session.error,
-  };
-};
+    role,
+    isAdmin,
+  }
+}
 
-export default useUser;
-
+export default useUser

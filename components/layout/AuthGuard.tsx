@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useAuth } from "@/contexts/auth-context"
 import { useRouter } from "next/navigation"
 import { useEffect } from "react"
@@ -13,27 +12,21 @@ interface AuthGuardProps {
 }
 
 export function AuthGuard({ children, requireAuth = true }: AuthGuardProps) {
-  const { user, session } = useAuth()
-  const loading = session?.isLoading ?? false
+  const { user, isLoading } = useAuth()
   const router = useRouter()
-
-  const hasDemo = typeof window !== 'undefined' && (
-    localStorage.getItem("createdot_demo_user") ||
-    document.cookie.includes("createdot_demo_user=true")
-  )
-  const isAuthenticated = Boolean(user || hasDemo)
+  const isAuthenticated = Boolean(user)
 
   useEffect(() => {
-    if (!loading) {
+    if (!isLoading) {
       if (requireAuth && !isAuthenticated) {
         router.push("/login")
       } else if (!requireAuth && isAuthenticated) {
         router.push("/dashboard")
       }
     }
-  }, [isAuthenticated, loading, requireAuth, router])
+  }, [isAuthenticated, isLoading, requireAuth, router])
 
-  if (loading) {
+  if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <Loader2 className="h-8 w-8 animate-spin text-[#8B5DFF]" />
