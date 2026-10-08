@@ -22,22 +22,9 @@ export interface ProjectCreateInput {
 
 export async function createProject(input: ProjectCreateInput): Promise<Project> {
   const supabase = createClient()
-  let user: any = null
-
-  try {
-    const { data } = await supabase.auth.getUser()
-    user = data?.user
-  } catch {}
-
-  // Local user fallback
-  if (!user && typeof window !== 'undefined') {
-    try {
-      const localUserStr = localStorage.getItem('createdot_auth_user')
-      if (localUserStr) {
-        user = JSON.parse(localUserStr)
-      }
-    } catch {}
-  }
+  const { data: authData, error: authError } = await supabase.auth.getUser()
+  const user = authData.user
+  if (authError) throw authError
 
   if (!user) throw new Error('User must be authenticated to upload projects')
 
@@ -56,65 +43,12 @@ export async function createProject(input: ProjectCreateInput): Promise<Project>
     .replace(/(^-|-$)+/g, '') || 'project'
   const slug = `${baseSlug}-${Date.now().toString(36)}`
 
-  // Get user profile info
-  let profileInfo: any = null
-  if (typeof window !== 'undefined') {
-    try {
-      const profileStr = localStorage.getItem('createdot_auth_profile')
-      if (profileStr) profileInfo = JSON.parse(profileStr)
-    } catch {}
+  let uploadedCoverUrl = coverUrl
+  if (input.cover_image instanceof File) {
+    uploadedCoverUrl = await uploadFile(input.cover_image, 'covers')
   }
 
-  const newLocalProject: any = {
-    id: `proj-${Date.now().toString(36)}`,
-    user_id: user.id,
-    title: input.title,
-    slug,
-    description: input.description,
-    case_study: input.case_study || null,
-    cover_image: coverUrl || 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800',
-    cover_color: '#14161F',
-    tags: input.tags,
-    tools_used: input.tools_used,
-    category: input.category,
-    external_url: input.external_url || null,
-    is_published: input.is_published,
-    allow_comments: input.allow_comments,
-    likes_count: 1,
-    views_count: 5,
-    is_featured: false,
-    created_at: new Date().toISOString(),
-    published_at: new Date().toISOString(),
-    profiles: profileInfo || {
-      id: user.id,
-      username: user.user_metadata?.username || user.email?.split('@')[0] || 'creator',
-      full_name: user.user_metadata?.full_name || 'Creator',
-      avatar_url: user.user_metadata?.avatar_url || '/images/profile-image-4.png',
-      is_verified: true,
-      is_pro: true,
-      role: 'creator',
-    },
-    user: profileInfo || {
-      id: user.id,
-      username: user.user_metadata?.username || user.email?.split('@')[0] || 'creator',
-      full_name: user.user_metadata?.full_name || 'Creator',
-      avatar_url: user.user_metadata?.avatar_url || '/images/profile-image-4.png',
-      is_verified: true,
-      is_pro: true,
-      role: 'creator',
-    },
-  }
-
-  // Try saving to Supabase if network allows
-  try {
-    let uploadedCoverUrl = coverUrl
-    if (input.cover_image instanceof File) {
-      try {
-        uploadedCoverUrl = await uploadFile(input.cover_image, 'covers')
-      } catch {}
-    }
-
-    const { data: project, error: projectError } = await supabase
+  const { data: project, error: projectError } = await supabase
       .from('projects')
       .insert({
         user_id: user.id,
@@ -122,7 +56,7 @@ export async function createProject(input: ProjectCreateInput): Promise<Project>
         slug,
         description: input.description,
         case_study: input.case_study || null,
-        cover_image: uploadedCoverUrl || coverUrl,
+        cover_image: uploadedCoverUrl || null,
         tags: input.tags,
         tools_used: input.tools_used,
         category: input.category,
@@ -137,26 +71,13 @@ export async function createProject(input: ProjectCreateInput): Promise<Project>
       `)
       .single()
 
-    if (!projectError && project) {
-      return {
-        ...project,
-        user: (project as any).profiles || null,
-      } as Project
-    }
-  } catch (e) {
-    console.warn('Remote project upload skipped, saving locally:', e)
-  }
+  if (projectError) throw projectError
+  if (!project) throw new Error('Project was not created')
 
-  // Save to local storage
-  if (typeof window !== 'undefined') {
-    try {
-      const existingStr = localStorage.getItem('createdot_local_projects')
-      const existing = existingStr ? JSON.parse(existingStr) : []
-      localStorage.setItem('createdot_local_projects', JSON.stringify([newLocalProject, ...existing]))
-    } catch {}
-  }
-
-  return newLocalProject as Project
+  return {
+    ...project,
+    user: (project as any).profiles || null,
+  } as Project
 }
 
 export async function fetchProjects(options: {
