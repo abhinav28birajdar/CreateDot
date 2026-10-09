@@ -2,9 +2,25 @@ import { createBrowserClient } from '@supabase/ssr'
 import type { Database } from '@/types/database'
 import { getSupabaseEnv } from './env'
 
-let client: ReturnType<typeof createBrowserClient<Database>> | null = null
+type SupabaseClient = ReturnType<typeof createBrowserClient<Database>>
+let client: SupabaseClient | null = null
 
-export function createClient() {
+export function createClient(): SupabaseClient {
+  // Client components are rendered once on the server during prerendering.
+  // Defer configuration errors until a browser-only Supabase operation runs.
+  if (
+    typeof window === 'undefined' &&
+    (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY)
+  ) {
+    return new Proxy({} as SupabaseClient, {
+      get() {
+        throw new Error(
+          'Supabase is not configured. Set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY.'
+        )
+      },
+    })
+  }
+
   const { url: supabaseUrl, anonKey: supabaseAnonKey } = getSupabaseEnv()
 
   if (typeof window === 'undefined') {
@@ -18,10 +34,9 @@ export function createClient() {
   return client
 }
 
-// Resolve the singleton only when a Supabase method is used. This keeps route
-// modules importable during builds that do not provide runtime environment data.
+
 export const supabase = new Proxy(
-  {} as ReturnType<typeof createBrowserClient<Database>>,
+  {} as SupabaseClient,
   {
     get(_target, property, receiver) {
       return Reflect.get(createClient(), property, receiver)
