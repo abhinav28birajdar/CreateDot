@@ -5,12 +5,19 @@ import { getSupabaseEnv } from './env'
 type SupabaseClient = ReturnType<typeof createBrowserClient<Database>>
 let client: SupabaseClient | null = null
 
+export function isSupabaseConfigured(): boolean {
+  return Boolean(
+    process.env.NEXT_PUBLIC_SUPABASE_URL &&
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  )
+}
+
 export function createClient(): SupabaseClient {
   // Client components are rendered once on the server during prerendering.
   // Defer configuration errors until a browser-only Supabase operation runs.
   if (
     typeof window === 'undefined' &&
-    (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY)
+    !isSupabaseConfigured()
   ) {
     return new Proxy({} as SupabaseClient, {
       get() {

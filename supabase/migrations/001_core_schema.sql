@@ -6,6 +6,7 @@
 -- 1. Enable Required Extensions
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE EXTENSION IF NOT EXISTS "pg_trgm";
+CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 
 -- 2. Helper Functions: Updated At Timestamp Handler
 CREATE OR REPLACE FUNCTION public.handle_updated_at()

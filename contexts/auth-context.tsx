@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useEffect, useState, useCallback, useMemo } from 'react'
 import type { Session, User as SupabaseAuthUser } from '@supabase/supabase-js'
-import { createClient } from '@/lib/supabase/client'
+import { createClient, isSupabaseConfigured } from '@/lib/supabase/client'
 import type { Database } from '@/types/database'
 
 export type Profile = Database['public']['Tables']['profiles']['Row']
@@ -92,6 +92,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     async function initAuth() {
       try {
+        if (!isSupabaseConfigured()) {
+          return
+        }
+
         // 1. Try retrieving Supabase session with a 1.5s timeout
         const sessionPromise = supabase.auth.getSession()
         const timeoutPromise = new Promise<{ data: { session: null }, error: null }>((resolve) =>
@@ -118,6 +122,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     initAuth().finally(() => {
       if (isMounted) setIsLoading(false)
     })
+
+    if (!isSupabaseConfigured()) {
+      return () => {
+        isMounted = false
+      }
+    }
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, newSession) => {
       if (!isMounted) return
