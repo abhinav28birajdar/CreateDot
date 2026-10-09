@@ -18,5 +18,13 @@ export function createClient() {
   return client
 }
 
-// Singleton convenience export for client components
-export const supabase = createClient()
+// Resolve the singleton only when a Supabase method is used. This keeps route
+// modules importable during builds that do not provide runtime environment data.
+export const supabase = new Proxy(
+  {} as ReturnType<typeof createBrowserClient<Database>>,
+  {
+    get(_target, property, receiver) {
+      return Reflect.get(createClient(), property, receiver)
+    },
+  }
+)

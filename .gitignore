@@ -57,10 +57,7 @@ coverage.xml
 # IDE & EDITOR
 # ============================================================================
 .vscode/
-!.vscode/settings.json
-!.vscode/extensions.json
-!.vscode/launch.json
-!.vscode/tasks.json
+.github/
 .idea/
 .DS_Store
 Thumbs.db

@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
   description: "CreateDOT is the premier creative platform to showcase work, discover inspiration, get feedback, and find meaningful opportunities.",
   keywords: ["CreateDOT", "design", "creative platform", "portfolio", "creative jobs", "AI design tools", "Abhinav"],
-  authors: [{ name: "CreateDOT Team" }],
+  authors: [{ name: "abhinav28birajdar", url: "https://github.com/abhinav28birajdar" }],
   icons: {
     icon: [
       { url: "/images/appicon.png", sizes: "any" },
