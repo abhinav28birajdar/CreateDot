@@ -72,11 +72,13 @@ export interface Database {
           updated_at?: string
         }
         Update: Partial<Database['public']['Tables']['profiles']['Insert']>
+        Relationships: []
       }
       users: {
         Row: Database['public']['Tables']['profiles']['Row'] & { auth_id?: string; name?: string }
         Insert: Database['public']['Tables']['profiles']['Insert']
         Update: Database['public']['Tables']['profiles']['Update']
+        Relationships: []
       }
       projects: {
         Row: {
@@ -144,8 +146,9 @@ export interface Database {
           published_at?: string | null
         }
         Update: Partial<Database['public']['Tables']['projects']['Insert']>
+        Relationships: []
       }
-      shots: Database['public']['Tables']['projects']
+      shots: Database['public']['Tables']['projects'] & { Relationships: [] }
       project_assets: {
         Row: {
           id: string
@@ -168,6 +171,7 @@ export interface Database {
           created_at?: string
         }
         Update: Partial<Database['public']['Tables']['project_assets']['Insert']>
+        Relationships: []
       }
       likes: {
         Row: {
@@ -183,6 +187,7 @@ export interface Database {
           created_at?: string
         }
         Update: Partial<Database['public']['Tables']['likes']['Insert']>
+        Relationships: []
       }
       comments: {
         Row: {
@@ -208,6 +213,7 @@ export interface Database {
           updated_at?: string
         }
         Update: Partial<Database['public']['Tables']['comments']['Insert']>
+        Relationships: []
       }
       followers: {
         Row: {
@@ -225,6 +231,7 @@ export interface Database {
           created_at?: string
         }
         Update: Partial<Database['public']['Tables']['followers']['Insert']>
+        Relationships: []
       }
       messages: {
         Row: {
@@ -250,6 +257,7 @@ export interface Database {
           created_at?: string
         }
         Update: Partial<Database['public']['Tables']['messages']['Insert']>
+        Relationships: []
       }
       notifications: {
         Row: {
@@ -278,6 +286,7 @@ export interface Database {
           created_at?: string
         }
         Update: Partial<Database['public']['Tables']['notifications']['Insert']>
+        Relationships: []
       }
       jobs: {
         Row: {
@@ -317,6 +326,7 @@ export interface Database {
           updated_at?: string
         }
         Update: Partial<Database['public']['Tables']['jobs']['Insert']>
+        Relationships: []
       }
       job_applications: {
         Row: {
@@ -336,6 +346,7 @@ export interface Database {
           created_at?: string
         }
         Update: Partial<Database['public']['Tables']['job_applications']['Insert']>
+        Relationships: []
       }
       marketplace_products: {
         Row: {
@@ -379,6 +390,7 @@ export interface Database {
           updated_at?: string
         }
         Update: Partial<Database['public']['Tables']['marketplace_products']['Insert']>
+        Relationships: []
       }
       collections: {
         Row: {
@@ -404,6 +416,7 @@ export interface Database {
           updated_at?: string
         }
         Update: Partial<Database['public']['Tables']['collections']['Insert']>
+        Relationships: []
       }
       collection_items: {
         Row: {
@@ -421,6 +434,7 @@ export interface Database {
           created_at?: string
         }
         Update: Partial<Database['public']['Tables']['collection_items']['Insert']>
+        Relationships: []
       }
       brands: {
         Row: {
@@ -450,7 +464,185 @@ export interface Database {
           updated_at?: string
         }
         Update: Partial<Database['public']['Tables']['brands']['Insert']>
+        Relationships: []
+      },
+      analytics: {
+        Row: {
+          id: string
+          user_id: string
+          project_id: string | null
+          event_type: string
+          event_data: Json
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          project_id?: string | null
+          event_type: string
+          event_data?: Json
+          created_at?: string
+        }
+        Update: Partial<Database['public']['Tables']['analytics']['Insert']>
+        Relationships: []
+      },
+      audit_logs: {
+        Row: {
+          id: string
+          user_id: string | null
+          action: string
+          metadata: Json
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id?: string | null
+          action: string
+          metadata?: Json
+          created_at?: string
+        }
+        Update: Partial<Database['public']['Tables']['audit_logs']['Insert']>
+        Relationships: []
+      },
+      email_verifications: {
+        Row: {
+          id: string
+          user_id: string
+          email: string
+          token_hash: string
+          expires_at: string
+          verified_at: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          email: string
+          token_hash: string
+          expires_at: string
+          verified_at?: string | null
+          created_at?: string
+        }
+        Update: Partial<Database['public']['Tables']['email_verifications']['Insert']>
+        Relationships: []
+      },
+      premium_requests: {
+        Row: {
+          id: string
+          user_id: string
+          requested_tier: 'pro' | 'team'
+          message: string | null
+          status: 'pending' | 'approved' | 'rejected'
+          reviewed_at: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          requested_tier: 'pro' | 'team'
+          message?: string | null
+          status?: 'pending' | 'approved' | 'rejected'
+          reviewed_at?: string | null
+          created_at?: string
+        }
+        Update: Partial<Database['public']['Tables']['premium_requests']['Insert']>
+        Relationships: []
+      },
+      ai_generation_jobs: {
+        Row: {
+          id: string
+          user_id: string
+          prompt: string | null
+          status: string
+          result: Json | null
+          created_at: string
+          completed_at: string | null
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          prompt?: string | null
+          status?: string
+          result?: Json | null
+          created_at?: string
+          completed_at?: string | null
+        }
+        Update: Partial<Database['public']['Tables']['ai_generation_jobs']['Insert']>
+        Relationships: []
+      },
+      usage_analytics: {
+        Row: {
+          id: string
+          user_id: string
+          event_type: string
+          event_data: Json
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          event_type: string
+          event_data?: Json
+          created_at?: string
+        }
+        Update: Partial<Database['public']['Tables']['usage_analytics']['Insert']>
+        Relationships: []
       }
+    },
+    Views: {
+      user_profiles: {
+        Row: Database['public']['Tables']['profiles']['Row'] & {
+          subscription_tier: 'free' | 'pro' | 'team'
+          credits_remaining: number
+          is_onboarded: boolean
+          email_verified_at: string | null
+        }
+        Relationships: []
+      }
+      shots: {
+        Row: Database['public']['Tables']['projects']['Row'] & {
+          cover_url: string
+          media_type: string
+          visibility: string
+          profiles?: Database['public']['Tables']['profiles']['Row'] | null
+        }
+        Relationships: []
+      }
+    },
+    Functions: {},
+    Enums: {},
+    CompositeTypes: {}
+  }
+}
+
+type GenericTable<T> = T extends {
+  Row: infer Row
+  Insert: infer Insert
+  Update: infer Update
+}
+  ? {
+      Row: Row & Record<string, unknown>
+      Insert: Insert & Record<string, unknown>
+      Update: Update & Record<string, unknown>
+      Relationships: []
     }
+  : never
+
+type GenericView<T> = T extends { Row: infer Row }
+  ? {
+      Row: Row & Record<string, unknown>
+      Relationships: []
+    }
+  : never
+
+export type SupabaseDatabase = {
+  public: {
+    Tables: {
+      [K in keyof Database['public']['Tables']]: GenericTable<Database['public']['Tables'][K]>
+    }
+    Views: {
+      [K in keyof Database['public']['Views']]: GenericView<Database['public']['Views'][K]>
+    }
+    Functions: {}
   }
 }

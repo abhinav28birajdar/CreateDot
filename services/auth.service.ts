@@ -19,15 +19,13 @@ export const authService = {
         if (data.user) {
             const prefix = email.split('@')[0] || 'creator'
             const username = prefix.replace(/[^a-zA-Z0-9]/g, '_') + '_' + Math.floor(Math.random() * 1000)
-            await supabase.from('users').insert({
-                auth_id: data.user.id,
+            await supabase.from('profiles').upsert({
+                id: data.user.id,
                 email: data.user.email!,
-                name: name || prefix,
+                full_name: name || prefix,
                 username,
                 role: 'creator',
-                availability: 'available',
-                is_onboarded: false,
-            })
+            }, { onConflict: 'id' })
         }
 
         return data
@@ -96,9 +94,9 @@ export const authService = {
         if (!user) return null
 
         const { data: profile } = await supabase
-            .from('users')
+            .from('profiles')
             .select('*')
-            .eq('auth_id', user.id)
+            .eq('id', user.id)
             .single()
 
         return profile

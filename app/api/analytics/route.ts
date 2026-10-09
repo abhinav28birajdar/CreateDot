@@ -42,7 +42,7 @@ export const GET = withErrorHandling(async (request: NextRequest) => {
 
   // Get user stats
   const { data: userStats } = await supabase
-    .from("users")
+    .from("profiles")
     .select("followers_count, projects_count, likes_count")
     .eq("id", authResult.userId)
     .single();
@@ -68,4 +68,3 @@ export const GET = withErrorHandling(async (request: NextRequest) => {
 
   return successResponse(stats);
 });
-

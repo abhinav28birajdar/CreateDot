@@ -8,6 +8,20 @@ import type { Database } from '@/types/database'
 export type Profile = Database['public']['Tables']['profiles']['Row']
 export type UserRole = 'creator' | 'consumer' | 'client' | 'admin'
 
+function getAuthError(error: unknown): Error {
+  if (error instanceof Error && error.message.toLowerCase().includes('failed to fetch')) {
+    return new Error(
+      'Unable to connect to Supabase. Check your internet connection and confirm the Supabase URL and anonymous key are configured in .env.local or Vercel.'
+    )
+  }
+
+  if (error instanceof Error) {
+    return error
+  }
+
+  return new Error('Unable to create your account. Please try again.')
+}
+
 export interface SignUpData {
   fullName?: string
   full_name?: string
@@ -201,7 +215,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         setUser(resData.user)
         setSession(resData.session)
         const cleanUsername = data?.username || (email.split('@')[0] || 'user').toLowerCase().replace(/[^a-z0-9_]/g, '')
-        await supabase.from('profiles').upsert({
+        const { error: profileError } = await supabase.from('profiles').upsert({
           id: resData.user.id,
           email,
           username: cleanUsername,
@@ -210,13 +224,23 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           avatar_url: data?.avatarUrl || null,
         })
 
+        if (profileError) {
+          console.error('Supabase profile creation failed after sign-up:', profileError)
+          return {
+            error: new Error(
+              'Your account was created, but your profile could not be completed. Please sign in and try again.'
+            ),
+            user: resData.user,
+          }
+        }
+
         const prof = await fetchProfile(resData.user.id, email)
         setProfile(prof)
         return { error: null, user: resData.user }
       }
       return { error, user: null }
     } catch (error) {
-      return { error, user: null }
+      return { error: getAuthError(error), user: null }
     }
   }, [supabase, fetchProfile])
 

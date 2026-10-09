@@ -66,27 +66,27 @@ export function UploadForm() {
             const filePath = `${user.id}/${fileName}`
 
             const { error: uploadError } = await supabase.storage
-                .from('shots')
+                .from('projects')
                 .upload(filePath, file)
 
             if (uploadError) throw uploadError
 
             // 2. Get Public URL
             const { data: { publicUrl } } = supabase.storage
-                .from('shots')
+                .from('projects')
                 .getPublicUrl(filePath)
 
             // 3. Create Shot Record
             const { error: dbError } = await supabase
-                .from('shots')
+                .from('projects')
                 .insert({
                     title: values.title,
+                    slug: `${values.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}-${Date.now()}`,
                     description: values.description,
-                    cover_url: publicUrl,
+                    cover_image: publicUrl,
                     user_id: user.id,
-                    media_type: file.type.startsWith('video') ? 'video' : 'image',
                     tags: values.tags ? values.tags.split(',').map(t => t.trim()) : [],
-                    visibility: 'public'
+                    is_published: true,
                 })
 
             if (dbError) throw dbError

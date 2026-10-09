@@ -144,10 +144,9 @@ export const PUT = withErrorHandling(async (request: NextRequest) => {
 
   // Update user email and mark as verified
   const { error: updateError } = await supabase
-    .from("users")
+    .from("profiles")
     .update({
       email: verification.email,
-      email_verified_at: new Date().toISOString(),
     })
     .eq("id", authResult.userId);
 
@@ -172,4 +171,3 @@ export const PUT = withErrorHandling(async (request: NextRequest) => {
     message: "Email verified successfully",
   });
 });
-

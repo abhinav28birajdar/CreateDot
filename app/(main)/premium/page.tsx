@@ -154,12 +154,14 @@ async function requestPremiumAccess(formData: FormData) {
         redirect("/premium?duplicate=1")
     }
 
-    const { error } = await supabase.from("premium_requests").insert({
-        user_id: user.id,
-        requested_tier: targetTier,
-        message: message || null,
-        status: "pending",
-    })
+    const { error } = await supabase.from("premium_requests").insert([
+        {
+            user_id: user.id,
+            requested_tier: targetTier,
+            message: message || null,
+            status: "pending",
+        },
+    ] as never)
 
     if (error) {
         throw error
@@ -347,7 +349,7 @@ export default async function PremiumPage({ searchParams }: { searchParams?: Pro
                 .limit(3),
         ])
 
-    const latestRequest = requestResult.data?.[0] ?? null
+    const latestRequest = (requestResult.data?.[0] as PremiumRequestRow | undefined) ?? null
     const recentActivity = activityResult.data ?? []
     const currentTier = normalizeTier(profile?.subscription_tier)
     const displayName = profile?.full_name || profile?.username || user.email?.split("@")[0] || "Creator"

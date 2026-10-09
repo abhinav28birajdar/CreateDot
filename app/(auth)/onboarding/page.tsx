@@ -27,6 +27,7 @@ import {
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { createClient, type SupabaseClient } from "@/lib/supabase/client";
 
 // Step definitions
 const steps = [
@@ -270,8 +271,7 @@ export default function OnboardingWizard() {
   const handleComplete = async () => {
     setIsSubmitting(true);
     try {
-      const { createClient } = await import("@/lib/supabase/client");
-      const supabase = createClient();
+      const supabase: SupabaseClient = createClient();
       const { data: { user } } = await supabase.auth.getUser();
 
       if (user) {
@@ -279,21 +279,28 @@ export default function OnboardingWizard() {
           ? displayName.toLowerCase().replace(/[^a-z0-9]/g, '_') + '_' + Math.floor(Math.random() * 1000)
           : (user.email?.split("@")[0] || "creator") + "_" + Math.floor(Math.random() * 1000);
 
-        await supabase.from("users").upsert({
-          auth_id: user.id,
-          name: displayName || user.email?.split("@")[0] || "Creator",
+        const profileUpdate = {
+          full_name: displayName || user.email?.split("@")[0] || "Creator",
           username: generatedUsername,
           email: user.email!,
           bio: bio || null,
-          tagline: headline || null,
           avatar_url: profilePhoto || null,
           cover_url: coverPhoto || null,
           location: location || null,
-          website: socialLinks.website || null,
-          skills: selectedSkills.length > 0 ? selectedSkills : null,
-          is_onboarded: true,
+          website_url: socialLinks.website || null,
           updated_at: new Date().toISOString(),
-        }, { onConflict: "auth_id" });
+          ...(selectedSkills.length > 0 ? { skills: selectedSkills } : {}),
+        };
+        const profileRecord = {
+          id: user.id,
+          ...profileUpdate,
+        };
+        const { error: profileError } = await supabase.from("profiles").upsert(
+          profileRecord as never,
+          { onConflict: "id" }
+        );
+
+        if (profileError) throw profileError;
       }
     } catch (e) {
       console.error("Error completing onboarding:", e);

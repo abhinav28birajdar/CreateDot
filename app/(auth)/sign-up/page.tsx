@@ -69,13 +69,20 @@ export default function SignUpPage() {
       const { error } = await signUp(email, password, { full_name: fullName, role });
 
       if (error) {
-        setError(error.message);
+        setError(
+          error.message ||
+            "We couldn't create your account. Please check your details and try again."
+        );
         setLoading(false);
       } else {
         router.push("/onboarding");
       }
     } catch (err) {
-      setError("An error occurred during signup. Please try again.");
+      setError(
+        err instanceof Error
+          ? err.message
+          : "We couldn't create your account. Please try again."
+      );
       setLoading(false);
     }
   };

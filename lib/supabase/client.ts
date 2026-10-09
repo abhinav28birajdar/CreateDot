@@ -2,7 +2,7 @@ import { createBrowserClient } from '@supabase/ssr'
 import type { Database } from '@/types/database'
 import { getSupabaseEnv } from './env'
 
-type SupabaseClient = ReturnType<typeof createBrowserClient<Database>>
+export type SupabaseClient = ReturnType<typeof createBrowserClient<Database, 'public', any>>
 let client: SupabaseClient | null = null
 
 export function isSupabaseConfigured(): boolean {
@@ -14,11 +14,8 @@ export function isSupabaseConfigured(): boolean {
 
 export function createClient(): SupabaseClient {
   // Client components are rendered once on the server during prerendering.
-  // Defer configuration errors until a browser-only Supabase operation runs.
-  if (
-    typeof window === 'undefined' &&
-    !isSupabaseConfigured()
-  ) {
+  // Defer configuration errors until a Supabase operation actually runs.
+  if (!isSupabaseConfigured()) {
     return new Proxy({} as SupabaseClient, {
       get() {
         throw new Error(
@@ -31,11 +28,11 @@ export function createClient(): SupabaseClient {
   const { url: supabaseUrl, anonKey: supabaseAnonKey } = getSupabaseEnv()
 
   if (typeof window === 'undefined') {
-    return createBrowserClient<Database>(supabaseUrl, supabaseAnonKey)
+    return createBrowserClient<Database, 'public', any>(supabaseUrl, supabaseAnonKey)
   }
 
   if (!client) {
-    client = createBrowserClient<Database>(supabaseUrl, supabaseAnonKey)
+    client = createBrowserClient<Database, 'public', any>(supabaseUrl, supabaseAnonKey)
   }
 
   return client

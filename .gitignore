@@ -20,16 +20,14 @@
 # ============================================================================
 # ENVIRONMENT & CONFIGURATION
 # ============================================================================
-# Environment files - Never commit sensitive data
-.env
-.env.local
-.env.*.local
+# Environment files - never commit sensitive data
+.env*
 !.env.example
-!.env.local.example
-.env.production
-.env.development
-.env.test
-.env.testing
+
+# Supabase local CLI state and generated secrets
+/supabase/.temp/
+/supabase/.branches/
+/supabase/.env
 
 # ============================================================================
 # BUILD & COMPILATION
@@ -116,7 +114,6 @@ build/
 # ============================================================================
 .vercel
 .netlify
-.env.local.example
 .env.production.local
 .env.*.example
 
